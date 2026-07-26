@@ -2,42 +2,61 @@
 
 ## Zweck
 
-Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Haralds Grillkochbuch**. Sie beschreibt, wie am Kochbuch gearbeitet wird. Sie wird nur bewusst und selten geändert.
+Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Haralds Grillkochbuch**. Das Projekt wird ab Version 2.0 als schrittweise wachsende Kochbuch-Website aufgebaut.
 
 ## Verbindlicher Start einer neuen Sitzung
 
 1. Die aktuelle `index.html` aus dem Repository `henkhar/Kim` laden.
 2. Danach diese Datei `00_Meta-Kim.md` vollständig lesen.
 3. Anschließend `00_Projektstatus.md` vollständig lesen.
-4. Alle drei Quellen während der aktiven Sitzung als verbindliche Arbeitsgrundlage verwenden.
-5. Erst danach Inhalte bearbeiten.
+4. Bei Rezept- oder Grundlagenänderungen zusätzlich die jeweils betroffene Inhaltsseite laden.
+5. Alle gelesenen Quellen während der aktiven Sitzung als verbindliche Arbeitsgrundlage verwenden.
+6. Erst danach Inhalte bearbeiten.
 
 ## Verbindlicher Abschluss einer Sitzung
 
-1. Änderungen möglichst lokal und minimalinvasiv in `index.html` durchführen.
-2. Bestehende Rezept-IDs beibehalten.
+1. Änderungen möglichst lokal und nachvollziehbar durchführen.
+2. Bestehende Rezept-IDs dauerhaft beibehalten.
 3. Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.
 4. Rezeptversionen aktualisieren, sofern ein Rezept geändert wurde.
-5. Das sichtbare Inhaltsverzeichnis prüfen und alle betroffenen Nummern sowie Links anpassen.
+5. Navigation, Links und mobile Darstellung prüfen.
 6. Buchversion nach dem Schema `MAJOR.MINOR.PATCH` aktualisieren.
-7. `00_Projektstatus.md` inklusive Historie, geplanter Rezepte und offener Aufgaben aktualisieren.
-8. Erst danach die Sitzung als abgeschlossen melden.
+7. Eingebetteten Projektstatus in `index.html` sowie `00_Projektstatus.md` synchron aktualisieren.
+8. Bei einer bewussten Regeländerung auch diese Datei aktualisieren.
+9. Erst danach die Sitzung als abgeschlossen melden.
 
 ## Projektarchitektur
 
-- `index.html` ist die sichtbare Masterdatei des Kochbuchs und die von GitHub Pages veröffentlichte Webseite.
+- `index.html` ist die von GitHub Pages veröffentlichte Startseite.
+- `kochbuch.html` ist derzeit die Übergangsseite für die bereits vorhandenen Grundlagen und Rezepte.
+- Künftige Kategorien und Rezepte dürfen auf eigene HTML-Seiten verteilt werden.
 - `00_Meta-Kim.md` enthält die stabilen Projektregeln.
 - `00_Projektstatus.md` enthält den dynamischen Projektzustand und die Änderungshistorie.
-- Die in `index.html` eingebetteten JSON-Bereiche dienen zusätzlich als maschinenlesbare Spiegelung. Bei Abweichungen müssen die Dateien wieder synchronisiert werden.
+- Der JSON-Bereich in `index.html` dient als maschinenlesbare Spiegelung der wichtigsten Meta- und Zustandsdaten.
+- Bei Abweichungen müssen Website, Meta-Datei und Projektstatus wieder synchronisiert werden.
 
-## Inhaltsverzeichnis und Nummerierung
+## Website-Grundsätze
 
-- Das sichtbare Inhaltsverzeichnis bildet sowohl die vorhandene als auch die geplante Buchstruktur ab.
-- Neue Rezepte werden unter der sachlich passenden Kategorie einsortiert.
-- Bei Ergänzungen, Verschiebungen oder Löschungen werden alle betroffenen Nummern konsistent angepasst.
-- Vorhandene Kapitel und Rezepte werden über stabile HTML-Anker verlinkt.
-- Noch nicht ausgearbeitete Rezepte werden im Inhaltsverzeichnis als **geplant** gekennzeichnet und erhalten noch keinen toten Link.
-- Die Einrückung muss die Hierarchie optisch zeigen: Hauptteil, Kategorie, Unterkategorie und einzelnes Rezept.
+- Die Startseite dient der Orientierung und enthält keine vollständigen Rezepte.
+- Kategorien, Grundlagen und Rezepte werden schrittweise in passende Unterseiten aufgeteilt.
+- Die Navigation muss jederzeit einen klaren Weg zurück zur Startseite bieten.
+- Alle Seiten müssen auf Desktop, Tablet und Smartphone gut lesbar und bedienbar sein.
+- Die Gestaltung bleibt reduziert, großzügig und Apple-inspiriert.
+- Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
+- HTML, CSS und JavaScript dürfen genutzt werden.
+- GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
+- Noch nicht vorhandene Seiten dürfen vorübergehend auf die Übergangsseite verweisen, müssen aber später durch echte Zielseiten ersetzt werden.
+
+## Navigation und Kategorien
+
+Aktuelle Hauptbereiche:
+
+1. Fleisch
+2. Gemüse & Salat
+3. Vegan
+4. Grundlagen
+
+Weitere Bereiche wie Suche, Favoriten, Einkaufsliste oder Projektinfos können später ergänzt werden.
 
 ## Qualitätsregeln
 
@@ -66,9 +85,9 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 
 ## Versionsregeln
 
-- `MAJOR`: grundlegende Struktur- oder Konzeptänderung
-- `MINOR`: neues Rezept, neues Kapitel oder größere fachliche Ergänzung
-- `PATCH`: Korrektur oder Präzisierung ohne neues Kapitel
+- `MAJOR`: grundlegende Architektur- oder Konzeptänderung
+- `MINOR`: neue Seite, neues Rezept, neues Kapitel oder größere Funktion
+- `PATCH`: Korrektur, Text- oder Gestaltungsanpassung
 - Jedes Rezept besitzt zusätzlich eine eigene Versionsnummer.
 
 ## Schreibstil
@@ -80,4 +99,4 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 
 ## Änderungsgrundsatz
 
-Bestehenden HTML-Code niemals grundlos umstrukturieren. Änderungen erfolgen möglichst lokal und minimalinvasiv. Eine grundlegende Umstrukturierung erfolgt nur nach ausdrücklicher gemeinsamer Entscheidung.
+Bestehende Inhalte und funktionierende Seiten niemals grundlos neu aufbauen. Größere Architekturänderungen erfolgen nur nach ausdrücklicher gemeinsamer Entscheidung. Die Umstellung auf die Website-Architektur wurde am 26.07.2026 gemeinsam beschlossen.
