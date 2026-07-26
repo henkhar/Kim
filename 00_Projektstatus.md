@@ -1,33 +1,68 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 1.3.0  
+**Buchversion:** 1.4.0  
 **Letzte Aktualisierung:** 26.07.2026  
 **Masterdatei:** `index.html`
 
 ## Aktueller Bestand
 
-- 2 Rezepte insgesamt
+- 2 ausgearbeitete Rezepte insgesamt
 - 1 bestätigtes Rezept
 - 1 Arbeitsfassung
+- 5 geplante Rezepttitel
 - 1 Grundlagenkapitel
+- 1 hierarchisches Inhaltsverzeichnis
 - GitHub Pages als Veröffentlichung
 - Meta-Regeln und Projektstatus zusätzlich maschinenlesbar in `index.html` eingebettet
+
+## Aktuelle Gliederung
+
+### I. Grundlagen
+
+- Grillzonen und Hitzearten
+- Orientierung für Gemüse
+- Kerntemperaturen und Garpunkte
+
+### II. Rezepte
+
+1. Fleisch
+   - 1.1 Rind
+     - 1.1.1 Entrecôte Steakhouse – geplant
+   - 1.2 Hähnchen
+     - 1.2.1 Chicken Can – geplant
+     - 1.2.2 Chicken Assati – geplant
+   - 1.3 Schwein
+     - 1.3.1 Schweinenackensteak mariniert – geplant
+   - 1.4 Fisch
+     - 1.4.1 Lachsfilet – geplant
+2. Grillgemüse
+   - 2.1 Grillgemüse vom Gasgrill – Arbeitsfassung
+   - 2.2 Grillgemüse-Finish – bestätigt
+3. Veganes
+   - derzeit noch ohne Rezept
+
+### III. Projektinfos
+
+- Meta-Kim
+- Projektstatus und Änderungshistorie
 
 ## Rezepte
 
 ### Finishing-Sauce für Grillgemüse
 
+- Index: 2.2
 - ID: `finishing-sauce-grillgemuese-haehnchen`
-- Kategorie: Saucen & Finishes
+- Kategorie: Grillgemüse
 - Version: 1.0.0
 - Status: erste abgestimmte Fassung
 - Passt zu: Hähnchen, Lachs, Steak
 
 ### Grillgemüse vom Gasgrill
 
+- Index: 2.1
 - ID: `grillgemuese-gasgrill`
-- Kategorie: Gemüse & Beilagen
+- Kategorie: Grillgemüse
 - Version: 0.9.0
 - Status: Arbeitsfassung
 - Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
@@ -50,31 +85,49 @@ Vorhanden:
 - GitHub Pages aktiviert
 - Meta-Kim und dynamischen Projektstatus definiert
 - Start- und Abschlussprotokoll festgelegt
-- Dashboard ergänzt
 - Grundlagenkapitel ergänzt
 - Arbeitsfassung des Grillgemüse-Rezepts ergänzt
 - Button-Leiste aus der sichtbaren Seite entfernt
 - Kerntemperaturübersicht ergänzt
 - Separate Datei `00_Meta-Kim.md` angelegt
 - Separate Datei `00_Projektstatus.md` mit Historie angelegt
+- Dashboard durch ein hierarchisches Inhaltsverzeichnis ersetzt
+- Vorhandene und geplante Rezepte konsistent nummeriert
+- Unterpunkte im Inhaltsverzeichnis optisch eingerückt
+- Regel zur laufenden Pflege von Inhaltsverzeichnis und Nummerierung in Meta-Kim ergänzt
 
 ## Offene Aufgaben
 
 1. Grillgemüse-Arbeitsfassung gemeinsam prüfen und anschließend auf Version 1.0.0 setzen.
-2. Zweite Finishing-Sauce beziehungsweise Variante zum Lachs rekonstruieren.
-3. Reverse-Sear-Grundlagen ergänzen.
-4. Eigene Fotos ergänzen.
-5. Später Suche, Filter und PWA-Funktionen schrittweise prüfen.
+2. Geplante Fleisch- und Fischrezepte schrittweise ausarbeiten.
+3. Zweite Finishing-Sauce beziehungsweise Variante zum Lachs rekonstruieren.
+4. Reverse-Sear-Grundlagen ergänzen.
+5. Bereich Veganes später mit Rezepten füllen.
+6. Eigene Fotos ergänzen.
+7. Später Suche, Filter und PWA-Funktionen schrittweise prüfen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
 - `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
+- Das Inhaltsverzeichnis muss bei jeder neuen Rezeptaufnahme oder Verschiebung mitgepflegt werden.
 - Die Finishing-Sauce gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
+- Geplante Einträge im Inhaltsverzeichnis besitzen noch keinen Link.
 - Mela, Word und PDF sind derzeit nicht Bestandteil des Projekts.
 - Änderungen an HTML, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 1.4.0 – 26.07.2026
+
+- Dashboard vollständig entfernt
+- hierarchisches Inhaltsverzeichnis eingeführt
+- Hauptteile mit römischen Zahlen und Rezeptbereiche mit Dezimalgliederung nummeriert
+- Unterpunkte je nach Hierarchie optisch eingerückt
+- vorhandene Rezepte als 2.1 und 2.2 verlinkt
+- fünf geplante Fleisch- und Fischrezepte aufgenommen und als geplant gekennzeichnet
+- Projektinfos als dritter Hauptteil verlinkt
+- Meta-Kim um Regeln zur Pflege von Inhaltsverzeichnis und Nummerierung ergänzt
 
 ### Version 1.3.0 – 26.07.2026
 
