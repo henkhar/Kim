@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 1.4.0  
+**Buchversion:** 1.4.1  
 **Letzte Aktualisierung:** 26.07.2026  
 **Masterdatei:** `index.html`
 
@@ -30,14 +30,14 @@
    - 1.1 Rind
      - 1.1.1 Entrecôte Steakhouse – geplant
    - 1.2 Hähnchen
-     - 1.2.1 Chicken Can – geplant
-     - 1.2.2 Chicken Assati – geplant
+     - 1.2.1 Beer Can Chicken – geplant
+     - 1.2.2 Chicken Asado – geplant
    - 1.3 Schwein
      - 1.3.1 Schweinenackensteak mariniert – geplant
    - 1.4 Fisch
      - 1.4.1 Lachsfilet – geplant
 2. Grillgemüse
-   - 2.1 Grillgemüse vom Gasgrill – Arbeitsfassung
+   - 2.1 Grillgemüse – Arbeitsfassung
    - 2.2 Grillgemüse-Finish – bestätigt
 3. Veganes
    - derzeit noch ohne Rezept
@@ -58,12 +58,12 @@
 - Status: erste abgestimmte Fassung
 - Passt zu: Hähnchen, Lachs, Steak
 
-### Grillgemüse vom Gasgrill
+### Grillgemüse
 
 - Index: 2.1
 - ID: `grillgemuese-gasgrill`
 - Kategorie: Grillgemüse
-- Version: 0.9.0
+- Version: 0.9.1
 - Status: Arbeitsfassung
 - Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
 
@@ -93,8 +93,11 @@ Vorhanden:
 - Separate Datei `00_Projektstatus.md` mit Historie angelegt
 - Dashboard durch ein hierarchisches Inhaltsverzeichnis ersetzt
 - Vorhandene und geplante Rezepte konsistent nummeriert
-- Unterpunkte im Inhaltsverzeichnis optisch eingerückt
 - Regel zur laufenden Pflege von Inhaltsverzeichnis und Nummerierung in Meta-Kim ergänzt
+- Inhaltsverzeichnis gestalterisch beruhigt: blasse Nummern, graue Oberpunkte und schwarze Rezepttitel
+- Unterpunkte einer Kategorie auf einer gemeinsamen eingerückten Linie angeordnet
+- Abstand unter „Haralds Grillkochbuch“ verkürzt
+- Rezeptbezeichnungen in Inhaltsverzeichnis und Projektstatus korrigiert
 
 ## Offene Aufgaben
 
@@ -113,10 +116,26 @@ Vorhanden:
 - Die Finishing-Sauce gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
 - Geplante Einträge im Inhaltsverzeichnis besitzen noch keinen Link.
+- Die Nummern im Inhaltsverzeichnis sind bewusst klein und blass; Oberpunkte stehen grau, Rezepttitel schwarz.
+- „Geplant“ bleibt rechtsbündig am Zeilenende.
 - Mela, Word und PDF sind derzeit nicht Bestandteil des Projekts.
 - Änderungen an HTML, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 1.4.1 – 26.07.2026
+
+- freigegebenen Gestaltungsentwurf in `index.html` übernommen
+- Nummern kleiner und blasser dargestellt
+- Oberpunkte grau und Rezepttitel schwarz dargestellt
+- Kategorien 1, 2 und 3 linksbündig belassen
+- alle jeweiligen Unterpunkte auf einer gemeinsamen, leicht eingerückten Linie angeordnet
+- Markierung „geplant“ rechtsbündig belassen
+- Abstand unter „Haralds Grillkochbuch“ verkürzt
+- „Chicken Can“ in „Beer Can Chicken“ umbenannt
+- „Chicken Assati“ in „Chicken Asado“ umbenannt
+- „Grillgemüse vom Gasgrill“ in „Grillgemüse“ umbenannt
+- Rezeptversion von Grillgemüse auf 0.9.1 erhöht
 
 ### Version 1.4.0 – 26.07.2026
 
