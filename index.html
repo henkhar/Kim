@@ -6,18 +6,14 @@
 <meta name="description" content="Chefkoch Kim – Haralds persönliches Grillkochbuch">
 <title>Chefkoch Kim · Haralds Grillkochbuch</title>
 <style>
-:root{--ink:#26211c;--paper:#f6efe4;--card:#fffdf8;--red:#bc4b2d;--green:#496448;--muted:#70675d;--line:#ddd0bf;--soft:#edf1e8;--dark:#211d19}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 90% 0,#efc89e,transparent 30rem),var(--paper);color:var(--ink);font:17px/1.6 Georgia,serif}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}header{padding:58px 0 34px}.overline,.tag,h4,.kicker{font:700 .76rem system-ui;letter-spacing:.13em;text-transform:uppercase}.overline,.kicker{color:var(--red)}h1{margin:.1em 0;font-size:clamp(3.4rem,9vw,7.4rem);line-height:.9;letter-spacing:-.06em}.intro{max-width:720px;color:var(--muted);font-size:1.16rem}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.toolbar a{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#fff9;color:var(--ink);font:700 .78rem system-ui;text-decoration:none}.panel,.recipe{overflow:hidden;margin-bottom:34px;border:1px solid #0001;border-radius:28px;background:var(--card);box-shadow:0 18px 60px #4b321b1f}.hero{display:grid;grid-template-columns:1.35fr .65fr}.hero-text{padding:clamp(28px,6vw,64px)}.tag{display:inline-block;padding:7px 11px;border-radius:99px;background:var(--green);color:white}h2{margin:.35em 0 .2em;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1;letter-spacing:-.045em}h3{font-size:1.65rem;margin-top:0}h4{margin:28px 0 10px;color:var(--red)}.hero-art{display:grid;place-items:center;min-height:280px;background:linear-gradient(145deg,#da6b3f,#852a1f);font-size:8rem}.facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}.fact{padding:18px 20px;border-right:1px solid var(--line);font-family:system-ui}.fact:last-child{border:0}.fact b{display:block}.fact small{color:var(--muted)}.grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,72px);padding:clamp(28px,6vw,64px)}ul,ol{margin:0;padding:0;list-style:none}.ingredients li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line)}.ingredients span:last-child{color:var(--muted);white-space:nowrap}ol.steps{counter-reset:n}.steps li{position:relative;margin-bottom:28px;padding-left:60px;counter-increment:n}.steps li:before{content:counter(n);position:absolute;left:0;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:var(--red);color:white;font:800 1rem system-ui}.steps b{display:block;font-family:system-ui}.tip{margin-top:30px;padding:20px;border-left:5px solid var(--green);background:var(--soft);border-radius:4px 14px 14px 4px}.notes{padding:0 clamp(28px,6vw,64px) clamp(28px,6vw,64px)}details{border-top:1px solid var(--line);padding:15px 0}summary{cursor:pointer;font:700 .92rem system-ui;color:var(--red)}.internal{padding:clamp(28px,5vw,52px)}.internal-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.box{padding:22px;border:1px solid var(--line);border-radius:16px;background:#faf6ef}.box ul{list-style:disc;padding-left:20px}.box li{margin:7px 0}.warning{padding:16px 18px;border-radius:13px;background:#fff2d9;border:1px solid #e5c78d;font-family:system-ui}.code{padding:15px;border-radius:12px;background:var(--dark);color:#f5eee7;font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}footer{padding:10px 0 45px;text-align:center;color:var(--muted);font:13px system-ui}@media(max-width:740px){.hero,.grid,.internal-grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.hero-art{min-height:190px}.fact:nth-child(2){border-right:0}}@media print{.toolbar,.internal-project{display:none}.panel,.recipe{box-shadow:none}}
+:root{--ink:#26211c;--paper:#f6efe4;--card:#fffdf8;--red:#bc4b2d;--green:#496448;--muted:#70675d;--line:#ddd0bf;--soft:#edf1e8;--dark:#211d19;--gold:#b7791f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 90% 0,#efc89e,transparent 30rem),var(--paper);color:var(--ink);font:17px/1.6 Georgia,serif}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}header{padding:58px 0 34px}.overline,.tag,h4,.kicker{font:700 .76rem system-ui;letter-spacing:.13em;text-transform:uppercase}.overline,.kicker{color:var(--red)}h1{margin:.1em 0;font-size:clamp(3.4rem,9vw,7.4rem);line-height:.9;letter-spacing:-.06em}.intro{max-width:720px;color:var(--muted);font-size:1.16rem}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.toolbar a{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#fff9;color:var(--ink);font:700 .78rem system-ui;text-decoration:none}.panel,.recipe{overflow:hidden;margin-bottom:34px;border:1px solid #0001;border-radius:28px;background:var(--card);box-shadow:0 18px 60px #4b321b1f}.dashboard{padding:clamp(26px,5vw,46px)}.dashboard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.metric{padding:20px;border:1px solid var(--line);border-radius:16px;background:#faf6ef}.metric b{display:block;font:800 clamp(1.8rem,4vw,3rem)/1 system-ui;color:var(--red)}.metric span{font:700 .76rem system-ui;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.dashboard-note{margin-top:20px;padding:16px 18px;border-left:5px solid var(--green);background:var(--soft);border-radius:4px 14px 14px 4px}.hero{display:grid;grid-template-columns:1.35fr .65fr}.hero-text{padding:clamp(28px,6vw,64px)}.tag{display:inline-block;padding:7px 11px;border-radius:99px;background:var(--green);color:white}.tag.draft{background:var(--gold)}h2{margin:.35em 0 .2em;font-size:clamp(2.2rem,5vw,4.7rem);line-height:1;letter-spacing:-.045em}h3{font-size:1.65rem;margin-top:0}h4{margin:28px 0 10px;color:var(--red)}.hero-art{display:grid;place-items:center;min-height:280px;background:linear-gradient(145deg,#da6b3f,#852a1f);font-size:8rem}.hero-art.green{background:linear-gradient(145deg,#7b944d,#334931)}.hero-art.gold{background:linear-gradient(145deg,#d49a3d,#80551f)}.facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}.fact{padding:18px 20px;border-right:1px solid var(--line);font-family:system-ui}.fact:last-child{border:0}.fact b{display:block}.fact small{color:var(--muted)}.grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,72px);padding:clamp(28px,6vw,64px)}ul,ol{margin:0;padding:0;list-style:none}.ingredients li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line)}.ingredients span:last-child{color:var(--muted);white-space:nowrap}ol.steps{counter-reset:n}.steps li{position:relative;margin-bottom:28px;padding-left:60px;counter-increment:n}.steps li:before{content:counter(n);position:absolute;left:0;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:var(--red);color:white;font:800 1rem system-ui}.steps b{display:block;font-family:system-ui}.tip{margin-top:30px;padding:20px;border-left:5px solid var(--green);background:var(--soft);border-radius:4px 14px 14px 4px}.draft-note{margin:0 clamp(28px,6vw,64px) 28px;padding:16px 18px;border:1px solid #e5c78d;background:#fff2d9;border-radius:13px;font-family:system-ui}.notes{padding:0 clamp(28px,6vw,64px) clamp(28px,6vw,64px)}details{border-top:1px solid var(--line);padding:15px 0}summary{cursor:pointer;font:700 .92rem system-ui;color:var(--red)}.internal{padding:clamp(28px,5vw,52px)}.internal-grid,.foundation-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.box{padding:22px;border:1px solid var(--line);border-radius:16px;background:#faf6ef}.box ul{list-style:disc;padding-left:20px}.box li{margin:7px 0}.warning{padding:16px 18px;border-radius:13px;background:#fff2d9;border:1px solid #e5c78d;font-family:system-ui}.code{padding:15px;border-radius:12px;background:var(--dark);color:#f5eee7;font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.foundation{padding:clamp(28px,5vw,52px)}.foundation table{width:100%;border-collapse:collapse;font-family:system-ui}.foundation th,.foundation td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.foundation th{color:var(--red)}footer{padding:10px 0 45px;text-align:center;color:var(--muted);font:13px system-ui}@media(max-width:800px){.hero,.grid,.internal-grid,.foundation-grid{grid-template-columns:1fr}.facts,.dashboard-grid{grid-template-columns:1fr 1fr}.hero-art{min-height:190px}.fact:nth-child(2){border-right:0}}@media(max-width:480px){.dashboard-grid,.facts{grid-template-columns:1fr}}@media print{.toolbar,.internal-project{display:none}.panel,.recipe{box-shadow:none}}
 </style>
 
-<!--
-META-KIM ist die stabile Projektspezifikation.
-Sie beschreibt, WIE am Kochbuch gearbeitet wird.
-Vor jeder Bearbeitung muss zuerst META-KIM und danach CHEFKOCH-KIM-STATE gelesen werden.
--->
+<!-- META-KIM: stabile Projektspezifikation. Vor jeder Bearbeitung zuerst lesen. -->
 <script id="chefkoch-kim-meta" type="application/json">
 {
-  "schema": 2,
+  "schema": 3,
   "project": "Chefkoch Kim",
   "book": "Haralds Grillkochbuch",
   "repository": "henkhar/Kim",
@@ -32,6 +28,13 @@ Vor jeder Bearbeitung muss zuerst META-KIM und danach CHEFKOCH-KIM-STATE gelesen
     "Vor einer Änderung prüfen, ob das Anliegen ein bestehendes Rezept, ein neues Rezept, Grundlagen oder Projektregeln betrifft.",
     "Nach jeder inhaltlichen Änderung Rezeptversion, Buchversion, Verlauf und Projektstatus aktualisieren.",
     "Die vollständige index.html wieder in dasselbe Repository und auf denselben Pfad schreiben."
+  ],
+  "changePolicy": [
+    "Bestehenden HTML-Code niemals grundlos umstrukturieren.",
+    "Änderungen möglichst lokal und minimalinvasiv durchführen.",
+    "Eine grundlegende Umstrukturierung nur nach ausdrücklicher Entscheidung vornehmen.",
+    "Bestehende Rezept-IDs dauerhaft beibehalten.",
+    "Nicht bestätigte Rekonstruktionen als Arbeitsfassung kennzeichnen und nicht als erprobt darstellen."
   ],
   "separationOfConcerns": {
     "meta": "Stabile Regeln, Zweck, Struktur, Qualitätsmaßstäbe und Arbeitsprozess. Nur bewusst und selten ändern.",
@@ -67,65 +70,51 @@ Vor jeder Bearbeitung muss zuerst META-KIM und danach CHEFKOCH-KIM-STATE gelesen
     "patch": "Korrektur, Präzisierung, Mengen- oder Textanpassung ohne neues Kapitel.",
     "recipe": "Jedes Rezept besitzt zusätzlich eine eigene Versionsnummer."
   },
-  "writingStyle": [
-    "freundlich, klar und professionell",
-    "praxisnah statt werblich",
-    "kurze nachvollziehbare Begründungen",
-    "deutsche Mengen-, Temperatur- und Zeitangaben"
-  ]
+  "writingStyle": ["freundlich, klar und professionell","praxisnah statt werblich","kurze nachvollziehbare Begründungen","deutsche Mengen-, Temperatur- und Zeitangaben"]
 }
 </script>
 
-<!--
-CHEFKOCH-KIM-STATE ist die dynamische Zustandsdatei innerhalb der Masterdatei.
-Sie beschreibt, WO das Projekt aktuell steht, und muss nach jeder Änderung gepflegt werden.
--->
+<!-- CHEFKOCH-KIM-STATE: dynamischer Projektzustand. Nach jeder Änderung pflegen. -->
 <script id="chefkoch-kim-state" type="application/json">
 {
-  "schema": 2,
+  "schema": 3,
   "status": "active",
-  "bookVersion": "1.1.0",
+  "bookVersion": "1.2.0",
   "lastUpdated": "2026-07-26",
-  "recipeCount": 1,
+  "recipeCount": 2,
+  "confirmedRecipeCount": 1,
+  "draftRecipeCount": 1,
+  "foundationChapterCount": 1,
   "recipes": [
-    {
-      "id": "finishing-sauce-grillgemuese-haehnchen",
-      "title": "Finishing-Sauce für Grillgemüse",
-      "category": "Saucen & Finishes",
-      "version": "1.0.0",
-      "status": "erste abgestimmte Fassung",
-      "pairsWith": ["Hähnchen", "Lachs", "Steak"]
-    }
+    {"id":"finishing-sauce-grillgemuese-haehnchen","title":"Finishing-Sauce für Grillgemüse","category":"Saucen & Finishes","version":"1.0.0","status":"erste abgestimmte Fassung","pairsWith":["Hähnchen","Lachs","Steak"]},
+    {"id":"grillgemuese-gasgrill","title":"Grillgemüse vom Gasgrill","category":"Gemüse & Beilagen","version":"0.9.0","status":"Arbeitsfassung – Mengen und Ablauf noch einmal gemeinsam bestätigen","pairsWith":["Hähnchen","Lachs","Steak"]}
   ],
   "completed": [
     "Single-File-HTML als Masterformat festgelegt.",
     "GitHub-Repository henkhar/Kim als dauerhafte Ablage festgelegt.",
-    "Stabile Meta-Regeln und dynamischen Projektstatus logisch getrennt in index.html integriert.",
-    "Verbindliches Start- und Abschlussprotokoll für Chefkoch Kim definiert.",
-    "Erstes abgestimmtes Rezept aufgenommen."
+    "Stabile Meta-Regeln und dynamischen Projektstatus logisch getrennt.",
+    "Verbindliches Start- und Abschlussprotokoll definiert.",
+    "Dashboard ergänzt.",
+    "Grundlagenkapitel zu Grillzonen und Hitzearten ergänzt.",
+    "Arbeitsfassung des vollständigen Grillgemüse-Rezepts ergänzt.",
+    "Regel für lokale und minimalinvasive HTML-Änderungen ergänzt."
   ],
   "openTasks": [
-    "Vollständiges Rezept für das dazugehörige Grillgemüse aus den abgestimmten Mengen und Abläufen rekonstruieren.",
+    "Arbeitsfassung Grillgemüse gemeinsam prüfen und anschließend auf Version 1.0.0 setzen.",
     "Zweite Finishing-Sauce beziehungsweise Variante zum Lachs rekonstruieren.",
-    "Grundlagenkapitel zu Grillzonen und direkter beziehungsweise indirekter Hitze erstellen.",
     "Kerntemperaturübersicht für Rind, Geflügel, Lachs und Schwein aufnehmen.",
-    "Später eigene Fotos ergänzen."
+    "Reverse-Sear-Grundlagen ergänzen.",
+    "Später eigene Fotos einarbeiten."
   ],
   "sessionNotes": [
-    "Das erste bestätigte Rezept ist die Finishing-Sauce. Frühere, nicht erneut bestätigte Gemüse-Gesamtmengen gelten noch nicht als verbindlicher Rezeptbestandteil.",
+    "Die Finishing-Sauce ist bestätigt.",
+    "Das Grillgemüse ist aus früher dokumentierten Angaben rekonstruiert und bleibt bis zur Bestätigung eine Arbeitsfassung.",
     "Mela, Word und PDF bleiben vorerst außerhalb des Projekts; die HTML-Datei ist die einzige Masterdatei."
   ],
   "history": [
-    {
-      "date": "2026-07-26",
-      "version": "1.0.0",
-      "change": "Kochbuch im GitHub-Repository angelegt."
-    },
-    {
-      "date": "2026-07-26",
-      "version": "1.1.0",
-      "change": "Meta-Kim und dynamischen Projektstatus nach dem vereinbarten Prozessmodell erweitert; erstes Rezept auf die abgestimmte Finishing-Sauce zurückgeführt."
-    }
+    {"date":"2026-07-26","version":"1.0.0","change":"Kochbuch im GitHub-Repository angelegt."},
+    {"date":"2026-07-26","version":"1.1.0","change":"Meta-Kim und dynamischen Projektstatus nach dem vereinbarten Prozessmodell erweitert."},
+    {"date":"2026-07-26","version":"1.2.0","change":"Dashboard, Grundlagenkapitel, minimalinvasive Änderungsregel und Arbeitsfassung des vollständigen Grillgemüses ergänzt."}
   ]
 }
 </script>
@@ -136,96 +125,80 @@ Sie beschreibt, WO das Projekt aktuell steht, und muss nach jeder Änderung gepf
   <h1>Chefkoch Kim</h1>
   <p class="intro">Haralds digitales Grillkochbuch – eigene Rezepte, bewährte Abläufe und Erfahrungen, dauerhaft gepflegt in einer einzigen aktuellen HTML-Datei.</p>
   <nav class="toolbar" aria-label="Inhaltsnavigation">
-    <a href="#rezept-finishing-sauce">Erstes Rezept</a>
-    <a href="#projektregeln">Meta-Kim</a>
-    <a href="#projektstatus">Projektstatus</a>
+    <a href="#dashboard">Dashboard</a><a href="#grundlagen">Grundlagen</a><a href="#rezept-grillgemuese">Grillgemüse</a><a href="#rezept-finishing-sauce">Finishing-Sauce</a><a href="#projektregeln">Meta-Kim</a><a href="#projektstatus">Projektstatus</a>
   </nav>
 </header>
 
 <main class="wrap">
-<article class="recipe" id="rezept-finishing-sauce" data-recipe-id="finishing-sauce-grillgemuese-haehnchen" data-version="1.0.0">
-  <section class="hero">
-    <div class="hero-text">
-      <span class="tag">Saucen &amp; Finishes</span>
-      <h2>Finishing-Sauce für Grillgemüse</h2>
-      <p>Eine frische, aromatische Sauce, die erst nach dem Grillen über das heiße Gemüse gegeben wird. Besonders gut als Gemüsebegleitung zu gegrilltem Hähnchen; ebenfalls passend zu Lachs und Steak.</p>
+<section class="panel" id="dashboard">
+  <div class="dashboard">
+    <div class="kicker">Aktueller Überblick</div>
+    <h3>Chefkoch-Kim-Dashboard</h3>
+    <div class="dashboard-grid">
+      <div class="metric"><b>2</b><span>Rezepte</span></div>
+      <div class="metric"><b>1</b><span>bestätigt</span></div>
+      <div class="metric"><b>1</b><span>Arbeitsfassung</span></div>
+      <div class="metric"><b>1.2.0</b><span>Buchversion</span></div>
     </div>
-    <div class="hero-art" aria-label="Grillgemüse und Kräuter">🌿</div>
-  </section>
+    <div class="dashboard-note"><b>Nächster Prüfpunkt:</b> Das vollständige Grillgemüse ist als rekonstruierte Arbeitsfassung eingetragen. Nach unserer gemeinsamen Kontrolle wird daraus Version 1.0.0.</div>
+  </div>
+</section>
 
-  <section class="facts">
-    <div class="fact"><b>4 Personen</b><small>Menge</small></div>
-    <div class="fact"><b>5 Minuten</b><small>Vorbereitung</small></div>
-    <div class="fact"><b>nach dem Grillen</b><small>Anwendung</small></div>
-    <div class="fact"><b>Version 1.0</b><small>Rezeptstand</small></div>
-  </section>
+<section class="panel" id="grundlagen">
+  <div class="foundation">
+    <div class="kicker">Kapitel 1 · Grundlagen</div>
+    <h3>Grillzonen und Hitzearten</h3>
+    <div class="foundation-grid">
+      <div class="box"><h4>Direkte Hitze</h4><p>Das Grillgut liegt unmittelbar über einem eingeschalteten Brenner. Diese Zone erzeugt Röstaromen und Farbe. Sie eignet sich für dünnere Stücke und zum abschließenden scharfen Angrillen.</p></div>
+      <div class="box"><h4>Indirekte Hitze</h4><p>Unter dem Grillgut ist der Brenner ausgeschaltet; die Hitze kommt von den Seiten. Diese Zone gart schonender und gleichmäßiger und ist wichtig für dickere Stücke oder empfindliches Grillgut.</p></div>
+      <div class="box"><h4>Zwei-Zonen-Aufbau</h4><p>Mindestens eine direkte und eine indirekte Zone vorbereiten. So kann Grillgut bei zu starker Bräunung sofort in einen ruhigeren Bereich verschoben werden.</p></div>
+      <div class="box"><h4>Deckelregel</h4><p>Beim indirekten Garen bleibt der Deckel möglichst geschlossen. Beim kurzen direkten Rösten darf häufiger kontrolliert und gewendet werden.</p></div>
+    </div>
+    <h4>Orientierung für Gemüse</h4>
+    <table><thead><tr><th>Gemüse</th><th>Start</th><th>Hinweis</th></tr></thead><tbody>
+      <tr><td>Paprika, Aubergine, kräftige Zwiebelstücke</td><td>zuerst</td><td>Benötigen länger und vertragen stärkere Röstaromen.</td></tr>
+      <tr><td>Zucchini</td><td>etwas später</td><td>Nicht zu dünn schneiden, damit sie bissfest bleibt.</td></tr>
+      <tr><td>Champignons</td><td>in der Schlussphase</td><td>Garen schneller und verlieren bei zu langer Zeit viel Flüssigkeit.</td></tr>
+      <tr><td>Frühlingszwiebeln</td><td>zuletzt</td><td>Nur kurz rösten, damit sie nicht verbrennen.</td></tr>
+    </tbody></table>
+  </div>
+</section>
 
+<article class="recipe" id="rezept-grillgemuese" data-recipe-id="grillgemuese-gasgrill" data-version="0.9.0">
+  <section class="hero"><div class="hero-text"><span class="tag draft">Arbeitsfassung</span><h2>Grillgemüse vom Gasgrill</h2><p>Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit der Finishing-Sauce vollendet.</p></div><div class="hero-art gold" aria-label="Gegrilltes Gemüse">🥦</div></section>
+  <section class="facts"><div class="fact"><b>4 Personen</b><small>Menge</small></div><div class="fact"><b>25 Minuten</b><small>Vorbereitung</small></div><div class="fact"><b>15–18 Minuten</b><small>Grillzeit</small></div><div class="fact"><b>mittlere direkte Hitze</b><small>Methode</small></div></section>
+  <div class="draft-note"><b>Hinweis:</b> Dieses Rezept wurde aus früher dokumentierten Angaben rekonstruiert. Es ist vollständig nutzbar, aber Mengen und genauer zeitlicher Ablauf sollen vor der Freigabe als Version 1.0 noch einmal gemeinsam geprüft werden.</div>
   <section class="grid">
-    <div>
-      <h3>Zutaten</h3>
-      <ul class="ingredients">
-        <li><span>Mildes Olivenöl</span><span>4 EL</span></li>
-        <li><span>Frischer Zitronensaft</span><span>1 EL</span></li>
-        <li><span>Honig</span><span>1 TL</span></li>
-        <li><span>Knoblauch, fein gerieben</span><span>1 kleine Zehe</span></li>
-        <li><span>Petersilie, fein gehackt</span><span>1–2 EL</span></li>
-        <li><span>Salz</span><span>½ TL</span></li>
-        <li><span>Schwarzer Pfeffer</span><span>frisch gemahlen</span></li>
-      </ul>
-      <h4>Optional</h4>
-      <ul class="ingredients">
-        <li><span>Fein abgeriebene Zitronenschale</span><span>½ TL</span></li>
-        <li><span>Thymian oder Rosmarin, fein gehackt</span><span>1 TL</span></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3>Zubereitung</h3>
-      <ol class="steps">
-        <li><b>Sauce anrühren</b>Alle Zutaten in einer kleinen Schüssel gründlich verrühren.</li>
-        <li><b>Gemüse fertig grillen</b>Das Grillgemüse bissfest garen und leicht bräunen.</li>
-        <li><b>Heiß vermengen</b>Das Gemüse direkt vom Grill in eine ausreichend große Schüssel geben und die Sauce darüber verteilen.</li>
-        <li><b>Schonend mischen</b>Alles vorsichtig wenden, damit das Gemüse nicht zerfällt und gleichmäßig überzogen wird.</li>
-        <li><b>Kurz ziehen lassen</b>Zwei bis drei Minuten ziehen lassen und anschließend servieren.</li>
-      </ol>
-      <aside class="tip"><b>Kims Grilltipp:</b> Die Sauce nicht mitgrillen. Zitronensaft und Kräuter verlieren bei hoher Hitze Frische; Knoblauch kann bitter werden. Die vorbereitete Sauce kann neben dem Grill leicht temperiert werden, darf aber nicht auf einer heißen Grillfläche stehen.</aside>
-    </div>
+    <div><h3>Zutaten</h3><ul class="ingredients">
+      <li><span>Zucchini</span><span>2</span></li><li><span>Rote Paprika</span><span>2</span></li><li><span>Gelbe Paprika</span><span>1</span></li><li><span>Aubergine</span><span>1</span></li><li><span>Champignons</span><span>400 g</span></li><li><span>Rote Zwiebeln</span><span>2</span></li><li><span>Frühlingszwiebeln</span><span>1 Bund</span></li><li><span>Rapsöl</span><span>3 EL</span></li><li><span>Salz und Pfeffer</span><span>nach Bedarf</span></li>
+    </ul><h4>Zum Fertigstellen</h4><p>Eine Portion der <a href="#rezept-finishing-sauce">Finishing-Sauce für Grillgemüse</a>.</p></div>
+    <div><h3>Zubereitung</h3><ol class="steps">
+      <li><b>Gemüse schneiden</b>Zucchini, Paprika, Aubergine und rote Zwiebeln in kräftige, grillgeeignete Stücke schneiden. Champignons ganz lassen oder halbieren.</li>
+      <li><b>Grill vorbereiten</b>Eine mittlere direkte Zone und möglichst eine schwächere Ausweichzone einrichten.</li>
+      <li><b>Leicht ölen</b>Das Gemüse dünn mit Rapsöl benetzen. Erst unmittelbar vor dem Grillen leicht salzen.</li>
+      <li><b>Kräftiges Gemüse starten</b>Paprika, Aubergine und rote Zwiebeln zuerst auflegen und regelmäßig wenden.</li>
+      <li><b>Zucchini ergänzen</b>Nach einigen Minuten die Zucchini zugeben und bissfest grillen.</li>
+      <li><b>Pilze und Frühlingszwiebeln</b>Champignons und Frühlingszwiebeln erst in der Schlussphase auflegen, damit sie saftig bleiben beziehungsweise nicht verbrennen.</li>
+      <li><b>Fertigstellen</b>Alles in eine große Schüssel geben, mit der Finishing-Sauce vermengen und zwei bis drei Minuten ziehen lassen.</li>
+    </ol><aside class="tip"><b>Kims Grilltipp:</b> Nicht alle Gemüsesorten gleichzeitig auflegen. Die gestaffelte Reihenfolge verhindert, dass Zucchini und Frühlingszwiebeln bereits weich oder verbrannt sind, während Paprika und Aubergine noch Zeit brauchen.</aside></div>
   </section>
-
-  <section class="notes">
-    <details open><summary>Passt besonders gut zu</summary><p>Zucchini, Paprika, Champignons, roten Zwiebeln, Spargel und Auberginen sowie gegrillter Hähnchenbrust oder Hähnchenschenkeln. Auch zu Lachs und Steak geeignet.</p></details>
-    <details><summary>Varianten und eigene Erfahrungen</summary><p>Noch keine verbindlich erprobte Variante dokumentiert. Änderungen werden nach dem nächsten Grillen hier ergänzt.</p></details>
-    <details><summary>Änderungsverlauf des Rezepts</summary><p><b>Version 1.0.0 · 26.07.2026:</b> Erste abgestimmte Fassung aufgenommen.</p></details>
-  </section>
+  <section class="notes"><details open><summary>Passt zu</summary><p>Besonders gut zu gegrilltem Hähnchen, Lachs und Steak.</p></details><details><summary>Zu bestätigen</summary><p>Gemüsemengen, genaue Schnittgrößen, Brennereinstellung und die Zeitabstände zwischen den Gemüsegruppen.</p></details><details><summary>Änderungsverlauf</summary><p><b>Version 0.9.0 · 26.07.2026:</b> Aus früher dokumentierten Angaben als prüfbare Arbeitsfassung rekonstruiert.</p></details></section>
 </article>
 
-<section class="panel internal-project" id="projektregeln">
-  <div class="internal">
-    <div class="kicker">Interner Projektbereich</div>
-    <h3>Meta-Kim – so arbeiten wir</h3>
-    <p>Die vollständigen maschinenlesbaren Regeln stehen im Kopf dieser HTML-Datei im JSON-Bereich <code>chefkoch-kim-meta</code>. Die Kurzfassung:</p>
-    <div class="warning"><b>Verbindliche Startregel:</b> In jeder neuen Sitzung zuerst Meta-Kim und unmittelbar danach den Projektstatus lesen. Beide Bereiche während der gesamten Sitzung nutzen. Erst dann Inhalte bearbeiten.</div>
-    <div class="internal-grid" style="margin-top:24px">
-      <div class="box"><h4>Meta-Kim beantwortet</h4><ul><li>Wozu dient das Projekt?</li><li>Wie ist ein Rezept aufgebaut?</li><li>Welche Qualitätsregeln gelten?</li><li>Wie werden Versionen geführt?</li><li>Wie wird eine Sitzung begonnen und beendet?</li></ul></div>
-      <div class="box"><h4>Projektstatus beantwortet</h4><ul><li>Welche Version ist aktuell?</li><li>Welche Rezepte gibt es?</li><li>Was wurde zuletzt geändert?</li><li>Welche Aufgaben sind offen?</li><li>Welche Entscheidungen gelten für die nächste Sitzung?</li></ul></div>
-    </div>
-    <h4>Startprompt für eine neue Sitzung</h4>
-    <div class="code">Chefkoch Kim: Öffne im GitHub-Repository henkhar/Kim die aktuelle Datei index.html. Lies zuerst den JSON-Bereich „chefkoch-kim-meta“ und danach „chefkoch-kim-state“ vollständig ein. Nutze beide während dieser Sitzung als verbindliche Arbeitsgrundlage. Bestätige mir anschließend kurz die aktuelle Buchversion, die Zahl der Rezepte und die offenen Aufgaben. Nimm noch keine Änderung vor.</div>
-  </div>
-</section>
+<article class="recipe" id="rezept-finishing-sauce" data-recipe-id="finishing-sauce-grillgemuese-haehnchen" data-version="1.0.0">
+  <section class="hero"><div class="hero-text"><span class="tag">Saucen &amp; Finishes</span><h2>Finishing-Sauce für Grillgemüse</h2><p>Eine frische, aromatische Sauce, die erst nach dem Grillen über das heiße Gemüse gegeben wird. Besonders gut als Gemüsebegleitung zu gegrilltem Hähnchen; ebenfalls passend zu Lachs und Steak.</p></div><div class="hero-art green" aria-label="Kräuter und Zitrone">🌿</div></section>
+  <section class="facts"><div class="fact"><b>4 Personen</b><small>Menge</small></div><div class="fact"><b>5 Minuten</b><small>Vorbereitung</small></div><div class="fact"><b>nach dem Grillen</b><small>Anwendung</small></div><div class="fact"><b>Version 1.0</b><small>Rezeptstand</small></div></section>
+  <section class="grid">
+    <div><h3>Zutaten</h3><ul class="ingredients"><li><span>Mildes Olivenöl</span><span>4 EL</span></li><li><span>Frischer Zitronensaft</span><span>1 EL</span></li><li><span>Honig</span><span>1 TL</span></li><li><span>Knoblauch, fein gerieben</span><span>1 kleine Zehe</span></li><li><span>Petersilie, fein gehackt</span><span>1–2 EL</span></li><li><span>Salz</span><span>½ TL</span></li><li><span>Schwarzer Pfeffer</span><span>frisch gemahlen</span></li></ul><h4>Optional</h4><ul class="ingredients"><li><span>Fein abgeriebene Zitronenschale</span><span>½ TL</span></li><li><span>Thymian oder Rosmarin, fein gehackt</span><span>1 TL</span></li></ul></div>
+    <div><h3>Zubereitung</h3><ol class="steps"><li><b>Sauce anrühren</b>Alle Zutaten in einer kleinen Schüssel gründlich verrühren.</li><li><b>Gemüse fertig grillen</b>Das Grillgemüse bissfest garen und leicht bräunen.</li><li><b>Heiß vermengen</b>Das Gemüse direkt vom Grill in eine ausreichend große Schüssel geben und die Sauce darüber verteilen.</li><li><b>Schonend mischen</b>Alles vorsichtig wenden, damit das Gemüse nicht zerfällt und gleichmäßig überzogen wird.</li><li><b>Kurz ziehen lassen</b>Zwei bis drei Minuten ziehen lassen und anschließend servieren.</li></ol><aside class="tip"><b>Kims Grilltipp:</b> Die Sauce nicht mitgrillen. Zitronensaft und Kräuter verlieren bei hoher Hitze Frische; Knoblauch kann bitter werden. Die Sauce darf neben dem Grill leicht temperiert werden, aber nicht auf einer heißen Grillfläche stehen.</aside></div>
+  </section>
+  <section class="notes"><details open><summary>Passt besonders gut zu</summary><p>Zucchini, Paprika, Champignons, roten Zwiebeln, Spargel und Auberginen sowie gegrillter Hähnchenbrust oder Hähnchenschenkeln. Auch zu Lachs und Steak geeignet.</p></details><details><summary>Varianten und eigene Erfahrungen</summary><p>Noch keine verbindlich erprobte Variante dokumentiert.</p></details><details><summary>Änderungsverlauf des Rezepts</summary><p><b>Version 1.0.0 · 26.07.2026:</b> Erste abgestimmte Fassung aufgenommen.</p></details></section>
+</article>
 
-<section class="panel internal-project" id="projektstatus">
-  <div class="internal">
-    <div class="kicker">Dynamischer Zustand</div>
-    <h3>Projektstatus · Version 1.1.0</h3>
-    <div class="internal-grid">
-      <div class="box"><h4>Aktuell vorhanden</h4><ul><li>Eine dauerhafte Masterdatei: <code>index.html</code></li><li>Ein abgestimmtes Rezept</li><li>Stabile Projektregeln</li><li>Dynamischer Zustands- und Änderungsverlauf</li></ul></div>
-      <div class="box"><h4>Nächste sinnvolle Schritte</h4><ul><li>Vollständiges Grillgemüse-Rezept rekonstruieren</li><li>Zweite Sauce zum Lachs rekonstruieren</li><li>Grundlagen und Kerntemperaturen ergänzen</li><li>Eigene Fotos einarbeiten</li></ul></div>
-    </div>
-  </div>
-</section>
+<section class="panel internal-project" id="projektregeln"><div class="internal"><div class="kicker">Interner Projektbereich</div><h3>Meta-Kim – so arbeiten wir</h3><p>Die vollständigen maschinenlesbaren Regeln stehen im JSON-Bereich <code>chefkoch-kim-meta</code>.</p><div class="warning"><b>Verbindliche Startregel:</b> In jeder neuen Sitzung zuerst Meta-Kim und unmittelbar danach den Projektstatus lesen. Beide Bereiche während der gesamten Sitzung nutzen. Erst dann Inhalte bearbeiten.</div><div class="internal-grid" style="margin-top:24px"><div class="box"><h4>Meta-Kim beantwortet</h4><ul><li>Wozu dient das Projekt?</li><li>Wie ist ein Rezept aufgebaut?</li><li>Welche Qualitätsregeln gelten?</li><li>Wie werden Versionen geführt?</li><li>Wie wird HTML geändert?</li></ul></div><div class="box"><h4>Projektstatus beantwortet</h4><ul><li>Welche Version ist aktuell?</li><li>Welche Rezepte gibt es?</li><li>Was wurde zuletzt geändert?</li><li>Welche Aufgaben sind offen?</li><li>Welche Inhalte sind Entwurf oder bestätigt?</li></ul></div></div><h4>Startprompt für eine neue Sitzung</h4><div class="code">Chefkoch Kim: Öffne im GitHub-Repository henkhar/Kim die aktuelle Datei index.html. Lies zuerst den JSON-Bereich „chefkoch-kim-meta“ und danach „chefkoch-kim-state“ vollständig ein. Nutze beide während dieser Sitzung als verbindliche Arbeitsgrundlage. Bestätige mir anschließend kurz die aktuelle Buchversion, die Zahl der bestätigten Rezepte, die Zahl der Arbeitsfassungen und die offenen Aufgaben. Nimm noch keine Änderung vor.</div></div></section>
+
+<section class="panel internal-project" id="projektstatus"><div class="internal"><div class="kicker">Dynamischer Zustand</div><h3>Projektstatus · Version 1.2.0</h3><div class="internal-grid"><div class="box"><h4>Aktuell vorhanden</h4><ul><li>Eine dauerhafte Masterdatei: <code>index.html</code></li><li>Ein bestätigtes Rezept</li><li>Eine Rezept-Arbeitsfassung</li><li>Ein Grundlagenkapitel</li><li>Dashboard, Meta und Status</li></ul></div><div class="box"><h4>Nächste sinnvolle Schritte</h4><ul><li>Grillgemüse-Arbeitsfassung gemeinsam bestätigen</li><li>Zweite Sauce zum Lachs rekonstruieren</li><li>Kerntemperaturen ergänzen</li><li>Reverse Sear ergänzen</li><li>Eigene Fotos einarbeiten</li></ul></div></div></div></section>
 </main>
-
-<footer class="wrap">Chefkoch Kim · Haralds Grillkochbuch · Version 1.1.0 · 26. Juli 2026</footer>
+<footer class="wrap">Chefkoch Kim · Haralds Grillkochbuch · Version 1.2.0 · 26. Juli 2026</footer>
 </body>
 </html>
