@@ -18,9 +18,10 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 2. Bestehende Rezept-IDs beibehalten.
 3. Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.
 4. Rezeptversionen aktualisieren, sofern ein Rezept geändert wurde.
-5. Buchversion nach dem Schema `MAJOR.MINOR.PATCH` aktualisieren.
-6. `00_Projektstatus.md` inklusive Historie und offenen Aufgaben aktualisieren.
-7. Erst danach die Sitzung als abgeschlossen melden.
+5. Das sichtbare Inhaltsverzeichnis prüfen und alle betroffenen Nummern sowie Links anpassen.
+6. Buchversion nach dem Schema `MAJOR.MINOR.PATCH` aktualisieren.
+7. `00_Projektstatus.md` inklusive Historie, geplanter Rezepte und offener Aufgaben aktualisieren.
+8. Erst danach die Sitzung als abgeschlossen melden.
 
 ## Projektarchitektur
 
@@ -28,6 +29,15 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - `00_Meta-Kim.md` enthält die stabilen Projektregeln.
 - `00_Projektstatus.md` enthält den dynamischen Projektzustand und die Änderungshistorie.
 - Die in `index.html` eingebetteten JSON-Bereiche dienen zusätzlich als maschinenlesbare Spiegelung. Bei Abweichungen müssen die Dateien wieder synchronisiert werden.
+
+## Inhaltsverzeichnis und Nummerierung
+
+- Das sichtbare Inhaltsverzeichnis bildet sowohl die vorhandene als auch die geplante Buchstruktur ab.
+- Neue Rezepte werden unter der sachlich passenden Kategorie einsortiert.
+- Bei Ergänzungen, Verschiebungen oder Löschungen werden alle betroffenen Nummern konsistent angepasst.
+- Vorhandene Kapitel und Rezepte werden über stabile HTML-Anker verlinkt.
+- Noch nicht ausgearbeitete Rezepte werden im Inhaltsverzeichnis als **geplant** gekennzeichnet und erhalten noch keinen toten Link.
+- Die Einrückung muss die Hierarchie optisch zeigen: Hauptteil, Kategorie, Unterkategorie und einzelnes Rezept.
 
 ## Qualitätsregeln
 
