@@ -1,15 +1,16 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.0.0  
+**Buchversion:** 2.1.0  
 **Letzte Aktualisierung:** 26.07.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
 
-Das Projekt wurde von einem langen HTML-Dokument in eine schrittweise wachsende Kochbuch-Website überführt.
+Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 - `index.html` – Apple-inspirierte Startseite
+- `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
 - `kochbuch.html` – Übergangsseite mit den bisher vorhandenen Grundlagen und Rezepten
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
@@ -20,14 +21,15 @@ Das Projekt wurde von einem langen HTML-Dokument in eine schrittweise wachsende 
 - 2 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
 - 1 Arbeitsfassung
-- 5 geplante Rezepttitel
+- 5 geplante Fleisch- und Fischrezepte
 - 1 Grundlagenbereich
-- 1 neue Startseite
+- 1 Startseite
+- 1 Fleisch-Übersichtsseite
 - 1 Übergangsseite für vorhandene Inhalte
 
 ## Startseite
 
-Die neue Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
+Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 
 - sehr großer Hauptüberschrift
 - lokaler Apple-/Systemtypografie
@@ -37,11 +39,22 @@ Die neue Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 - zwei zusätzlichen Schnellzugriffen
 - responsiver Darstellung für Desktop, Tablet und Smartphone
 
+Der Eintrag **Fleisch** verweist jetzt auf `fleisch.html`.
+
 ## Kategorien
 
 ### Fleisch
 
-Geplant:
+Eigene Übersichtsseite: `fleisch.html`
+
+Unterkategorien:
+
+- Rind
+- Hähnchen
+- Schwein
+- Fisch
+
+Geplante Rezepte:
 
 - Entrecôte Steakhouse
 - Beer Can Chicken
@@ -49,7 +62,7 @@ Geplant:
 - Schweinenackensteak mariniert
 - Lachsfilet
 
-Der Bereich verweist vorläufig auf die Übersicht in `kochbuch.html`.
+Die Seite verwendet dieselbe Apple-inspirierte Gestaltung wie die Startseite. Die vier Unterkategorien werden als große Karten dargestellt. Noch nicht ausgearbeitete Rezepte sind als geplant gekennzeichnet.
 
 ### Gemüse & Salat
 
@@ -98,39 +111,53 @@ Vorhanden:
 - Meta-Kim und dynamischen Projektstatus eingerichtet
 - Grundlagen und Kerntemperaturübersicht ergänzt
 - Grillgemüse und Finishing-Sauce aufgenommen
-- bisheriges Dokument als Ausgangsbasis strukturiert
 - Übergang von einer Dokumentansicht zu einer Website beschlossen
-- neue Apple-inspirierte Startseite als `index.html` umgesetzt
+- Apple-inspirierte Startseite als `index.html` umgesetzt
 - Hamburger-Menü und responsive Navigation umgesetzt
 - vorhandene Inhalte in `kochbuch.html` gesichert und neu gestaltet
 - Meta-Kim auf die mehrseitige Website-Architektur umgestellt
 - Buchversion auf 2.0.0 erhöht
+- eigene Fleisch-Übersichtsseite als `fleisch.html` angelegt
+- Startseite und Menü mit der Fleisch-Seite verknüpft
+- Unterkategorien Rind, Hähnchen, Schwein und Fisch als Karten umgesetzt
+- Buchversion auf 2.1.0 erhöht
 
 ## Offene Aufgaben
 
-1. Fleisch als eigene Übersichtsseite aufbauen.
-2. Gemüse & Salat als eigene Übersichtsseite aufbauen.
-3. Vegan als eigene Übersichtsseite aufbauen.
-4. Grundlagen aus `kochbuch.html` in eine eigene Seite überführen.
+1. Gemüse & Salat als eigene Übersichtsseite aufbauen.
+2. Vegan als eigene Übersichtsseite aufbauen.
+3. Grundlagen aus `kochbuch.html` in eine eigene Seite überführen.
+4. Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.
 5. Grillgemüse in eine eigene Rezeptseite überführen.
 6. Finishing-Sauce in eine eigene Rezeptseite überführen.
 7. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-8. Geplante Fleisch- und Fischrezepte schrittweise ausarbeiten.
-9. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-10. Eigene Fotos ergänzen.
+8. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
+9. Eigene Fotos ergänzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
 - `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
+- Bei Arbeiten an Fleisch zusätzlich `fleisch.html` lesen.
 - Bei Rezeptänderungen zusätzlich `kochbuch.html` oder die später zuständige Rezeptseite lesen.
 - Die Startseite enthält bewusst keine vollständigen Rezepte.
-- Noch nicht vorhandene Kategorien verweisen vorläufig auf die Übergangsseite.
+- Die Fleisch-Seite ist eine Übersichtsseite; die einzelnen Rezepte sind noch geplant.
 - Die Finishing-Sauce gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
-- Die neue Gestaltung nutzt ausschließlich lokale Systemschriften.
+- Die Gestaltung nutzt ausschließlich lokale Systemschriften.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.1.0 – 26.07.2026
+
+- neue Datei `fleisch.html` angelegt
+- Apple-inspirierten Stil der Startseite übernommen
+- große Überschrift „Fleisch“ ergänzt
+- direkte Navigation zu Rind, Hähnchen, Schwein und Fisch ergänzt
+- vier große Unterkategorie-Karten umgesetzt
+- geplante Rezepte den passenden Unterkategorien zugeordnet
+- Fleisch-Links auf der Startseite und im Hamburger-Menü auf die neue Seite umgestellt
+- responsive Darstellung für Desktop, Tablet und Smartphone umgesetzt
 
 ### Version 2.0.0 – 26.07.2026
 
