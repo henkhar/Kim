@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.1.0  
-**Letzte Aktualisierung:** 26.07.2026  
+**Buchversion:** 2.2.0  
+**Letzte Aktualisierung:** 27.07.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -11,7 +11,10 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
-- `kochbuch.html` – Übergangsseite mit den bisher vorhandenen Grundlagen und Rezepten
+- `gemuese-salat.html` – Übersichtsseite für Gemüse, Salate und Finishes
+- `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
+- `finishing-sauce.html` – eigene Rezeptseite für das Grillgemüse-Finish
+- `kochbuch.html` – Übergangsseite für Grundlagen und frühere Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
 - GitHub Pages – Veröffentlichung der Website
@@ -24,7 +27,8 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 5 geplante Fleisch- und Fischrezepte
 - 1 Grundlagenbereich
 - 1 Startseite
-- 1 Fleisch-Übersichtsseite
+- 2 Kategorie-Übersichtsseiten
+- 2 eigenständige Rezeptseiten
 - 1 Übergangsseite für vorhandene Inhalte
 
 ## Startseite
@@ -39,7 +43,7 @@ Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 - zwei zusätzlichen Schnellzugriffen
 - responsiver Darstellung für Desktop, Tablet und Smartphone
 
-Der Eintrag **Fleisch** verweist jetzt auf `fleisch.html`.
+Die Einträge **Fleisch** und **Gemüse & Salat** verweisen auf eigene Übersichtsseiten.
 
 ## Kategorien
 
@@ -62,16 +66,16 @@ Geplante Rezepte:
 - Schweinenackensteak mariniert
 - Lachsfilet
 
-Die Seite verwendet dieselbe Apple-inspirierte Gestaltung wie die Startseite. Die vier Unterkategorien werden als große Karten dargestellt. Noch nicht ausgearbeitete Rezepte sind als geplant gekennzeichnet.
-
 ### Gemüse & Salat
 
-Vorhanden:
+Eigene Übersichtsseite: `gemuese-salat.html`
 
-- Grillgemüse – Arbeitsfassung, Version 0.9.1
-- Finishing-Sauce für Grillgemüse – bestätigt, Version 1.0.0
+Vorhandene Rezepte:
 
-Der Bereich verweist derzeit direkt auf das Grillgemüse in `kochbuch.html`.
+- Grillgemüse – Arbeitsfassung, Version 0.9.1, eigene Seite `grillgemuese.html`
+- Finishing-Sauce für Grillgemüse – bestätigt, Version 1.0.0, eigene Seite `finishing-sauce.html`
+
+Zusätzlich ist auf der Übersichtsseite der spätere Bereich **Salate** als geplant markiert.
 
 ### Vegan
 
@@ -93,6 +97,7 @@ Vorhanden:
 ### Finishing-Sauce für Grillgemüse
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
+- Seite: `finishing-sauce.html`
 - Version: 1.0.0
 - Status: bestätigt
 - Passt zu: Hähnchen, Lachs, Steak
@@ -100,6 +105,7 @@ Vorhanden:
 ### Grillgemüse
 
 - ID: `grillgemuese-gasgrill`
+- Seite: `grillgemuese.html`
 - Version: 0.9.1
 - Status: Arbeitsfassung
 - Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
@@ -116,37 +122,51 @@ Vorhanden:
 - Hamburger-Menü und responsive Navigation umgesetzt
 - vorhandene Inhalte in `kochbuch.html` gesichert und neu gestaltet
 - Meta-Kim auf die mehrseitige Website-Architektur umgestellt
-- Buchversion auf 2.0.0 erhöht
 - eigene Fleisch-Übersichtsseite als `fleisch.html` angelegt
-- Startseite und Menü mit der Fleisch-Seite verknüpft
 - Unterkategorien Rind, Hähnchen, Schwein und Fisch als Karten umgesetzt
-- Buchversion auf 2.1.0 erhöht
+- eigene Gemüse-&-Salat-Übersichtsseite als `gemuese-salat.html` angelegt
+- Startseite und Menüs mit der Gemüse-&-Salat-Seite verknüpft
+- Grillgemüse als eigene Rezeptseite `grillgemuese.html` angelegt
+- Finishing-Sauce als eigene Rezeptseite `finishing-sauce.html` angelegt
+- beide Rezeptseiten im Apple-inspirierten Stil responsiv umgesetzt
+- Buchversion auf 2.2.0 erhöht
 
 ## Offene Aufgaben
 
-1. Gemüse & Salat als eigene Übersichtsseite aufbauen.
-2. Vegan als eigene Übersichtsseite aufbauen.
-3. Grundlagen aus `kochbuch.html` in eine eigene Seite überführen.
-4. Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.
-5. Grillgemüse in eine eigene Rezeptseite überführen.
-6. Finishing-Sauce in eine eigene Rezeptseite überführen.
-7. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-8. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-9. Eigene Fotos ergänzen.
+1. Vegan als eigene Übersichtsseite aufbauen.
+2. Grundlagen aus `kochbuch.html` in eine eigene Seite überführen.
+3. Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.
+4. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
+5. Übergangsseite `kochbuch.html` später reduzieren oder auflösen, sobald alle Inhalte eigene Seiten besitzen.
+6. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
+7. Eigene Fotos ergänzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
 - `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
 - Bei Arbeiten an Fleisch zusätzlich `fleisch.html` lesen.
-- Bei Rezeptänderungen zusätzlich `kochbuch.html` oder die später zuständige Rezeptseite lesen.
+- Bei Arbeiten an Gemüse oder Salat zusätzlich `gemuese-salat.html` lesen.
+- Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Die Startseite enthält bewusst keine vollständigen Rezepte.
-- Die Fleisch-Seite ist eine Übersichtsseite; die einzelnen Rezepte sind noch geplant.
 - Die Finishing-Sauce gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
 - Die Gestaltung nutzt ausschließlich lokale Systemschriften.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.2.0 – 27.07.2026
+
+- neue Datei `gemuese-salat.html` angelegt
+- Apple-inspirierten Stil der Startseite übernommen
+- große Überschrift „Gemüse & Salat“ ergänzt
+- Bereiche Grillgemüse, Finishes und Salate aufgenommen
+- Grillgemüse als eigene Rezeptseite `grillgemuese.html` angelegt
+- Finishing-Sauce als eigene Rezeptseite `finishing-sauce.html` angelegt
+- Rezeptinhalte vollständig aus der bisherigen Gesamtseite übernommen
+- Querverlinkung zwischen Grillgemüse und Finishing-Sauce ergänzt
+- Startseite und Hamburger-Menüs auf die neue Übersichtsseite umgestellt
+- responsive Darstellung für Desktop, Tablet und Smartphone umgesetzt
 
 ### Version 2.1.0 – 26.07.2026
 
