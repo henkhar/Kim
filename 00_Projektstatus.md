@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.6.0  
+**Buchversion:** 2.6.1  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -99,7 +99,7 @@ Vorhandene Rezepte:
 
 - Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.2, Seite `grillgemuese.html`
 - Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.2, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.0, Seite `gemuesefinish-mild.html`
+- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.1, Seite `gemuesefinish-mild.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -150,7 +150,7 @@ Aktueller Zutatenstand:
 
 - ID: `gemuesefinish-mild`
 - Seite: `gemuesefinish-mild.html`
-- Version: 0.1.0
+- Version: 0.1.1
 - Status: Arbeitsfassung
 - Rubrik: Soßen & Finishes
 
@@ -163,7 +163,15 @@ Aktueller Zutatenstand:
 - 1 TL Zitronensaft
 - optional wenig Thymian oder Rosmarin, sehr sparsam
 
-Die Zubereitung ist als erste Arbeitsfassung dokumentiert: Zutaten verrühren, eine der beiden Knoblauchvarianten verwenden, Kräuter sparsam dosieren und das Finish erst nach dem Grillen über das heiße Gemüse geben.
+Die Zubereitung folgt jetzt derselben Abfolge wie bei Gemüsefinish-Fresh:
+
+1. alle Zutaten gründlich verrühren
+2. das Grillgemüse bissfest garen und leicht bräunen
+3. das heiße Gemüse mit dem Finish vermengen
+4. vorsichtig wenden
+5. zwei bis drei Minuten ziehen lassen
+
+Das Finish wird nicht mitgegrillt.
 
 ### Grillgemüse
 
@@ -187,7 +195,9 @@ Die Zubereitung ist als erste Arbeitsfassung dokumentiert: Zutaten verrühren, e
 - Gemüsefinish-Fresh als eigene Rezeptseite angelegt
 - Gemüsefinish-Mild als zweite Finish-Rezeptseite angelegt
 - Gemüsefinish-Mild unter Soßen & Finishes verlinkt
-- Buchversion auf 2.6.0 erhöht
+- Zubereitung von Gemüsefinish-Mild an Gemüsefinish-Fresh angeglichen
+- Rezeptversion Gemüsefinish-Mild auf 0.1.1 erhöht
+- Buchversion auf 2.6.1 erhöht
 
 ## Offene Aufgaben
 
@@ -216,6 +226,14 @@ Die Zubereitung ist als erste Arbeitsfassung dokumentiert: Zutaten verrühren, e
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.6.1 – 01.08.2026
+
+- Zubereitung von Gemüsefinish-Mild an die Abfolge von Gemüsefinish-Fresh angeglichen
+- Schritte „Finish anrühren“, „Gemüse fertig grillen“, „Heiß vermengen“, „Schonend mischen“ und „Kurz ziehen lassen“ übernommen
+- Kim-Tipp zum Nicht-Mitgrillen entsprechend angepasst
+- Rezeptversion Gemüsefinish-Mild auf 0.1.1 erhöht
+- Buchversion auf 2.6.1 erhöht
 
 ### Version 2.6.0 – 01.08.2026
 
