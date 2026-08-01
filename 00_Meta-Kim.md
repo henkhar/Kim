@@ -42,6 +42,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Die Navigation muss jederzeit einen klaren Weg zurück zur Startseite bieten.
 - Alle Seiten müssen auf Desktop, Tablet und Smartphone gut lesbar und bedienbar sein.
 - Die Gestaltung bleibt reduziert, großzügig und Apple-inspiriert.
+- Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
 - GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
