@@ -45,6 +45,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
 - Rezeptbilder werden als große Bilder im Seitenverhältnis 16:9 direkt unter der Rezepteinleitung eingebunden. Sie erhalten großzügig abgerundete Ecken, eine dezente Schattenwirkung, einen aussagekräftigen Alternativtext und eine zurückhaltende Bildunterschrift.
 - Das erste verbindliche Bildmuster ist die Rezeptseite `honig-senf-lachs.html`. Weitere Rezeptbilder sollen sich an diesem ruhigen, hellen und hochwertigen Food-Fotografie-Stil orientieren.
+- Rezeptbilder dürfen als optimierte JPEG-Datei direkt in die jeweilige HTML-Seite eingebettet werden, wenn dadurch eine zuverlässigere Darstellung auf GitHub Pages erreicht wird.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
 - GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
