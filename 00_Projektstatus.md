@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.7.0  
+**Buchversion:** 2.7.1  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -12,6 +12,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
 - `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
+- `assets/honig-senf-lachs.svg` – eingebettetes Rezeptbild für den Honig-Senf-Lachs
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
@@ -34,6 +35,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 1 Startseite
 - 3 Kategorie-Übersichtsseiten
 - 4 eigenständige Rezeptseiten
+- 1 Rezeptseite mit eingebautem Hero-Bild
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -60,9 +62,26 @@ Die aktuellen Unter- und Rezeptseiten besitzen im Kopfbereich:
 
 Der Home-Button führt unmittelbar zu `index.html`.
 
-## Gestaltungsregel für Rezeptkarten
+## Gestaltungsregeln
+
+### Rezeptkarten
 
 Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
+
+### Rezeptbilder
+
+Für Rezeptseiten ist nun folgender Bildstil festgelegt:
+
+- großes Hero-Bild direkt unter Titel und Kurzbeschreibung
+- Seitenverhältnis 16:9
+- großzügig abgerundete Ecken
+- dezente Schattenwirkung
+- ruhiger, heller und hochwertiger Food-Fotografie-Stil
+- aussagekräftiger Alternativtext
+- zurückhaltende Bildunterschrift
+- responsive Darstellung auf Desktop, Tablet und Smartphone
+
+Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout.
 
 ## Kategorien und Hauptbereiche
 
@@ -79,7 +98,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.0, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.1, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -133,7 +152,8 @@ Vorhanden:
 
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
-- Version: 0.1.0
+- Bild: `assets/honig-senf-lachs.svg`
+- Version: 0.1.1
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -169,6 +189,8 @@ Dazu passend:
 
 - Grillgemüse
 - Gemüsefinish-Mild ohne Honig
+
+Das neue Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Es ist direkt unter der Einleitung eingebaut und dient als Vorlage für weitere Rezeptbilder.
 
 ### Gemüsefinish-Fresh
 
@@ -212,21 +234,24 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Honig-Senf-Lachs vom Grill als erstes ausgearbeitetes Fischrezept angelegt
 - Fischkarte auf `fleisch.html` mit dem neuen Rezept verknüpft
 - passende Beilagen Grillgemüse und Gemüsefinish-Mild auf der Rezeptseite verlinkt
-- Rezeptanzahl auf 4 erhöht
-- geplantes Lachsfilet durch das ausgearbeitete Rezept ersetzt
-- Buchversion auf 2.7.0 erhöht
+- erstes Rezeptbild für Honig-Senf-Lachs im Repository gespeichert
+- Bild als großes 16:9-Hero-Bild auf der Rezeptseite eingebaut
+- Bildlayout als Standard für weitere Rezeptseiten dokumentiert
+- Rezeptversion Honig-Senf-Lachs auf 0.1.1 erhöht
+- Buchversion auf 2.7.1 erhöht
 
 ## Offene Aufgaben
 
 1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
-2. Weitere Fleischrezepte schrittweise ausarbeiten und verlinken.
-3. Vegane Rezepte schrittweise ergänzen.
-4. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
-5. Gemüsefinish-Mild gemeinsam testen und bestätigen.
-6. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-7. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
-8. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-9. Eigene Fotos ergänzen.
+2. Weitere Rezeptbilder im festgelegten 16:9-Hero-Stil ergänzen.
+3. Weitere Fleischrezepte schrittweise ausarbeiten und verlinken.
+4. Vegane Rezepte schrittweise ergänzen.
+5. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
+6. Gemüsefinish-Mild gemeinsam testen und bestätigen.
+7. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
+8. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
+9. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
+10. Eigene Fotos später bei Bedarf ergänzen oder bestehende Bilder ersetzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
@@ -240,11 +265,23 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Bei Arbeiten an Grillwissen oder Temperaturen zusätzlich `grundlagen.html` lesen.
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
+- Neue Rezeptbilder orientieren sich am bestätigten 16:9-Hero-Stil des Honig-Senf-Lachses.
 - Gemüsefinish-Fresh gilt als bestätigt.
 - Honig-Senf-Lachs, Gemüsefinish-Mild und Grillgemüse bleiben bis zur gemeinsamen Kontrolle Arbeitsfassungen.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.7.1 – 01.08.2026
+
+- Bilddatei `assets/honig-senf-lachs.svg` angelegt
+- freigegebenes Bild des glasierten Honig-Senf-Lachses eingebaut
+- Bild direkt unter Titel und Kurzbeschreibung positioniert
+- responsives Seitenverhältnis 16:9, abgerundete Ecken und dezente Schattenwirkung umgesetzt
+- Alternativtext und zurückhaltende Bildunterschrift ergänzt
+- Bildlayout als Vorlage für weitere Rezeptseiten festgelegt
+- Rezeptversion Honig-Senf-Lachs auf 0.1.1 erhöht
+- Buchversion auf 2.7.1 erhöht
 
 ### Version 2.7.0 – 01.08.2026
 
