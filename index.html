@@ -40,7 +40,8 @@
     "Die Website muss auf Desktop, Tablet und Smartphone gut nutzbar sein.",
     "HTML, CSS und JavaScript sind erlaubt; serverseitige Funktionen benötigen später ein geeignetes Backend.",
     "Die Gestaltung bleibt reduziert, gut lesbar und Apple-inspiriert, ohne externe Schriftdateien zu verteilen.",
-    "Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills."
+    "Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills.",
+    "Rezeptbilder werden als große 16:9-Hero-Bilder direkt unter der Einleitung eingebunden und erhalten abgerundete Ecken sowie eine dezente Bildunterschrift."
   ],
   "versioning": {"book":"MAJOR.MINOR.PATCH","major":"Grundlegende Architektur- oder Konzeptänderung.","minor":"Neue Seite, neues Rezept, neues Kapitel oder größere Funktion.","patch":"Korrektur, Text- oder Gestaltungsanpassung."}
 }
@@ -49,13 +50,13 @@
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.7.0",
+  "bookVersion": "2.7.1",
   "lastUpdated": "2026-08-01",
   "architecture": "Website im schrittweisen Aufbau",
   "pages": [
     {"path":"index.html","role":"Apple-inspirierte Startseite","status":"aktiv"},
     {"path":"fleisch.html","role":"Übersichtsseite für Rind, Hähnchen, Schwein und Fisch","status":"aktiv"},
-    {"path":"honig-senf-lachs.html","role":"Eigene Rezeptseite für Honig-Senf-Lachs unter Fleisch und Fisch","status":"Arbeitsfassung"},
+    {"path":"honig-senf-lachs.html","role":"Eigene Rezeptseite für Honig-Senf-Lachs unter Fleisch und Fisch","status":"Arbeitsfassung mit Rezeptbild"},
     {"path":"gemuese-salat.html","role":"Übersichtsseite Salate & Beilagen mit den Rubriken Salate & Gemüse sowie Soßen & Finishes","status":"aktiv"},
     {"path":"vegan.html","role":"Platzhalter und spätere Übersichtsseite für vegane Rezepte","status":"aktiv, noch ohne Rezepte"},
     {"path":"grundlagen.html","role":"Eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen","status":"aktiv"},
@@ -72,7 +73,7 @@
     {"id":"finishing-sauce-grillgemuese-haehnchen","title":"Gemüsefinish-Fresh","page":"finishing-sauce.html","version":"1.0.2","status":"bestätigt"},
     {"id":"gemuesefinish-mild","title":"Gemüsefinish-Mild","page":"gemuesefinish-mild.html","version":"0.1.1","status":"Arbeitsfassung"},
     {"id":"grillgemuese-gasgrill","title":"Grillgemüse","page":"grillgemuese.html","version":"0.9.2","status":"Arbeitsfassung"},
-    {"id":"honig-senf-lachs-grill","title":"Honig-Senf-Lachs vom Grill","page":"honig-senf-lachs.html","version":"0.1.0","status":"Arbeitsfassung"}
+    {"id":"honig-senf-lachs-grill","title":"Honig-Senf-Lachs vom Grill","page":"honig-senf-lachs.html","version":"0.1.1","status":"Arbeitsfassung"}
   ],
   "plannedRecipes": ["Entrecôte Steakhouse","Beer Can Chicken","Chicken Asado","Schweinenackensteak mariniert"],
   "openTasks": [
@@ -82,6 +83,7 @@
     "Weitere Salate und Beilagen wie Nudelsalate ergänzen.",
     "Gemüsefinish-Mild gemeinsam testen und bestätigen.",
     "Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.",
+    "Weitere Rezeptbilder im bestätigten 16:9-Hero-Stil ergänzen.",
     "Übergangsseite kochbuch.html später reduzieren oder auflösen.",
     "Suche, Filter, PWA, Favoriten und Einkaufsliste schrittweise prüfen."
   ],
@@ -97,7 +99,8 @@
     {"date":"2026-08-01","version":"2.5.2","change":"Zutatenverhältnis von Gemüsefinish-Fresh angepasst: weniger Olivenöl, mehr frisch gepresster Knoblauch und reduzierte optionale Aromaten."},
     {"date":"2026-08-01","version":"2.6.0","change":"Zweites Finish-Rezept Gemüsefinish-Mild als eigene Arbeitsfassung ergänzt und unter Soßen & Finishes verlinkt."},
     {"date":"2026-08-01","version":"2.6.1","change":"Zubereitung von Gemüsefinish-Mild an die bewährte Abfolge von Gemüsefinish-Fresh angeglichen."},
-    {"date":"2026-08-01","version":"2.7.0","change":"Honig-Senf-Lachs vom Grill als neues Fischrezept ergänzt und mit Grillgemüse sowie Gemüsefinish-Mild verknüpft."}
+    {"date":"2026-08-01","version":"2.7.0","change":"Honig-Senf-Lachs vom Grill als neues Fischrezept ergänzt und mit Grillgemüse sowie Gemüsefinish-Mild verknüpft."},
+    {"date":"2026-08-01","version":"2.7.1","change":"Erstes Rezeptbild beim Honig-Senf-Lachs als großes 16:9-Hero-Bild eingebaut und den Bildstil als Vorlage für weitere Rezepte festgelegt."}
   ]
 }
 </script>
@@ -107,7 +110,7 @@
 <header class="topbar"><button class="menu-button" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-icon"></span></button><div class="brand">Haralds Grillkochbuch</div><div></div></header>
 <section class="hero"><h1>Haralds<br>Grillkochbuch</h1><nav class="hero-nav" aria-label="Hauptkategorien"><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a class="muted" href="grundlagen.html">Grundlagen</a></nav></section>
 <main class="content"><p class="eyebrow">Rezepte entdecken</p><section class="category-grid" aria-label="Rezeptkategorien"><article class="category"><div><h2>Fleisch</h2><p>Rind, Hähnchen, Schwein und Fisch – mit Grillmethoden, Garstufen und Kerntemperaturen.</p></div><a href="fleisch.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Salate &amp; Beilagen</h2><p>Grillgemüse, Salate, Soßen und frische Finishes für den Grillabend.</p></div><a href="gemuese-salat.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Vegan</h2><p>Pflanzliche Hauptgerichte und Beilagen, die direkt vom Grill überzeugen.</p></div><a href="vegan.html">Bereich öffnen →</a></article></section><section class="quick-links" aria-label="Weitere Bereiche"><a class="quick-link" href="grundlagen.html"><span>Grundlagen &amp; Kerntemperaturen</span><span>→</span></a><a class="quick-link" href="kochbuch.html"><span>Gesamtes Kochbuch öffnen</span><span>→</span></a></section></main>
-<footer>2026 · Chefkoch Kim · Version 2.7.0</footer>
+<footer>2026 · Chefkoch Kim · Version 2.7.1</footer>
 </div>
 <aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="grundlagen.html">Grundlagen</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open));}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false);});</script>
