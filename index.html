@@ -48,17 +48,17 @@
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.4.1",
+  "bookVersion": "2.5.0",
   "lastUpdated": "2026-08-01",
   "architecture": "Website im schrittweisen Aufbau",
   "pages": [
     {"path":"index.html","role":"Apple-inspirierte Startseite","status":"aktiv"},
     {"path":"fleisch.html","role":"Übersichtsseite für Rind, Hähnchen, Schwein und Fisch","status":"aktiv"},
-    {"path":"gemuese-salat.html","role":"Übersichtsseite für Gemüse, Salate und Finishes","status":"aktiv"},
+    {"path":"gemuese-salat.html","role":"Übersichtsseite Salate & Beilagen mit den Rubriken Salate & Gemüse sowie Soßen & Finishes","status":"aktiv"},
     {"path":"vegan.html","role":"Platzhalter und spätere Übersichtsseite für vegane Rezepte","status":"aktiv, noch ohne Rezepte"},
     {"path":"grundlagen.html","role":"Eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen","status":"aktiv"},
-    {"path":"grillgemuese.html","role":"Eigene Rezeptseite für Grillgemüse","status":"Arbeitsfassung"},
-    {"path":"finishing-sauce.html","role":"Eigene Rezeptseite für Grillgemüse-Finish","status":"bestätigt"},
+    {"path":"grillgemuese.html","role":"Eigene Rezeptseite für Grillgemüse unter Salate & Gemüse","status":"Arbeitsfassung"},
+    {"path":"finishing-sauce.html","role":"Eigene Rezeptseite für Gemüsefinish-Fresh unter Soßen & Finishes","status":"bestätigt"},
     {"path":"kochbuch.html","role":"Übergangsseite für frühere Gesamtansicht","status":"aktiv"}
   ],
   "recipeCount": 2,
@@ -66,13 +66,14 @@
   "draftRecipeCount": 1,
   "plannedRecipeCount": 5,
   "recipes": [
-    {"id":"finishing-sauce-grillgemuese-haehnchen","title":"Finishing-Sauce für Grillgemüse","page":"finishing-sauce.html","version":"1.0.0","status":"bestätigt"},
-    {"id":"grillgemuese-gasgrill","title":"Grillgemüse","page":"grillgemuese.html","version":"0.9.1","status":"Arbeitsfassung"}
+    {"id":"finishing-sauce-grillgemuese-haehnchen","title":"Gemüsefinish-Fresh","page":"finishing-sauce.html","version":"1.0.1","status":"bestätigt"},
+    {"id":"grillgemuese-gasgrill","title":"Grillgemüse","page":"grillgemuese.html","version":"0.9.2","status":"Arbeitsfassung"}
   ],
   "plannedRecipes": ["Entrecôte Steakhouse","Beer Can Chicken","Chicken Asado","Schweinenackensteak mariniert","Lachsfilet"],
   "openTasks": [
     "Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.",
     "Vegane Rezepte schrittweise ergänzen.",
+    "Weitere Salate und Beilagen wie Nudelsalate ergänzen.",
     "Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.",
     "Übergangsseite kochbuch.html später reduzieren oder auflösen.",
     "Suche, Filter, PWA, Favoriten und Einkaufsliste schrittweise prüfen."
@@ -83,7 +84,8 @@
     {"date":"2026-07-27","version":"2.2.0","change":"Eigene Übersichtsseite für Gemüse & Salat sowie getrennte Rezeptseiten für Grillgemüse und Grillgemüse-Finish ergänzt."},
     {"date":"2026-07-31","version":"2.3.0","change":"Eigene vegane Übersichtsseite als Platzhalter im Apple-inspirierten Stil ergänzt und sämtliche Hauptlinks darauf umgestellt."},
     {"date":"2026-07-31","version":"2.4.0","change":"Eigene Grundlagen-Seite mit Grillzonen und Kerntemperaturtabelle ergänzt und die Hauptnavigation darauf umgestellt."},
-    {"date":"2026-08-01","version":"2.4.1","change":"Runden Home-Button mit Haus-Symbol rechts neben dem Hamburger-Menü auf allen neuen Unter- und Rezeptseiten ergänzt."}
+    {"date":"2026-08-01","version":"2.4.1","change":"Runden Home-Button mit Haus-Symbol rechts neben dem Hamburger-Menü auf allen neuen Unter- und Rezeptseiten ergänzt."},
+    {"date":"2026-08-01","version":"2.5.0","change":"Bereich Gemüse & Salat in Salate & Beilagen umbenannt, in Salate & Gemüse sowie Soßen & Finishes gegliedert und Grillgemüse-Finish in Gemüsefinish-Fresh umbenannt."}
   ]
 }
 </script>
@@ -91,11 +93,11 @@
 <body>
 <div class="page">
 <header class="topbar"><button class="menu-button" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-icon"></span></button><div class="brand">Haralds Grillkochbuch</div><div></div></header>
-<section class="hero"><h1>Haralds<br>Grillkochbuch</h1><nav class="hero-nav" aria-label="Hauptkategorien"><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Gemüse &amp; Salat</a><a href="vegan.html">Vegan</a><a class="muted" href="grundlagen.html">Grundlagen</a></nav></section>
-<main class="content"><p class="eyebrow">Rezepte entdecken</p><section class="category-grid" aria-label="Rezeptkategorien"><article class="category"><div><h2>Fleisch</h2><p>Rind, Hähnchen, Schwein und Fisch – mit Grillmethoden, Garstufen und Kerntemperaturen.</p></div><a href="fleisch.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Gemüse &amp; Salat</h2><p>Grillgemüse, Finishes, Beilagen und später frische Salate für den Grillabend.</p></div><a href="gemuese-salat.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Vegan</h2><p>Pflanzliche Hauptgerichte und Beilagen, die direkt vom Grill überzeugen.</p></div><a href="vegan.html">Bereich öffnen →</a></article></section><section class="quick-links" aria-label="Weitere Bereiche"><a class="quick-link" href="grundlagen.html"><span>Grundlagen &amp; Kerntemperaturen</span><span>→</span></a><a class="quick-link" href="kochbuch.html"><span>Gesamtes Kochbuch öffnen</span><span>→</span></a></section></main>
-<footer>2026 · Chefkoch Kim · Version 2.4.1</footer>
+<section class="hero"><h1>Haralds<br>Grillkochbuch</h1><nav class="hero-nav" aria-label="Hauptkategorien"><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a class="muted" href="grundlagen.html">Grundlagen</a></nav></section>
+<main class="content"><p class="eyebrow">Rezepte entdecken</p><section class="category-grid" aria-label="Rezeptkategorien"><article class="category"><div><h2>Fleisch</h2><p>Rind, Hähnchen, Schwein und Fisch – mit Grillmethoden, Garstufen und Kerntemperaturen.</p></div><a href="fleisch.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Salate &amp; Beilagen</h2><p>Grillgemüse, Salate, Soßen und frische Finishes für den Grillabend.</p></div><a href="gemuese-salat.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Vegan</h2><p>Pflanzliche Hauptgerichte und Beilagen, die direkt vom Grill überzeugen.</p></div><a href="vegan.html">Bereich öffnen →</a></article></section><section class="quick-links" aria-label="Weitere Bereiche"><a class="quick-link" href="grundlagen.html"><span>Grundlagen &amp; Kerntemperaturen</span><span>→</span></a><a class="quick-link" href="kochbuch.html"><span>Gesamtes Kochbuch öffnen</span><span>→</span></a></section></main>
+<footer>2026 · Chefkoch Kim · Version 2.5.0</footer>
 </div>
-<aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="grundlagen.html">Grundlagen</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Gemüse &amp; Salat</a><a href="vegan.html">Vegan</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
+<aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="grundlagen.html">Grundlagen</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open));}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false);});</script>
 </body>
 </html>
