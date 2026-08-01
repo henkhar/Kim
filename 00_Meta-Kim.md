@@ -43,6 +43,8 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Alle Seiten müssen auf Desktop, Tablet und Smartphone gut lesbar und bedienbar sein.
 - Die Gestaltung bleibt reduziert, großzügig und Apple-inspiriert.
 - Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
+- Rezeptbilder werden als große Bilder im Seitenverhältnis 16:9 direkt unter der Rezepteinleitung eingebunden. Sie erhalten großzügig abgerundete Ecken, eine dezente Schattenwirkung, einen aussagekräftigen Alternativtext und eine zurückhaltende Bildunterschrift.
+- Das erste verbindliche Bildmuster ist die Rezeptseite `honig-senf-lachs.html`. Weitere Rezeptbilder sollen sich an diesem ruhigen, hellen und hochwertigen Food-Fotografie-Stil orientieren.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
 - GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
@@ -66,8 +68,10 @@ Rubriken innerhalb von **Salate & Beilagen**:
 
 Zuordnung der vorhandenen Rezepte:
 
+- Honig-Senf-Lachs vom Grill → Fleisch → Fisch
 - Grillgemüse → Salate & Gemüse
 - Gemüsefinish-Fresh → Soßen & Finishes
+- Gemüsefinish-Mild → Soßen & Finishes
 
 Weitere Bereiche wie Suche, Favoriten, Einkaufsliste oder Projektinfos können später ergänzt werden.
 
@@ -86,15 +90,16 @@ Weitere Bereiche wie Suche, Favoriten, Einkaufsliste oder Projektinfos können s
 
 1. Titel und eindeutige Rezept-ID
 2. Kurzbeschreibung
-3. Kategorie und passende Gerichte
-4. Portionen sowie Vorbereitungs-, Grill- und Gesamtzeit
-5. Grillmethode, Grilltemperatur und Kerntemperatur, sofern relevant
-6. Zutaten mit eindeutigen Mengen
-7. Chronologische, praxistaugliche Zubereitung
-8. Finishing, Ruhezeit und Servierhinweise
-9. Kim-Tipp mit kurzer Begründung
-10. Varianten und eigene Erfahrungen
-11. Rezeptversion und Änderungsverlauf
+3. Großes Rezeptbild im bestätigten 16:9-Hero-Stil, sofern ein Bild vorhanden ist
+4. Kategorie und passende Gerichte
+5. Portionen sowie Vorbereitungs-, Grill- und Gesamtzeit
+6. Grillmethode, Grilltemperatur und Kerntemperatur, sofern relevant
+7. Zutaten mit eindeutigen Mengen
+8. Chronologische, praxistaugliche Zubereitung
+9. Finishing, Ruhezeit und Servierhinweise
+10. Kim-Tipp mit kurzer Begründung
+11. Varianten und eigene Erfahrungen
+12. Rezeptversion und Änderungsverlauf
 
 ## Versionsregeln
 
