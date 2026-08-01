@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.4.0  
-**Letzte Aktualisierung:** 31.07.2026  
+**Buchversion:** 2.4.1  
+**Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -46,7 +46,17 @@ Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 - zwei zusätzlichen Schnellzugriffen
 - responsiver Darstellung für Desktop, Tablet und Smartphone
 
-Alle vier Hauptbereiche verweisen jetzt auf eigene Seiten.
+Alle vier Hauptbereiche verweisen auf eigene Seiten.
+
+## Navigation
+
+Die aktuellen Unter- und Rezeptseiten besitzen im Kopfbereich:
+
+- links das Hamburger-Menü
+- direkt daneben einen runden Home-Button mit Haus-Symbol
+- mittig den Titel „Haralds Grillkochbuch“
+
+Der Home-Button führt unmittelbar zu `index.html`. Er ist mit einer dezenten grauen Fläche gestaltet, erhält beim Überfahren eine etwas dunklere Fläche und bleibt auch auf kleinen Bildschirmen bedienbar.
 
 ## Kategorien und Hauptbereiche
 
@@ -134,9 +144,10 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 - Grillgemüse als eigene Rezeptseite `grillgemuese.html` angelegt
 - Finishing-Sauce als eigene Rezeptseite `finishing-sauce.html` angelegt
 - eigene Grundlagen-Seite als `grundlagen.html` angelegt
-- vorhandene Grundlagen aus `kochbuch.html` vollständig übernommen
-- Hauptnavigation, Schnellzugriff und relevante Hamburger-Menüs auf `grundlagen.html` umgestellt
-- Buchversion auf 2.4.0 erhöht
+- runden Home-Button auf Fleisch, Gemüse & Salat, Vegan, Grundlagen und beiden Rezeptseiten ergänzt
+- Home-Button direkt rechts neben dem Hamburger-Menü positioniert
+- mobile Positionierung und zugängliche Beschriftung ergänzt
+- Buchversion auf 2.4.1 erhöht
 
 ## Offene Aufgaben
 
@@ -155,14 +166,25 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 - Bei Arbeiten an veganen Inhalten zusätzlich `vegan.html` lesen.
 - Bei Arbeiten an Grillwissen oder Temperaturen zusätzlich `grundlagen.html` lesen.
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
-- Die Startseite enthält bewusst keine vollständigen Rezepte.
+- Die Startseite enthält bewusst keinen Home-Button, da sie bereits das Ziel dieses Buttons ist.
+- Die neuen Unter- und Rezeptseiten besitzen den runden Home-Button im Kopfbereich.
 - Die vegane Seite enthält derzeit bewusst nur einen Platzhalter.
 - Die Finishing-Sauce gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
-- Die Gestaltung nutzt ausschließlich lokale Systemschriften.
+- Die Gestaltung nutzt ausschließlich lokale Systemschriften und Inline-SVG-Symbole.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.4.1 – 01.08.2026
+
+- runden Home-Button mit Haus-Symbol ergänzt
+- Button direkt rechts neben dem Hamburger-Menü angeordnet
+- auf `fleisch.html`, `gemuese-salat.html`, `vegan.html`, `grundlagen.html`, `grillgemuese.html` und `finishing-sauce.html` umgesetzt
+- dezente hellgraue Kreisfläche im bestehenden Apple-inspirierten Look verwendet
+- Hover-, Tastatur- und Druckverhalten berücksichtigt
+- responsive Positionierung für kleine Bildschirme ergänzt
+- Rezeptinhalte und Rezeptversionen unverändert belassen
 
 ### Version 2.4.0 – 31.07.2026
 
