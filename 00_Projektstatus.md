@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.5.0  
+**Buchversion:** 2.5.1  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -57,6 +57,12 @@ Die aktuellen Unter- und Rezeptseiten besitzen im Kopfbereich:
 - mittig den Titel „Haralds Grillkochbuch“
 
 Der Home-Button führt unmittelbar zu `index.html`. Er ist mit einer dezenten grauen Fläche gestaltet, erhält beim Überfahren eine etwas dunklere Fläche und bleibt auch auf kleinen Bildschirmen bedienbar.
+
+## Gestaltungsregel für Rezeptkarten
+
+Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Angaben wie **Arbeitsfassung**, **bestätigte Fassung**, **Portionen** oder **Zubereitungszeit** werden dort nicht mehr als farbige Kapseln dargestellt.
+
+Die Informationen bleiben weiterhin auf den eigentlichen Rezeptseiten und in den internen Projektdateien dokumentiert. Die Änderung betrifft ausschließlich die sichtbare Übersichtsgestaltung.
 
 ## Kategorien und Hauptbereiche
 
@@ -161,8 +167,9 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - Grillgemüse der Rubrik Salate & Gemüse zugeordnet
 - Grillgemüse-Finish in Gemüsefinish-Fresh umbenannt
 - Gemüsefinish-Fresh der Rubrik Soßen & Finishes zugeordnet
-- Hauptnavigation und Hamburger-Menüs angepasst
-- Buchversion auf 2.5.0 erhöht
+- farbige Status- und Informations-Pills aus den Rezeptkarten der Übersicht entfernt
+- dauerhafte Gestaltungsregel dazu in Meta-Kim ergänzt
+- Buchversion auf 2.5.1 erhöht
 
 ## Offene Aufgaben
 
@@ -184,6 +191,7 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Die Startseite enthält bewusst keinen Home-Button, da sie bereits das Ziel dieses Buttons ist.
 - Die neuen Unter- und Rezeptseiten besitzen den runden Home-Button im Kopfbereich.
+- Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
 - Die vegane Seite enthält derzeit bewusst nur einen Platzhalter.
 - Gemüsefinish-Fresh gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
@@ -191,6 +199,15 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.5.1 – 01.08.2026
+
+- farbige Kapseln „Arbeitsfassung“, „4 Personen“, „Bestätigte Fassung“ und „5 Minuten“ aus den Rezeptkarten auf `gemuese-salat.html` entfernt
+- zugehörige CSS-Klassen für Meta- und Badge-Elemente entfernt
+- Rezeptkarten dadurch optisch ruhiger und näher am reduzierten Apple-inspirierten Stil gestaltet
+- Rezeptstatus und Portionsangaben in den eigentlichen Rezeptseiten und internen Projektdateien beibehalten
+- dauerhafte Gestaltungsregel in `00_Meta-Kim.md` ergänzt
+- Rezeptinhalte und Rezeptversionen unverändert belassen
 
 ### Version 2.5.0 – 01.08.2026
 
@@ -268,22 +285,3 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - funktionierendes Hamburger-Menü eingebaut
 - bisherige Inhalte in der neuen Datei `kochbuch.html` erhalten
 - `00_Meta-Kim.md` an die Website-Architektur angepasst
-
-### Version 1.4.1 – 26.07.2026
-
-- Nummern kleiner und blasser dargestellt
-- Oberpunkte grau und Rezepttitel schwarz dargestellt
-- Markierung „geplant“ rechtsbündig belassen
-- Abstand unter „Haralds Grillkochbuch“ verkürzt
-- Rezeptnamen korrigiert
-
-### Version 1.4.0 – 26.07.2026
-
-- Dashboard durch ein hierarchisches Inhaltsverzeichnis ersetzt
-- vorhandene und geplante Rezepte aufgenommen
-
-### Version 1.3.0 – 26.07.2026
-
-- sichtbare Button-Navigation entfernt
-- Kerntemperatur- und Garpunkttabelle ergänzt
-- separate Meta- und Projektstatusdateien angelegt
