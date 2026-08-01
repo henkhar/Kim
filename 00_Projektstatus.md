@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.5.1  
+**Buchversion:** 2.5.2  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -99,7 +99,7 @@ Rubriken:
 Vorhandene Rezepte:
 
 - Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.2, eigene Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.1, eigene Seite `finishing-sauce.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.2, eigene Seite `finishing-sauce.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -131,11 +131,22 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.1
+- Version: 1.0.2
 - Status: bestätigt
 - Rubrik: Soßen & Finishes
 - Passt zu: Hähnchen, Lachs, Steak
 - Frühere Bezeichnung: Grillgemüse-Finish
+
+Aktueller Zutatenstand für 4 Personen:
+
+- 2 EL mildes Olivenöl
+- 1 EL frischer Zitronensaft
+- 1 TL Honig
+- 2 kleine Zehen Knoblauch, frisch gepresst
+- 1–2 EL Petersilie, fein gehackt
+- ½ TL Salz
+- schwarzer Pfeffer, frisch gemahlen
+- optional je ¼ TL fein abgeriebene Zitronenschale sowie fein gehackter Thymian oder Rosmarin
 
 Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverändert.
 
@@ -168,8 +179,9 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - Grillgemüse-Finish in Gemüsefinish-Fresh umbenannt
 - Gemüsefinish-Fresh der Rubrik Soßen & Finishes zugeordnet
 - farbige Status- und Informations-Pills aus den Rezeptkarten der Übersicht entfernt
-- dauerhafte Gestaltungsregel dazu in Meta-Kim ergänzt
-- Buchversion auf 2.5.1 erhöht
+- Zutatenverhältnis von Gemüsefinish-Fresh angepasst
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.2 erhöht
+- Buchversion auf 2.5.2 erhöht
 
 ## Offene Aufgaben
 
@@ -199,6 +211,15 @@ Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverä
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.5.2 – 01.08.2026
+
+- Gemüsefinish-Fresh auf Rezeptversion 1.0.2 erhöht
+- mildes Olivenöl von 4 EL auf 2 EL reduziert
+- Knoblauch von 1 kleinen Zehe, fein gerieben, auf 2 kleine Zehen, frisch gepresst, geändert
+- optionale Zitronenschale von ½ TL auf ¼ TL reduziert
+- optionalen Thymian oder Rosmarin von 1 TL auf ¼ TL reduziert
+- Rezeptseite, eingebetteten Projektstatus und Projektstatusdatei synchron aktualisiert
 
 ### Version 2.5.1 – 01.08.2026
 
