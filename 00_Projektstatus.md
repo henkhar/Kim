@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.7.2  
+**Buchversion:** 2.7.3  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -11,7 +11,8 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
-- `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill mit direkt eingebettetem Rezeptbild
+- `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
+- `assets/honig-senf-lachs.jpg` – eigenständige JPEG-Bilddatei für den Honig-Senf-Lachs
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
@@ -80,7 +81,7 @@ Für Rezeptseiten ist folgender Bildstil festgelegt:
 - zurückhaltende Bildunterschrift
 - responsive Darstellung auf Desktop, Tablet und Smartphone
 
-Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Das Bild ist nun direkt als komprimiertes JPEG in die HTML-Seite eingebettet. Dadurch ist keine separate Bilddatei erforderlich und die Darstellung funktioniert zuverlässig über GitHub Pages.
+Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Rezeptbilder werden als eigenständige, browserkompatible Bilddateien im Repository gespeichert. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.
 
 ## Kategorien und Hauptbereiche
 
@@ -97,7 +98,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.2, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.3, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -151,8 +152,8 @@ Vorhanden:
 
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
-- Bild: direkt als komprimiertes JPEG in der HTML-Seite eingebettet
-- Version: 0.1.2
+- Bild: `assets/honig-senf-lachs.jpg`
+- Version: 0.1.3
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -235,11 +236,12 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - passende Beilagen Grillgemüse und Gemüsefinish-Mild auf der Rezeptseite verlinkt
 - erstes Rezeptbild für Honig-Senf-Lachs erstellt
 - Bild als großes 16:9-Hero-Bild auf der Rezeptseite eingebaut
-- fehlerhafte externe SVG-Einbindung entfernt
-- Bild als komprimiertes JPEG direkt in die Rezeptseite eingebettet
+- fehlerhafte SVG- und Daten-URL-Einbindungen entfernt
+- Bild als echte JPEG-Datei unter `assets/honig-senf-lachs.jpg` gespeichert
+- Rezeptseite mit der separaten JPEG-Datei verknüpft
 - Bildlayout als Standard für weitere Rezeptseiten dokumentiert
-- Rezeptversion Honig-Senf-Lachs auf 0.1.2 erhöht
-- Buchversion auf 2.7.2 erhöht
+- Rezeptversion Honig-Senf-Lachs auf 0.1.3 erhöht
+- Buchversion auf 2.7.3 erhöht
 
 ## Offene Aufgaben
 
@@ -267,18 +269,26 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
 - Neue Rezeptbilder orientieren sich am bestätigten 16:9-Hero-Stil des Honig-Senf-Lachses.
-- Rezeptbilder können zur zuverlässigen Darstellung direkt in die HTML-Seite eingebettet werden.
+- Rezeptbilder werden als separate browserkompatible Bilddateien im Repository gespeichert.
 - Gemüsefinish-Fresh gilt als bestätigt.
 - Honig-Senf-Lachs, Gemüsefinish-Mild und Grillgemüse bleiben bis zur gemeinsamen Kontrolle Arbeitsfassungen.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
 
+### Version 2.7.3 – 01.08.2026
+
+- beschädigte direkte JPEG-Daten-URL aus `honig-senf-lachs.html` entfernt
+- optimiertes Rezeptbild als echte Datei `assets/honig-senf-lachs.jpg` im Repository gespeichert
+- Rezeptseite mit der relativen Bildadresse `assets/honig-senf-lachs.jpg?v=273` verknüpft
+- temporären Reparatur-Workflow wieder entfernt
+- Rezeptversion Honig-Senf-Lachs auf 0.1.3 erhöht
+- Buchversion auf 2.7.3 erhöht
+
 ### Version 2.7.2 – 01.08.2026
 
-- Bildfehler beim Honig-Senf-Lachs korrigiert
 - nicht zuverlässig dargestellte externe SVG-Datei entfernt
-- Bild auf 1400 × 788 Pixel optimiert und als komprimiertes JPEG direkt in `honig-senf-lachs.html` eingebettet
+- Versuch einer direkten JPEG-Einbettung in `honig-senf-lachs.html`
 - vorhandenes 16:9-Layout, abgerundete Ecken, Schatten, Alternativtext und Bildunterschrift beibehalten
 - Rezeptversion Honig-Senf-Lachs auf 0.1.2 erhöht
 - Buchversion auf 2.7.2 erhöht
