@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.6.1  
+**Buchversion:** 2.7.0  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -11,6 +11,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
+- `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
@@ -24,15 +25,15 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 ## Aktueller Bestand
 
-- 3 ausgearbeitete Rezepte
+- 4 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
-- 2 Arbeitsfassungen
-- 5 geplante Fleisch- und Fischrezepte
+- 3 Arbeitsfassungen
+- 4 geplante Fleischrezepte
 - noch keine veganen Rezepte
 - 1 vollständige Grundlagen-Seite
 - 1 Startseite
 - 3 Kategorie-Übersichtsseiten
-- 3 eigenständige Rezeptseiten
+- 4 eigenständige Rezeptseiten
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -76,13 +77,16 @@ Unterkategorien:
 - Schwein
 - Fisch
 
+Vorhandenes Fischrezept:
+
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.0, Seite `honig-senf-lachs.html`
+
 Geplante Rezepte:
 
 - Entrecôte Steakhouse
 - Beer Can Chicken
 - Chicken Asado
 - Schweinenackensteak mariniert
-- Lachsfilet
 
 ### Salate & Beilagen
 
@@ -125,6 +129,47 @@ Vorhanden:
 
 ## Rezepte
 
+### Honig-Senf-Lachs vom Grill
+
+- ID: `honig-senf-lachs-grill`
+- Seite: `honig-senf-lachs.html`
+- Version: 0.1.0
+- Status: Arbeitsfassung
+- Rubrik: Fleisch → Fisch
+- Menge: 4 Personen
+- Grillmethode: indirekte Hitze bei 180–200 °C
+- Grillzeit: etwa 12–15 Minuten
+- Ziehzeit: 10 Minuten
+
+Aktueller Zutatenstand:
+
+- 4 Lachsfilets mit Haut
+- 1 EL grober Senf
+- 1 EL mittelscharfer Senf
+- 1 EL Honig
+- 1 EL Olivenöl
+- 1 TL Zitronensaft
+- Salz und Pfeffer
+- optional Dill, sehr empfehlenswert
+
+Verbindlicher Ablauf:
+
+1. Senf, Honig, Olivenöl und Zitronensaft zu einer cremigen Glasur verrühren.
+2. Lachs nur leicht salzen.
+3. Glasur ausschließlich auf die Oberseite streichen, nicht auf die Haut.
+4. 10 Minuten ziehen lassen, nicht länger.
+5. Mit der Hautseite nach unten indirekt bei 180–200 °C grillen.
+6. Nicht wenden und den Deckel geschlossen halten.
+7. Nach etwa 8 Minuten bei Bedarf noch einmal dünn glasieren.
+8. Gesamtgrillzeit etwa 12–15 Minuten.
+
+Wichtiger Hinweis: Wegen des Honigs ausschließlich indirekt und ohne direkte Flamme grillen.
+
+Dazu passend:
+
+- Grillgemüse
+- Gemüsefinish-Mild ohne Honig
+
 ### Gemüsefinish-Fresh
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
@@ -132,19 +177,6 @@ Vorhanden:
 - Version: 1.0.2
 - Status: bestätigt
 - Rubrik: Soßen & Finishes
-- Passt zu: Hähnchen, Lachs, Steak
-- Frühere Bezeichnung: Grillgemüse-Finish
-
-Aktueller Zutatenstand:
-
-- 2 EL mildes Olivenöl
-- 1 EL frischer Zitronensaft
-- 1 TL Honig
-- 2 kleine Zehen Knoblauch, frisch gepresst
-- 1–2 EL Petersilie, fein gehackt
-- ½ TL Salz
-- schwarzer Pfeffer, frisch gemahlen
-- optional je ¼ TL fein abgeriebene Zitronenschale sowie fein gehackter Thymian oder Rosmarin
 
 ### Gemüsefinish-Mild
 
@@ -154,24 +186,7 @@ Aktueller Zutatenstand:
 - Status: Arbeitsfassung
 - Rubrik: Soßen & Finishes
 
-Aktueller Zutatenstand:
-
-- 2 EL mildes Olivenöl
-- 1 TL Salz
-- Pfeffer nach Geschmack
-- 1 TL Knoblauchpulver oder 2 kleine Knoblauchzehen
-- 1 TL Zitronensaft
-- optional wenig Thymian oder Rosmarin, sehr sparsam
-
-Die Zubereitung folgt jetzt derselben Abfolge wie bei Gemüsefinish-Fresh:
-
-1. alle Zutaten gründlich verrühren
-2. das Grillgemüse bissfest garen und leicht bräunen
-3. das heiße Gemüse mit dem Finish vermengen
-4. vorsichtig wenden
-5. zwei bis drei Minuten ziehen lassen
-
-Das Finish wird nicht mitgegrillt.
+Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish wird nicht mitgegrillt.
 
 ### Grillgemüse
 
@@ -194,26 +209,30 @@ Das Finish wird nicht mitgegrillt.
 - Grillgemüse als eigene Rezeptseite angelegt
 - Gemüsefinish-Fresh als eigene Rezeptseite angelegt
 - Gemüsefinish-Mild als zweite Finish-Rezeptseite angelegt
-- Gemüsefinish-Mild unter Soßen & Finishes verlinkt
-- Zubereitung von Gemüsefinish-Mild an Gemüsefinish-Fresh angeglichen
-- Rezeptversion Gemüsefinish-Mild auf 0.1.1 erhöht
-- Buchversion auf 2.6.1 erhöht
+- Honig-Senf-Lachs vom Grill als erstes ausgearbeitetes Fischrezept angelegt
+- Fischkarte auf `fleisch.html` mit dem neuen Rezept verknüpft
+- passende Beilagen Grillgemüse und Gemüsefinish-Mild auf der Rezeptseite verlinkt
+- Rezeptanzahl auf 4 erhöht
+- geplantes Lachsfilet durch das ausgearbeitete Rezept ersetzt
+- Buchversion auf 2.7.0 erhöht
 
 ## Offene Aufgaben
 
-1. Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.
-2. Vegane Rezepte schrittweise ergänzen.
-3. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
-4. Gemüsefinish-Mild gemeinsam testen und bestätigen.
-5. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-6. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
-7. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-8. Eigene Fotos ergänzen.
+1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
+2. Weitere Fleischrezepte schrittweise ausarbeiten und verlinken.
+3. Vegane Rezepte schrittweise ergänzen.
+4. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
+5. Gemüsefinish-Mild gemeinsam testen und bestätigen.
+6. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
+7. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
+8. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
+9. Eigene Fotos ergänzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
 - `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
 - Bei Arbeiten an Fleisch zusätzlich `fleisch.html` lesen.
+- Bei Arbeiten am Honig-Senf-Lachs zusätzlich `honig-senf-lachs.html` lesen.
 - Bei Arbeiten an Salaten, Gemüse, Soßen oder Finishes zusätzlich `gemuese-salat.html` lesen.
 - Bei Arbeiten an Gemüsefinish-Fresh zusätzlich `finishing-sauce.html` lesen.
 - Bei Arbeiten an Gemüsefinish-Mild zusätzlich `gemuesefinish-mild.html` lesen.
@@ -222,65 +241,62 @@ Das Finish wird nicht mitgegrillt.
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
 - Gemüsefinish-Fresh gilt als bestätigt.
-- Gemüsefinish-Mild und Grillgemüse bleiben bis zur gemeinsamen Kontrolle Arbeitsfassungen.
+- Honig-Senf-Lachs, Gemüsefinish-Mild und Grillgemüse bleiben bis zur gemeinsamen Kontrolle Arbeitsfassungen.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
 
+### Version 2.7.0 – 01.08.2026
+
+- neue Datei `honig-senf-lachs.html` angelegt
+- Honig-Senf-Lachs vom Grill als Arbeitsfassung Version 0.1.0 aufgenommen
+- vollständige Zutaten, Glasur, Ziehzeit und Grillablauf dokumentiert
+- indirekte Grillmethode bei 180–200 °C, Hautseite unten und ohne Wenden festgehalten
+- optionales Nachstreichen nach etwa 8 Minuten ergänzt
+- Warnhinweis zum schnellen Verbrennen von Honig aufgenommen
+- Grillgemüse und Gemüsefinish-Mild als passende Beilagen verlinkt
+- Fischbereich auf `fleisch.html` mit dem neuen Rezept verknüpft
+- geplantes Lachsfilet aus der Planung entfernt
+- Rezeptanzahl auf 4 erhöht
+- Buchversion auf 2.7.0 erhöht
+
 ### Version 2.6.1 – 01.08.2026
 
 - Zubereitung von Gemüsefinish-Mild an die Abfolge von Gemüsefinish-Fresh angeglichen
-- Schritte „Finish anrühren“, „Gemüse fertig grillen“, „Heiß vermengen“, „Schonend mischen“ und „Kurz ziehen lassen“ übernommen
-- Kim-Tipp zum Nicht-Mitgrillen entsprechend angepasst
 - Rezeptversion Gemüsefinish-Mild auf 0.1.1 erhöht
-- Buchversion auf 2.6.1 erhöht
 
 ### Version 2.6.0 – 01.08.2026
 
-- neue Datei `gemuesefinish-mild.html` angelegt
-- neues Rezept „Gemüsefinish-Mild“ als Arbeitsfassung Version 0.1.0 aufgenommen
-- Zutaten übernommen: 2 EL mildes Olivenöl, 1 TL Salz, Pfeffer, 1 TL Knoblauchpulver oder 2 kleine Knoblauchzehen und 1 TL Zitronensaft
-- optional wenig Thymian oder Rosmarin ergänzt
-- erste Zubereitungsfassung dokumentiert
-- Rezeptkarte unter „Soßen & Finishes“ ergänzt
-- gegenseitige Navigation zwischen Gemüsefinish-Fresh und Gemüsefinish-Mild ergänzt
-- Rezeptanzahl auf 3 erhöht
-- Buchversion auf 2.6.0 erhöht
+- Gemüsefinish-Mild als zweite Finish-Rezeptseite angelegt
 
 ### Version 2.5.2 – 01.08.2026
 
-- Gemüsefinish-Fresh auf Rezeptversion 1.0.2 erhöht
-- mildes Olivenöl von 4 EL auf 2 EL reduziert
-- Knoblauch auf 2 kleine, frisch gepresste Zehen geändert
-- optionale Zitronenschale sowie Thymian oder Rosmarin auf jeweils ¼ TL reduziert
+- Zutatenverhältnis von Gemüsefinish-Fresh angepasst
 
 ### Version 2.5.1 – 01.08.2026
 
-- farbige Status- und Informations-Pills aus den Rezeptkarten auf `gemuese-salat.html` entfernt
-- dauerhafte Gestaltungsregel in `00_Meta-Kim.md` ergänzt
+- farbige Status- und Informations-Pills aus den Rezeptkarten entfernt
 
 ### Version 2.5.0 – 01.08.2026
 
 - Hauptbereich „Gemüse & Salat“ in „Salate & Beilagen“ umbenannt
 - Rubriken „Salate & Gemüse“ und „Soßen & Finishes“ angelegt
-- Grillgemüse unter „Salate & Gemüse“ einsortiert
-- Grillgemüse-Finish in „Gemüsefinish-Fresh“ umbenannt
 
 ### Version 2.4.1 – 01.08.2026
 
-- runden Home-Button mit Haus-Symbol auf den Unter- und Rezeptseiten ergänzt
+- runden Home-Button auf den Unter- und Rezeptseiten ergänzt
 
 ### Version 2.4.0 – 31.07.2026
 
-- neue Datei `grundlagen.html` mit Grillzonen und Kerntemperaturtabelle angelegt
+- neue Grundlagen-Seite angelegt
 
 ### Version 2.3.0 – 31.07.2026
 
-- neue Datei `vegan.html` als Platzhalter angelegt
+- neue vegane Platzhalterseite angelegt
 
 ### Version 2.2.0 – 27.07.2026
 
-- Übersichtsseite für Gemüse & Salat sowie getrennte Rezeptseiten für Grillgemüse und Finish ergänzt
+- Übersichtsseite für Gemüse & Salat sowie getrennte Rezeptseiten ergänzt
 
 ### Version 2.1.0 – 26.07.2026
 
