@@ -52,9 +52,21 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 Aktuelle Hauptbereiche:
 
 1. Fleisch
-2. Gemüse & Salat
+2. Salate & Beilagen
 3. Vegan
 4. Grundlagen
+
+Der Hauptbereich **Salate & Beilagen** verwendet derzeit weiterhin die bestehende Datei `gemuese-salat.html`, damit vorhandene Links stabil bleiben.
+
+Rubriken innerhalb von **Salate & Beilagen**:
+
+1. Salate & Gemüse
+2. Soßen & Finishes
+
+Zuordnung der vorhandenen Rezepte:
+
+- Grillgemüse → Salate & Gemüse
+- Gemüsefinish-Fresh → Soßen & Finishes
 
 Weitere Bereiche wie Suche, Favoriten, Einkaufsliste oder Projektinfos können später ergänzt werden.
 
