@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.4.1  
+**Buchversion:** 2.5.0  
 **Letzte Aktualisierung:** 01.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -11,11 +11,11 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
-- `gemuese-salat.html` – Übersichtsseite für Gemüse, Salate und Finishes
+- `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
 - `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
-- `finishing-sauce.html` – eigene Rezeptseite für das Grillgemüse-Finish
+- `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
 - `kochbuch.html` – Übergangsseite für die frühere Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
@@ -41,7 +41,7 @@ Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 - sehr großer Hauptüberschrift
 - lokaler Apple-/Systemtypografie
 - Hamburger-Menü
-- direkter Navigation zu Fleisch, Gemüse & Salat, Vegan und Grundlagen
+- direkter Navigation zu Fleisch, Salate & Beilagen, Vegan und Grundlagen
 - drei großen Kategoriekarten
 - zwei zusätzlichen Schnellzugriffen
 - responsiver Darstellung für Desktop, Tablet und Smartphone
@@ -79,16 +79,23 @@ Geplante Rezepte:
 - Schweinenackensteak mariniert
 - Lachsfilet
 
-### Gemüse & Salat
+### Salate & Beilagen
 
 Eigene Übersichtsseite: `gemuese-salat.html`
 
+Der Dateiname bleibt vorerst bestehen, damit vorhandene Links stabil bleiben.
+
+Rubriken:
+
+- **Salate & Gemüse**
+- **Soßen & Finishes**
+
 Vorhandene Rezepte:
 
-- Grillgemüse – Arbeitsfassung, Version 0.9.1, eigene Seite `grillgemuese.html`
-- Finishing-Sauce für Grillgemüse – bestätigt, Version 1.0.0, eigene Seite `finishing-sauce.html`
+- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.2, eigene Seite `grillgemuese.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.1, eigene Seite `finishing-sauce.html`
 
-Zusätzlich ist der spätere Bereich **Salate** als geplant markiert.
+Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
 ### Vegan
 
@@ -114,20 +121,25 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 
 ## Rezepte
 
-### Finishing-Sauce für Grillgemüse
+### Gemüsefinish-Fresh
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.0
+- Version: 1.0.1
 - Status: bestätigt
+- Rubrik: Soßen & Finishes
 - Passt zu: Hähnchen, Lachs, Steak
+- Frühere Bezeichnung: Grillgemüse-Finish
+
+Die Rezept-ID und der Dateiname bleiben aus Gründen stabiler Verlinkung unverändert.
 
 ### Grillgemüse
 
 - ID: `grillgemuese-gasgrill`
 - Seite: `grillgemuese.html`
-- Version: 0.9.1
+- Version: 0.9.2
 - Status: Arbeitsfassung
+- Rubrik: Salate & Gemüse
 - Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
 
 ## Erledigt
@@ -139,42 +151,59 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 - Apple-inspirierte Startseite als `index.html` umgesetzt
 - Hamburger-Menü und responsive Navigation umgesetzt
 - eigene Fleisch-Übersichtsseite als `fleisch.html` angelegt
-- eigene Gemüse-&-Salat-Übersichtsseite als `gemuese-salat.html` angelegt
 - eigene vegane Übersichtsseite als `vegan.html` angelegt
 - Grillgemüse als eigene Rezeptseite `grillgemuese.html` angelegt
-- Finishing-Sauce als eigene Rezeptseite `finishing-sauce.html` angelegt
+- eigenes Rezept für das Finish als `finishing-sauce.html` angelegt
 - eigene Grundlagen-Seite als `grundlagen.html` angelegt
-- runden Home-Button auf Fleisch, Gemüse & Salat, Vegan, Grundlagen und beiden Rezeptseiten ergänzt
-- Home-Button direkt rechts neben dem Hamburger-Menü positioniert
-- mobile Positionierung und zugängliche Beschriftung ergänzt
-- Buchversion auf 2.4.1 erhöht
+- runden Home-Button auf den Unter- und Rezeptseiten ergänzt
+- Bereich Gemüse & Salat in Salate & Beilagen umbenannt
+- Rubriken Salate & Gemüse sowie Soßen & Finishes angelegt
+- Grillgemüse der Rubrik Salate & Gemüse zugeordnet
+- Grillgemüse-Finish in Gemüsefinish-Fresh umbenannt
+- Gemüsefinish-Fresh der Rubrik Soßen & Finishes zugeordnet
+- Hauptnavigation und Hamburger-Menüs angepasst
+- Buchversion auf 2.5.0 erhöht
 
 ## Offene Aufgaben
 
 1. Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.
 2. Vegane Rezepte schrittweise ergänzen.
-3. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-4. Übergangsseite `kochbuch.html` später reduzieren oder auflösen, sobald alle Inhalte eigene Seiten besitzen.
-5. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-6. Eigene Fotos ergänzen.
+3. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
+4. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
+5. Übergangsseite `kochbuch.html` später reduzieren oder auflösen, sobald alle Inhalte eigene Seiten besitzen.
+6. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
+7. Eigene Fotos ergänzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
 - `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
 - Bei Arbeiten an Fleisch zusätzlich `fleisch.html` lesen.
-- Bei Arbeiten an Gemüse oder Salat zusätzlich `gemuese-salat.html` lesen.
+- Bei Arbeiten an Salaten, Gemüse, Soßen oder Finishes zusätzlich `gemuese-salat.html` lesen.
 - Bei Arbeiten an veganen Inhalten zusätzlich `vegan.html` lesen.
 - Bei Arbeiten an Grillwissen oder Temperaturen zusätzlich `grundlagen.html` lesen.
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Die Startseite enthält bewusst keinen Home-Button, da sie bereits das Ziel dieses Buttons ist.
 - Die neuen Unter- und Rezeptseiten besitzen den runden Home-Button im Kopfbereich.
 - Die vegane Seite enthält derzeit bewusst nur einen Platzhalter.
-- Die Finishing-Sauce gilt als bestätigt.
+- Gemüsefinish-Fresh gilt als bestätigt.
 - Das Grillgemüse bleibt bis zur gemeinsamen Kontrolle eine Arbeitsfassung.
 - Die Gestaltung nutzt ausschließlich lokale Systemschriften und Inline-SVG-Symbole.
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+
+### Version 2.5.0 – 01.08.2026
+
+- Hauptbereich „Gemüse & Salat“ in „Salate & Beilagen“ umbenannt
+- bestehende Datei `gemuese-salat.html` aus Gründen stabiler Links beibehalten
+- Rubriken „Salate & Gemüse“ und „Soßen & Finishes“ angelegt
+- Grillgemüse unter „Salate & Gemüse“ einsortiert
+- Hinweis auf spätere Nudel-, Kartoffel- und weitere Beilagensalate ergänzt
+- Grillgemüse-Finish in „Gemüsefinish-Fresh“ umbenannt
+- Gemüsefinish-Fresh unter „Soßen & Finishes“ einsortiert
+- Rezeptversion Grillgemüse auf 0.9.2 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.1 erhöht
+- Startseite, Breadcrumbs, Rücklinks und Hamburger-Menüs angepasst
 
 ### Version 2.4.1 – 01.08.2026
 
@@ -258,16 +287,3 @@ Die Seite verwendet den gleichen Apple-inspirierten Stil wie die Haupt- und Kate
 - sichtbare Button-Navigation entfernt
 - Kerntemperatur- und Garpunkttabelle ergänzt
 - separate Meta- und Projektstatusdateien angelegt
-
-### Version 1.2.0 – 26.07.2026
-
-- Dashboard und Grundlagenkapitel ergänzt
-- Arbeitsfassung Grillgemüse aufgenommen
-
-### Version 1.1.0 – 26.07.2026
-
-- Meta-Kim und dynamischen Projektstatus erweitert
-
-### Version 1.0.0 – 26.07.2026
-
-- Kochbuch im GitHub-Repository angelegt
