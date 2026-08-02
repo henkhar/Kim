@@ -1,0 +1,344 @@
+name: Apply shopping lists to all recipes
+
+on:
+  push:
+    paths:
+      - .github/workflows/apply-shopping-list-all-recipes.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extend shopping lists to every recipe
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          def load(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def save(path, text):
+              Path(path).write_text(text, encoding='utf-8')
+
+          def update_json_script(text, script_id, updater):
+              pattern = rf'(<script id="{re.escape(script_id)}" type="application/json">\n)(.*?)(\n</script>)'
+              match = re.search(pattern, text, flags=re.S)
+              if not match:
+                  raise RuntimeError(f'JSON-Script {script_id} nicht gefunden')
+              data = json.loads(match.group(2))
+              updater(data)
+              replacement = match.group(1) + json.dumps(data, ensure_ascii=False, indent=2) + match.group(3)
+              return text[:match.start()] + replacement + text[match.end():]
+
+          shopping_css = (
+              '.shopping-panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,56px);align-items:end}'
+              '.shopping-copy h2{margin-bottom:14px}.shopping-copy p:last-child{margin:0;color:var(--muted);line-height:1.55}'
+              '.shopping-eyebrow{margin:0 0 10px;color:var(--accent);font-size:.76rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase}'
+              '.shopping-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}'
+              '.shopping-field{display:grid;gap:7px;font-weight:650}.shopping-field span{font-size:.86rem}'
+              '.shopping-field input,.shopping-field select{width:100%;height:48px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font:inherit;font-size:1rem}'
+              '.shopping-field input:focus,.shopping-field select:focus{outline:3px solid #bc4b2d22;border-color:var(--accent)}'
+              '.shopping-option{min-height:48px;display:flex;align-items:center;gap:10px;padding:0 4px;color:var(--muted);font-size:.92rem;line-height:1.35}'
+              '.shopping-option.wide{grid-column:1/-1}.shopping-option input{width:20px;height:20px;accent-color:var(--accent)}'
+              '.shopping-button{grid-column:1/-1;min-height:50px;border:0;border-radius:15px;background:var(--ink);color:#fff;font:inherit;font-weight:700;cursor:pointer;transition:transform .18s ease,opacity .18s ease}'
+              '.shopping-button:hover,.shopping-button:focus-visible{opacity:.88;outline:none}.shopping-button:active{transform:scale(.99)}'
+          )
+
+          def add_shopping_panel(path, panel_html, old_version, new_version, detail_old, detail_new):
+              text = load(path)
+              if '.shopping-panel{' not in text:
+                  text = text.replace('.panel{', shopping_css + '.panel{', 1)
+                  text = text.replace('@media(max-width:760px){', '@media(max-width:760px){.shopping-panel{grid-template-columns:1fr}.shopping-form{grid-template-columns:1fr}.shopping-button{width:100%}', 1)
+              if 'class="panel shopping-panel"' not in text:
+                  marker = '<section class="panel"><div class="recipe-grid">'
+                  text = text.replace(marker, panel_html + '\n' + marker, 1)
+              text = text.replace(detail_old, detail_new)
+              text = text.replace(f'Version {old_version}', f'Version {new_version}')
+              save(path, text)
+
+          grill_panel = '''<section class="panel shopping-panel" aria-labelledby="shopping-title">
+          <div class="shopping-copy"><p class="shopping-eyebrow">Einkauf planen</p><h2 id="shopping-title">Einkaufsliste erstellen</h2><p>Personenzahl auswählen und eine eigene Liste mit den berechneten Mengen zum Abhaken oder Drucken öffnen.</p></div>
+          <form class="shopping-form" action="einkaufsliste.html" method="get">
+          <input type="hidden" name="recipe" value="grillgemuese-gasgrill"><input type="hidden" name="optional" value="0">
+          <label class="shopping-field" for="shopping-servings"><span>Für wie viele Personen?</span><input id="shopping-servings" name="servings" type="number" min="1" max="20" step="1" value="4" inputmode="numeric" required></label>
+          <button class="shopping-button" type="submit">Einkaufsliste erstellen</button>
+          </form>
+          </section>'''
+
+          fresh_panel = '''<section class="panel shopping-panel" aria-labelledby="shopping-title">
+          <div class="shopping-copy"><p class="shopping-eyebrow">Einkauf planen</p><h2 id="shopping-title">Einkaufsliste erstellen</h2><p>Personenzahl auswählen, optionale Aromaten festlegen und die berechnete Zutatenliste öffnen.</p></div>
+          <form class="shopping-form" action="einkaufsliste.html" method="get">
+          <input type="hidden" name="recipe" value="finishing-sauce-grillgemuese-haehnchen"><input type="hidden" name="optional" value="0">
+          <label class="shopping-field" for="shopping-servings"><span>Für wie viele Personen?</span><input id="shopping-servings" name="servings" type="number" min="1" max="20" step="1" value="4" inputmode="numeric" required></label>
+          <label class="shopping-option"><input type="checkbox" name="optional" value="1" checked>Optionale Aromaten aufnehmen</label>
+          <button class="shopping-button" type="submit">Einkaufsliste erstellen</button>
+          </form>
+          </section>'''
+
+          mild_panel = '''<section class="panel shopping-panel" aria-labelledby="shopping-title">
+          <div class="shopping-copy"><p class="shopping-eyebrow">Einkauf planen</p><h2 id="shopping-title">Einkaufsliste erstellen</h2><p>Personenzahl, Knoblauchvariante und optionale Kräuter festlegen und anschließend die berechnete Liste öffnen.</p></div>
+          <form class="shopping-form" action="einkaufsliste.html" method="get">
+          <input type="hidden" name="recipe" value="gemuesefinish-mild"><input type="hidden" name="optional" value="0">
+          <label class="shopping-field" for="shopping-servings"><span>Für wie viele Personen?</span><input id="shopping-servings" name="servings" type="number" min="1" max="20" step="1" value="4" inputmode="numeric" required></label>
+          <label class="shopping-field" for="shopping-variant"><span>Knoblauch</span><select id="shopping-variant" name="variant"><option value="powder">Knoblauchpulver</option><option value="fresh">Frische Knoblauchzehen</option></select></label>
+          <label class="shopping-option wide"><input type="checkbox" name="optional" value="1" checked>Optionale Kräuter aufnehmen</label>
+          <button class="shopping-button" type="submit">Einkaufsliste erstellen</button>
+          </form>
+          </section>'''
+
+          add_shopping_panel(
+              'grillgemuese.html', grill_panel, '0.9.3', '0.9.4',
+              'Version 0.9.3 · Rezeptbild im bestätigten 16:9-Hero-Stil ergänzt.',
+              'Version 0.9.4 · mengenberechnete Einkaufsliste für dieses Einzelrezept ergänzt.'
+          )
+          add_shopping_panel(
+              'finishing-sauce.html', fresh_panel, '1.0.3', '1.0.4',
+              'Version 1.0.3 · Rezeptbild im bestätigten 16:9-Hero-Stil ergänzt.',
+              'Version 1.0.4 · mengenberechnete Einkaufsliste mit optionalen Aromaten ergänzt.'
+          )
+          add_shopping_panel(
+              'gemuesefinish-mild.html', mild_panel, '0.1.2', '0.1.3',
+              'Version 0.1.2 · Rezeptbild im bestätigten 16:9-Hero-Stil ergänzt.',
+              'Version 0.1.3 · Einkaufsliste mit wählbarer Knoblauchvariante ergänzt.'
+          )
+
+          # Gemeinsame Einkaufsliste um alle vier Einzelrezepte erweitern.
+          path = 'einkaufsliste.html'
+          text = load(path)
+          text = text.replace('<p class="eyebrow">Pilotfunktion</p>', '<p class="eyebrow">Einkaufsfunktion</p>')
+          text = text.replace('Die Mengen werden automatisch auf die gewählte Personenzahl umgerechnet. Abgehakte Artikel bleiben auf diesem Gerät gespeichert.', 'Die Mengen werden für das ausgewählte Einzelrezept automatisch auf die Personenzahl umgerechnet. Abgehakte Artikel bleiben auf diesem Gerät gespeichert.')
+          text = text.replace('.recalculate{display:grid;grid-template-columns:130px minmax(190px,1fr);gap:12px;align-items:end}', '.recalculate{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end}')
+          text = text.replace('.field input[type=number]{', '.field input[type=number],.field select{')
+          text = text.replace('.option{min-height:46px;', '.option{grid-column:1/-1;min-height:46px;')
+          text = text.replace('.option input{', '.variant-field[hidden],.option[hidden]{display:none!important}.option input{')
+          old_form = '<form class="recalculate" method="get"><input type="hidden" name="recipe" value="honig-senf-lachs-grill"><label class="field"><span>Personen</span><input id="servings" name="servings" type="number" min="1" max="20" step="1" value="4" required></label><input type="hidden" name="optional" value="0"><label class="option"><input id="optional" type="checkbox" name="optional" value="1">Optionale Zutaten aufnehmen</label><button type="submit">Neu berechnen</button></form>'
+          new_form = '<form class="recalculate" id="recalculate-form" method="get"><input id="recipe-input" type="hidden" name="recipe" value="honig-senf-lachs-grill"><label class="field"><span>Personen</span><input id="servings" name="servings" type="number" min="1" max="20" step="1" value="4" required></label><label class="field variant-field" id="variant-field" hidden><span id="variant-label">Variante</span><select id="variant" name="variant"></select></label><input type="hidden" name="optional" value="0"><label class="option" id="optional-row"><input id="optional" type="checkbox" name="optional" value="1">Optionale Zutaten aufnehmen</label><button type="submit">Neu berechnen</button></form>'
+          text = text.replace(old_form, new_form)
+          text = text.replace('<a class="back-link" href="honig-senf-lachs.html">← Zurück zum Honig-Senf-Lachs</a>', '<a class="back-link" id="recipe-back-link" href="honig-senf-lachs.html">← Zurück zum Honig-Senf-Lachs</a>')
+          text = text.replace('Chefkoch Kim · Einkaufsliste · Version 2.9.0', 'Chefkoch Kim · Einkaufsliste · Version 2.10.0')
+          text = text.replace('<a href="honig-senf-lachs.html">Honig-Senf-Lachs</a><a href="fleisch.html">Fleisch</a>', '<a href="honig-senf-lachs.html">Honig-Senf-Lachs</a><a href="grillgemuese.html">Grillgemüse</a><a href="finishing-sauce.html">Gemüsefinish-Fresh</a><a href="gemuesefinish-mild.html">Gemüsefinish-Mild</a><a href="fleisch.html">Fleisch</a>')
+
+          new_script = r'''<script>
+          const recipes={
+            'honig-senf-lachs-grill':{title:'Honig-Senf-Lachs vom Grill',baseServings:4,page:'honig-senf-lachs.html',backLabel:'Honig-Senf-Lachs',ingredients:[
+              {id:'lachs',name:'Lachsfilets mit Haut',amount:4,unit:'Stück',whole:true},
+              {id:'grober-senf',name:'Grober Senf',amount:1,unit:'EL'},
+              {id:'mittelscharfer-senf',name:'Mittelscharfer Senf',amount:1,unit:'EL'},
+              {id:'honig',name:'Honig',amount:1,unit:'EL'},
+              {id:'olivenoel',name:'Olivenöl',amount:1,unit:'EL'},
+              {id:'zitronensaft',name:'Zitronensaft',amount:1,unit:'TL'},
+              {id:'salz-pfeffer',name:'Salz und Pfeffer',note:'nach Bedarf'},
+              {id:'dill',name:'Dill',note:'sehr empfehlenswert',optional:true}
+            ]},
+            'grillgemuese-gasgrill':{title:'Grillgemüse',baseServings:4,page:'grillgemuese.html',backLabel:'Grillgemüse',ingredients:[
+              {id:'zucchini',name:'Zucchini',amount:2,unit:'Stück',whole:true},
+              {id:'rote-paprika',name:'Rote Paprika',amount:2,unit:'Stück',whole:true},
+              {id:'gelbe-paprika',name:'Gelbe Paprika',amount:1,unit:'Stück',whole:true},
+              {id:'aubergine',name:'Aubergine',amount:1,unit:'Stück',whole:true},
+              {id:'champignons',name:'Champignons',amount:400,unit:'g'},
+              {id:'rote-zwiebeln',name:'Rote Zwiebeln',amount:2,unit:'Stück',whole:true},
+              {id:'fruehlingszwiebeln',name:'Frühlingszwiebeln',amount:1,unit:'Bund'},
+              {id:'rapsoel',name:'Rapsöl',amount:3,unit:'EL'},
+              {id:'salz-pfeffer',name:'Salz und Pfeffer',note:'nach Bedarf'},
+              {id:'finish-fresh',name:'Gemüsefinish-Fresh',amount:1,unit:'Portion'}
+            ]},
+            'finishing-sauce-grillgemuese-haehnchen':{title:'Gemüsefinish-Fresh',baseServings:4,page:'finishing-sauce.html',backLabel:'Gemüsefinish-Fresh',ingredients:[
+              {id:'mildes-olivenoel',name:'Mildes Olivenöl',amount:2,unit:'EL'},
+              {id:'frischer-zitronensaft',name:'Frischer Zitronensaft',amount:1,unit:'EL'},
+              {id:'honig',name:'Honig',amount:1,unit:'TL'},
+              {id:'knoblauch',name:'Knoblauch, frisch gepresst',amount:2,unit:'kleine Zehen',whole:true},
+              {id:'petersilie',name:'Petersilie, fein gehackt',amountMin:1,amountMax:2,unit:'EL'},
+              {id:'salz',name:'Salz',amount:0.5,unit:'TL'},
+              {id:'schwarzer-pfeffer',name:'Schwarzer Pfeffer',note:'frisch gemahlen'},
+              {id:'zitronenschale',name:'Fein abgeriebene Zitronenschale',amount:0.25,unit:'TL',optional:true},
+              {id:'kraeuter',name:'Thymian oder Rosmarin, fein gehackt',amount:0.25,unit:'TL',optional:true}
+            ]},
+            'gemuesefinish-mild':{title:'Gemüsefinish-Mild',baseServings:4,page:'gemuesefinish-mild.html',backLabel:'Gemüsefinish-Mild',variant:{label:'Knoblauch',default:'powder',options:[{value:'powder',label:'Knoblauchpulver'},{value:'fresh',label:'Frische Knoblauchzehen'}]},ingredients:[
+              {id:'mildes-olivenoel',name:'Mildes Olivenöl',amount:2,unit:'EL'},
+              {id:'salz',name:'Salz',amount:1,unit:'TL'},
+              {id:'pfeffer',name:'Pfeffer',note:'nach Geschmack'},
+              {id:'knoblauchpulver',name:'Knoblauchpulver',amount:1,unit:'TL',variant:'powder'},
+              {id:'knoblauchzehen',name:'Knoblauchzehen',amount:2,unit:'kleine Zehen',whole:true,variant:'fresh'},
+              {id:'zitronensaft',name:'Zitronensaft',amount:1,unit:'TL'},
+              {id:'kraeuter',name:'Thymian oder Rosmarin',note:'wenig, sparsam',optional:true}
+            ]}
+          };
+          const params=new URLSearchParams(location.search);
+          const requestedRecipe=params.get('recipe')||'honig-senf-lachs-grill';
+          const recipeId=recipes[requestedRecipe]?requestedRecipe:'honig-senf-lachs-grill';
+          const recipe=recipes[recipeId];
+          const rawServings=Number.parseInt(params.get('servings')||String(recipe.baseServings),10);
+          const servings=Number.isFinite(rawServings)?Math.min(20,Math.max(1,rawServings)):recipe.baseServings;
+          const includeOptional=params.getAll('optional').includes('1');
+          const allowedVariants=recipe.variant?recipe.variant.options.map(option=>option.value):[];
+          const requestedVariant=params.get('variant');
+          const variant=recipe.variant&&allowedVariants.includes(requestedVariant)?requestedVariant:(recipe.variant?.default||'');
+          const numberFormat=new Intl.NumberFormat('de-DE',{maximumFractionDigits:2});
+          const title=document.getElementById('recipe-title');
+          const meta=document.getElementById('list-meta');
+          const content=document.getElementById('list-content');
+          const servingsInput=document.getElementById('servings');
+          const optionalInput=document.getElementById('optional');
+          const optionalRow=document.getElementById('optional-row');
+          const recipeInput=document.getElementById('recipe-input');
+          const variantField=document.getElementById('variant-field');
+          const variantLabel=document.getElementById('variant-label');
+          const variantInput=document.getElementById('variant');
+          const backLink=document.getElementById('recipe-back-link');
+          servingsInput.value=String(servings);
+          optionalInput.checked=includeOptional;
+          recipeInput.value=recipeId;
+          const hasOptional=recipe.ingredients.some(item=>item.optional);
+          optionalRow.hidden=!hasOptional;
+          optionalInput.disabled=!hasOptional;
+          if(recipe.variant){
+            variantField.hidden=false;
+            variantInput.disabled=false;
+            variantLabel.textContent=recipe.variant.label;
+            variantInput.innerHTML=recipe.variant.options.map(option=>`<option value="${option.value}">${option.label}</option>`).join('');
+            variantInput.value=variant;
+          }else{
+            variantField.hidden=true;
+            variantInput.disabled=true;
+          }
+          backLink.href=recipe.page;
+          backLink.textContent=`← Zurück zu ${recipe.backLabel}`;
+          document.title=`Einkaufsliste · ${recipe.title} · Haralds Grillkochbuch`;
+          function scaledValue(value,whole=false){const scaled=value*(servings/recipe.baseServings);return whole?Math.ceil(scaled):Math.round(scaled*100)/100}
+          function amountText(item){
+            if(item.amountMin!=null&&item.amountMax!=null)return `${numberFormat.format(scaledValue(item.amountMin))}–${numberFormat.format(scaledValue(item.amountMax))} ${item.unit}`;
+            if(item.amount==null)return item.note||'';
+            return `${numberFormat.format(scaledValue(item.amount,item.whole))} ${item.unit}`;
+          }
+          function storageKey(){return `chefkoch-kim:einkaufsliste:${recipeId}:${servings}:${includeOptional?'mit':'ohne'}-optional:${variant||'standard'}`}
+          function readState(){try{return JSON.parse(localStorage.getItem(storageKey())||'{}')}catch{return {}}}
+          function saveState(state){localStorage.setItem(storageKey(),JSON.stringify(state))}
+          function activeItem(item){return !item.variant||item.variant===variant}
+          function itemRow(item,state){const checked=state[item.id]?' checked':'';return `<label class="shopping-item"><input type="checkbox" data-item="${item.id}"${checked}><span class="name">${item.name}</span><span class="amount">${amountText(item)}</span></label>`}
+          function render(){
+            title.textContent=recipe.title;
+            const variantText=recipe.variant?` · ${recipe.variant.options.find(option=>option.value===variant).label}`:'';
+            meta.textContent=`${servings} ${servings===1?'Person':'Personen'}${includeOptional&&hasOptional?' · inklusive optionaler Zutaten':''}${variantText}`;
+            const state=readState();
+            const regular=recipe.ingredients.filter(item=>activeItem(item)&&!item.optional);
+            const optional=includeOptional?recipe.ingredients.filter(item=>activeItem(item)&&item.optional):[];
+            let html='<div class="shopping-list">';
+            for(const item of regular)html+=itemRow(item,state);
+            html+='</div>';
+            if(optional.length){html+='<p class="optional-heading">Optional</p><div class="shopping-list">';for(const item of optional)html+=itemRow(item,state);html+='</div>'}
+            content.innerHTML=html;
+            content.querySelectorAll('input[type=checkbox]').forEach(box=>box.addEventListener('change',()=>{const next=readState();next[box.dataset.item]=box.checked;saveState(next)}));
+          }
+          document.getElementById('print-button').addEventListener('click',()=>window.print());
+          document.getElementById('reset-button').addEventListener('click',()=>{localStorage.removeItem(storageKey());render()});
+          render();
+          const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open))}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});
+          </script>'''
+          text = re.sub(r'<script>\nconst recipes=.*?</script>', new_script, text, count=1, flags=re.S)
+          save(path, text)
+
+          # Startseite und Projektzustand synchronisieren.
+          path = 'index.html'
+          text = load(path)
+          def update_meta(data):
+              rule = 'Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste; sichtbare Zutaten, optionale Zutaten und Alternativen müssen mit der Berechnungslogik übereinstimmen.'
+              if rule not in data['websiteRules']:
+                  data['websiteRules'].append(rule)
+          text = update_json_script(text, 'chefkoch-kim-meta', update_meta)
+          def update_state(data):
+              data['bookVersion']='2.10.0'
+              for page in data['pages']:
+                  if page['path'] in {'honig-senf-lachs.html','grillgemuese.html','finishing-sauce.html','gemuesefinish-mild.html'}:
+                      page['status']=page['status'].replace('Einkaufsliste-Pilot','Einkaufsliste').replace(' mit Rezeptbild und Thumbnail',' mit Rezeptbild, Thumbnail und Einkaufsliste').replace(' mit Rezeptbild und Thumbnail',' mit Rezeptbild, Thumbnail und Einkaufsliste')
+                      if 'Einkaufsliste' not in page['status']:
+                          page['status'] += ' und Einkaufsliste'
+                  if page['path']=='einkaufsliste.html':
+                      page['status']='aktiv für alle vier Einzelrezepte'
+              versions={'finishing-sauce-grillgemuese-haehnchen':'1.0.4','gemuesefinish-mild':'0.1.3','grillgemuese-gasgrill':'0.9.4'}
+              for recipe in data['recipes']:
+                  if recipe['id'] in versions:
+                      recipe['version']=versions[recipe['id']]
+              data['openTasks']=[task for task in data['openTasks'] if 'Einkaufsliste nach erfolgreichem Lachs-Pilot' not in task and 'Einkaufsliste nach erfolgreichem Pilot' not in task]
+              next_task='Mehrere Rezepte zu einer gemeinsamen Einkaufsliste zusammenführen und gleiche Zutaten addieren.'
+              if next_task not in data['openTasks']:
+                  data['openTasks'].append(next_task)
+              entry={'date':'2026-08-02','version':'2.10.0','change':'Mengenberechnete Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert; optionale Zutaten, Mengenbereiche und die Knoblauchalternative des milden Finishes werden berücksichtigt.'}
+              if not any(item.get('version')=='2.10.0' for item in data['history']):
+                  data['history'].append(entry)
+          text = update_json_script(text, 'chefkoch-kim-state', update_state)
+          text = text.replace('Chefkoch Kim · Version 2.9.0', 'Chefkoch Kim · Version 2.10.0')
+          save(path, text)
+
+          # Stabile Regel in Meta dokumentieren.
+          path = '00_Meta-Kim.md'
+          text = load(path)
+          rule = '- Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste. Sichtbare Zutaten, optionale Zutaten, Mengenbereiche und Alternativen müssen mit der Berechnungslogik übereinstimmen.'
+          if rule not in text:
+              marker = '- Übersichtsseiten dürfen die optimierten JPEGs als 16:9-Thumbnails mit `loading="lazy"` wiederverwenden. Bei deutlich wachsender Galerie werden zusätzlich kleinere Thumbnail-Dateien erzeugt.\n'
+              text = text.replace(marker, marker + rule + '\n')
+          save(path, text)
+
+          # Projektstatus aktualisieren.
+          path = '00_Projektstatus.md'
+          text = load(path)
+          text = text.replace('**Buchversion:** 2.9.0', '**Buchversion:** 2.10.0')
+          text = text.replace('`einkaufsliste.html` – Pilotseite für mengenberechnete Einkaufslisten', '`einkaufsliste.html` – mengenberechnete Einkaufsliste für alle Einzelrezepte')
+          text = text.replace('- 1 Einkaufsliste-Pilotseite mit Mengenberechnung und Druckansicht', '- 1 Einkaufsliste für alle 4 Einzelrezepte mit Mengenberechnung und Druckansicht')
+          new_section = '''## Einkaufsliste
+
+Die mengenberechnete Einkaufsliste ist für alle vier vorhandenen Einzelrezepte umgesetzt.
+
+- Button und Personenauswahl direkt auf jeder Rezeptseite
+- automatische Umrechnung ausgehend von jeweils 4 Personen
+- optionale Zutaten können ein- oder ausgeschlossen werden
+- Mengenbereiche wie 1–2 EL Petersilie werden proportional skaliert
+- Gemüsefinish-Mild bietet die Wahl zwischen Knoblauchpulver und frischen Knoblauchzehen
+- eigene Seite `einkaufsliste.html` für alle Einzelrezepte
+- Zutaten lassen sich abhaken; Häkchen werden lokal im Browser gespeichert
+- Druckansicht blendet Bedienelemente und bereits abgehakte Zutaten aus
+- nächster Ausbauschritt: mehrere Rezepte zu einer gemeinsamen Liste verbinden und gleiche Zutaten addieren
+
+'''
+          text = re.sub(r'## Einkaufsliste – Pilot\n.*?(?=## Kategorien und Hauptbereiche)', new_section, text, count=1, flags=re.S)
+          text = text.replace('Version 0.9.3, Seite `grillgemuese.html`', 'Version 0.9.4, Seite `grillgemuese.html`')
+          text = text.replace('Version 1.0.3, Seite `finishing-sauce.html`', 'Version 1.0.4, Seite `finishing-sauce.html`')
+          text = text.replace('Version 0.1.2, Seite `gemuesefinish-mild.html`', 'Version 0.1.3, Seite `gemuesefinish-mild.html`')
+          text = text.replace('- Version: 1.0.3', '- Version: 1.0.4')
+          text = text.replace('- Version: 0.1.2', '- Version: 0.1.3')
+          text = text.replace('- Version: 0.9.3', '- Version: 0.9.4')
+          text = text.replace('1. Einkaufsliste nach erfolgreichem Pilot auf weitere Rezepte und später mehrere Rezepte gleichzeitig erweitern.\n\n', '1. Mehrere Rezepte zu einer gemeinsamen Einkaufsliste zusammenführen und gleiche Zutaten addieren.\n\n')
+          completed_marker = '- Buchversion auf 2.9.0 erhöht\n'
+          completed_add = '- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert\n- Mengenbereiche, optionale Zutaten und die Knoblauchalternative von Gemüsefinish-Mild unterstützt\n- Rezeptversion Grillgemüse auf 0.9.4 erhöht\n- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht\n- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht\n- Buchversion auf 2.10.0 erhöht\n'
+          if completed_add not in text:
+              text = text.replace(completed_marker, completed_marker + completed_add)
+          history_marker = '## Änderungshistorie\n'
+          if '### Version 2.10.0' not in text:
+              history = '''### Version 2.10.0 – 02.08.2026
+
+- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
+- alle vier Einzelrezepte verwenden dieselbe Einkaufsliste
+- optionale Zutaten und Mengenbereiche werden berücksichtigt
+- bei Gemüsefinish-Mild kann zwischen Knoblauchpulver und frischen Knoblauchzehen gewählt werden
+- Rezeptversion Grillgemüse auf 0.9.4 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
+- Buchversion auf 2.10.0 erhöht
+
+'''
+              text = text.replace(history_marker, history_marker + history, 1)
+          save(path, text)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "Chefkoch Kim"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html 00_Meta-Kim.md 00_Projektstatus.md grillgemuese.html finishing-sauce.html gemuesefinish-mild.html einkaufsliste.html
+          git commit -m "Einkaufslisten auf alle Einzelrezepte erweitern"
+          git push
