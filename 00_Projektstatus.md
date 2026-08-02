@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.10.0  
+**Buchversion:** 2.11.0  
 **Letzte Aktualisierung:** 02.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -23,6 +23,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
 - `gemuesefinish-mild.html` – eigene Rezeptseite für Gemüsefinish-Mild
 - `einkaufsliste.html` – mengenberechnete Einkaufsliste für alle Einzelrezepte
+- `einkaufsliste-gesamt.html` – gemeinsame Einkaufsliste für mehrere ausgewählte Rezepte
 - `kochbuch.html` – Übergangsseite für die frühere Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
@@ -41,7 +42,8 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 4 eigenständige Rezeptseiten
 - 4 Rezeptseiten mit eingebautem Hero-Bild
 - 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
-- 1 Einkaufsliste für alle 4 Einzelrezepte mit Mengenberechnung und Druckansicht
+- 1 Einzelrezept-Einkaufsliste für alle 4 Rezepte mit Mengenberechnung und Druckansicht
+- 1 gemeinsame Einkaufsliste mit Rezeptauswahl und Zutatenkumulierung
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -53,10 +55,10 @@ Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
 - Hamburger-Menü
 - direkter Navigation zu Fleisch, Salate & Beilagen, Vegan und Grundlagen
 - drei großen Kategoriekarten
-- zwei zusätzlichen Schnellzugriffen
+- drei zusätzlichen Schnellzugriffen
 - responsiver Darstellung für Desktop, Tablet und Smartphone
 
-Alle vier Hauptbereiche verweisen auf eigene Seiten.
+Alle vier Hauptbereiche verweisen auf eigene Seiten. Die gemeinsame Einkaufsliste ist zusätzlich direkt von der Startseite erreichbar.
 
 ## Navigation
 
@@ -91,17 +93,29 @@ Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses
 
 ## Einkaufsliste
 
-Die mengenberechnete Einkaufsliste ist für alle vier vorhandenen Einzelrezepte umgesetzt.
+Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
+
+### Einzelrezept
 
 - Button und Personenauswahl direkt auf jeder Rezeptseite
 - automatische Umrechnung ausgehend von jeweils 4 Personen
-- optionale Zutaten können ein- oder ausgeschlossen werden
-- Mengenbereiche wie 1–2 EL Petersilie werden proportional skaliert
-- Gemüsefinish-Mild bietet die Wahl zwischen Knoblauchpulver und frischen Knoblauchzehen
-- eigene Seite `einkaufsliste.html` für alle Einzelrezepte
+- optionale Zutaten und Varianten werden berücksichtigt
+- eigene Ergebnisdarstellung auf `einkaufsliste.html`
 - Zutaten lassen sich abhaken; Häkchen werden lokal im Browser gespeichert
 - Druckansicht blendet Bedienelemente und bereits abgehakte Zutaten aus
-- nächster Ausbauschritt: mehrere Rezepte zu einer gemeinsamen Liste verbinden und gleiche Zutaten addieren
+
+### Mehrere Rezepte gemeinsam
+
+- eigene Seite `einkaufsliste-gesamt.html`
+- alle vorhandenen Rezepte können einzeln angehakt werden
+- eine gemeinsame Personenzahl gilt für alle ausgewählten Rezepte
+- gleiche Zutaten werden über dauerhafte interne Zutaten-IDs erkannt
+- kompatible Volumeneinheiten werden intern vereinheitlicht und anschließend als EL beziehungsweise TL ausgegeben
+- Mengenbereiche, optionale Zutaten und die Knoblauchvariante des Gemüsefinish-Mild werden berücksichtigt
+- Salz oder Pfeffer ohne feste Menge bleiben als Bedarfshinweis erhalten
+- bei jeder zusammengeführten Zutat werden die zugehörigen Rezepte angezeigt
+- Grillgemüse fügt ein Finish nicht automatisch hinzu; das gewünschte Finish wird separat ausgewählt, damit keine Doppelzählung entsteht
+- Zutaten lassen sich abhaken und die Liste kann gedruckt werden
 
 ## Kategorien und Hauptbereiche
 
@@ -283,10 +297,12 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
 - Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
 - Buchversion auf 2.10.0 erhöht
+- gemeinsame Einkaufsliste mit Auswahl mehrerer Rezepte ergänzt
+- gleiche Zutaten über interne Zutaten-IDs und normierte Einheiten kumuliert
+- Startseite und Hauptmenü mit der neuen Einkaufsliste verknüpft
+- Buchversion auf 2.11.0 erhöht
 
 ## Offene Aufgaben
-
-1. Mehrere Rezepte zu einer gemeinsamen Einkaufsliste zusammenführen und gleiche Zutaten addieren.
 
 1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
 2. Weitere Rezeptbilder im festgelegten 16:9-Hero-Stil ergänzen.
@@ -296,8 +312,9 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 6. Gemüsefinish-Mild gemeinsam testen und bestätigen.
 7. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
 8. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
-9. Später Suche, Filter, PWA, Favoriten und Einkaufsliste prüfen.
-10. Eigene Fotos später bei Bedarf ergänzen oder bestehende Bilder ersetzen.
+9. Später Suche, Filter, PWA und Favoriten prüfen.
+10. Gemeinsame Einkaufsliste später um unterschiedliche Personenzahlen pro Rezept erweitern.
+11. Eigene Fotos später bei Bedarf ergänzen oder bestehende Bilder ersetzen.
 
 ## Verbindliche Hinweise für die nächste Sitzung
 
@@ -309,6 +326,7 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Bei Arbeiten an Gemüsefinish-Mild zusätzlich `gemuesefinish-mild.html` lesen.
 - Bei Arbeiten an veganen Inhalten zusätzlich `vegan.html` lesen.
 - Bei Arbeiten an Grillwissen oder Temperaturen zusätzlich `grundlagen.html` lesen.
+- Bei Änderungen an der gemeinsamen Einkaufsliste zusätzlich `einkaufsliste-gesamt.html` lesen.
 - Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
 - Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
 - Neue Rezeptbilder orientieren sich am bestätigten 16:9-Hero-Stil des Honig-Senf-Lachses.
@@ -318,6 +336,16 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.11.0 – 02.08.2026
+
+- neue Seite `einkaufsliste-gesamt.html` ergänzt
+- Auswahl mehrerer Rezepte mit einer gemeinsamen Personenzahl umgesetzt
+- gleiche Zutaten über dauerhafte interne Zutaten-IDs kumuliert
+- kompatible Volumeneinheiten intern vereinheitlicht und als EL beziehungsweise TL ausgegeben
+- optionale Zutaten, Mengenbereiche und die Knoblauchvariante von Gemüsefinish-Mild berücksichtigt
+- Startseite und Hauptmenü mit der gemeinsamen Einkaufsliste verknüpft
+- Buchversion auf 2.11.0 erhöht
+
 ### Version 2.10.0 – 02.08.2026
 
 - Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
@@ -344,7 +372,6 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
 - Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
 - Buchversion auf 2.10.0 erhöht
-
 
 ### Version 2.8.1 – 02.08.2026
 
