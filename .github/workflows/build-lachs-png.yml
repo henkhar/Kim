@@ -3,7 +3,7 @@ name: Build Lachs PNG
 on:
   push:
     paths:
-      - '.tmp/lachs-image.part*'
+      - '.tmp/lachs-image.ready'
 
 permissions:
   contents: write
@@ -16,23 +16,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Prüfen, ob alle Bildteile vorhanden sind
-        id: parts
+      - name: Originalbild zusammensetzen und Website aktualisieren
         shell: bash
         run: |
-          missing=0
-          for i in 00 01 02 03 04 05; do
-            if [ ! -f ".tmp/lachs-image.part${i}" ]; then
-              missing=1
-            fi
+          for i in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20; do
+            test -f ".tmp/lachs-image.part${i}" || { echo "Bildteil ${i} fehlt"; exit 1; }
           done
-          echo "complete=$((1-missing))" >> "$GITHUB_OUTPUT"
 
-      - name: PNG zusammensetzen und Website aktualisieren
-        if: steps.parts.outputs.complete == '1'
-        shell: bash
-        run: |
-          cat .tmp/lachs-image.part00 .tmp/lachs-image.part01 .tmp/lachs-image.part02 .tmp/lachs-image.part03 .tmp/lachs-image.part04 .tmp/lachs-image.part05 | base64 --decode > assets/honig-senf-lachs.png
+          cat .tmp/lachs-image.part00 .tmp/lachs-image.part01 .tmp/lachs-image.part02 .tmp/lachs-image.part03 .tmp/lachs-image.part04 .tmp/lachs-image.part05 .tmp/lachs-image.part06 .tmp/lachs-image.part07 .tmp/lachs-image.part08 .tmp/lachs-image.part09 .tmp/lachs-image.part10 .tmp/lachs-image.part11 .tmp/lachs-image.part12 .tmp/lachs-image.part13 .tmp/lachs-image.part14 .tmp/lachs-image.part15 .tmp/lachs-image.part16 .tmp/lachs-image.part17 .tmp/lachs-image.part18 .tmp/lachs-image.part19 .tmp/lachs-image.part20 | base64 --decode > assets/honig-senf-lachs.png
 
           python - <<'PY'
           from pathlib import Path
@@ -42,7 +33,7 @@ jobs:
           data = image.read_bytes()
           assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Keine gültige PNG-Signatur'
           width, height = struct.unpack('>II', data[16:24])
-          assert (width, height) == (900, 506), f'Unerwartete Bildgröße: {(width, height)}'
+          assert (width, height) == (720, 405), f'Unerwartete Bildgröße: {(width, height)}'
 
           page = Path('honig-senf-lachs.html')
           text = page.read_text(encoding='utf-8')
@@ -57,8 +48,8 @@ jobs:
           text = text.replace('"lastUpdated": "2026-08-01"', '"lastUpdated": "2026-08-02"')
           text = text.replace('"title":"Honig-Senf-Lachs vom Grill","page":"honig-senf-lachs.html","version":"0.1.3"', '"title":"Honig-Senf-Lachs vom Grill","page":"honig-senf-lachs.html","version":"0.1.5"')
           marker = '    {"date":"2026-08-01","version":"2.7.3","change":"Beschädigte direkte Bild-Einbettung entfernt und das Lachsbild als echte JPEG-Datei unter assets gespeichert und verlinkt."}'
-          replacement = marker + ',\n    {"date":"2026-08-02","version":"2.7.4","change":"Beschädigte JPEG-Datei durch das geprüfte Originalbild im PNG-Format ersetzt."}'
-          text = text.replace(marker, replacement)
+          addition = marker + ',\n    {"date":"2026-08-02","version":"2.7.4","change":"Beschädigte JPEG-Datei durch das geprüfte Originalbild im PNG-Format ersetzt."}'
+          text = text.replace(marker, addition)
           text = text.replace('2026 · Chefkoch Kim · Version 2.7.3', '2026 · Chefkoch Kim · Version 2.7.4')
           index.write_text(text, encoding='utf-8')
 
@@ -68,7 +59,6 @@ jobs:
           text = text.replace('**Letzte Aktualisierung:** 01.08.2026', '**Letzte Aktualisierung:** 02.08.2026')
           text = text.replace('`assets/honig-senf-lachs.jpg`', '`assets/honig-senf-lachs.png`')
           text = text.replace('Version 0.1.3', 'Version 0.1.5')
-          text = text.replace('- Bild: `assets/honig-senf-lachs.jpg`', '- Bild: `assets/honig-senf-lachs.png`')
           heading = '## Änderungshistorie\n'
           entry = '\n### Version 2.7.4 – 02.08.2026\n\n- beschädigte JPEG-Datei entfernt\n- freigegebenes Originalbild als geprüfte PNG-Datei `assets/honig-senf-lachs.png` gespeichert\n- Rezeptseite auf die neue PNG-Datei mit Cache-Version `v=275` umgestellt\n- Rezeptversion Honig-Senf-Lachs auf 0.1.5 erhöht\n- Buchversion auf 2.7.4 erhöht\n'
           text = text.replace(heading, heading + entry, 1)
@@ -80,7 +70,7 @@ jobs:
           PY
 
           rm -f assets/honig-senf-lachs.jpg
-          rm -f .tmp/lachs-image.part00 .tmp/lachs-image.part01 .tmp/lachs-image.part02 .tmp/lachs-image.part03 .tmp/lachs-image.part04 .tmp/lachs-image.part05
+          rm -f .tmp/lachs-image.part* .tmp/lachs-image.ready
           rm -f .github/workflows/build-lachs-png.yml
 
           git config user.name "github-actions[bot]"
