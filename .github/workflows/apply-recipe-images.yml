@@ -1,0 +1,135 @@
+name: Apply recipe images
+
+on:
+  push:
+    paths:
+      - .github/workflows/apply-recipe-images.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update recipe pages and project files
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def load(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def save(path, text):
+              Path(path).write_text(text, encoding='utf-8')
+
+          # Honig-Senf-Lachs: weboptimiertes JPEG verwenden.
+          path = 'honig-senf-lachs.html'
+          text = load(path)
+          text = text.replace('assets/honi-senf-lachs.png?v=274', 'assets/honig-senf-lachs.jpg?v=280')
+          text = text.replace('width="1672" height="941"', 'width="1199" height="675"')
+          text = text.replace('Version 0.1.5 · Original-PNG-Datei des Rezeptbilds eingebunden.', 'Version 0.1.6 · weboptimiertes JPEG-Rezeptbild eingebunden.')
+          text = text.replace('Honig-Senf-Lachs vom Grill · Version 0.1.5', 'Honig-Senf-Lachs vom Grill · Version 0.1.6')
+          save(path, text)
+
+          # Grillgemüse: Hero-Bild ergänzen.
+          path = 'grillgemuese.html'
+          text = load(path)
+          hero_css = '.hero-image{margin:0 0 24px;background:var(--surface);border-radius:34px;overflow:hidden;box-shadow:0 8px 30px #0000000d}.hero-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.hero-image figcaption{padding:14px 18px;color:var(--muted);font-size:.92rem;line-height:1.45;border-top:1px solid #ececef;background:var(--surface)}'
+          marker = '.panel{margin-bottom:22px;'
+          if '.hero-image{' not in text:
+              text = text.replace(marker, hero_css + marker, 1)
+          text = text.replace('@media(max-width:430px){.topbar', '@media(max-width:430px){.hero-image{border-radius:24px}.topbar', 1)
+          figure = '<figure class="hero-image"><img src="assets/grillgemuese.jpg?v=280" alt="Buntes Grillgemüse mit kräftigen Röstaromen" width="1199" height="675" loading="eager" fetchpriority="high" decoding="async"><figcaption>Serviervorschlag: buntes Grillgemüse mit deutlichen Röstaromen und frischen Kräutern.</figcaption></figure>\n'
+          hero_end = '<section class="hero"><p class="eyebrow">Salate &amp; Beilagen · Salate &amp; Gemüse · Arbeitsfassung</p><h1>Grillgemüse</h1><p>Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit Gemüsefinish-Fresh vollendet.</p></section>\n'
+          if 'assets/grillgemuese.jpg' not in text:
+              text = text.replace(hero_end, hero_end + figure, 1)
+          text = text.replace('Version 0.9.2 · der Rubrik „Salate &amp; Gemüse“ zugeordnet und das Finish umbenannt.', 'Version 0.9.3 · Rezeptbild im bestätigten 16:9-Hero-Stil ergänzt.')
+          text = text.replace('Chefkoch Kim · Grillgemüse · Version 0.9.2', 'Chefkoch Kim · Grillgemüse · Version 0.9.3')
+          save(path, text)
+
+          # Fleisch: Lachs-Thumbnail in der Fischkarte.
+          path = 'fleisch.html'
+          text = load(path)
+          thumb_css = '.recipe-thumb{display:block;margin:26px 0 0;border-radius:20px;overflow:hidden;background:#ececf0;aspect-ratio:16/9}.recipe-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}.recipe-thumb:hover img,.recipe-thumb:focus-visible img{transform:scale(1.02)}.recipe-thumb:focus-visible{outline:3px solid #0002;outline-offset:3px}'
+          if '.recipe-thumb{' not in text:
+              text = text.replace('.recipe-preview{', thumb_css + '.recipe-preview{', 1)
+              text = text.replace('@media(max-width:520px){.topbar', '@media(max-width:520px){.recipe-thumb{border-radius:16px}.topbar', 1)
+          old = '<article class="category" id="fisch"><div><h2>Fisch</h2><p>Lachs und weitere Fischgerichte – schonend gegart, saftig serviert und passend zum Grill abgestimmt.</p></div><div class="recipe-preview">'
+          new = '<article class="category" id="fisch"><div><h2>Fisch</h2><p>Lachs und weitere Fischgerichte – schonend gegart, saftig serviert und passend zum Grill abgestimmt.</p><a class="recipe-thumb" href="honig-senf-lachs.html" aria-label="Honig-Senf-Lachs vom Grill öffnen"><img src="assets/honig-senf-lachs.jpg?v=280" alt="Glasierter Honig-Senf-Lachs mit Dill und Grillgemüse" width="1199" height="675" loading="lazy" decoding="async"></a></div><div class="recipe-preview">'
+          text = text.replace(old, new, 1)
+          text = text.replace('Chefkoch Kim · Version 2.7.4', 'Chefkoch Kim · Version 2.8.0')
+          save(path, text)
+
+          # Salate & Beilagen: Grillgemüse-Thumbnail in der Karte.
+          path = 'gemuese-salat.html'
+          text = load(path)
+          thumb_css = '.card-thumb{display:block;margin:26px 0 0;border-radius:20px;overflow:hidden;background:#ececf0;aspect-ratio:16/9}.card-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}.card-thumb:hover img,.card-thumb:focus-visible img{transform:scale(1.02)}.card-thumb:focus-visible{outline:3px solid #0002;outline-offset:3px}'
+          if '.card-thumb{' not in text:
+              text = text.replace('.recipe-link{', thumb_css + '.recipe-link{', 1)
+              text = text.replace('@media(max-width:520px){.topbar', '@media(max-width:520px){.card-thumb{border-radius:16px}.topbar', 1)
+          old = '<div class="recipe-grid"><article class="recipe-card"><div><h3>Grillgemüse</h3><p>Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit Gemüsefinish-Fresh vollendet.</p></div><a class="recipe-link"'
+          new = '<div class="recipe-grid"><article class="recipe-card"><div><h3>Grillgemüse</h3><p>Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit Gemüsefinish-Fresh vollendet.</p><a class="card-thumb" href="grillgemuese.html" aria-label="Grillgemüse-Rezept öffnen"><img src="assets/grillgemuese.jpg?v=280" alt="Buntes Grillgemüse mit Röstaromen" width="1199" height="675" loading="lazy" decoding="async"></a></div><a class="recipe-link"'
+          text = text.replace(old, new, 1)
+          text = text.replace('Chefkoch Kim · Version 2.6.1', 'Chefkoch Kim · Version 2.8.0')
+          save(path, text)
+
+          # Startseite: maschinenlesbaren Projektstatus synchronisieren.
+          path = 'index.html'
+          text = load(path)
+          text = text.replace('"bookVersion": "2.7.4"', '"bookVersion": "2.8.0"')
+          text = text.replace('"status":"Arbeitsfassung mit Original-PNG"', '"status":"Arbeitsfassung mit weboptimiertem JPEG und Thumbnail"')
+          text = text.replace('"path":"grillgemuese.html","role":"Eigene Rezeptseite für Grillgemüse unter Salate & Gemüse","status":"Arbeitsfassung"', '"path":"grillgemuese.html","role":"Eigene Rezeptseite für Grillgemüse unter Salate & Gemüse","status":"Arbeitsfassung mit Rezeptbild und Thumbnail"')
+          text = text.replace('"version":"0.9.2","status":"Arbeitsfassung"', '"version":"0.9.3","status":"Arbeitsfassung"', 1)
+          text = text.replace('"version":"0.1.5","status":"Arbeitsfassung"', '"version":"0.1.6","status":"Arbeitsfassung"')
+          text = text.replace('"Rezeptbilder werden als eigenständige browserkompatible Bilddateien im Repository gespeichert; direkte Daten-URLs im HTML werden vermieden."', '"Food-Fotos werden weboptimiert als JPEG im Repository gespeichert; PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.",\n    "Übersichtsseiten dürfen dieselben optimierten JPEGs als lazy-geladene 16:9-Thumbnails verwenden."')
+          state_start = text.index('<script id="chefkoch-kim-state"')
+          hist_start = text.index('"history": [', state_start)
+          hist_end = text.index('\n  ]\n}\n</script>', hist_start)
+          if '"version":"2.8.0"' not in text[hist_start:hist_end]:
+              text = text[:hist_end] + ',\n    {"date":"2026-08-02","version":"2.8.0","change":"Weboptimierte JPEG-Bilder für Honig-Senf-Lachs und Grillgemüse eingebunden und als Thumbnails auf den Übersichtsseiten ergänzt."}' + text[hist_end:]
+          text = text.replace('Chefkoch Kim · Version 2.7.4', 'Chefkoch Kim · Version 2.8.0')
+          save(path, text)
+
+          # Meta-Regeln: JPEG und Thumbnails als Standard festhalten.
+          path = '00_Meta-Kim.md'
+          text = load(path)
+          text = text.replace('- Rezeptbilder werden als eigenständige, browserkompatible Bilddateien im Repository gespeichert. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.', '- Food-Fotos werden als eigenständige, weboptimierte JPEG-Dateien im Repository gespeichert. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.\n- Übersichtsseiten dürfen die optimierten JPEGs als 16:9-Thumbnails mit `loading="lazy"` wiederverwenden. Bei deutlich wachsender Galerie werden zusätzlich kleinere Thumbnail-Dateien erzeugt.')
+          save(path, text)
+
+          # Projektstatus synchronisieren.
+          path = '00_Projektstatus.md'
+          text = load(path)
+          text = text.replace('**Buchversion:** 2.7.4', '**Buchversion:** 2.8.0')
+          text = text.replace('- `assets/honi-senf-lachs.png` – originales PNG-Rezeptbild für den Honig-Senf-Lachs', '- `assets/honig-senf-lachs.jpg` – weboptimiertes JPEG-Rezeptbild für den Honig-Senf-Lachs\n- `assets/grillgemuese.jpg` – weboptimiertes JPEG-Rezeptbild für Grillgemüse')
+          text = text.replace('- 1 Rezeptseite mit eingebautem Hero-Bild', '- 2 Rezeptseiten mit eingebautem Hero-Bild\n- 2 Übersichtsseiten mit anklickbaren Rezept-Thumbnails')
+          text = text.replace('Rezeptbilder werden als eigenständige, browserkompatible Bilddateien im Repository gespeichert. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.', 'Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert. Übersichtsseiten verwenden sie als lazy-geladene 16:9-Thumbnails. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.')
+          text = text.replace('Version 0.1.5', 'Version 0.1.6')
+          text = text.replace('- Bild: `assets/honi-senf-lachs.png`', '- Bild: `assets/honig-senf-lachs.jpg`')
+          text = text.replace('- Version: 0.1.5', '- Version: 0.1.6')
+          text = text.replace('Das vom Nutzer hochgeladene Original-PNG ist direkt unter der Einleitung eingebaut und dient als Vorlage für weitere Rezeptbilder.', 'Das weboptimierte JPEG ist direkt unter der Einleitung eingebaut und wird auf der Fleischseite zusätzlich als anklickbares Thumbnail verwendet.')
+          text = text.replace('- Version: 0.9.2', '- Version: 0.9.3')
+          text = text.replace('- Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände', '- Bild: `assets/grillgemuese.jpg`\n- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.\n- Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände')
+          text = text.replace('- originales PNG unter `assets/honi-senf-lachs.png` übernommen\n- Rezeptseite mit dem Original-PNG verknüpft', '- weboptimiertes JPEG `assets/honig-senf-lachs.jpg` eingebunden\n- weboptimiertes JPEG `assets/grillgemuese.jpg` eingebunden\n- Lachs- und Grillgemüse-Bilder als Thumbnails auf den jeweiligen Übersichtsseiten ergänzt')
+          text = text.replace('- Rezeptversion Honig-Senf-Lachs auf 0.1.5 erhöht\n- Buchversion auf 2.7.4 erhöht', '- Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht\n- Rezeptversion Grillgemüse auf 0.9.3 erhöht\n- Buchversion auf 2.8.0 erhöht')
+          text = text.replace('- Rezeptbilder werden als separate browserkompatible Bilddateien im Repository gespeichert.', '- Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert und auf Übersichtsseiten lazy geladen.')
+          history_marker = '## Änderungshistorie\n'
+          if '### Version 2.8.0' not in text:
+              entry = '\n### Version 2.8.0 – 02.08.2026\n\n- Honig-Senf-Lachs auf das weboptimierte JPEG `assets/honig-senf-lachs.jpg` umgestellt\n- Grillgemüse mit dem Hero-Bild `assets/grillgemuese.jpg` ergänzt\n- Lachsbild als anklickbares Thumbnail auf der Fleischseite eingebaut\n- Grillgemüsebild als anklickbares Thumbnail unter Salate & Beilagen eingebaut\n- Thumbnails mit `loading="lazy"` und 16:9-Zuschnitt umgesetzt\n- Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht\n- Rezeptversion Grillgemüse auf 0.9.3 erhöht\n- Buchversion auf 2.8.0 erhöht\n'
+              text = text.replace(history_marker, history_marker + entry, 1)
+          save(path, text)
+
+          # Fehlerhafte bzw. nicht mehr benötigte PNG-Dateien aus dem Website-Repository entfernen.
+          for obsolete in ('assets/grillgemuese.png', 'assets/honi-senf-lachs.png'):
+              p = Path(obsolete)
+              if p.exists():
+                  p.unlink()
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "JPEG-Rezeptbilder und Thumbnails einbauen"
+          git push
