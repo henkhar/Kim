@@ -44,3 +44,4 @@ jobs:
           git add einkaufsliste.html einkaufsliste-gesamt.html index.html 00_Meta-Kim.md 00_Projektstatus.md
           git commit -m "Einkaufslisten über natives Teilen-Menü senden"
           git push
+          # trigger
