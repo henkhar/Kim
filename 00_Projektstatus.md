@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.8.1  
+**Buchversion:** 2.9.0  
 **Letzte Aktualisierung:** 02.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -22,6 +22,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
 - `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
 - `gemuesefinish-mild.html` – eigene Rezeptseite für Gemüsefinish-Mild
+- `einkaufsliste.html` – Pilotseite für mengenberechnete Einkaufslisten
 - `kochbuch.html` – Übergangsseite für die frühere Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
@@ -40,6 +41,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 4 eigenständige Rezeptseiten
 - 4 Rezeptseiten mit eingebautem Hero-Bild
 - 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
+- 1 Einkaufsliste-Pilotseite mit Mengenberechnung und Druckansicht
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -87,6 +89,19 @@ Für Rezeptseiten ist folgender Bildstil festgelegt:
 
 Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert. Übersichtsseiten verwenden sie als lazy-geladene 16:9-Thumbnails. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.
 
+## Einkaufsliste – Pilot
+
+Die erste Einkaufsliste ist für den **Honig-Senf-Lachs vom Grill** umgesetzt.
+
+- Button und Personenauswahl direkt auf `honig-senf-lachs.html`
+- automatische Umrechnung ausgehend von 4 Personen
+- optionale Zutaten können ein- oder ausgeschlossen werden
+- eigene Seite `einkaufsliste.html`
+- Zutaten lassen sich abhaken
+- Häkchen werden lokal im Browser gespeichert
+- Druckansicht blendet Bedienelemente und bereits abgehakte Zutaten aus
+- derzeit bewusst nur ein Rezept; eine gemeinsame Liste für mehrere Rezepte folgt erst nach erfolgreichem Test
+
 ## Kategorien und Hauptbereiche
 
 ### Fleisch
@@ -102,7 +117,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.6, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.7, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -157,7 +172,7 @@ Vorhanden:
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
 - Bild: `assets/honig-senf-lachs.jpg`
-- Version: 0.1.6
+- Version: 0.1.7
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -257,7 +272,14 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
 - Buchversion auf 2.8.1 erhöht
 
+- Einkaufsliste-Pilot für den Honig-Senf-Lachs umgesetzt
+- Personenzahl, optionale Zutaten, Mengenberechnung, Abhaken, lokale Speicherung und Druckansicht ergänzt
+- Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
+- Buchversion auf 2.9.0 erhöht
+
 ## Offene Aufgaben
+
+1. Einkaufsliste nach erfolgreichem Pilot auf weitere Rezepte und später mehrere Rezepte gleichzeitig erweitern.
 
 1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
 2. Weitere Rezeptbilder im festgelegten 16:9-Hero-Stil ergänzen.
@@ -289,6 +311,16 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.9.0 – 02.08.2026
+
+- Einkaufsliste-Pilot für den Honig-Senf-Lachs ergänzt
+- Personenzahl direkt auf der Rezeptseite auswählbar
+- Zutatenmengen automatisch von der Grundmenge für 4 Personen umgerechnet
+- optionale Zutaten ein- und ausschaltbar
+- neue Seite `einkaufsliste.html` mit Abhakfunktion, lokaler Speicherung, Zurücksetzen und Druckansicht
+- Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
+- Buchversion auf 2.9.0 erhöht
+
 
 ### Version 2.8.1 – 02.08.2026
 
