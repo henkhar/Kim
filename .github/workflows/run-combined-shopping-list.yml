@@ -43,3 +43,4 @@ jobs:
           git add index.html 00_Meta-Kim.md 00_Projektstatus.md einkaufsliste-gesamt.html *.html
           git commit -m "Gemeinsame Einkaufsliste mit Zutatenkumulierung ergänzen"
           git push
+          # Trigger 2
