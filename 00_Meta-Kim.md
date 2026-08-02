@@ -48,6 +48,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Food-Fotos werden als eigenständige, weboptimierte JPEG-Dateien im Repository gespeichert. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.
 - Übersichtsseiten dürfen die optimierten JPEGs als 16:9-Thumbnails mit `loading="lazy"` wiederverwenden. Bei deutlich wachsender Galerie werden zusätzlich kleinere Thumbnail-Dateien erzeugt.
 - Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste. Sichtbare Zutaten, optionale Zutaten, Mengenbereiche und Alternativen müssen mit der Berechnungslogik übereinstimmen.
+- Gemeinsame Einkaufslisten verwenden dauerhafte interne Zutaten-IDs. Gleiche Zutaten werden nur bei kompatibler Bedeutung und kompatiblen Einheiten kumuliert; Volumenangaben werden intern normiert und anschließend wieder küchentauglich ausgegeben.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
 - GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
@@ -76,7 +77,7 @@ Zuordnung der vorhandenen Rezepte:
 - Gemüsefinish-Fresh → Soßen & Finishes
 - Gemüsefinish-Mild → Soßen & Finishes
 
-Weitere Bereiche wie Suche, Favoriten, Einkaufsliste oder Projektinfos können später ergänzt werden.
+Weitere Bereiche wie Suche, Favoriten oder Projektinfos können später ergänzt werden.
 
 ## Qualitätsregeln
 
