@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.8.0  
+**Buchversion:** 2.8.1  
 **Letzte Aktualisierung:** 02.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -14,6 +14,8 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
 - `assets/honig-senf-lachs.jpg` – weboptimiertes JPEG-Rezeptbild für den Honig-Senf-Lachs
 - `assets/grillgemuese.jpg` – weboptimiertes JPEG-Rezeptbild für Grillgemüse
+- `assets/gemuesefinish-fresh.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Fresh
+- `assets/gemuesefinish-mild.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Mild
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
@@ -36,8 +38,8 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 1 Startseite
 - 3 Kategorie-Übersichtsseiten
 - 4 eigenständige Rezeptseiten
-- 2 Rezeptseiten mit eingebautem Hero-Bild
-- 2 Übersichtsseiten mit anklickbaren Rezept-Thumbnails
+- 4 Rezeptseiten mit eingebautem Hero-Bild
+- 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -122,9 +124,9 @@ Rubriken:
 
 Vorhandene Rezepte:
 
-- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.2, Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.2, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.1, Seite `gemuesefinish-mild.html`
+- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.3, Seite `grillgemuese.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.3, Seite `finishing-sauce.html`
+- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.2, Seite `gemuesefinish-mild.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -198,16 +200,20 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.2
+- Version: 1.0.3
 - Status: bestätigt
+- Bild: `assets/gemuesefinish-fresh.jpg`
+- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
 - Rubrik: Soßen & Finishes
 
 ### Gemüsefinish-Mild
 
 - ID: `gemuesefinish-mild`
 - Seite: `gemuesefinish-mild.html`
-- Version: 0.1.1
+- Version: 0.1.2
 - Status: Arbeitsfassung
+- Bild: `assets/gemuesefinish-mild.jpg`
+- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
 - Rubrik: Soßen & Finishes
 
 Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish wird nicht mitgegrillt.
@@ -243,11 +249,13 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - fehlerhafte SVG-, Daten-URL- und JPEG-Einbindungen verworfen
 - weboptimiertes JPEG `assets/honig-senf-lachs.jpg` eingebunden
 - weboptimiertes JPEG `assets/grillgemuese.jpg` eingebunden
-- Lachs- und Grillgemüse-Bilder als Thumbnails auf den jeweiligen Übersichtsseiten ergänzt
+- Lachs-, Grillgemüse- und Finish-Bilder als Thumbnails auf den jeweiligen Übersichtsseiten ergänzt
 - Bildlayout als Standard für weitere Rezeptseiten dokumentiert
 - Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht
 - Rezeptversion Grillgemüse auf 0.9.3 erhöht
-- Buchversion auf 2.8.0 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
+- Buchversion auf 2.8.1 erhöht
 
 ## Offene Aufgaben
 
@@ -282,6 +290,16 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 
 ## Änderungshistorie
 
+### Version 2.8.1 – 02.08.2026
+
+- Gemüsefinish-Fresh mit dem Hero-Bild `assets/gemuesefinish-fresh.jpg` ergänzt
+- Gemüsefinish-Mild mit dem Hero-Bild `assets/gemuesefinish-mild.jpg` ergänzt
+- beide Bilder als anklickbare, lazy-geladene Thumbnails unter Soßen & Finishes eingebaut
+- stabile ASCII-Dateinamen für die beiden hochgeladenen Bilder angelegt
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
+- Buchversion auf 2.8.1 erhöht
+
 ### Version 2.8.0 – 02.08.2026
 
 - Honig-Senf-Lachs auf das weboptimierte JPEG `assets/honig-senf-lachs.jpg` umgestellt
@@ -291,7 +309,9 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Thumbnails mit `loading="lazy"` und 16:9-Zuschnitt umgesetzt
 - Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht
 - Rezeptversion Grillgemüse auf 0.9.3 erhöht
-- Buchversion auf 2.8.0 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
+- Buchversion auf 2.8.1 erhöht
 
 ### Version 2.7.4 – 02.08.2026
 
