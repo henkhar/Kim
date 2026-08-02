@@ -1,0 +1,46 @@
+name: Run shopping list share buttons
+
+on:
+  push:
+    paths:
+      - .github/workflows/run-share-buttons.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute share-button implementation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import textwrap
+          source = Path('.github/workflows/apply-share-buttons.yml').read_text(encoding='utf-8')
+          marker = "python - <<'PY'\n"
+          if marker not in source:
+              raise SystemExit('Implementierungsblock nicht gefunden')
+          block = source.split(marker, 1)[1].split('\n          PY', 1)[0]
+          script = textwrap.dedent(block)
+          exec(compile(script, '/tmp/apply_share_buttons.py', 'exec'))
+          PY
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for name in ('einkaufsliste.html','einkaufsliste-gesamt.html'):
+              html = Path(name).read_text(encoding='utf-8')
+              scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+              if len(scripts) != 1:
+                  raise SystemExit(f'{name}: Seitenskript nicht eindeutig gefunden')
+              Path('/tmp/' + name + '.js').write_text(scripts[0], encoding='utf-8')
+          PY
+          node --check /tmp/einkaufsliste.html.js
+          node --check /tmp/einkaufsliste-gesamt.html.js
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add einkaufsliste.html einkaufsliste-gesamt.html index.html 00_Meta-Kim.md 00_Projektstatus.md
+          git commit -m "Einkaufslisten über natives Teilen-Menü senden"
+          git push
