@@ -18,7 +18,10 @@
   "architecture": "multi-page-static-website",
   "entryPage": "index.html",
   "contentPage": "kochbuch.html",
-  "projectFiles": ["00_Meta-Kim.md", "00_Projektstatus.md"],
+  "projectFiles": [
+    "00_Meta-Kim.md",
+    "00_Projektstatus.md"
+  ],
   "purpose": "Eine persönliche, langfristig gepflegte Grillkochbuch-Website mit Rezepten, Grundlagen, bewährten Abläufen und späteren Web-App-Funktionen.",
   "startupProtocol": [
     "Aktuelle index.html aus dem Repository henkhar/Kim laden.",
@@ -43,16 +46,22 @@
     "Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills.",
     "Rezeptbilder werden als große 16:9-Hero-Bilder direkt unter der Einleitung eingebunden und erhalten abgerundete Ecken sowie eine dezente Bildunterschrift.",
     "Food-Fotos werden weboptimiert als JPEG im Repository gespeichert; PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.",
-    "Übersichtsseiten dürfen dieselben optimierten JPEGs als lazy-geladene 16:9-Thumbnails verwenden."
+    "Übersichtsseiten dürfen dieselben optimierten JPEGs als lazy-geladene 16:9-Thumbnails verwenden.",
+    "Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste; sichtbare Zutaten, optionale Zutaten und Alternativen müssen mit der Berechnungslogik übereinstimmen."
   ],
-  "versioning": {"book":"MAJOR.MINOR.PATCH","major":"Grundlegende Architektur- oder Konzeptänderung.","minor":"Neue Seite, neues Rezept, neues Kapitel oder größere Funktion.","patch":"Korrektur, Text- oder Gestaltungsanpassung."}
+  "versioning": {
+    "book": "MAJOR.MINOR.PATCH",
+    "major": "Grundlegende Architektur- oder Konzeptänderung.",
+    "minor": "Neue Seite, neues Rezept, neues Kapitel oder größere Funktion.",
+    "patch": "Korrektur, Text- oder Gestaltungsanpassung."
+  }
 }
 </script>
 <script id="chefkoch-kim-state" type="application/json">
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.9.0",
+  "bookVersion": "2.10.0",
   "lastUpdated": "2026-08-02",
   "architecture": "Website im schrittweisen Aufbau",
   "pages": [
@@ -89,17 +98,17 @@
     {
       "path": "grillgemuese.html",
       "role": "Eigene Rezeptseite für Grillgemüse unter Salate & Gemüse",
-      "status": "Arbeitsfassung mit Rezeptbild und Thumbnail"
+      "status": "Arbeitsfassung mit Rezeptbild und Thumbnail und Einkaufsliste"
     },
     {
       "path": "finishing-sauce.html",
       "role": "Eigene Rezeptseite für Gemüsefinish-Fresh unter Soßen & Finishes",
-      "status": "bestätigt mit Rezeptbild und Thumbnail"
+      "status": "bestätigt mit Rezeptbild und Thumbnail und Einkaufsliste"
     },
     {
       "path": "gemuesefinish-mild.html",
       "role": "Eigene Rezeptseite für Gemüsefinish-Mild unter Soßen & Finishes",
-      "status": "Arbeitsfassung mit Rezeptbild und Thumbnail"
+      "status": "Arbeitsfassung mit Rezeptbild und Thumbnail und Einkaufsliste"
     },
     {
       "path": "kochbuch.html",
@@ -109,7 +118,7 @@
     {
       "path": "einkaufsliste.html",
       "role": "Dynamische Einkaufsliste mit Mengenberechnung, Abhaken und Druckansicht",
-      "status": "Pilot für Honig-Senf-Lachs"
+      "status": "aktiv für alle vier Einzelrezepte"
     }
   ],
   "recipeCount": 4,
@@ -121,21 +130,21 @@
       "id": "finishing-sauce-grillgemuese-haehnchen",
       "title": "Gemüsefinish-Fresh",
       "page": "finishing-sauce.html",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "status": "bestätigt"
     },
     {
       "id": "gemuesefinish-mild",
       "title": "Gemüsefinish-Mild",
       "page": "gemuesefinish-mild.html",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "status": "Arbeitsfassung"
     },
     {
       "id": "grillgemuese-gasgrill",
       "title": "Grillgemüse",
       "page": "grillgemuese.html",
-      "version": "0.9.3",
+      "version": "0.9.4",
       "status": "Arbeitsfassung"
     },
     {
@@ -162,7 +171,7 @@
     "Weitere Rezeptbilder im bestätigten 16:9-Hero-Stil ergänzen.",
     "Übergangsseite kochbuch.html später reduzieren oder auflösen.",
     "Suche, Filter, PWA, Favoriten und Einkaufsliste schrittweise prüfen.",
-    "Einkaufsliste nach erfolgreichem Lachs-Pilot auf weitere Rezepte und später auf mehrere Rezepte gleichzeitig erweitern."
+    "Mehrere Rezepte zu einer gemeinsamen Einkaufsliste zusammenführen und gleiche Zutaten addieren."
   ],
   "history": [
     {
@@ -259,6 +268,11 @@
       "date": "2026-08-02",
       "version": "2.9.0",
       "change": "Pilot-Einkaufsliste für den Honig-Senf-Lachs ergänzt: Personenzahl, optionale Zutaten, Mengenberechnung, Abhaken, lokale Speicherung und Druckansicht."
+    },
+    {
+      "date": "2026-08-02",
+      "version": "2.10.0",
+      "change": "Mengenberechnete Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert; optionale Zutaten, Mengenbereiche und die Knoblauchalternative des milden Finishes werden berücksichtigt."
     }
   ]
 }
@@ -269,7 +283,7 @@
 <header class="topbar"><button class="menu-button" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-icon"></span></button><div class="brand">Haralds Grillkochbuch</div><div></div></header>
 <section class="hero"><h1>Haralds<br>Grillkochbuch</h1><nav class="hero-nav" aria-label="Hauptkategorien"><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a class="muted" href="grundlagen.html">Grundlagen</a></nav></section>
 <main class="content"><p class="eyebrow">Rezepte entdecken</p><section class="category-grid" aria-label="Rezeptkategorien"><article class="category"><div><h2>Fleisch</h2><p>Rind, Hähnchen, Schwein und Fisch – mit Grillmethoden, Garstufen und Kerntemperaturen.</p></div><a href="fleisch.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Salate &amp; Beilagen</h2><p>Grillgemüse, Salate, Soßen und frische Finishes für den Grillabend.</p></div><a href="gemuese-salat.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Vegan</h2><p>Pflanzliche Hauptgerichte und Beilagen, die direkt vom Grill überzeugen.</p></div><a href="vegan.html">Bereich öffnen →</a></article></section><section class="quick-links" aria-label="Weitere Bereiche"><a class="quick-link" href="grundlagen.html"><span>Grundlagen &amp; Kerntemperaturen</span><span>→</span></a><a class="quick-link" href="kochbuch.html"><span>Gesamtes Kochbuch öffnen</span><span>→</span></a></section></main>
-<footer>2026 · Chefkoch Kim · Version 2.9.0</footer>
+<footer>2026 · Chefkoch Kim · Version 2.10.0</footer>
 </div>
 <aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="grundlagen.html">Grundlagen</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open));}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false);});</script>

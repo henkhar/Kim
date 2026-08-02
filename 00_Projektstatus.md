@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.9.0  
+**Buchversion:** 2.10.0  
 **Letzte Aktualisierung:** 02.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -22,7 +22,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
 - `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
 - `gemuesefinish-mild.html` – eigene Rezeptseite für Gemüsefinish-Mild
-- `einkaufsliste.html` – Pilotseite für mengenberechnete Einkaufslisten
+- `einkaufsliste.html` – mengenberechnete Einkaufsliste für alle Einzelrezepte
 - `kochbuch.html` – Übergangsseite für die frühere Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln und Architektur
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
@@ -41,7 +41,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 4 eigenständige Rezeptseiten
 - 4 Rezeptseiten mit eingebautem Hero-Bild
 - 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
-- 1 Einkaufsliste-Pilotseite mit Mengenberechnung und Druckansicht
+- 1 Einkaufsliste für alle 4 Einzelrezepte mit Mengenberechnung und Druckansicht
 - 1 Übergangsseite für die frühere Gesamtansicht
 
 ## Startseite
@@ -89,18 +89,19 @@ Für Rezeptseiten ist folgender Bildstil festgelegt:
 
 Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert. Übersichtsseiten verwenden sie als lazy-geladene 16:9-Thumbnails. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.
 
-## Einkaufsliste – Pilot
+## Einkaufsliste
 
-Die erste Einkaufsliste ist für den **Honig-Senf-Lachs vom Grill** umgesetzt.
+Die mengenberechnete Einkaufsliste ist für alle vier vorhandenen Einzelrezepte umgesetzt.
 
-- Button und Personenauswahl direkt auf `honig-senf-lachs.html`
-- automatische Umrechnung ausgehend von 4 Personen
+- Button und Personenauswahl direkt auf jeder Rezeptseite
+- automatische Umrechnung ausgehend von jeweils 4 Personen
 - optionale Zutaten können ein- oder ausgeschlossen werden
-- eigene Seite `einkaufsliste.html`
-- Zutaten lassen sich abhaken
-- Häkchen werden lokal im Browser gespeichert
+- Mengenbereiche wie 1–2 EL Petersilie werden proportional skaliert
+- Gemüsefinish-Mild bietet die Wahl zwischen Knoblauchpulver und frischen Knoblauchzehen
+- eigene Seite `einkaufsliste.html` für alle Einzelrezepte
+- Zutaten lassen sich abhaken; Häkchen werden lokal im Browser gespeichert
 - Druckansicht blendet Bedienelemente und bereits abgehakte Zutaten aus
-- derzeit bewusst nur ein Rezept; eine gemeinsame Liste für mehrere Rezepte folgt erst nach erfolgreichem Test
+- nächster Ausbauschritt: mehrere Rezepte zu einer gemeinsamen Liste verbinden und gleiche Zutaten addieren
 
 ## Kategorien und Hauptbereiche
 
@@ -139,9 +140,9 @@ Rubriken:
 
 Vorhandene Rezepte:
 
-- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.3, Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.3, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.2, Seite `gemuesefinish-mild.html`
+- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.4, Seite `grillgemuese.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.4, Seite `finishing-sauce.html`
+- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.3, Seite `gemuesefinish-mild.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -215,7 +216,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.3
+- Version: 1.0.4
 - Status: bestätigt
 - Bild: `assets/gemuesefinish-fresh.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -225,7 +226,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `gemuesefinish-mild`
 - Seite: `gemuesefinish-mild.html`
-- Version: 0.1.2
+- Version: 0.1.3
 - Status: Arbeitsfassung
 - Bild: `assets/gemuesefinish-mild.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -237,7 +238,7 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 
 - ID: `grillgemuese-gasgrill`
 - Seite: `grillgemuese.html`
-- Version: 0.9.3
+- Version: 0.9.4
 - Status: Arbeitsfassung
 - Rubrik: Salate & Gemüse
 - Bild: `assets/grillgemuese.jpg`
@@ -276,10 +277,16 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Personenzahl, optionale Zutaten, Mengenberechnung, Abhaken, lokale Speicherung und Druckansicht ergänzt
 - Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
 - Buchversion auf 2.9.0 erhöht
+- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
+- Mengenbereiche, optionale Zutaten und die Knoblauchalternative von Gemüsefinish-Mild unterstützt
+- Rezeptversion Grillgemüse auf 0.9.4 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
+- Buchversion auf 2.10.0 erhöht
 
 ## Offene Aufgaben
 
-1. Einkaufsliste nach erfolgreichem Pilot auf weitere Rezepte und später mehrere Rezepte gleichzeitig erweitern.
+1. Mehrere Rezepte zu einer gemeinsamen Einkaufsliste zusammenführen und gleiche Zutaten addieren.
 
 1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
 2. Weitere Rezeptbilder im festgelegten 16:9-Hero-Stil ergänzen.
@@ -311,6 +318,17 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.10.0 – 02.08.2026
+
+- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
+- alle vier Einzelrezepte verwenden dieselbe Einkaufsliste
+- optionale Zutaten und Mengenbereiche werden berücksichtigt
+- bei Gemüsefinish-Mild kann zwischen Knoblauchpulver und frischen Knoblauchzehen gewählt werden
+- Rezeptversion Grillgemüse auf 0.9.4 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
+- Buchversion auf 2.10.0 erhöht
+
 ### Version 2.9.0 – 02.08.2026
 
 - Einkaufsliste-Pilot für den Honig-Senf-Lachs ergänzt
@@ -320,6 +338,12 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - neue Seite `einkaufsliste.html` mit Abhakfunktion, lokaler Speicherung, Zurücksetzen und Druckansicht
 - Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
 - Buchversion auf 2.9.0 erhöht
+- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
+- Mengenbereiche, optionale Zutaten und die Knoblauchalternative von Gemüsefinish-Mild unterstützt
+- Rezeptversion Grillgemüse auf 0.9.4 erhöht
+- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
+- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
+- Buchversion auf 2.10.0 erhöht
 
 
 ### Version 2.8.1 – 02.08.2026

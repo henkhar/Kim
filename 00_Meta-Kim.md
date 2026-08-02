@@ -47,6 +47,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Das erste verbindliche Bildmuster ist die Rezeptseite `honig-senf-lachs.html`. Weitere Rezeptbilder sollen sich an diesem ruhigen, hellen und hochwertigen Food-Fotografie-Stil orientieren.
 - Food-Fotos werden als eigenständige, weboptimierte JPEG-Dateien im Repository gespeichert. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.
 - Übersichtsseiten dürfen die optimierten JPEGs als 16:9-Thumbnails mit `loading="lazy"` wiederverwenden. Bei deutlich wachsender Galerie werden zusätzlich kleinere Thumbnail-Dateien erzeugt.
+- Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste. Sichtbare Zutaten, optionale Zutaten, Mengenbereiche und Alternativen müssen mit der Berechnungslogik übereinstimmen.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
 - GitHub Pages führt keinen serverseitigen PHP-Code aus. Funktionen mit Datenbank, Benutzerkonto oder zentralem Speichern benötigen später ein geeignetes Backend oder anderes Hosting.
