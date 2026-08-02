@@ -1,0 +1,34 @@
+name: Normalize shopping list status
+
+on:
+  push:
+    paths:
+      - .github/workflows/normalize-shopping-status.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize project state wording
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace('Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste-Pilot', 'Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste')
+          text = text.replace('Arbeitsfassung mit Rezeptbild und Thumbnail und Einkaufsliste', 'Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste')
+          text = text.replace('bestätigt mit Rezeptbild und Thumbnail und Einkaufsliste', 'bestätigt mit Rezeptbild, Thumbnail und Einkaufsliste')
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit wording cleanup
+        run: |
+          git config user.name "Chefkoch Kim"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git commit -m "Einkaufslisten-Status vereinheitlichen"
+          git push
