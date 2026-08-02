@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.7.3  
-**Letzte Aktualisierung:** 01.08.2026  
+**Buchversion:** 2.7.4  
+**Letzte Aktualisierung:** 02.08.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -12,7 +12,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
 - `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
-- `assets/honig-senf-lachs.jpg` – eigenständige JPEG-Bilddatei für den Honig-Senf-Lachs
+- `assets/honi-senf-lachs.png` – originales PNG-Rezeptbild für den Honig-Senf-Lachs
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
@@ -98,7 +98,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.3, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.5, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -152,8 +152,8 @@ Vorhanden:
 
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
-- Bild: `assets/honig-senf-lachs.jpg`
-- Version: 0.1.3
+- Bild: `assets/honi-senf-lachs.png`
+- Version: 0.1.5
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -190,7 +190,7 @@ Dazu passend:
 - Grillgemüse
 - Gemüsefinish-Mild ohne Honig
 
-Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Es ist direkt unter der Einleitung eingebaut und dient als Vorlage für weitere Rezeptbilder.
+Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das vom Nutzer hochgeladene Original-PNG ist direkt unter der Einleitung eingebaut und dient als Vorlage für weitere Rezeptbilder.
 
 ### Gemüsefinish-Fresh
 
@@ -236,12 +236,12 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - passende Beilagen Grillgemüse und Gemüsefinish-Mild auf der Rezeptseite verlinkt
 - erstes Rezeptbild für Honig-Senf-Lachs erstellt
 - Bild als großes 16:9-Hero-Bild auf der Rezeptseite eingebaut
-- fehlerhafte SVG- und Daten-URL-Einbindungen entfernt
-- Bild als echte JPEG-Datei unter `assets/honig-senf-lachs.jpg` gespeichert
-- Rezeptseite mit der separaten JPEG-Datei verknüpft
+- fehlerhafte SVG-, Daten-URL- und JPEG-Einbindungen verworfen
+- originales PNG unter `assets/honi-senf-lachs.png` übernommen
+- Rezeptseite mit dem Original-PNG verknüpft
 - Bildlayout als Standard für weitere Rezeptseiten dokumentiert
-- Rezeptversion Honig-Senf-Lachs auf 0.1.3 erhöht
-- Buchversion auf 2.7.3 erhöht
+- Rezeptversion Honig-Senf-Lachs auf 0.1.5 erhöht
+- Buchversion auf 2.7.4 erhöht
 
 ## Offene Aufgaben
 
@@ -276,12 +276,20 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 
 ## Änderungshistorie
 
+### Version 2.7.4 – 02.08.2026
+
+- vom Nutzer hochgeladenes Originalbild `assets/honi-senf-lachs.png` übernommen
+- beschädigte JPEG-Einbindung auf der Rezeptseite durch das Original-PNG ersetzt
+- korrekte Bildabmessungen 1672 × 941 Pixel hinterlegt
+- Rezeptversion Honig-Senf-Lachs auf 0.1.5 erhöht
+- Fleischseite und Startseite auf Buchversion 2.7.4 aktualisiert
+- beschädigte alte JPEG-Datei entfernt
+
 ### Version 2.7.3 – 01.08.2026
 
 - beschädigte direkte JPEG-Daten-URL aus `honig-senf-lachs.html` entfernt
-- optimiertes Rezeptbild als echte Datei `assets/honig-senf-lachs.jpg` im Repository gespeichert
-- Rezeptseite mit der relativen Bildadresse `assets/honig-senf-lachs.jpg?v=273` verknüpft
-- temporären Reparatur-Workflow wieder entfernt
+- optimiertes Rezeptbild als Datei `assets/honig-senf-lachs.jpg` im Repository gespeichert
+- Rezeptseite mit der relativen Bildadresse verknüpft
 - Rezeptversion Honig-Senf-Lachs auf 0.1.3 erhöht
 - Buchversion auf 2.7.3 erhöht
 
