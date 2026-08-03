@@ -1,0 +1,278 @@
+name: Hide public version labels
+
+on:
+  push:
+    paths:
+      - trigger-hide-public-versions.txt
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove visible versions and statuses
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import html
+          import json
+          import re
+
+          BOOK_VERSION = '2.12.2'
+          DATE = '2026-08-03'
+
+          PUBLIC_PAGES = [
+              'index.html',
+              'fleisch.html',
+              'gemuese-salat.html',
+              'vegan.html',
+              'grundlagen.html',
+              'kochbuch.html',
+              'honig-senf-lachs.html',
+              'grillgemuese.html',
+              'finishing-sauce.html',
+              'gemuesefinish-mild.html',
+              'einkaufsliste.html',
+              'einkaufsliste-basis.html',
+              'einkaufsliste-gesamt.html',
+              'einkaufsliste-gesamt-basis.html',
+          ]
+
+          RECIPES = {
+              'honig-senf-lachs.html': {
+                  'id': 'honig-senf-lachs-grill',
+                  'old': '0.1.8',
+                  'new': '0.1.9',
+                  'status': 'Arbeitsfassung',
+              },
+              'grillgemuese.html': {
+                  'id': 'grillgemuese-gasgrill',
+                  'old': '0.9.5',
+                  'new': '0.9.6',
+                  'status': 'Arbeitsfassung',
+              },
+              'finishing-sauce.html': {
+                  'id': 'finishing-sauce-grillgemuese-haehnchen',
+                  'old': '1.0.5',
+                  'new': '1.0.6',
+                  'status': 'bestätigt',
+              },
+              'gemuesefinish-mild.html': {
+                  'id': 'gemuesefinish-mild',
+                  'old': '0.1.4',
+                  'new': '0.1.5',
+                  'status': 'Arbeitsfassung',
+              },
+          }
+
+          def read(path):
+              return Path(path).read_text(encoding='utf-8')
+
+          def write(path, text):
+              Path(path).write_text(text, encoding='utf-8')
+
+          def set_meta(text, name, content):
+              tag = f'<meta name="{name}" content="{html.escape(content, quote=True)}">'
+              pattern = re.compile(rf'<meta name="{re.escape(name)}" content="[^"]*">')
+              if pattern.search(text):
+                  return pattern.sub(tag, text, count=1)
+              viewport = re.search(r'<meta name="viewport"[^>]*>\n?', text)
+              if not viewport:
+                  raise RuntimeError(f'Viewport-Meta fehlt für {name}')
+              return text[:viewport.end()] + tag + '\n' + text[viewport.end():]
+
+          def strip_footer_version(text):
+              def clean(match):
+                  inner = match.group(1)
+                  inner = re.sub(r'\s*·\s*Version\s+\d+(?:\.\d+){0,2}', '', inner)
+                  inner = re.sub(r'Version\s+\d+(?:\.\d+){0,2}\s*·\s*', '', inner)
+                  return f'<footer>{inner}</footer>'
+              return re.sub(r'<footer>(.*?)</footer>', clean, text, flags=re.S)
+
+          def remove_editorial_ui(text):
+              text = text.replace(' · Arbeitsfassung', '')
+              text = text.replace(' · Bestätigte Fassung', '')
+              text = re.sub(r'<span class="tag(?: draft)?">(?:Arbeitsfassung|Bestätigte Fassung)</span>', '', text)
+              text = re.sub(r'<p class="notice"><b>Arbeitsstand:</b>.*?</p>', '', text, flags=re.S)
+              text = re.sub(r'<div class="fact"><b>Version [^<]+</b><span>Rezeptstand</span></div>', '', text)
+              text = re.sub(r'<div class="detail"><h3>Rezeptstand</h3><p>.*?</p></div>', '', text, flags=re.S)
+              text = re.sub(r'<div class="detail"><h3>Noch zu bestätigen</h3><p>.*?</p></div>', '', text, flags=re.S)
+              return text
+
+          for path in PUBLIC_PAGES:
+              if not Path(path).exists():
+                  raise RuntimeError(f'Öffentliche Seite fehlt: {path}')
+              text = read(path)
+              text = set_meta(text, 'book-version', BOOK_VERSION)
+              text = strip_footer_version(text)
+              text = remove_editorial_ui(text)
+              write(path, text)
+
+          for path, recipe in RECIPES.items():
+              text = read(path)
+              text = set_meta(text, 'recipe-id', recipe['id'])
+              text = set_meta(text, 'recipe-version', recipe['new'])
+              text = set_meta(text, 'recipe-status', recipe['status'])
+              text = text.replace(
+                  '.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}',
+                  '.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}'
+              )
+              text = text.replace(
+                  '.details{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}',
+                  '.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}'
+              )
+              text = text.replace(
+                  '.details{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}',
+                  '.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}'
+              )
+              # Versionsnummern bleiben nur in den unsichtbaren Metadaten und Projektdateien.
+              text = text.replace(recipe['old'], recipe['new'])
+              text = strip_footer_version(text)
+              text = remove_editorial_ui(text)
+              write(path, text)
+
+          def update_json_script(text, script_id, updater):
+              pattern = rf'(<script id="{re.escape(script_id)}" type="application/json">\n)(.*?)(\n</script>)'
+              match = re.search(pattern, text, flags=re.S)
+              if not match:
+                  raise RuntimeError(f'JSON-Script {script_id} nicht gefunden')
+              data = json.loads(match.group(2))
+              updater(data)
+              replacement = match.group(1) + json.dumps(data, ensure_ascii=False, indent=2) + match.group(3)
+              return text[:match.start()] + replacement + text[match.end():]
+
+          index = read('index.html')
+          public_rule = ('Versionsnummern und interne Rezeptstatus werden in der veröffentlichten Oberfläche nicht sichtbar angezeigt; '
+                         'sie bleiben in Meta-Daten, dem eingebetteten Projektstatus und 00_Projektstatus.md dokumentiert.')
+
+          def update_meta(data):
+              rules = data.setdefault('websiteRules', [])
+              rules = [r for r in rules if not r.startswith('Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills.')]
+              replacement = ('Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise; '
+                             'Arbeitsstand, Rezeptstatus und Versionen bleiben ausschließlich in technischen Meta-Daten und Projektdateien dokumentiert.')
+              if replacement not in rules:
+                  rules.insert(5, replacement)
+              if public_rule not in rules:
+                  rules.append(public_rule)
+              data['websiteRules'] = rules
+              data['changePolicy'] = [
+                  'Nicht bestätigte Inhalte intern als Arbeitsfassung kennzeichnen.' if item == 'Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.' else item
+                  for item in data.get('changePolicy', [])
+              ]
+
+          new_versions = {recipe['id']: recipe['new'] for recipe in RECIPES.values()}
+
+          def update_state(data):
+              data['bookVersion'] = BOOK_VERSION
+              data['lastUpdated'] = DATE
+              for recipe in data.get('recipes', []):
+                  rid = recipe.get('id')
+                  if rid in new_versions:
+                      recipe['version'] = new_versions[rid]
+              for page in data.get('pages', []):
+                  if page.get('path') in RECIPES:
+                      page['status'] = page.get('status', '').replace(' am Seitenende', '') + '; sichtbare Status- und Versionshinweise entfernt'
+              if not any(item.get('version') == BOOK_VERSION for item in data.get('history', [])):
+                  data.setdefault('history', []).append({
+                      'date': DATE,
+                      'version': BOOK_VERSION,
+                      'change': 'Sichtbare Versionsnummern, Rezeptstände sowie die Hinweise Arbeitsfassung und Bestätigte Fassung aus der veröffentlichten Oberfläche entfernt; Versionsführung in Meta-Daten und Projektdateien beibehalten.'
+                  })
+
+          index = update_json_script(index, 'chefkoch-kim-meta', update_meta)
+          index = update_json_script(index, 'chefkoch-kim-state', update_state)
+          index = set_meta(index, 'book-version', BOOK_VERSION)
+          index = strip_footer_version(index)
+          write('index.html', index)
+
+          meta = read('00_Meta-Kim.md')
+          meta = meta.replace(
+              '- Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.',
+              '- Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise. Arbeitsstand, Rezeptstatus und Versionsnummern bleiben ausschließlich in technischen Meta-Daten und den internen Projektdateien dokumentiert.'
+          )
+          meta = meta.replace(
+              '3. Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.',
+              '3. Nicht bestätigte Inhalte intern als Arbeitsfassung kennzeichnen.'
+          )
+          meta = meta.replace(
+              '12. Rezeptversion und Änderungsverlauf',
+              '12. Interne Rezeptversion und Änderungsverlauf in Meta-Daten und Projektstatus; nicht sichtbar auf der Rezeptseite'
+          )
+          hidden_rule = '- Sichtbare Seiten enthalten keine Versionsnummern oder redaktionellen Statusangaben wie **Arbeitsfassung**, **Bestätigte Fassung** oder **Rezeptstand**.'
+          if hidden_rule not in meta:
+              marker = '- Der Block **Einkaufsliste erstellen** steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link.\n'
+              if marker not in meta:
+                  raise RuntimeError('Meta-Marker für Einkaufslistenposition fehlt')
+              meta = meta.replace(marker, marker + hidden_rule + '\n', 1)
+          write('00_Meta-Kim.md', meta)
+
+          status = read('00_Projektstatus.md')
+          status = status.replace('**Buchversion:** 2.12.1', f'**Buchversion:** {BOOK_VERSION}', 1)
+          for recipe in RECIPES.values():
+              status = status.replace(f'Version {recipe["old"]}', f'Version {recipe["new"]}')
+              status = status.replace(f'- Version: {recipe["old"]}', f'- Version: {recipe["new"]}')
+          visible_rule = ('### Versions- und Statusanzeige\n\n'
+                          '- Versionsnummern und interne redaktionelle Statusangaben werden im veröffentlichten Kochbuch nicht sichtbar angezeigt.\n'
+                          '- Jede Rezeptseite führt Rezept-ID, Rezeptversion und internen Status unsichtbar als HTML-Meta-Daten.\n'
+                          '- Die Buchversion bleibt unsichtbar als `book-version`-Meta-Datum sowie in `index.html` und `00_Projektstatus.md` erhalten.\n'
+                          '- Hinweise wie **Arbeitsfassung**, **Bestätigte Fassung**, **Rezeptstand** und sichtbare Versionsnummern in Fußzeilen wurden entfernt.\n\n')
+          if '### Versions- und Statusanzeige' not in status:
+              marker = '## Einkaufsliste\n'
+              if marker not in status:
+                  raise RuntimeError('Projektstatus-Marker Einkaufsliste fehlt')
+              status = status.replace(marker, visible_rule + marker, 1)
+          completed = ('- sichtbare Versionsnummern aus allen öffentlichen Fußzeilen entfernt\n'
+                       '- interne Statusangaben Arbeitsfassung, Bestätigte Fassung und Rezeptstand von den Rezeptseiten entfernt\n'
+                       '- Rezept-ID, Rezeptversion und Status unsichtbar als Meta-Daten auf den Rezeptseiten hinterlegt\n'
+                       f'- Rezeptversionen auf 0.1.9, 0.9.6, 1.0.6 und 0.1.5 erhöht\n'
+                       f'- Buchversion auf {BOOK_VERSION} erhöht\n')
+          if completed not in status:
+              marker = '- Buchversion auf 2.12.1 erhöht\n'
+              if marker not in status:
+                  raise RuntimeError('Erledigt-Marker 2.12.1 fehlt')
+              status = status.replace(marker, marker + completed, 1)
+          if f'### Version {BOOK_VERSION}' not in status:
+              history = (f'### Version {BOOK_VERSION} – 03.08.2026\n\n'
+                         '- sichtbare Versionshinweise und interne redaktionelle Statusangaben aus allen veröffentlichten Seiten entfernt\n'
+                         '- Rezeptversionen und Status unsichtbar als HTML-Meta-Daten weitergeführt\n'
+                         '- Buchversion weiterhin im eingebetteten Projektstatus und in der Projektdatei dokumentiert\n'
+                         '- Layout der Fakten- und Detailkarten nach dem Entfernen der Statuskarten flexibel angepasst\n\n')
+              marker = '## Änderungshistorie\n'
+              if marker not in status:
+                  raise RuntimeError('Änderungshistorie-Marker fehlt')
+              status = status.replace(marker, marker + history, 1)
+          write('00_Projektstatus.md', status)
+
+          # Sichtbare Oberfläche prüfen. Meta-Daten und JSON-Skripte dürfen Versionen enthalten.
+          forbidden = ['Arbeitsfassung', 'Bestätigte Fassung', 'Rezeptstand']
+          for path in PUBLIC_PAGES:
+              text = read(path)
+              body_match = re.search(r'<body[^>]*>(.*?)</body>', text, flags=re.S)
+              if not body_match:
+                  raise RuntimeError(f'Body fehlt: {path}')
+              body = re.sub(r'<script\b.*?</script>', '', body_match.group(1), flags=re.S)
+              body = re.sub(r'<style\b.*?</style>', '', body, flags=re.S)
+              visible = html.unescape(re.sub(r'<[^>]+>', ' ', body))
+              visible = re.sub(r'\s+', ' ', visible)
+              if re.search(r'\bVersion\s+\d', visible):
+                  raise RuntimeError(f'Sichtbare Version verblieben in {path}: {visible[:400]}')
+              for term in forbidden:
+                  if term in visible:
+                      raise RuntimeError(f'Sichtbarer Status {term} verblieben in {path}')
+
+          for path, recipe in RECIPES.items():
+              text = read(path)
+              for name, value in [('recipe-id', recipe['id']), ('recipe-version', recipe['new']), ('recipe-status', recipe['status'])]:
+                  if f'<meta name="{name}" content="{value}">' not in text:
+                      raise RuntimeError(f'Meta-Datum {name} fehlt in {path}')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/hide-public-versions.yml trigger-hide-public-versions.txt
+          git add index.html 00_Meta-Kim.md 00_Projektstatus.md *.html
+          git commit -m "Versions- und Statushinweise unsichtbar führen"
+          git push
