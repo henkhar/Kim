@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.11.0  
-**Letzte Aktualisierung:** 02.08.2026  
+**Buchversion:** 2.12.0  
+**Letzte Aktualisierung:** 03.08.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -18,7 +18,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `assets/gemuesefinish-mild.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Mild
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
-- `grundlagen.html` – eigene Seite für Grillzonen, Hitzearten und Kerntemperaturen
+- `grundlagen.html` – eigene Seite für Kerntemperaturen, Garpunkte, Salzlake und Dry Brine
 - `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
 - `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
 - `gemuesefinish-mild.html` – eigene Rezeptseite für Gemüsefinish-Mild
@@ -172,13 +172,12 @@ Eigene Übersichtsseite: `vegan.html`
 
 Eigene Seite: `grundlagen.html`
 
-Vorhanden:
+Vorhanden – in dieser Reihenfolge:
 
-- direkte Hitze
-- indirekte Hitze
-- Zwei-Zonen-Aufbau
-- Deckelregel
-- Kerntemperatur- und Garpunkttabelle für Rind, Hähnchen, Pute, Lachs und Schweinenacken
+1. Kerntemperaturen und Garpunkte
+2. Salzlake & Dry Brine
+
+Das Kapitel **Salzlake & Dry Brine** beschreibt bewusst ein Vorbereitungsverfahren und ist kein eigenständiges Rezept. Die früheren Kapitel zu direkter Hitze, indirekter Hitze, Deckelregel und Zwei-Zonen-Aufbau wurden entfernt.
 
 ## Rezepte
 
@@ -302,6 +301,11 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Startseite und Hauptmenü mit der neuen Einkaufsliste verknüpft
 - Buchversion auf 2.11.0 erhöht
 
+- Grundlagen-Seite auf die Kapitel Kerntemperaturen und Garpunkte sowie Salzlake & Dry Brine reduziert
+- Kapitel Salzlake & Dry Brine als Verfahren ergänzt
+- Kapitel direkte Hitze, indirekte Hitze, Deckelregel und Zwei-Zonen-Aufbau entfernt
+- Buchversion auf 2.12.0 erhöht
+
 ## Offene Aufgaben
 
 1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
@@ -336,6 +340,13 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.12.0 – 03.08.2026
+
+- Reihenfolge der Grundlagen neu festgelegt: zuerst Kerntemperaturen und Garpunkte, danach Salzlake & Dry Brine
+- Salzlake und Dry Brine als kompaktes Verfahrenskapitel ergänzt
+- Kapitel direkte Hitze, indirekte Hitze, Deckelregel und Zwei-Zonen-Aufbau entfernt
+- Buchversion auf 2.12.0 erhöht
+
 ### Version 2.11.0 – 02.08.2026
 
 - neue Seite `einkaufsliste-gesamt.html` ergänzt
