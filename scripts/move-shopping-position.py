@@ -1,0 +1,154 @@
+from pathlib import Path
+import json
+import re
+
+RECIPE_VERSIONS = {
+    'honig-senf-lachs.html': ('0.1.7', '0.1.8'),
+    'grillgemuese.html': ('0.9.4', '0.9.5'),
+    'finishing-sauce.html': ('1.0.4', '1.0.5'),
+    'gemuesefinish-mild.html': ('0.1.3', '0.1.4'),
+}
+
+
+def load(path):
+    return Path(path).read_text(encoding='utf-8')
+
+
+def save(path, text):
+    Path(path).write_text(text, encoding='utf-8')
+
+
+def move_shopping_panel(path, old_version, new_version):
+    text = load(path)
+    pattern = re.compile(r'\n<section class="panel shopping-panel" aria-labelledby="shopping-title">\n.*?\n</section>\n', re.S)
+    matches = list(pattern.finditer(text))
+    if len(matches) != 1:
+        raise RuntimeError(f'{path}: genau ein Einkaufslisten-Block erwartet, gefunden {len(matches)}')
+    match = matches[0]
+    block = match.group(0)
+    text = text[:match.start()] + '\n' + text[match.end():]
+    marker = '\n<a class="back-link"'
+    if text.count(marker) != 1:
+        raise RuntimeError(f'{path}: Zurück-Link nicht eindeutig')
+    text = text.replace(marker, block + marker, 1)
+    text, count = re.subn(
+        r'(<h3>Rezeptstand</h3><p>)Version [^<]+(</p>)',
+        rf'\1Version {new_version} · Einkaufsliste ans Ende der Rezeptseite verschoben.\2',
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError(f'{path}: Rezeptstand nicht gefunden')
+    text = text.replace(old_version, new_version)
+    text = text.replace('zum Abhaken oder Drucken öffnen', 'zum Abhaken und Senden öffnen')
+    if text.count('class="panel shopping-panel"') != 1:
+        raise RuntimeError(f'{path}: Einkaufslisten-Block nach Änderung nicht eindeutig')
+    if text.index('class="panel shopping-panel"') > text.index('class="back-link"'):
+        raise RuntimeError(f'{path}: Einkaufslisten-Block steht nicht vor dem Zurück-Link')
+    save(path, text)
+
+
+for path, versions in RECIPE_VERSIONS.items():
+    move_shopping_panel(path, *versions)
+
+
+def update_json_script(text, script_id, updater):
+    pattern = rf'(<script id="{re.escape(script_id)}" type="application/json">\n)(.*?)(\n</script>)'
+    match = re.search(pattern, text, flags=re.S)
+    if not match:
+        raise RuntimeError(f'JSON-Script {script_id} nicht gefunden')
+    data = json.loads(match.group(2))
+    updater(data)
+    replacement = match.group(1) + json.dumps(data, ensure_ascii=False, indent=2) + match.group(3)
+    return text[:match.start()] + replacement + text[match.end():]
+
+
+rule = 'Der Block „Einkaufsliste erstellen“ steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link.'
+index = load('index.html')
+
+
+def update_meta(data):
+    rules = data.setdefault('websiteRules', [])
+    if rule not in rules:
+        rules.append(rule)
+
+
+new_versions = {
+    'finishing-sauce-grillgemuese-haehnchen': '1.0.5',
+    'gemuesefinish-mild': '0.1.4',
+    'grillgemuese-gasgrill': '0.9.5',
+    'honig-senf-lachs-grill': '0.1.8',
+}
+
+
+def update_state(data):
+    data['bookVersion'] = '2.12.1'
+    data['lastUpdated'] = '2026-08-03'
+    for recipe in data.get('recipes', []):
+        if recipe.get('id') in new_versions:
+            recipe['version'] = new_versions[recipe['id']]
+    status_by_page = {
+        'honig-senf-lachs.html': 'Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende',
+        'grillgemuese.html': 'Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende',
+        'finishing-sauce.html': 'bestätigt mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende',
+        'gemuesefinish-mild.html': 'Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende',
+    }
+    for page in data.get('pages', []):
+        if page.get('path') in status_by_page:
+            page['status'] = status_by_page[page['path']]
+    if not any(item.get('version') == '2.12.1' for item in data.get('history', [])):
+        data.setdefault('history', []).append({
+            'date': '2026-08-03',
+            'version': '2.12.1',
+            'change': 'Den Block „Einkaufsliste erstellen“ auf allen vorhandenen Rezeptseiten an das Ende des Rezeptinhalts direkt vor den Zurück-Link verschoben.'
+        })
+
+
+index = update_json_script(index, 'chefkoch-kim-meta', update_meta)
+index = update_json_script(index, 'chefkoch-kim-state', update_state)
+index = index.replace('2026 · Chefkoch Kim · Version 2.12.0', '2026 · Chefkoch Kim · Version 2.12.1')
+save('index.html', index)
+
+meta = load('00_Meta-Kim.md')
+meta_rule = '- Der Block **Einkaufsliste erstellen** steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link.'
+if meta_rule not in meta:
+    marker = '- Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste. Sichtbare Zutaten, optionale Zutaten, Mengenbereiche und Alternativen müssen mit der Berechnungslogik übereinstimmen.\n'
+    if marker not in meta:
+        raise RuntimeError('Meta-Marker für Einkaufsliste nicht gefunden')
+    meta = meta.replace(marker, marker + meta_rule + '\n', 1)
+save('00_Meta-Kim.md', meta)
+
+status = load('00_Projektstatus.md')
+status = status.replace('**Buchversion:** 2.12.0', '**Buchversion:** 2.12.1', 1)
+status = status.replace('- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.7, Seite', '- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.8, Seite', 1)
+status = status.replace('- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.4, Seite', '- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.5, Seite', 1)
+status = status.replace('- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.4, Seite', '- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.5, Seite', 1)
+status = status.replace('- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.3, Seite', '- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.4, Seite', 1)
+for old, new in [('0.1.7', '0.1.8'), ('0.9.4', '0.9.5'), ('1.0.4', '1.0.5'), ('0.1.3', '0.1.4')]:
+    status = status.replace(f'- Version: {old}', f'- Version: {new}', 1)
+position_line = '- der Block **Einkaufsliste erstellen** steht auf jeder Rezeptseite am Ende des Rezeptinhalts direkt vor dem Zurück-Link\n'
+if position_line not in status:
+    marker = '- Button und Personenauswahl direkt auf jeder Rezeptseite\n'
+    if marker not in status:
+        raise RuntimeError('Projektstatus-Marker für Einzelrezept nicht gefunden')
+    status = status.replace(marker, marker + position_line, 1)
+completed = '- Einkaufslisten-Block auf allen vier Rezeptseiten an das Seitenende verschoben\n- Rezeptversionen auf 0.1.8, 0.9.5, 1.0.5 und 0.1.4 erhöht\n- Buchversion auf 2.12.1 erhöht\n'
+if completed not in status:
+    marker = '- Buchversion auf 2.12.0 erhöht\n'
+    if marker not in status:
+        raise RuntimeError('Erledigt-Marker für Buchversion 2.12.0 nicht gefunden')
+    status = status.replace(marker, marker + completed, 1)
+if '### Version 2.12.1' not in status:
+    history = '''### Version 2.12.1 – 03.08.2026
+
+- Block „Einkaufsliste erstellen“ auf Honig-Senf-Lachs, Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild an das Ende des Rezeptinhalts verschoben
+- Einkaufslisten-Block steht nun direkt vor dem Zurück-Link
+- neue Position als Standard für künftige Rezeptseiten dokumentiert
+- Rezeptversionen und Buchversion synchron erhöht
+
+'''
+    marker = '## Änderungshistorie\n'
+    if marker not in status:
+        raise RuntimeError('Änderungshistorie-Marker nicht gefunden')
+    status = status.replace(marker, marker + history, 1)
+save('00_Projektstatus.md', status)
