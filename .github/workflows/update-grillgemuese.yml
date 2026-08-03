@@ -1,0 +1,184 @@
+name: Update Grillgemuese
+
+on:
+  push:
+    paths:
+      - '.github/update-grillgemuese.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update recipe and shopping lists
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path('.')
+          OLD_BOOK = '2.13.1'
+          NEW_BOOK = '2.13.2'
+
+          def read(path):
+              return (ROOT / path).read_text(encoding='utf-8')
+
+          def write(path, text):
+              (ROOT / path).write_text(text, encoding='utf-8')
+
+          def sub_once(pattern, replacement, text, label, flags=0):
+              result, count = re.subn(pattern, replacement, text, count=1, flags=flags)
+              if count != 1:
+                  raise RuntimeError(f'{label}: expected 1 replacement, got {count}')
+              return result
+
+          # Keep hidden book metadata synchronized on every HTML page.
+          for page in ROOT.glob('*.html'):
+              text = page.read_text(encoding='utf-8')
+              text = text.replace(f'<meta name="book-version" content="{OLD_BOOK}">', f'<meta name="book-version" content="{NEW_BOOK}">')
+              page.write_text(text, encoding='utf-8')
+
+          # Main Grillgemuese recipe page.
+          text = read('grillgemuese.html')
+          text = text.replace('<meta name="recipe-version" content="0.9.6">', '<meta name="recipe-version" content="0.9.7">', 1)
+          text = text.replace('<meta name="description" content="Grillgemüse – Rezept in Haralds Grillkochbuch">', '<meta name="description" content="Grillgemüse von der Plancha mit Süßkartoffeln, Kichererbsen, Erdnüssen und optionalen Beilagen">', 1)
+          text = text.replace('Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit Gemüsefinish-Fresh vollendet.', 'Vielseitiges Plancha-Gemüse mit kräftigen Röstaromen, anschließend schonend indirekt fertig gegart und mit Gemüsefinish vollendet.', 1)
+
+          facts = '''<section class="panel"><div class="facts"><div class="fact"><b>4 Personen</b><span>Menge</span></div><div class="fact"><b>2 Planchas</b><span>Grillaufbau</span></div><div class="fact"><b>120 °C</b><span>indirekte Zone</span></div><div class="fact"><b>15–20 Minuten</b><span>indirekte Garphase</span></div></div></section>'''
+          text = sub_once(r'<section class="panel"><div class="facts">.*?</div></section>', facts, text, 'recipe facts', re.S)
+
+          recipe = '''<section class="panel"><div class="recipe-grid"><div><h2>Zutaten</h2><ul class="ingredients"><li><span>Zucchini</span><span>400 g</span></li><li><span>Rote Paprika</span><span>2</span></li><li><span>Gelbe Paprika</span><span>1</span></li><li><span>Champignons</span><span>400 g</span></li><li><span>Rote Zwiebeln</span><span>4</span></li><li><span>Brauner Zucker</span><span>1 TL</span></li><li><span>Süßkartoffeln</span><span>200 g</span></li><li><span>Erdnüsse, ungesalzen</span><span>20 g</span></li><li><span>Kichererbsen aus der Dose</span><span>200 g</span></li><li><span>Cherrytomaten</span><span>8</span></li><li><span>Rapsöl</span><span>3 EL</span></li><li><span>Salz und Pfeffer</span><span>nach Bedarf</span></li></ul><h3>Optional</h3><ul class="ingredients"><li><span>Spargel</span><span>400 g</span></li><li><span>Parmesan</span><span>1 EL</span></li><li><span>Feta</span><span>200 g</span></li><li><span>Hokkaido-Kürbis</span><span>400 g</span></li><li><span>Kartoffelecken</span><span>400 g</span></li></ul><h3>Zum Fertigstellen</h3><p>Eine Portion <a href="finishing-sauce.html">Gemüsefinish-Fresh</a> oder ein anderes passendes Gemüsefinish.</p></div><div><h2>Zubereitung</h2><ol class="steps"><li><b>Zutaten schneiden</b>Zucchini, Paprika, Süßkartoffeln sowie optional Spargel, Kartoffelecken und Hokkaido-Kürbis in kräftige, grillgeeignete Stücke schneiden. Champignons und Zwiebeln in Scheiben schneiden. Cherrytomaten, Erdnüsse und Kichererbsen ganz lassen. Jede Zutat in einer eigenen Schale bereitstellen. Zusätzlich ein bis zwei große Servierschalen mit einer Abdeckung, zum Beispiel einem passenden Teller, vorbereiten.</li><li><b>Ausgewählte Zutaten vorgaren</b>Kartoffelecken, Hokkaido-Kürbis und Süßkartoffeln in einem Wasserbad in der Mikrowelle etwa 5 Minuten vorgaren.</li><li><b>Leicht ölen</b>Alle Zutaten dünn mit Rapsöl benetzen. Die Zwiebelscheiben zusätzlich mit dem braunen Zucker bestreuen.</li><li><b>Grill vorbereiten</b>Die indirekte Zone auf etwa 120 °C vorheizen. Anschließend bis auf einen Brenner alle Flammen abdrehen und eine Plancha in die indirekte Zone stellen. Deckel schließen und die Temperatur halten. Eine zweite Plancha in einer getrennten direkten Grillzone auf niedrigster Stufe vorheizen.</li><li><b>Zutaten einzeln direkt grillen</b>Jede Zutat einzeln auf der Plancha in der direkten Zone grillen. Ziel sind kräftige Röstaromen, ohne dass etwas verbrennt. Fertige Zutaten zunächst in einen Zwischenbehälter geben, salzen, anschließend in die große Servierschale geben, untermischen und sofort wieder abdecken. Kartoffelecken und Spargel nach dem Grillen salzen, aber möglichst separat halten. Empfohlene Reihenfolge: zuerst Kichererbsen, Erdnüsse, Cherrytomaten, Kartoffelecken, Spargel, Hokkaido-Kürbis und Süßkartoffeln, solange die Plancha noch nicht vollständig heiß ist. Danach Paprika und Zucchini grillen. Champignons und die gezuckerten Zwiebeln erst in der Schlussphase auflegen, damit sie saftig bleiben beziehungsweise nicht verbrennen.</li><li><b>Indirekt fertig garen</b>Wenn alle Zutaten Röstaromen haben, das gemischte Gemüse auf die vorgeheizte Plancha in der indirekten Zone geben. Separat gehaltene Kartoffelecken und Spargel danebenstellen. Bei geschlossenem Deckel etwa 15–20 Minuten durchgaren. Kartoffeln, Kürbis und Süßkartoffeln sind bereits vorgegart.</li><li><b>Fertigstellen</b>Das durchgegarte Gemüse zurück in die große Servierschüssel geben, mit Gemüsefinish vermengen und zwei bis drei Minuten ziehen lassen. Nach Wunsch Feta darüberstreuen. Separat servierten Spargel mit Parmesan bestreuen.</li></ol><aside class="tip"><b>Kims Grilltipp:</b> Die Zutaten wirklich portionsweise grillen und die fertigen Portionen sofort abdecken. So bekommen alle Komponenten eigene Röstaromen, während das Gemüse bis zur gemeinsamen indirekten Garphase möglichst warm bleibt.</aside></div></div></section>'''
+          text = sub_once(r'<section class="panel"><div class="recipe-grid">.*?</div></div></section>', recipe, text, 'recipe content', re.S)
+
+          details = '''<section class="panel"><div class="details"><div class="detail"><h3>Grillaufbau</h3><p>Eine Plancha arbeitet in einer niedrigen direkten Zone für Röstaromen, die zweite bei etwa 120 °C indirekt zum gemeinsamen Fertiggaren.</p></div><div class="detail"><h3>Separat servieren</h3><p>Kartoffelecken und Spargel möglichst nicht unter das übrige Gemüse mischen. Spargel zum Schluss mit Parmesan bestreuen.</p></div><div class="detail"><h3>Passt zu</h3><p>Besonders gut zu gegrilltem Hähnchen, Lachs und Steak.</p></div></div></section>'''
+          text = sub_once(r'<section class="panel"><div class="details">.*?</div></section>', details, text, 'recipe details', re.S)
+
+          old_hidden = '<input type="hidden" name="recipe" value="grillgemuese-gasgrill"><input type="hidden" name="optional" value="0">'
+          new_hidden = '<input type="hidden" name="recipe" value="grillgemuese-gasgrill"><input type="hidden" name="optional" value="0"><label class="shopping-option"><input type="checkbox" name="optional" value="1">Optionale Zutaten aufnehmen</label>'
+          if old_hidden not in text:
+              raise RuntimeError('shopping optional controls not found')
+          text = text.replace(old_hidden, new_hidden, 1)
+          text = text.replace('Personenzahl auswählen und eine eigene Liste mit den berechneten Mengen zum Abhaken und Senden öffnen.', 'Personenzahl auswählen, auf Wunsch die optionalen Zutaten ergänzen und eine berechnete Einkaufsliste öffnen.', 1)
+          write('grillgemuese.html', text)
+
+          # Individual shopping list data.
+          text = read('einkaufsliste-basis.html')
+          individual = "'grillgemuese-gasgrill':{title:'Grillgemüse',baseServings:4,page:'grillgemuese.html',backLabel:'Grillgemüse',ingredients:[{id:'zucchini',name:'Zucchini',amount:400,unit:'g'},{id:'rote-paprika',name:'Rote Paprika',amount:2,unit:'Stück',whole:true},{id:'gelbe-paprika',name:'Gelbe Paprika',amount:1,unit:'Stück',whole:true},{id:'champignons',name:'Champignons',amount:400,unit:'g'},{id:'rote-zwiebeln',name:'Rote Zwiebeln',amount:4,unit:'Stück',whole:true},{id:'brauner-zucker',name:'Brauner Zucker',amount:1,unit:'TL'},{id:'suesskartoffeln',name:'Süßkartoffeln',amount:200,unit:'g'},{id:'erdnuesse-ungesalzen',name:'Erdnüsse, ungesalzen',amount:20,unit:'g'},{id:'kichererbsen-dose',name:'Kichererbsen aus der Dose',amount:200,unit:'g'},{id:'cherrytomaten',name:'Cherrytomaten',amount:8,unit:'Stück',whole:true},{id:'rapsoel',name:'Rapsöl',amount:3,unit:'EL'},{id:'salz-pfeffer',name:'Salz und Pfeffer',note:'nach Bedarf'},{id:'finish-fresh',name:'Gemüsefinish-Fresh',amount:1,unit:'Portion'},{id:'spargel',name:'Spargel',amount:400,unit:'g',optional:true},{id:'parmesan',name:'Parmesan',amount:1,unit:'EL',optional:true},{id:'feta',name:'Feta',amount:200,unit:'g',optional:true},{id:'hokkaido-kuerbis',name:'Hokkaido-Kürbis',amount:400,unit:'g',optional:true},{id:'kartoffelecken',name:'Kartoffelecken',amount:400,unit:'g',optional:true}]}"
+          text = sub_once(r"'grillgemuese-gasgrill':\{.*?\},\n'finishing-sauce-grillgemuese-haehnchen'", individual + ",\n'finishing-sauce-grillgemuese-haehnchen'", text, 'individual shopping data', re.S)
+          write('einkaufsliste-basis.html', text)
+
+          # Combined shopping list data. Existing permanent IDs are retained where ingredients remain.
+          text = read('einkaufsliste-gesamt-basis.html')
+          text = text.replace('<span>Gemüse, Rapsöl sowie Salz und Pfeffer.</span>', '<span>Zucchini, Paprika, Süßkartoffeln, Kichererbsen, Erdnüsse, Tomaten und optionale Extras.</span>', 1)
+          combined = "gemuese:{title:'Grillgemüse',items:[['zucchini','Zucchini','frisch','g',400],['paprika-rot','Rote Paprika','frisch','count',2,'Stück',1],['paprika-gelb','Gelbe Paprika','frisch','count',1,'Stück',1],['champignons','Champignons','frisch','g',400],['zwiebel-rot','Rote Zwiebeln','frisch','count',4,'Stück',1],['brauner-zucker','Brauner Zucker','vorrat','ml',5],['suesskartoffeln','Süßkartoffeln','frisch','g',200],['erdnuesse-ungesalzen','Erdnüsse, ungesalzen','vorrat','g',20],['kichererbsen-dose','Kichererbsen aus der Dose','vorrat','g',200],['cherrytomaten','Cherrytomaten','frisch','count',8,'Stück',1],['rapsoel','Rapsöl','vorrat','ml',45],['salz','Salz','vorrat','note',0,'zusätzlich nach Bedarf'],['pfeffer','Schwarzer Pfeffer','vorrat','note',0,'nach Geschmack'],['spargel','Spargel','frisch','g',400,'',0,1],['parmesan','Parmesan','milch','ml',15,'',0,1],['feta','Feta','milch','g',200,'',0,1],['hokkaido-kuerbis','Hokkaido-Kürbis','frisch','g',400,'',0,1],['kartoffelecken','Kartoffelecken','frisch','g',400,'',0,1]]}"
+          text = sub_once(r"gemuese:\{.*?\},\nfresh:", combined + ",\nfresh:", text, 'combined shopping data', re.S)
+          write('einkaufsliste-gesamt-basis.html', text)
+
+          # Update the category preview text.
+          text = read('gemuese-salat.html')
+          text = text.replace('Buntes Gemüse mit kräftigen Röstaromen, gestaffelt nach Garzeit gegrillt und anschließend mit Gemüsefinish-Fresh vollendet.', 'Vielseitiges Plancha-Gemüse mit Zucchini, Paprika, Süßkartoffeln, Kichererbsen und kräftigen Röstaromen, anschließend indirekt fertig gegart.', 1)
+          write('gemuese-salat.html', text)
+
+          # Keep the legacy combined cookbook view consistent for this recipe.
+          text = read('kochbuch.html')
+          legacy = '''<article class="recipe" id="grillgemuese"><div class="recipe-head"><div><h2>Grillgemüse</h2><p>Vielseitiges Plancha-Gemüse mit kräftigen Röstaromen, anschließend schonend indirekt fertig gegart und mit Gemüsefinish vollendet.</p></div></div><div class="facts"><div class="fact"><b>4 Personen</b><span>Menge</span></div><div class="fact"><b>2 Planchas</b><span>Grillaufbau</span></div><div class="fact"><b>120 °C</b><span>indirekte Zone</span></div><div class="fact"><b>15–20 Minuten</b><span>indirekte Garphase</span></div></div><div class="recipe-grid"><div><h3>Zutaten</h3><ul class="ingredients"><li><span>Zucchini</span><span>400 g</span></li><li><span>Rote Paprika</span><span>2</span></li><li><span>Gelbe Paprika</span><span>1</span></li><li><span>Champignons</span><span>400 g</span></li><li><span>Rote Zwiebeln</span><span>4</span></li><li><span>Brauner Zucker</span><span>1 TL</span></li><li><span>Süßkartoffeln</span><span>200 g</span></li><li><span>Erdnüsse, ungesalzen</span><span>20 g</span></li><li><span>Kichererbsen aus der Dose</span><span>200 g</span></li><li><span>Cherrytomaten</span><span>8</span></li><li><span>Rapsöl</span><span>3 EL</span></li><li><span>Salz und Pfeffer</span><span>nach Bedarf</span></li></ul><h4>Optional</h4><ul class="ingredients"><li><span>Spargel</span><span>400 g</span></li><li><span>Parmesan</span><span>1 EL</span></li><li><span>Feta</span><span>200 g</span></li><li><span>Hokkaido-Kürbis</span><span>400 g</span></li><li><span>Kartoffelecken</span><span>400 g</span></li></ul><h4>Zum Fertigstellen</h4><p>Eine Portion Gemüsefinish-Fresh oder ein anderes passendes Gemüsefinish.</p></div><div><h3>Zubereitung</h3><ol class="steps"><li><b>Zutaten schneiden</b>Zucchini, Paprika, Süßkartoffeln sowie optional Spargel, Kartoffelecken und Hokkaido-Kürbis in kräftige Stücke schneiden. Champignons und Zwiebeln in Scheiben schneiden. Cherrytomaten, Erdnüsse und Kichererbsen ganz lassen. Alles getrennt bereitstellen.</li><li><b>Vorgaren</b>Kartoffelecken, Hokkaido-Kürbis und Süßkartoffeln im Wasserbad in der Mikrowelle etwa 5 Minuten vorgaren.</li><li><b>Ölen</b>Alle Zutaten dünn mit Rapsöl benetzen und die Zwiebeln zusätzlich mit braunem Zucker bestreuen.</li><li><b>Grill vorbereiten</b>Eine Plancha in einer indirekten Zone bei etwa 120 °C und eine zweite Plancha in einer niedrigen direkten Zone vorbereiten.</li><li><b>Einzeln grillen</b>Die Zutaten einzeln direkt rösten, salzen, warm und abgedeckt sammeln. Erst Kichererbsen, Erdnüsse, Cherrytomaten, Kartoffeln, Spargel, Kürbis und Süßkartoffeln; danach Paprika und Zucchini; Champignons und Zwiebeln zuletzt.</li><li><b>Indirekt fertig garen</b>Alles auf der indirekten Plancha bei geschlossenem Deckel 15–20 Minuten durchgaren. Kartoffeln und Spargel nach Wunsch separat halten.</li><li><b>Fertigstellen</b>Mit Gemüsefinish vermengen, optional Feta darüberstreuen und zwei bis drei Minuten ziehen lassen. Spargel mit Parmesan bestreuen.</li></ol><aside class="tip"><b>Kims Grilltipp:</b> Zutaten portionsweise grillen und sofort abdecken, damit jede Sorte Röstaromen erhält und trotzdem warm bleibt.</aside></div></div></article>'''
+          text = sub_once(r'<article class="recipe" id="grillgemuese">.*?</article>', legacy, text, 'legacy cookbook recipe', re.S)
+          write('kochbuch.html', text)
+
+          # Embedded state and history.
+          text = read('index.html')
+          text = text.replace('"bookVersion": "2.13.1"', '"bookVersion": "2.13.2"', 1)
+          text = text.replace('"page": "grillgemuese.html",\n      "version": "0.9.6"', '"page": "grillgemuese.html",\n      "version": "0.9.7"', 1)
+          history_anchor = '''    {
+      "date": "2026-08-03",
+      "version": "2.13.1",
+      "change": "Die drei neuen Rezepte mit weboptimierten JPEG-Hero-Bildern und anklickbaren Thumbnails auf den passenden Übersichtsseiten ergänzt."
+    }
+  ]'''
+          history_new = '''    {
+      "date": "2026-08-03",
+      "version": "2.13.1",
+      "change": "Die drei neuen Rezepte mit weboptimierten JPEG-Hero-Bildern und anklickbaren Thumbnails auf den passenden Übersichtsseiten ergänzt."
+    },
+    {
+      "date": "2026-08-03",
+      "version": "2.13.2",
+      "change": "Grillgemüse um neue Grundzutaten und optionale Komponenten erweitert; Zubereitung auf getrennte direkte Plancha und indirekte Garphase bei 120 °C umgestellt und beide Einkaufslisten synchronisiert."
+    }
+  ]'''
+          if history_anchor not in text:
+              raise RuntimeError('index history anchor not found')
+          text = text.replace(history_anchor, history_new, 1)
+          write('index.html', text)
+
+          # Dynamic project status.
+          text = read('00_Projektstatus.md')
+          text = text.replace('**Buchversion:** 2.13.1', '**Buchversion:** 2.13.2', 1)
+          text = text.replace('Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.6', 'Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.7', 1)
+          old_recipe_status = '''### Grillgemüse
+
+- ID: `grillgemuese-gasgrill`
+- Seite: `grillgemuese.html`
+- Version: 0.9.6
+- Status: Arbeitsfassung
+- Rubrik: Salate & Gemüse
+- Bild: `assets/grillgemuese.jpg`
+- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.
+- Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände'''
+          new_recipe_status = '''### Grillgemüse
+
+- ID: `grillgemuese-gasgrill`
+- Seite: `grillgemuese.html`
+- Version: 0.9.7
+- Status: Arbeitsfassung
+- Rubrik: Salate & Gemüse
+- Bild: `assets/grillgemuese.jpg`
+- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.
+- Grundmenge: 4 Personen
+- Basiszutaten um Süßkartoffeln, ungesalzene Erdnüsse, Kichererbsen, Cherrytomaten und braunen Zucker erweitert
+- Aubergine und Frühlingszwiebeln entfernt; Zucchini auf 400 g und rote Zwiebeln auf 4 Stück angepasst
+- Optional: Spargel, Parmesan, Feta, Hokkaido-Kürbis und Kartoffelecken
+- Methode: Zutaten einzeln auf einer niedrigen direkten Plancha rösten und anschließend bei etwa 120 °C indirekt 15–20 Minuten fertig garen'''
+          if old_recipe_status not in text:
+              raise RuntimeError('project status Grillgemuese block not found')
+          text = text.replace(old_recipe_status, new_recipe_status, 1)
+          text = text.replace('- Buchversion auf 2.13.1 erhöht\n', '- Buchversion auf 2.13.1 erhöht\n- Grillgemüse-Zutaten und Mengen umfassend überarbeitet\n- Aubergine und Frühlingszwiebeln aus Rezept und Einkaufslisten entfernt\n- neue direkte und indirekte Plancha-Zubereitung mit 15–20 Minuten Garphase bei 120 °C ergänzt\n- optionale Zutaten in Einzel- und gemeinsamer Einkaufsliste ergänzt\n- Rezeptversion Grillgemüse auf 0.9.7 und Buchversion auf 2.13.2 erhöht\n', 1)
+          history_header = '## Änderungshistorie\n'
+          history_entry = '''## Änderungshistorie
+### Version 2.13.2 – 03.08.2026
+
+- Grillgemüse auf 400 g Zucchini und 4 rote Zwiebeln angepasst
+- Aubergine und Frühlingszwiebeln entfernt
+- braunen Zucker, Süßkartoffeln, ungesalzene Erdnüsse, Kichererbsen und Cherrytomaten ergänzt
+- Spargel, Parmesan, Feta, Hokkaido-Kürbis und Kartoffelecken als optionale Zutaten ergänzt
+- Ablauf auf getrennte direkte Plancha für Röstaromen und indirekte Plancha bei etwa 120 °C umgestellt
+- indirekte Garphase von 15–20 Minuten dokumentiert
+- Einzel- und gemeinsame Einkaufsliste vollständig synchronisiert
+- Rezeptversion Grillgemüse auf 0.9.7 und Buchversion auf 2.13.2 erhöht
+
+'''
+          if history_header not in text:
+              raise RuntimeError('project status history header not found')
+          text = text.replace(history_header, history_entry, 1)
+          write('00_Projektstatus.md', text)
+
+          # Remove temporary automation files in the same commit.
+          for temp in (Path('.github/workflows/update-grillgemuese.yml'), Path('.github/update-grillgemuese.trigger')):
+              if temp.exists():
+                  temp.unlink()
+          PY
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "Chefkoch Kim"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Grillgemuese umfassend ueberarbeiten"
+          git push
