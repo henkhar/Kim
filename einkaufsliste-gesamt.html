@@ -3,60 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.13.1">
+<meta name="book-version" content="2.13.2">
 <title>Gemeinsame Einkaufsliste · Haralds Grillkochbuch</title>
-<style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0}noscript{display:block;padding:24px;font-family:Arial,sans-serif}</style>
+<style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript{display:block;padding:24px;font-family:Arial,sans-serif}</style>
 </head>
 <body>
-<noscript>Für die Einkaufsliste muss JavaScript aktiviert sein.</noscript>
+<noscript>Für die gemeinsame Einkaufsliste muss JavaScript aktiviert sein.</noscript>
 <iframe id="app" title="Gemeinsame Einkaufsliste" allow="web-share"></iframe>
 <script>
 const frame=document.getElementById('app');
-frame.src='einkaufsliste-gesamt-basis.html'+location.search;
-frame.addEventListener('load',()=>{
-  const doc=frame.contentDocument;
-  const win=frame.contentWindow;
+let patched=false;
+const grillData=`gemuese:{title:'Grillgemüse',items:[['zucchini','Zucchini','frisch','g',400],['paprika-rot','Rote Paprika','frisch','count',2,'Stück',1],['paprika-gelb','Gelbe Paprika','frisch','count',1,'Stück',1],['champignons','Champignons','frisch','g',400],['zwiebel-rot','Rote Zwiebeln','frisch','count',4,'Stück',1],['brauner-zucker','Brauner Zucker','vorrat','ml',5],['suesskartoffeln','Süßkartoffeln','frisch','g',200],['erdnuesse-ungesalzen','Erdnüsse, ungesalzen','vorrat','g',20],['kichererbsen-dose','Kichererbsen aus der Dose','vorrat','g',200],['cherrytomaten','Cherrytomaten','frisch','count',8,'Stück',1],['rapsoel','Rapsöl','vorrat','ml',45],['salz','Salz','vorrat','note',0,'zusätzlich nach Bedarf'],['pfeffer','Schwarzer Pfeffer','vorrat','note',0,'nach Geschmack'],['spargel','Spargel','frisch','g',400,'',0,1],['parmesan','Parmesan','milch','ml',15,'',0,1],['feta','Feta','milch','g',200,'',0,1],['hokkaido-kuerbis','Hokkaido-Kürbis','frisch','g',400,'',0,1],['kartoffelecken','Kartoffelecken','frisch','g',400,'',0,1]]}`;
+
+frame.addEventListener('load',async()=>{
+  if(!patched){
+    patched=true;
+    try{
+      let html=await fetch('einkaufsliste-gesamt-basis.html',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
+      const pattern=/gemuese:\{[\s\S]*?\},\nfresh:/;
+      if(!pattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
+      html=html.replace(pattern,grillData+',\nfresh:');
+      html=html.replace('<span>Gemüse, Rapsöl sowie Salz und Pfeffer.</span>','<span>Zucchini, Paprika, Süßkartoffeln, Kichererbsen, Erdnüsse, Tomaten und optionale Extras.</span>');
+      html=html.replace('<meta name="book-version" content="2.13.1">','<meta name="book-version" content="2.13.2">');
+      html=html.replace('</head>','<base target="_top" data-kim-wrapper="true"></head>');
+      const doc=frame.contentDocument;
+      doc.open();doc.write(html);doc.close();
+      setTimeout(()=>installShare(),60);
+    }catch(error){
+      frame.classList.add('ready');
+      frame.contentDocument.body.innerHTML='<p style="padding:24px;font-family:Arial,sans-serif">Die gemeinsame Einkaufsliste konnte nicht geladen werden.</p>';
+      console.error(error);
+    }
+    return;
+  }
+  installShare();
+});
+
+function installShare(){
+  const doc=frame.contentDocument,win=frame.contentWindow;
   if(!doc||!win)return;
   document.title=doc.title;
-  if(doc.head&&!doc.querySelector('base[data-kim-wrapper]')){
-    const base=doc.createElement('base');
-    base.target='_top';
-    base.dataset.kimWrapper='true';
-    doc.head.prepend(base);
-  }
   const oldButton=doc.getElementById('print-list');
-  if(!oldButton)return;
+  if(!oldButton){setTimeout(installShare,50);return;}
+  if(doc.getElementById('share-list')){frame.classList.add('ready');return;}
   const button=oldButton.cloneNode(true);
-  button.id='share-list';
-  button.textContent='Senden';
-  button.setAttribute('aria-label','Gemeinsame Einkaufsliste senden');
-  oldButton.replaceWith(button);
+  button.id='share-list';button.textContent='Senden';button.setAttribute('aria-label','Gemeinsame Einkaufsliste senden');oldButton.replaceWith(button);
   button.addEventListener('click',async()=>{
     const rows=[...doc.querySelectorAll('.shopping-item')];
     if(!rows.length){win.alert('Bitte zuerst eine gemeinsame Einkaufsliste erstellen.');return;}
-    const lines=rows.map(row=>{
-      const checked=row.querySelector('input[type="checkbox"]')?.checked;
-      const name=row.querySelector('.item-name')?.textContent.trim()||'';
-      const amount=row.querySelector('.item-amount')?.textContent.trim()||'';
-      return `${checked?'☑':'☐'} ${name}${amount?` – ${amount}`:''}`;
-    });
+    const lines=rows.map(row=>{const checked=row.querySelector('input[type="checkbox"]')?.checked;const name=row.querySelector('.item-name')?.textContent.trim()||'';const amount=row.querySelector('.item-amount')?.textContent.trim()||'';return `${checked?'☑':'☐'} ${name}${amount?` – ${amount}`:''}`});
     const meta=doc.getElementById('result-meta')?.textContent.trim()||'';
     const summary=doc.getElementById('selection-summary')?.textContent.trim()||'';
     const text=['Gemeinsame Einkaufsliste',meta,summary,'',...lines].filter((line,index)=>line||index===3).join('\n');
     const data={title:'Gemeinsame Einkaufsliste',text,url:location.href};
-    const nav=win.navigator;
-    if(nav.share&&(!nav.canShare||nav.canShare(data))){
-      try{await nav.share(data);return}catch(error){if(error?.name==='AbortError')return;}
-    }
-    try{
-      if(nav.clipboard?.writeText){await nav.clipboard.writeText(text)}
-      else{
-        const area=doc.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';doc.body.appendChild(area);area.select();doc.execCommand('copy');area.remove();
-      }
-      win.alert('Die Einkaufsliste wurde kopiert. Du kannst sie jetzt in E-Mail, Nachrichten oder einer anderen App einfügen.');
-    }catch{win.alert('Das Teilen wird von diesem Browser leider nicht unterstützt.');}
+    if(navigator.share&&(!navigator.canShare||navigator.canShare(data))){try{await navigator.share(data);return}catch(error){if(error?.name==='AbortError')return}}
+    try{await navigator.clipboard.writeText(text);win.alert('Die Einkaufsliste wurde kopiert. Du kannst sie jetzt in E-Mail, Nachrichten oder einer anderen App einfügen.')}catch{win.alert('Das Teilen wird von diesem Browser leider nicht unterstützt.')}
   });
-});
+  frame.classList.add('ready');
+}
+frame.src='einkaufsliste-gesamt-basis.html'+location.search;
 </script>
 </body>
 </html>
