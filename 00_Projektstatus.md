@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.12.0  
+**Buchversion:** 2.12.1  
 **Letzte Aktualisierung:** 03.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -98,6 +98,7 @@ Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
 ### Einzelrezept
 
 - Button und Personenauswahl direkt auf jeder Rezeptseite
+- der Block **Einkaufsliste erstellen** steht auf jeder Rezeptseite am Ende des Rezeptinhalts direkt vor dem Zurück-Link
 - automatische Umrechnung ausgehend von jeweils 4 Personen
 - optionale Zutaten und Varianten werden berücksichtigt
 - eigene Ergebnisdarstellung auf `einkaufsliste.html`
@@ -132,7 +133,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.7, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.8, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -154,9 +155,9 @@ Rubriken:
 
 Vorhandene Rezepte:
 
-- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.4, Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.4, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.3, Seite `gemuesefinish-mild.html`
+- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.5, Seite `grillgemuese.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.5, Seite `finishing-sauce.html`
+- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.4, Seite `gemuesefinish-mild.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -186,7 +187,7 @@ Das Kapitel **Salzlake & Dry Brine** beschreibt bewusst ein Vorbereitungsverfahr
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
 - Bild: `assets/honig-senf-lachs.jpg`
-- Version: 0.1.7
+- Version: 0.1.8
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -229,7 +230,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.4
+- Version: 1.0.5
 - Status: bestätigt
 - Bild: `assets/gemuesefinish-fresh.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -239,7 +240,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `gemuesefinish-mild`
 - Seite: `gemuesefinish-mild.html`
-- Version: 0.1.3
+- Version: 0.1.4
 - Status: Arbeitsfassung
 - Bild: `assets/gemuesefinish-mild.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -251,7 +252,7 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 
 - ID: `grillgemuese-gasgrill`
 - Seite: `grillgemuese.html`
-- Version: 0.9.4
+- Version: 0.9.5
 - Status: Arbeitsfassung
 - Rubrik: Salate & Gemüse
 - Bild: `assets/grillgemuese.jpg`
@@ -305,6 +306,9 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Kapitel Salzlake & Dry Brine als Verfahren ergänzt
 - Kapitel direkte Hitze, indirekte Hitze, Deckelregel und Zwei-Zonen-Aufbau entfernt
 - Buchversion auf 2.12.0 erhöht
+- Einkaufslisten-Block auf allen vier Rezeptseiten an das Seitenende verschoben
+- Rezeptversionen auf 0.1.8, 0.9.5, 1.0.5 und 0.1.4 erhöht
+- Buchversion auf 2.12.1 erhöht
 
 ## Offene Aufgaben
 
@@ -340,6 +344,13 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.12.1 – 03.08.2026
+
+- Block „Einkaufsliste erstellen“ auf Honig-Senf-Lachs, Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild an das Ende des Rezeptinhalts verschoben
+- Einkaufslisten-Block steht nun direkt vor dem Zurück-Link
+- neue Position als Standard für künftige Rezeptseiten dokumentiert
+- Rezeptversionen und Buchversion synchron erhöht
+
 ### Version 2.12.0 – 03.08.2026
 
 - Reihenfolge der Grundlagen neu festgelegt: zuerst Kerntemperaturen und Garpunkte, danach Salzlake & Dry Brine
