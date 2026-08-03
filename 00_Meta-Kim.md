@@ -17,7 +17,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 
 1. Änderungen möglichst lokal und nachvollziehbar durchführen.
 2. Bestehende Rezept-IDs dauerhaft beibehalten.
-3. Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.
+3. Nicht bestätigte Inhalte intern als Arbeitsfassung kennzeichnen.
 4. Rezeptversionen aktualisieren, sofern ein Rezept geändert wurde.
 5. Navigation, Links und mobile Darstellung prüfen.
 6. Buchversion nach dem Schema `MAJOR.MINOR.PATCH` aktualisieren.
@@ -42,13 +42,14 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Die Navigation muss jederzeit einen klaren Weg zurück zur Startseite bieten.
 - Alle Seiten müssen auf Desktop, Tablet und Smartphone gut lesbar und bedienbar sein.
 - Die Gestaltung bleibt reduziert, großzügig und Apple-inspiriert.
-- Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
+- Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise. Arbeitsstand, Rezeptstatus und Versionsnummern bleiben ausschließlich in technischen Meta-Daten und den internen Projektdateien dokumentiert.
 - Rezeptbilder werden als große Bilder im Seitenverhältnis 16:9 direkt unter der Rezepteinleitung eingebunden. Sie erhalten großzügig abgerundete Ecken, eine dezente Schattenwirkung, einen aussagekräftigen Alternativtext und eine zurückhaltende Bildunterschrift.
 - Das erste verbindliche Bildmuster ist die Rezeptseite `honig-senf-lachs.html`. Weitere Rezeptbilder sollen sich an diesem ruhigen, hellen und hochwertigen Food-Fotografie-Stil orientieren.
 - Food-Fotos werden als eigenständige, weboptimierte JPEG-Dateien im Repository gespeichert. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten. Direkte Daten-URLs im HTML sowie verschachtelte Rasterbilder in SVG-Dateien werden vermieden.
 - Übersichtsseiten dürfen die optimierten JPEGs als 16:9-Thumbnails mit `loading="lazy"` wiederverwenden. Bei deutlich wachsender Galerie werden zusätzlich kleinere Thumbnail-Dateien erzeugt.
 - Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste. Sichtbare Zutaten, optionale Zutaten, Mengenbereiche und Alternativen müssen mit der Berechnungslogik übereinstimmen.
 - Der Block **Einkaufsliste erstellen** steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link.
+- Sichtbare Seiten enthalten keine Versionsnummern oder redaktionellen Statusangaben wie **Arbeitsfassung**, **Bestätigte Fassung** oder **Rezeptstand**.
 - Gemeinsame Einkaufslisten verwenden dauerhafte interne Zutaten-IDs. Gleiche Zutaten werden nur bei kompatibler Bedeutung und kompatiblen Einheiten kumuliert; Volumenangaben werden intern normiert und anschließend wieder küchentauglich ausgegeben.
 - Als Schrift werden vorrangig lokale Systemschriften verwendet; es werden keine Schriftdateien verteilt.
 - HTML, CSS und JavaScript dürfen genutzt werden.
@@ -104,7 +105,7 @@ Weitere Bereiche wie Suche, Favoriten oder Projektinfos können später ergänzt
 9. Finishing, Ruhezeit und Servierhinweise
 10. Kim-Tipp mit kurzer Begründung
 11. Varianten und eigene Erfahrungen
-12. Rezeptversion und Änderungsverlauf
+12. Interne Rezeptversion und Änderungsverlauf in Meta-Daten und Projektstatus; nicht sichtbar auf der Rezeptseite
 
 ## Versionsregeln
 

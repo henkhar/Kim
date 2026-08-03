@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="book-version" content="2.12.2">
 <meta name="description" content="Haralds Grillkochbuch – persönliche Grillrezepte, Grundlagen und Erfahrungen">
 <title>Haralds Grillkochbuch</title>
 <style>
@@ -34,7 +35,7 @@
     "Bestehende Inhalte und Rezept-IDs beibehalten.",
     "Änderungen möglichst lokal und nachvollziehbar durchführen.",
     "Navigation und Links nach jeder strukturellen Änderung prüfen.",
-    "Nicht bestätigte Inhalte als Arbeitsfassung kennzeichnen.",
+    "Nicht bestätigte Inhalte intern als Arbeitsfassung kennzeichnen.",
     "Meta, Projektstatus und sichtbare Website synchron halten."
   ],
   "websiteRules": [
@@ -43,13 +44,14 @@
     "Die Website muss auf Desktop, Tablet und Smartphone gut nutzbar sein.",
     "HTML, CSS und JavaScript sind erlaubt; serverseitige Funktionen benötigen später ein geeignetes Backend.",
     "Die Gestaltung bleibt reduziert, gut lesbar und Apple-inspiriert, ohne externe Schriftdateien zu verteilen.",
-    "Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills.",
+    "Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise; Arbeitsstand, Rezeptstatus und Versionen bleiben ausschließlich in technischen Meta-Daten und Projektdateien dokumentiert.",
     "Rezeptbilder werden als große 16:9-Hero-Bilder direkt unter der Einleitung eingebunden und erhalten abgerundete Ecken sowie eine dezente Bildunterschrift.",
     "Food-Fotos werden weboptimiert als JPEG im Repository gespeichert; PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.",
     "Übersichtsseiten dürfen dieselben optimierten JPEGs als lazy-geladene 16:9-Thumbnails verwenden.",
     "Rezeptseiten mit hinterlegten Mengendaten bieten eine Einkaufsliste; sichtbare Zutaten, optionale Zutaten und Alternativen müssen mit der Berechnungslogik übereinstimmen.",
     "Gemeinsame Einkaufslisten verwenden dauerhafte interne Zutaten-IDs und normierte Basiseinheiten; nur kompatible Zutaten und Einheiten werden automatisch kumuliert.",
-    "Der Block „Einkaufsliste erstellen“ steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link."
+    "Der Block „Einkaufsliste erstellen“ steht auf Rezeptseiten am Ende des Rezeptinhalts direkt vor dem Zurück-Link.",
+    "Versionsnummern und interne Rezeptstatus werden in der veröffentlichten Oberfläche nicht sichtbar angezeigt; sie bleiben in Meta-Daten, dem eingebetteten Projektstatus und 00_Projektstatus.md dokumentiert."
   ],
   "versioning": {
     "book": "MAJOR.MINOR.PATCH",
@@ -63,7 +65,7 @@
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.12.1",
+  "bookVersion": "2.12.2",
   "lastUpdated": "2026-08-03",
   "architecture": "Website im schrittweisen Aufbau",
   "pages": [
@@ -80,7 +82,7 @@
     {
       "path": "honig-senf-lachs.html",
       "role": "Eigene Rezeptseite für Honig-Senf-Lachs unter Fleisch und Fisch",
-      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende"
+      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste; sichtbare Status- und Versionshinweise entfernt"
     },
     {
       "path": "gemuese-salat.html",
@@ -100,17 +102,17 @@
     {
       "path": "grillgemuese.html",
       "role": "Eigene Rezeptseite für Grillgemüse unter Salate & Gemüse",
-      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende"
+      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste; sichtbare Status- und Versionshinweise entfernt"
     },
     {
       "path": "finishing-sauce.html",
       "role": "Eigene Rezeptseite für Gemüsefinish-Fresh unter Soßen & Finishes",
-      "status": "bestätigt mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende"
+      "status": "bestätigt mit Rezeptbild, Thumbnail und Einkaufsliste; sichtbare Status- und Versionshinweise entfernt"
     },
     {
       "path": "gemuesefinish-mild.html",
       "role": "Eigene Rezeptseite für Gemüsefinish-Mild unter Soßen & Finishes",
-      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste am Seitenende"
+      "status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste; sichtbare Status- und Versionshinweise entfernt"
     },
     {
       "path": "kochbuch.html",
@@ -137,28 +139,28 @@
       "id": "finishing-sauce-grillgemuese-haehnchen",
       "title": "Gemüsefinish-Fresh",
       "page": "finishing-sauce.html",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "status": "bestätigt"
     },
     {
       "id": "gemuesefinish-mild",
       "title": "Gemüsefinish-Mild",
       "page": "gemuesefinish-mild.html",
-      "version": "0.1.4",
+      "version": "0.1.5",
       "status": "Arbeitsfassung"
     },
     {
       "id": "grillgemuese-gasgrill",
       "title": "Grillgemüse",
       "page": "grillgemuese.html",
-      "version": "0.9.5",
+      "version": "0.9.6",
       "status": "Arbeitsfassung"
     },
     {
       "id": "honig-senf-lachs-grill",
       "title": "Honig-Senf-Lachs vom Grill",
       "page": "honig-senf-lachs.html",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "status": "Arbeitsfassung"
     }
   ],
@@ -295,6 +297,11 @@
       "date": "2026-08-03",
       "version": "2.12.1",
       "change": "Den Block „Einkaufsliste erstellen“ auf allen vorhandenen Rezeptseiten an das Ende des Rezeptinhalts direkt vor den Zurück-Link verschoben."
+    },
+    {
+      "date": "2026-08-03",
+      "version": "2.12.2",
+      "change": "Sichtbare Versionsnummern, Rezeptstände sowie die Hinweise Arbeitsfassung und Bestätigte Fassung aus der veröffentlichten Oberfläche entfernt; Versionsführung in Meta-Daten und Projektdateien beibehalten."
     }
   ]
 }
@@ -305,7 +312,7 @@
 <header class="topbar"><button class="menu-button" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-icon"></span></button><div class="brand">Haralds Grillkochbuch</div><div></div></header>
 <section class="hero"><h1>Haralds<br>Grillkochbuch</h1><nav class="hero-nav" aria-label="Hauptkategorien"><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a class="muted" href="grundlagen.html">Grundlagen</a></nav></section>
 <main class="content"><p class="eyebrow">Rezepte entdecken</p><section class="category-grid" aria-label="Rezeptkategorien"><article class="category"><div><h2>Fleisch</h2><p>Rind, Hähnchen, Schwein und Fisch – mit Grillmethoden, Garstufen und Kerntemperaturen.</p></div><a href="fleisch.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Salate &amp; Beilagen</h2><p>Grillgemüse, Salate, Soßen und frische Finishes für den Grillabend.</p></div><a href="gemuese-salat.html">Rezepte ansehen →</a></article><article class="category"><div><h2>Vegan</h2><p>Pflanzliche Hauptgerichte und Beilagen, die direkt vom Grill überzeugen.</p></div><a href="vegan.html">Bereich öffnen →</a></article></section><section class="quick-links" aria-label="Weitere Bereiche"><a class="quick-link" href="grundlagen.html"><span>Grundlagen &amp; Kerntemperaturen</span><span>→</span></a><a class="quick-link" href="einkaufsliste-gesamt.html"><span>Gemeinsame Einkaufsliste</span><span>→</span></a><a class="quick-link" href="kochbuch.html"><span>Gesamtes Kochbuch öffnen</span><span>→</span></a></section></main>
-<footer>2026 · Chefkoch Kim · Version 2.12.1</footer>
+<footer>2026 · Chefkoch Kim</footer>
 </div>
 <aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="einkaufsliste-gesamt.html">Einkaufsliste</a><a href="grundlagen.html">Grundlagen</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open));}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false);});</script>

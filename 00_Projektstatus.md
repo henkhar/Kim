@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.12.1  
+**Buchversion:** 2.12.2  
 **Letzte Aktualisierung:** 03.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -91,6 +91,13 @@ Für Rezeptseiten ist folgender Bildstil festgelegt:
 
 Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert. Übersichtsseiten verwenden sie als lazy-geladene 16:9-Thumbnails. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.
 
+### Versions- und Statusanzeige
+
+- Versionsnummern und interne redaktionelle Statusangaben werden im veröffentlichten Kochbuch nicht sichtbar angezeigt.
+- Jede Rezeptseite führt Rezept-ID, Rezeptversion und internen Status unsichtbar als HTML-Meta-Daten.
+- Die Buchversion bleibt unsichtbar als `book-version`-Meta-Datum sowie in `index.html` und `00_Projektstatus.md` erhalten.
+- Hinweise wie **Arbeitsfassung**, **Bestätigte Fassung**, **Rezeptstand** und sichtbare Versionsnummern in Fußzeilen wurden entfernt.
+
 ## Einkaufsliste
 
 Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
@@ -133,7 +140,7 @@ Unterkategorien:
 
 Vorhandenes Fischrezept:
 
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.8, Seite `honig-senf-lachs.html`
+- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.9, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
@@ -155,9 +162,9 @@ Rubriken:
 
 Vorhandene Rezepte:
 
-- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.5, Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.5, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.4, Seite `gemuesefinish-mild.html`
+- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.6, Seite `grillgemuese.html`
+- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.6, Seite `finishing-sauce.html`
+- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.5, Seite `gemuesefinish-mild.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -187,7 +194,7 @@ Das Kapitel **Salzlake & Dry Brine** beschreibt bewusst ein Vorbereitungsverfahr
 - ID: `honig-senf-lachs-grill`
 - Seite: `honig-senf-lachs.html`
 - Bild: `assets/honig-senf-lachs.jpg`
-- Version: 0.1.8
+- Version: 0.1.9
 - Status: Arbeitsfassung
 - Rubrik: Fleisch → Fisch
 - Menge: 4 Personen
@@ -230,7 +237,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `finishing-sauce-grillgemuese-haehnchen`
 - Seite: `finishing-sauce.html`
-- Version: 1.0.5
+- Version: 1.0.6
 - Status: bestätigt
 - Bild: `assets/gemuesefinish-fresh.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -240,7 +247,7 @@ Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimier
 
 - ID: `gemuesefinish-mild`
 - Seite: `gemuesefinish-mild.html`
-- Version: 0.1.4
+- Version: 0.1.5
 - Status: Arbeitsfassung
 - Bild: `assets/gemuesefinish-mild.jpg`
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
@@ -252,7 +259,7 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 
 - ID: `grillgemuese-gasgrill`
 - Seite: `grillgemuese.html`
-- Version: 0.9.5
+- Version: 0.9.6
 - Status: Arbeitsfassung
 - Rubrik: Salate & Gemüse
 - Bild: `assets/grillgemuese.jpg`
@@ -309,6 +316,11 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Einkaufslisten-Block auf allen vier Rezeptseiten an das Seitenende verschoben
 - Rezeptversionen auf 0.1.8, 0.9.5, 1.0.5 und 0.1.4 erhöht
 - Buchversion auf 2.12.1 erhöht
+- sichtbare Versionsnummern aus allen öffentlichen Fußzeilen entfernt
+- interne Statusangaben Arbeitsfassung, Bestätigte Fassung und Rezeptstand von den Rezeptseiten entfernt
+- Rezept-ID, Rezeptversion und Status unsichtbar als Meta-Daten auf den Rezeptseiten hinterlegt
+- Rezeptversionen auf 0.1.9, 0.9.6, 1.0.6 und 0.1.5 erhöht
+- Buchversion auf 2.12.2 erhöht
 
 ## Offene Aufgaben
 
@@ -344,6 +356,13 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.12.2 – 03.08.2026
+
+- sichtbare Versionshinweise und interne redaktionelle Statusangaben aus allen veröffentlichten Seiten entfernt
+- Rezeptversionen und Status unsichtbar als HTML-Meta-Daten weitergeführt
+- Buchversion weiterhin im eingebetteten Projektstatus und in der Projektdatei dokumentiert
+- Layout der Fakten- und Detailkarten nach dem Entfernen der Statuskarten flexibel angepasst
+
 ### Version 2.12.1 – 03.08.2026
 
 - Block „Einkaufsliste erstellen“ auf Honig-Senf-Lachs, Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild an das Ende des Rezeptinhalts verschoben
