@@ -45,7 +45,7 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - 7 eigenständige Rezeptseiten
 - 4 Rezeptseiten mit eingebautem Hero-Bild
 - 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
-- 1 Einzelrezept-Einkaufsliste für alle 7 Rezepte mit Mengenberechnung und Druckansicht
+- 1 Einzelrezept-Einkaufsliste für alle 7 Rezepte mit Mengenberechnung und Senden-Funktion
 - 1 gemeinsame Einkaufsliste mit Rezeptauswahl und Zutatenkumulierung
 - 1 Übergangsseite für die frühere Gesamtansicht
 
@@ -109,11 +109,11 @@ Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
 
 - Button und Personenauswahl direkt auf jeder Rezeptseite
 - der Block **Einkaufsliste erstellen** steht auf jeder Rezeptseite am Ende des Rezeptinhalts direkt vor dem Zurück-Link
-- automatische Umrechnung ausgehend von jeweils 4 Personen
+- automatische Umrechnung ausgehend von der jeweiligen Grundmenge des Rezepts (1, 2, 3 oder 4 Personen)
 - optionale Zutaten und Varianten werden berücksichtigt
 - eigene Ergebnisdarstellung auf `einkaufsliste.html`
 - Zutaten lassen sich abhaken; Häkchen werden lokal im Browser gespeichert
-- Druckansicht blendet Bedienelemente und bereits abgehakte Zutaten aus
+- die Liste lässt sich über das systemeigene Teilen-Menü senden; ohne Web Share wird sie in die Zwischenablage kopiert
 
 ### Mehrere Rezepte gemeinsam
 
@@ -126,7 +126,7 @@ Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
 - Salz oder Pfeffer ohne feste Menge bleiben als Bedarfshinweis erhalten
 - bei jeder zusammengeführten Zutat werden die zugehörigen Rezepte angezeigt
 - Grillgemüse fügt ein Finish nicht automatisch hinzu; das gewünschte Finish wird separat ausgewählt, damit keine Doppelzählung entsteht
-- Zutaten lassen sich abhaken und die Liste kann gedruckt werden
+- Zutaten lassen sich abhaken und die Liste lässt sich über das systemeigene Teilen-Menü senden
 
 ## Kategorien und Hauptbereiche
 
