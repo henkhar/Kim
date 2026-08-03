@@ -74,7 +74,7 @@ Der Home-Button führt unmittelbar zu `index.html`.
 
 ### Rezeptkarten
 
-Rezeptkarten auf Übersichtsseiten zeigen keine farbigen Status- oder Informations-Pills. Arbeitsstand, Portionen und Rezeptstatus bleiben auf den Rezeptseiten beziehungsweise in den internen Projektdateien dokumentiert.
+Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise. Arbeitsstand, Rezeptstatus und Versionsnummern bleiben ausschließlich in technischen Meta-Daten und den internen Projektdateien dokumentiert.
 
 ### Rezeptbilder
 
