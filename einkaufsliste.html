@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.13.2">
+<meta name="book-version" content="2.14.0">
 <title>Einkaufsliste · Haralds Grillkochbuch</title>
 <style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript{display:block;padding:24px;font-family:Arial,sans-serif}</style>
 </head>
@@ -14,19 +14,19 @@
 const frame=document.getElementById('app');
 let patched=false;
 const grillData=`'grillgemuese-gasgrill':{title:'Grillgemüse',baseServings:4,page:'grillgemuese.html',backLabel:'Grillgemüse',ingredients:[{id:'zucchini',name:'Zucchini',amount:400,unit:'g'},{id:'rote-paprika',name:'Rote Paprika',amount:2,unit:'Stück',whole:true},{id:'gelbe-paprika',name:'Gelbe Paprika',amount:1,unit:'Stück',whole:true},{id:'champignons',name:'Champignons',amount:400,unit:'g'},{id:'rote-zwiebeln',name:'Rote Zwiebeln',amount:4,unit:'Stück',whole:true},{id:'brauner-zucker',name:'Brauner Zucker',amount:1,unit:'TL'},{id:'suesskartoffeln',name:'Süßkartoffeln',amount:200,unit:'g'},{id:'erdnuesse-ungesalzen',name:'Erdnüsse, ungesalzen',amount:20,unit:'g'},{id:'kichererbsen-dose',name:'Kichererbsen aus der Dose',amount:200,unit:'g'},{id:'cherrytomaten',name:'Cherrytomaten',amount:8,unit:'Stück',whole:true},{id:'rapsoel',name:'Rapsöl',amount:3,unit:'EL'},{id:'salz-pfeffer',name:'Salz und Pfeffer',note:'nach Bedarf'},{id:'finish-fresh',name:'Gemüsefinish-Fresh',amount:1,unit:'Portion'},{id:'spargel',name:'Spargel',amount:400,unit:'g',optional:true},{id:'parmesan',name:'Parmesan',amount:1,unit:'EL',optional:true},{id:'feta',name:'Feta',amount:200,unit:'g',optional:true},{id:'hokkaido-kuerbis',name:'Hokkaido-Kürbis',amount:400,unit:'g',optional:true},{id:'kartoffelecken',name:'Kartoffelecken',amount:400,unit:'g',optional:true}]}`;
+const chickenData=`'chicken-asado':{title:'Chicken Asado',baseServings:2,page:'chicken-asado.html',backLabel:'Chicken Asado',ingredients:[{id:'maishaehnchen',name:'Maishähnchen',amount:1,unit:'Stück',whole:true},{id:'orange',name:'Orange',amount:1,unit:'Stück',whole:true},{id:'limette',name:'Limette',amount:1,unit:'Stück',whole:true},{id:'knoblauch',name:'Knoblauchzehen',amount:4,unit:'Stück',whole:true},{id:'kreuzkuemmel',name:'Kreuzkümmel',amount:1,unit:'TL'},{id:'oregano',name:'Oregano',amount:1,unit:'TL'},{id:'salz',name:'Salz',amount:1,unit:'TL'},{id:'paprika-geraeuchert',name:'Geräuchertes Paprikapulver',amount:1.5,unit:'EL'},{id:'essig',name:'Essig',amount:1,unit:'EL'},{id:'olivenoel',name:'Olivenöl',amount:2.5,unit:'EL'},{id:'pfeffer',name:'Pfeffer',note:'nach Geschmack'}]}`;
 
 frame.addEventListener('load',async()=>{
   if(!patched){
     patched=true;
     try{
       let html=await fetch('einkaufsliste-basis.html',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
-      const pattern=/'grillgemuese-gasgrill':\{[\s\S]*?\},\n'finishing-sauce-grillgemuese-haehnchen'/;
-      if(!pattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
-      html=html.replace(pattern,grillData+",\n'finishing-sauce-grillgemuese-haehnchen'");
-      html=html.replace('<meta name="book-version" content="2.13.1">','<meta name="book-version" content="2.13.2">');
+      const grillPattern=/'grillgemuese-gasgrill':\{[\s\S]*?\},\n'finishing-sauce-grillgemuese-haehnchen'/;
+      if(!grillPattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
+      html=html.replace(grillPattern,grillData+",\n"+chickenData+",\n'finishing-sauce-grillgemuese-haehnchen'");
+      html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.14.0">');
       html=html.replace('</head>','<base target="_top" data-kim-wrapper="true"></head>');
-      const doc=frame.contentDocument;
-      doc.open();doc.write(html);doc.close();
+      const doc=frame.contentDocument;doc.open();doc.write(html);doc.close();
       setTimeout(()=>installShare(),60);
     }catch(error){
       frame.classList.add('ready');
@@ -43,13 +43,12 @@ function installShare(){
   if(!doc||!win)return;
   document.title=doc.title;
   const oldButton=doc.getElementById('print-button');
-  if(!oldButton){setTimeout(installShare,50);return;}
-  if(doc.getElementById('share-button')){frame.classList.add('ready');return;}
-  const button=oldButton.cloneNode(true);
-  button.id='share-button';button.textContent='Senden';button.setAttribute('aria-label','Einkaufsliste senden');oldButton.replaceWith(button);
+  if(!oldButton){setTimeout(installShare,50);return}
+  if(doc.getElementById('share-button')){frame.classList.add('ready');return}
+  const button=oldButton.cloneNode(true);button.id='share-button';button.textContent='Senden';button.setAttribute('aria-label','Einkaufsliste senden');oldButton.replaceWith(button);
   button.addEventListener('click',async()=>{
     const rows=[...doc.querySelectorAll('.shopping-item')];
-    if(!rows.length){win.alert('Es ist noch keine Einkaufsliste vorhanden.');return;}
+    if(!rows.length){win.alert('Es ist noch keine Einkaufsliste vorhanden.');return}
     const lines=rows.map(row=>{const checked=row.querySelector('input[type="checkbox"]')?.checked;const name=row.querySelector('.name')?.textContent.trim()||'';const amount=row.querySelector('.amount')?.textContent.trim()||'';return `${checked?'☑':'☐'} ${name}${amount?` – ${amount}`:''}`});
     const heading=doc.getElementById('recipe-title')?.textContent.trim()||'Einkaufsliste';
     const details=doc.getElementById('list-meta')?.textContent.trim()||'';

@@ -1,600 +1,143 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.13.1  
+**Buchversion:** 2.14.0  
 **Letzte Aktualisierung:** 03.08.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
 
-Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
+Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 
-- `index.html` – Apple-inspirierte Startseite
-- `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
-- `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
-- `entrecote-steakhouse.html` – Rezeptseite für Entrecôte Steakhouse
-- `schweinenackensteak-senf-kraeuter.html` – Rezeptseite für Schweinenackensteak mit Senf-Kräuter-Sauce
-- `assets/honig-senf-lachs.jpg` – weboptimiertes JPEG-Rezeptbild für den Honig-Senf-Lachs
-- `assets/grillgemuese.jpg` – weboptimiertes JPEG-Rezeptbild für Grillgemüse
-- `assets/gemuesefinish-fresh.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Fresh
-- `assets/gemuesefinish-mild.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Mild
-- `assets/entrecote_steakhouse.jpg` – weboptimiertes JPEG-Rezeptbild für Entrecôte Steakhouse
-- `assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg` – weboptimiertes JPEG-Rezeptbild für Schweinenackensteak mit Senf-Kräuter-Sauce
-- `assets/keto-pudding.jpg` – weboptimiertes JPEG-Rezeptbild für Keto-Pudding
-- `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
-- `keto-pudding.html` – Rezeptseite für Keto-Pudding
-- `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
-- `grundlagen.html` – eigene Seite für Kerntemperaturen, Garpunkte, Salzlake und Dry Brine
-- `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
-- `finishing-sauce.html` – eigene Rezeptseite für Gemüsefinish-Fresh
-- `gemuesefinish-mild.html` – eigene Rezeptseite für Gemüsefinish-Mild
-- `einkaufsliste.html` – mengenberechnete Einkaufsliste für alle Einzelrezepte
-- `einkaufsliste-gesamt.html` – gemeinsame Einkaufsliste für mehrere ausgewählte Rezepte
-- `kochbuch.html` – Übergangsseite für die frühere Gesamtansicht
-- `00_Meta-Kim.md` – stabile Regeln und Architektur
+- `index.html` – Startseite und eingebetteter maschinenlesbarer Projektstatus
+- `fleisch.html` – Übersicht für Rind, Hähnchen, Schwein und Fisch
+- `gemuese-salat.html` – Übersicht Salate & Beilagen
+- `vegan.html` – vorbereiteter Bereich für vegane Rezepte
+- `grundlagen.html` – Kerntemperaturen, Garpunkte, Salzlake und Dry Brine
+- `einkaufsliste.html` – Einkaufsliste für ein Rezept
+- `einkaufsliste-gesamt.html` – gemeinsame Einkaufsliste für mehrere Rezepte
+- `kochbuch.html` – Übergangsseite der früheren Gesamtansicht
+- `00_Meta-Kim.md` – stabile Regeln
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
-- GitHub Pages – Veröffentlichung der Website
 
 ## Aktueller Bestand
 
-- 7 ausgearbeitete Rezepte
+- 8 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
-- 6 Arbeitsfassungen
-- 2 geplante Fleischrezepte
-- noch keine veganen Rezepte
-- 1 vollständige Grundlagen-Seite
-- 1 Startseite
-- 3 Kategorie-Übersichtsseiten
-- 7 eigenständige Rezeptseiten
-- 7 Rezeptseiten mit eingebautem Hero-Bild
-- 2 Übersichtsseiten mit insgesamt 7 anklickbaren Rezept-Thumbnails
-- 1 Einzelrezept-Einkaufsliste für alle 7 Rezepte mit Mengenberechnung und Senden-Funktion
-- 1 gemeinsame Einkaufsliste mit Rezeptauswahl und Zutatenkumulierung
-- 1 Übergangsseite für die frühere Gesamtansicht
+- 7 Arbeitsfassungen
+- 1 geplantes Fleischrezept: Beer Can Chicken
+- 8 eigenständige Rezeptseiten
+- 7 Rezeptseiten mit Hero-Bild
+- beide Einkaufslisten unterstützen alle 8 Rezepte
+- sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
-## Startseite
-
-Die Startseite verwendet eine reduzierte, Apple-inspirierte Gestaltung mit:
-
-- sehr großer Hauptüberschrift
-- lokaler Apple-/Systemtypografie
-- Hamburger-Menü
-- direkter Navigation zu Fleisch, Salate & Beilagen, Vegan und Grundlagen
-- drei großen Kategoriekarten
-- drei zusätzlichen Schnellzugriffen
-- responsiver Darstellung für Desktop, Tablet und Smartphone
-
-Alle vier Hauptbereiche verweisen auf eigene Seiten. Die gemeinsame Einkaufsliste ist zusätzlich direkt von der Startseite erreichbar.
-
-## Navigation
-
-Die aktuellen Unter- und Rezeptseiten besitzen im Kopfbereich:
-
-- links das Hamburger-Menü
-- direkt daneben einen runden Home-Button mit Haus-Symbol
-- mittig den Titel „Haralds Grillkochbuch“
-
-Der Home-Button führt unmittelbar zu `index.html`.
-
-## Gestaltungsregeln
-
-### Rezeptkarten
-
-Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise. Arbeitsstand, Rezeptstatus und Versionsnummern bleiben ausschließlich in technischen Meta-Daten und den internen Projektdateien dokumentiert.
-
-### Rezeptbilder
-
-Für Rezeptseiten ist folgender Bildstil festgelegt:
-
-- großes Hero-Bild direkt unter Titel und Kurzbeschreibung
-- Seitenverhältnis 16:9
-- großzügig abgerundete Ecken
-- dezente Schattenwirkung
-- ruhiger, heller und hochwertiger Food-Fotografie-Stil
-- aussagekräftiger Alternativtext
-- zurückhaltende Bildunterschrift
-- responsive Darstellung auf Desktop, Tablet und Smartphone
-
-Die Seite `honig-senf-lachs.html` ist die erste verbindliche Vorlage für dieses Bildlayout. Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert. Übersichtsseiten verwenden sie als lazy-geladene 16:9-Thumbnails. PNG bleibt Logos, Transparenzen und Grafiken vorbehalten.
-
-### Versions- und Statusanzeige
-
-- Versionsnummern und interne redaktionelle Statusangaben werden im veröffentlichten Kochbuch nicht sichtbar angezeigt.
-- Jede Rezeptseite führt Rezept-ID, Rezeptversion und internen Status unsichtbar als HTML-Meta-Daten.
-- Die Buchversion bleibt unsichtbar als `book-version`-Meta-Datum sowie in `index.html` und `00_Projektstatus.md` erhalten.
-- Hinweise wie **Arbeitsfassung**, **Bestätigte Fassung**, **Rezeptstand** und sichtbare Versionsnummern in Fußzeilen wurden entfernt.
-
-## Einkaufsliste
-
-Für die Einkaufsplanung stehen zwei Wege zur Verfügung.
-
-### Einzelrezept
-
-- Button und Personenauswahl direkt auf jeder Rezeptseite
-- der Block **Einkaufsliste erstellen** steht auf jeder Rezeptseite am Ende des Rezeptinhalts direkt vor dem Zurück-Link
-- automatische Umrechnung ausgehend von der jeweiligen Grundmenge des Rezepts (1, 2, 3 oder 4 Personen)
-- optionale Zutaten und Varianten werden berücksichtigt
-- eigene Ergebnisdarstellung auf `einkaufsliste.html`
-- Zutaten lassen sich abhaken; Häkchen werden lokal im Browser gespeichert
-- die Liste lässt sich über das systemeigene Teilen-Menü senden; ohne Web Share wird sie in die Zwischenablage kopiert
-
-### Mehrere Rezepte gemeinsam
-
-- eigene Seite `einkaufsliste-gesamt.html`
-- alle vorhandenen Rezepte können einzeln angehakt werden
-- eine gemeinsame Personenzahl gilt für alle ausgewählten Rezepte
-- gleiche Zutaten werden über dauerhafte interne Zutaten-IDs erkannt
-- kompatible Volumeneinheiten werden intern vereinheitlicht und anschließend als EL beziehungsweise TL ausgegeben
-- Mengenbereiche, optionale Zutaten und die Knoblauchvariante des Gemüsefinish-Mild werden berücksichtigt
-- Salz oder Pfeffer ohne feste Menge bleiben als Bedarfshinweis erhalten
-- bei jeder zusammengeführten Zutat werden die zugehörigen Rezepte angezeigt
-- Grillgemüse fügt ein Finish nicht automatisch hinzu; das gewünschte Finish wird separat ausgewählt, damit keine Doppelzählung entsteht
-- Zutaten lassen sich abhaken und die Liste lässt sich über das systemeigene Teilen-Menü senden
-
-## Kategorien und Hauptbereiche
+## Rezeptübersicht
 
 ### Fleisch
 
-Eigene Übersichtsseite: `fleisch.html`
-
-Unterkategorien:
-
-- Rind
-- Hähnchen
-- Schwein
-- Fisch
-
-Vorhandene Fleischrezepte:
-
-- Entrecôte Steakhouse – Arbeitsfassung, Version 0.1.1, Seite `entrecote-steakhouse.html`
-- Schweinenackensteak mit Senf-Kräuter-Sauce – Arbeitsfassung, Version 0.1.1, Seite `schweinenackensteak-senf-kraeuter.html`
-- Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.9, Seite `honig-senf-lachs.html`
-
-Geplante Rezepte:
-
-- Beer Can Chicken
-- Chicken Asado
+- Entrecôte Steakhouse – Version 0.1.1 – `entrecote-steakhouse.html`
+- Chicken Asado – Version 0.1.0 – `chicken-asado.html`
+- Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
+- Honig-Senf-Lachs vom Grill – Version 0.1.9 – `honig-senf-lachs.html`
 
 ### Salate & Beilagen
 
-Eigene Übersichtsseite: `gemuese-salat.html`
+- Grillgemüse – Version 0.9.7 – `grillgemuese.html`
+- Gemüsefinish-Fresh – Version 1.0.6 – bestätigt – `finishing-sauce.html`
+- Gemüsefinish-Mild – Version 0.1.5 – `gemuesefinish-mild.html`
+- Keto-Pudding – Version 0.1.1 – `keto-pudding.html`
 
-Der Dateiname bleibt vorerst bestehen, damit vorhandene Links stabil bleiben.
+## Chicken Asado
 
-Rubriken:
+- ID: `chicken-asado`
+- Rubrik: Fleisch → Hähnchen
+- Grundmenge: 2 Personen / 1 Maishähnchen
+- Marinierzeit: mindestens 6–8 Stunden im Kühlschrank
+- Methode: Hähnchen als Spatchcock vorbereiten und direkt grillen
+- Wenden: etwa alle 5 Minuten
+- Marinade: Orange, Limette, Knoblauch, Kreuzkümmel, Oregano, Salz, geräuchertes Paprikapulver, Essig und Olivenöl
+- Für das Nachstreichen wird vor dem Kontakt mit rohem Geflügel ein sauberer Teil der Marinade separat zurückbehalten.
+- Kerntemperaturen werden über die vorhandene Grundlagen-Seite geprüft.
+- Noch ohne Rezeptbild
 
-- **Salate & Gemüse**
-- **Soßen & Finishes**
+## Einkaufslisten
 
-Vorhandene Rezepte:
+### Einzelrezept
 
-- Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.6, Seite `grillgemuese.html`
-- Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.6, Seite `finishing-sauce.html`
-- Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.5, Seite `gemuesefinish-mild.html`
-- Keto-Pudding – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.1.1, Seite `keto-pudding.html`
+`einkaufsliste.html` unterstützt jetzt acht Rezepte. Für Chicken Asado werden Hähnchen und alle Marinadenzutaten ausgehend von zwei Personen skaliert.
 
-Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
+### Gemeinsame Einkaufsliste
 
-### Vegan
-
-Eigene Übersichtsseite: `vegan.html`
-
-- derzeit noch ohne Rezept
-- als Platzhalter im gleichen Apple-inspirierten Stil wie die anderen Kategorien angelegt
-- für spätere vegane Rezepte vorbereitet
-
-### Grundlagen
-
-Eigene Seite: `grundlagen.html`
-
-Vorhanden – in dieser Reihenfolge:
-
-1. Kerntemperaturen und Garpunkte
-2. Salzlake & Dry Brine
-
-Das Kapitel **Salzlake & Dry Brine** beschreibt bewusst ein Vorbereitungsverfahren und ist kein eigenständiges Rezept. Die früheren Kapitel zu direkter Hitze, indirekter Hitze, Deckelregel und Zwei-Zonen-Aufbau wurden entfernt.
-
-## Rezepte
-
-### Honig-Senf-Lachs vom Grill
-
-- ID: `honig-senf-lachs-grill`
-- Seite: `honig-senf-lachs.html`
-- Bild: `assets/honig-senf-lachs.jpg`
-- Version: 0.1.9
-- Status: Arbeitsfassung
-- Rubrik: Fleisch → Fisch
-- Menge: 4 Personen
-- Grillmethode: indirekte Hitze bei 180–200 °C
-- Grillzeit: etwa 12–15 Minuten
-- Ziehzeit: 10 Minuten
-
-Aktueller Zutatenstand:
-
-- 4 Lachsfilets mit Haut
-- 1 EL grober Senf
-- 1 EL mittelscharfer Senf
-- 1 EL Honig
-- 1 EL Olivenöl
-- 1 TL Zitronensaft
-- Salz und Pfeffer
-- optional Dill, sehr empfehlenswert
-
-Verbindlicher Ablauf:
-
-1. Senf, Honig, Olivenöl und Zitronensaft zu einer cremigen Glasur verrühren.
-2. Lachs nur leicht salzen.
-3. Glasur ausschließlich auf die Oberseite streichen, nicht auf die Haut.
-4. 10 Minuten ziehen lassen, nicht länger.
-5. Mit der Hautseite nach unten indirekt bei 180–200 °C grillen.
-6. Nicht wenden und den Deckel geschlossen halten.
-7. Nach etwa 8 Minuten bei Bedarf noch einmal dünn glasieren.
-8. Gesamtgrillzeit etwa 12–15 Minuten.
-
-Wichtiger Hinweis: Wegen des Honigs ausschließlich indirekt und ohne direkte Flamme grillen.
-
-Dazu passend:
-
-- Grillgemüse
-- Gemüsefinish-Mild ohne Honig
-
-Das Bild zeigt einen glasierten Lachs mit Dill und Grillgemüse. Das weboptimierte JPEG ist direkt unter der Einleitung eingebaut und wird auf der Fleischseite zusätzlich als anklickbares Thumbnail verwendet.
-
-### Gemüsefinish-Fresh
-
-- ID: `finishing-sauce-grillgemuese-haehnchen`
-- Seite: `finishing-sauce.html`
-- Version: 1.0.6
-- Status: bestätigt
-- Bild: `assets/gemuesefinish-fresh.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
-- Rubrik: Soßen & Finishes
-
-### Gemüsefinish-Mild
-
-- ID: `gemuesefinish-mild`
-- Seite: `gemuesefinish-mild.html`
-- Version: 0.1.5
-- Status: Arbeitsfassung
-- Bild: `assets/gemuesefinish-mild.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Soßen & Finishes eingebunden.
-- Rubrik: Soßen & Finishes
-
-Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish wird nicht mitgegrillt.
-
-### Grillgemüse
-
-- ID: `grillgemuese-gasgrill`
-- Seite: `grillgemuese.html`
-- Version: 0.9.6
-- Status: Arbeitsfassung
-- Rubrik: Salate & Gemüse
-- Bild: `assets/grillgemuese.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.
-- Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
-
-### Entrecôte Steakhouse
-
-- ID: `entrecote-steakhouse`
-- Seite: `entrecote-steakhouse.html`
-- Version: 0.1.1
-- Status: Arbeitsfassung
-- Bild: `assets/entrecote_steakhouse.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Fleisch → Rind eingebunden.
-- Rubrik: Fleisch → Rind
-- Grundmenge: 200 g Entrecôte pro Person, mindestens 3 cm dick
-- Methode: Dry Brine und rückwärts grillen
-- Vor dem Sizzler: etwa 4 °C unter der gewünschten Ziel-Kerntemperatur
-
-### Schweinenackensteak mit Senf-Kräuter-Sauce
-
-- ID: `schweinenackensteak-senf-kraeuter`
-- Seite: `schweinenackensteak-senf-kraeuter.html`
-- Version: 0.1.1
-- Status: Arbeitsfassung
-- Bild: `assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Fleisch → Schwein eingebunden.
-- Rubrik: Fleisch → Schwein
-- Menge: 3 Personen / 500 g Schweinenacken
-- Vorbereitung: Salzlake nach Grundlagen
-- Finish: Senf-Kräuter-Sauce erst nach dem Grillen
-
-### Keto-Pudding
-
-- ID: `keto-pudding`
-- Seite: `keto-pudding.html`
-- Version: 0.1.1
-- Status: Arbeitsfassung
-- Bild: `assets/keto-pudding.jpg`
-- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.
-- Rubrik: Salate & Beilagen → Salate & Gemüse
-- Menge: 2 Personen
-- Basis: Magerquark, Milch, Nüsse, Sojaflocken, Chiasamen und Apfel
-
-## Erledigt
-
-- Entrecôte Steakhouse als neue Rezeptseite unter Fleisch → Rind ergänzt
-- Schweinenackensteak mit Senf-Kräuter-Sauce als neue Rezeptseite unter Fleisch → Schwein ergänzt
-- Keto-Pudding als neue Rezeptseite unter Salate & Beilagen ergänzt
-- beide Einkaufslisten auf insgesamt sieben Rezepte erweitert
-- gemeinsame Mengenberechnung auf unterschiedliche Grundportionen pro Rezept umgestellt
-- Buchversion auf 2.13.0 erhöht
-- Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding mit Hero-Bildern ergänzt
-- alle drei Bilder als anklickbare, lazy-geladene Thumbnails in den passenden Übersichten eingebaut
-- Rezeptversionen der drei neuen Rezepte auf 0.1.1 erhöht
-- Buchversion auf 2.13.1 erhöht
-
-- GitHub-Repository `henkhar/Kim` als dauerhafte Ablage eingerichtet
-- GitHub Pages aktiviert
-- Meta-Kim und dynamischen Projektstatus eingerichtet
-- Übergang von einer Dokumentansicht zu einer Website beschlossen
-- Apple-inspirierte Startseite als `index.html` umgesetzt
-- Hamburger-Menü und responsive Navigation umgesetzt
-- eigene Fleisch-, Vegan-, Grundlagen- und Salate-&-Beilagen-Seiten angelegt
-- Grillgemüse als eigene Rezeptseite angelegt
-- Gemüsefinish-Fresh als eigene Rezeptseite angelegt
-- Gemüsefinish-Mild als zweite Finish-Rezeptseite angelegt
-- Honig-Senf-Lachs vom Grill als erstes ausgearbeitetes Fischrezept angelegt
-- Fischkarte auf `fleisch.html` mit dem neuen Rezept verknüpft
-- passende Beilagen Grillgemüse und Gemüsefinish-Mild auf der Rezeptseite verlinkt
-- erstes Rezeptbild für Honig-Senf-Lachs erstellt
-- Bild als großes 16:9-Hero-Bild auf der Rezeptseite eingebaut
-- fehlerhafte SVG-, Daten-URL- und JPEG-Einbindungen verworfen
-- weboptimiertes JPEG `assets/honig-senf-lachs.jpg` eingebunden
-- weboptimiertes JPEG `assets/grillgemuese.jpg` eingebunden
-- Lachs-, Grillgemüse- und Finish-Bilder als Thumbnails auf den jeweiligen Übersichtsseiten ergänzt
-- Bildlayout als Standard für weitere Rezeptseiten dokumentiert
-- Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht
-- Rezeptversion Grillgemüse auf 0.9.3 erhöht
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
-- Buchversion auf 2.8.1 erhöht
-
-- Einkaufsliste-Pilot für den Honig-Senf-Lachs umgesetzt
-- Personenzahl, optionale Zutaten, Mengenberechnung, Abhaken, lokale Speicherung und Druckansicht ergänzt
-- Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
-- Buchversion auf 2.9.0 erhöht
-- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
-- Mengenbereiche, optionale Zutaten und die Knoblauchalternative von Gemüsefinish-Mild unterstützt
-- Rezeptversion Grillgemüse auf 0.9.4 erhöht
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
-- Buchversion auf 2.10.0 erhöht
-- gemeinsame Einkaufsliste mit Auswahl mehrerer Rezepte ergänzt
-- gleiche Zutaten über interne Zutaten-IDs und normierte Einheiten kumuliert
-- Startseite und Hauptmenü mit der neuen Einkaufsliste verknüpft
-- Buchversion auf 2.11.0 erhöht
-
-- Grundlagen-Seite auf die Kapitel Kerntemperaturen und Garpunkte sowie Salzlake & Dry Brine reduziert
-- Kapitel Salzlake & Dry Brine als Verfahren ergänzt
-- Kapitel direkte Hitze, indirekte Hitze, Deckelregel und Zwei-Zonen-Aufbau entfernt
-- Buchversion auf 2.12.0 erhöht
-- Einkaufslisten-Block auf allen vier Rezeptseiten an das Seitenende verschoben
-- Rezeptversionen auf 0.1.8, 0.9.5, 1.0.5 und 0.1.4 erhöht
-- Buchversion auf 2.12.1 erhöht
-- sichtbare Versionsnummern aus allen öffentlichen Fußzeilen entfernt
-- interne Statusangaben Arbeitsfassung, Bestätigte Fassung und Rezeptstand von den Rezeptseiten entfernt
-- Rezept-ID, Rezeptversion und Status unsichtbar als Meta-Daten auf den Rezeptseiten hinterlegt
-- Rezeptversionen auf 0.1.9, 0.9.6, 1.0.6 und 0.1.5 erhöht
-- Buchversion auf 2.12.2 erhöht
+`einkaufsliste-gesamt.html` enthält Chicken Asado als zusätzliche Rezeptauswahl. Gleiche Zutaten werden über bestehende dauerhafte Zutaten-IDs zusammengeführt.
 
 ## Offene Aufgaben
 
-1. Honig-Senf-Lachs vom Grill gemeinsam testen und bestätigen.
-2. Weitere Rezeptbilder im festgelegten 16:9-Hero-Stil ergänzen.
-3. Weitere Fleischrezepte schrittweise ausarbeiten und verlinken.
-4. Vegane Rezepte schrittweise ergänzen.
-5. Weitere Salate und Beilagen wie Nudelsalate ergänzen.
-6. Gemüsefinish-Mild gemeinsam testen und bestätigen.
-7. Arbeitsfassung Grillgemüse gemeinsam prüfen und auf Version 1.0.0 setzen.
-8. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
-9. Später Suche, Filter, PWA und Favoriten prüfen.
-10. Gemeinsame Einkaufsliste später um unterschiedliche Personenzahlen pro Rezept erweitern.
-11. Eigene Fotos später bei Bedarf ergänzen oder bestehende Bilder ersetzen.
+1. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
+2. Ein Rezeptbild für Chicken Asado ergänzen.
+3. Grillgemüse gemeinsam testen und später auf Version 1.0.0 setzen.
+4. Honig-Senf-Lachs und Gemüsefinish-Mild gemeinsam prüfen.
+5. Beer Can Chicken ausarbeiten.
+6. Weitere Salate, Beilagen und vegane Rezepte ergänzen.
+7. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
 
-## Verbindliche Hinweise für die nächste Sitzung
+## Verbindliche Hinweise
 
-- `index.html`, `00_Meta-Kim.md` und `00_Projektstatus.md` zuerst vollständig lesen.
-- Bei Arbeiten an Fleisch zusätzlich `fleisch.html` lesen.
-- Bei Arbeiten am Honig-Senf-Lachs zusätzlich `honig-senf-lachs.html` lesen.
-- Bei Arbeiten an Salaten, Gemüse, Soßen oder Finishes zusätzlich `gemuese-salat.html` lesen.
-- Bei Arbeiten an Gemüsefinish-Fresh zusätzlich `finishing-sauce.html` lesen.
-- Bei Arbeiten an Gemüsefinish-Mild zusätzlich `gemuesefinish-mild.html` lesen.
-- Bei Arbeiten an veganen Inhalten zusätzlich `vegan.html` lesen.
-- Bei Arbeiten an Grillwissen oder Temperaturen zusätzlich `grundlagen.html` lesen.
-- Bei Änderungen an der gemeinsamen Einkaufsliste zusätzlich `einkaufsliste-gesamt.html` lesen.
-- Bei Rezeptänderungen immer die zuständige Rezeptseite laden.
-- Rezeptkarten auf Übersichtsseiten enthalten keine farbigen Status- oder Informations-Pills.
-- Neue Rezeptbilder orientieren sich am bestätigten 16:9-Hero-Stil des Honig-Senf-Lachses.
-- Food-Fotos werden als weboptimierte JPEG-Dateien gespeichert und auf Übersichtsseiten lazy geladen.
-- Gemüsefinish-Fresh gilt als bestätigt.
-- Honig-Senf-Lachs, Gemüsefinish-Mild und Grillgemüse bleiben bis zur gemeinsamen Kontrolle Arbeitsfassungen.
-- Änderungen an Website, Meta und Status müssen synchron gehalten werden.
+- Neue Rezeptseiten zeigen keine sichtbaren Versions- oder Arbeitsstatusangaben.
+- Interne Rezeptversionen bleiben als HTML-Meta-Daten erhalten.
+- Der Einkaufslistenblock steht am Ende des Rezeptinhalts.
+- Marinaden, die rohes Geflügel berührt haben, werden nicht zum Nachstreichen verwendet.
+- Food-Fotos werden als weboptimierte JPEG-Dateien eingebunden.
+- Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.14.0 – 03.08.2026
+
+- Chicken Asado als neues Rezept unter Fleisch → Hähnchen ergänzt
+- Zutaten und Marinade für zwei Personen erfasst
+- Spatchcock-Vorbereitung, Marinierzeit und direktes Grillen mit Fünf-Minuten-Wenderhythmus dokumentiert
+- saubere Marinadenportion für das Nachstreichen verbindlich getrennt
+- Fleischübersicht mit Chicken Asado verlinkt
+- Einzel- und gemeinsame Einkaufsliste auf acht Rezepte erweitert
+- Buchversion auf 2.14.0 erhöht
+
+### Version 2.13.2 – 03.08.2026
+
+- Grillgemüse mit Süßkartoffeln, Kichererbsen, Erdnüssen und Cherrytomaten erweitert
+- Aubergine und Frühlingszwiebeln entfernt
+- optionale Zutaten Spargel, Parmesan, Feta, Hokkaido-Kürbis und Kartoffelecken ergänzt
+- Ablauf auf zwei Planchas und indirektes Fertiggaren bei 120 °C angepasst
+
 ### Version 2.13.1 – 03.08.2026
 
-- weboptimierte JPEG-Hero-Bilder für Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding eingebunden
-- Bilder mit 16:9-Zuschnitt, Alt-Texten und zurückhaltenden Bildunterschriften ergänzt
-- alle drei Bilder als anklickbare, lazy-geladene Thumbnails auf den passenden Übersichtsseiten eingebaut
-- interne Rezeptversionen der drei neuen Rezepte auf 0.1.1 erhöht
-- Buchversion auf 2.13.1 erhöht
+- Bilder für Entrecôte Steakhouse, Schweinenackensteak und Keto-Pudding eingebunden
 
 ### Version 2.13.0 – 03.08.2026
 
-- Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding als neue Einzelrezepte ergänzt
-- Rind-, Schwein- und Salate-&-Beilagen-Übersichten verlinkt
-- Einzelrezept-Einkaufsliste und gemeinsame Einkaufsliste auf sieben Rezepte erweitert
-- unterschiedliche Grundportionen von 1, 2, 3 und 4 Personen werden korrekt skaliert
-- interne Rezeptversionen der drei neuen Rezepte auf 0.1.0 gesetzt
+- Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding ergänzt
 
 ### Version 2.12.2 – 03.08.2026
 
-- sichtbare Versionshinweise und interne redaktionelle Statusangaben aus allen veröffentlichten Seiten entfernt
-- Rezeptversionen und Status unsichtbar als HTML-Meta-Daten weitergeführt
-- Buchversion weiterhin im eingebetteten Projektstatus und in der Projektdatei dokumentiert
-- Layout der Fakten- und Detailkarten nach dem Entfernen der Statuskarten flexibel angepasst
+- sichtbare Versions- und Statushinweise entfernt
 
 ### Version 2.12.1 – 03.08.2026
 
-- Block „Einkaufsliste erstellen“ auf Honig-Senf-Lachs, Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild an das Ende des Rezeptinhalts verschoben
-- Einkaufslisten-Block steht nun direkt vor dem Zurück-Link
-- neue Position als Standard für künftige Rezeptseiten dokumentiert
-- Rezeptversionen und Buchversion synchron erhöht
+- Einkaufslistenblock auf Rezeptseiten an das Seitenende verschoben
 
 ### Version 2.12.0 – 03.08.2026
 
-- Reihenfolge der Grundlagen neu festgelegt: zuerst Kerntemperaturen und Garpunkte, danach Salzlake & Dry Brine
-- Salzlake und Dry Brine als kompaktes Verfahrenskapitel ergänzt
-- Kapitel direkte Hitze, indirekte Hitze, Deckelregel und Zwei-Zonen-Aufbau entfernt
-- Buchversion auf 2.12.0 erhöht
+- Grundlagen auf Kerntemperaturen und Salzlake & Dry Brine konzentriert
 
 ### Version 2.11.0 – 02.08.2026
 
-- neue Seite `einkaufsliste-gesamt.html` ergänzt
-- Auswahl mehrerer Rezepte mit einer gemeinsamen Personenzahl umgesetzt
-- gleiche Zutaten über dauerhafte interne Zutaten-IDs kumuliert
-- kompatible Volumeneinheiten intern vereinheitlicht und als EL beziehungsweise TL ausgegeben
-- optionale Zutaten, Mengenbereiche und die Knoblauchvariante von Gemüsefinish-Mild berücksichtigt
-- Startseite und Hauptmenü mit der gemeinsamen Einkaufsliste verknüpft
-- Buchversion auf 2.11.0 erhöht
+- gemeinsame Einkaufsliste ergänzt
 
 ### Version 2.10.0 – 02.08.2026
 
-- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
-- alle vier Einzelrezepte verwenden dieselbe Einkaufsliste
-- optionale Zutaten und Mengenbereiche werden berücksichtigt
-- bei Gemüsefinish-Mild kann zwischen Knoblauchpulver und frischen Knoblauchzehen gewählt werden
-- Rezeptversion Grillgemüse auf 0.9.4 erhöht
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
-- Buchversion auf 2.10.0 erhöht
+- Einkaufsliste auf die ersten vier Rezepte erweitert
 
 ### Version 2.9.0 – 02.08.2026
 
-- Einkaufsliste-Pilot für den Honig-Senf-Lachs ergänzt
-- Personenzahl direkt auf der Rezeptseite auswählbar
-- Zutatenmengen automatisch von der Grundmenge für 4 Personen umgerechnet
-- optionale Zutaten ein- und ausschaltbar
-- neue Seite `einkaufsliste.html` mit Abhakfunktion, lokaler Speicherung, Zurücksetzen und Druckansicht
-- Rezeptversion Honig-Senf-Lachs auf 0.1.7 erhöht
-- Buchversion auf 2.9.0 erhöht
-- Einkaufsliste auf Grillgemüse, Gemüsefinish-Fresh und Gemüsefinish-Mild erweitert
-- Mengenbereiche, optionale Zutaten und die Knoblauchalternative von Gemüsefinish-Mild unterstützt
-- Rezeptversion Grillgemüse auf 0.9.4 erhöht
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.4 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.3 erhöht
-- Buchversion auf 2.10.0 erhöht
+- Einzelrezept-Einkaufsliste eingeführt
 
-### Version 2.8.1 – 02.08.2026
-
-- Gemüsefinish-Fresh mit dem Hero-Bild `assets/gemuesefinish-fresh.jpg` ergänzt
-- Gemüsefinish-Mild mit dem Hero-Bild `assets/gemuesefinish-mild.jpg` ergänzt
-- beide Bilder als anklickbare, lazy-geladene Thumbnails unter Soßen & Finishes eingebaut
-- stabile ASCII-Dateinamen für die beiden hochgeladenen Bilder angelegt
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
-- Buchversion auf 2.8.1 erhöht
-
-### Version 2.8.0 – 02.08.2026
-
-- Honig-Senf-Lachs auf das weboptimierte JPEG `assets/honig-senf-lachs.jpg` umgestellt
-- Grillgemüse mit dem Hero-Bild `assets/grillgemuese.jpg` ergänzt
-- Lachsbild als anklickbares Thumbnail auf der Fleischseite eingebaut
-- Grillgemüsebild als anklickbares Thumbnail unter Salate & Beilagen eingebaut
-- Thumbnails mit `loading="lazy"` und 16:9-Zuschnitt umgesetzt
-- Rezeptversion Honig-Senf-Lachs auf 0.1.6 erhöht
-- Rezeptversion Grillgemüse auf 0.9.3 erhöht
-- Rezeptversion Gemüsefinish-Fresh auf 1.0.3 erhöht
-- Rezeptversion Gemüsefinish-Mild auf 0.1.2 erhöht
-- Buchversion auf 2.8.1 erhöht
-
-### Version 2.7.4 – 02.08.2026
-
-- vom Nutzer hochgeladenes Originalbild `assets/honi-senf-lachs.png` übernommen
-- beschädigte JPEG-Einbindung auf der Rezeptseite durch das Original-PNG ersetzt
-- korrekte Bildabmessungen 1672 × 941 Pixel hinterlegt
-- Rezeptversion Honig-Senf-Lachs auf 0.1.5 erhöht
-- Fleischseite und Startseite auf Buchversion 2.7.4 aktualisiert
-- beschädigte alte JPEG-Datei entfernt
-
-### Version 2.7.3 – 01.08.2026
-
-- beschädigte direkte JPEG-Daten-URL aus `honig-senf-lachs.html` entfernt
-- optimiertes Rezeptbild als Datei `assets/honig-senf-lachs.jpg` im Repository gespeichert
-- Rezeptseite mit der relativen Bildadresse verknüpft
-- Rezeptversion Honig-Senf-Lachs auf 0.1.3 erhöht
-- Buchversion auf 2.7.3 erhöht
-
-### Version 2.7.2 – 01.08.2026
-
-- nicht zuverlässig dargestellte externe SVG-Datei entfernt
-- Versuch einer direkten JPEG-Einbettung in `honig-senf-lachs.html`
-- vorhandenes 16:9-Layout, abgerundete Ecken, Schatten, Alternativtext und Bildunterschrift beibehalten
-- Rezeptversion Honig-Senf-Lachs auf 0.1.2 erhöht
-- Buchversion auf 2.7.2 erhöht
-
-### Version 2.7.1 – 01.08.2026
-
-- erstes Rezeptbild beim Honig-Senf-Lachs ergänzt
-- Bildlayout als Vorlage für weitere Rezeptseiten festgelegt
-
-### Version 2.7.0 – 01.08.2026
-
-- neue Datei `honig-senf-lachs.html` angelegt
-- Honig-Senf-Lachs vom Grill als Arbeitsfassung Version 0.1.0 aufgenommen
-- vollständige Zutaten, Glasur, Ziehzeit und Grillablauf dokumentiert
-- indirekte Grillmethode bei 180–200 °C, Hautseite unten und ohne Wenden festgehalten
-- optionales Nachstreichen nach etwa 8 Minuten ergänzt
-- Warnhinweis zum schnellen Verbrennen von Honig aufgenommen
-- Grillgemüse und Gemüsefinish-Mild als passende Beilagen verlinkt
-- Fischbereich auf `fleisch.html` mit dem neuen Rezept verknüpft
-- geplantes Lachsfilet aus der Planung entfernt
-- Rezeptanzahl auf 4 erhöht
-- Buchversion auf 2.7.0 erhöht
-
-### Version 2.6.1 – 01.08.2026
-
-- Zubereitung von Gemüsefinish-Mild an die Abfolge von Gemüsefinish-Fresh angeglichen
-- Rezeptversion Gemüsefinish-Mild auf 0.1.1 erhöht
-
-### Version 2.6.0 – 01.08.2026
-
-- Gemüsefinish-Mild als zweite Finish-Rezeptseite angelegt
-
-### Version 2.5.2 – 01.08.2026
-
-- Zutatenverhältnis von Gemüsefinish-Fresh angepasst
-
-### Version 2.5.1 – 01.08.2026
-
-- farbige Status- und Informations-Pills aus den Rezeptkarten entfernt
-
-### Version 2.5.0 – 01.08.2026
-
-- Hauptbereich „Gemüse & Salat“ in „Salate & Beilagen“ umbenannt
-- Rubriken „Salate & Gemüse“ und „Soßen & Finishes“ angelegt
-
-### Version 2.4.1 – 01.08.2026
-
-- runden Home-Button auf den Unter- und Rezeptseiten ergänzt
-
-### Version 2.4.0 – 31.07.2026
-
-- neue Grundlagen-Seite angelegt
-
-### Version 2.3.0 – 31.07.2026
-
-- neue vegane Platzhalterseite angelegt
-
-### Version 2.2.0 – 27.07.2026
-
-- Übersichtsseite für Gemüse & Salat sowie getrennte Rezeptseiten ergänzt
-
-### Version 2.1.0 – 26.07.2026
-
-- neue Fleisch-Übersichtsseite angelegt
-
-### Version 2.0.0 – 26.07.2026
-
-- Kochbuch auf eine mehrseitige Website-Architektur umgestellt
+Ältere Einzeländerungen bleiben vollständig in der Git-Commit-Historie des Repositorys erhalten.
