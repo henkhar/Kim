@@ -78,6 +78,9 @@ Zuordnung der vorhandenen Rezepte:
 - Grillgemüse → Salate & Gemüse
 - Gemüsefinish-Fresh → Soßen & Finishes
 - Gemüsefinish-Mild → Soßen & Finishes
+- Entrecôte Steakhouse → Fleisch → Rind
+- Schweinenackensteak mit Senf-Kräuter-Sauce → Fleisch → Schwein
+- Keto-Pudding → Salate & Beilagen → Salate & Gemüse
 
 Weitere Bereiche wie Suche, Favoriten oder Projektinfos können später ergänzt werden.
 

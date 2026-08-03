@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.12.2  
+**Buchversion:** 2.13.0  
 **Letzte Aktualisierung:** 03.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -12,11 +12,14 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 - `index.html` – Apple-inspirierte Startseite
 - `fleisch.html` – Übersichtsseite für Rind, Hähnchen, Schwein und Fisch
 - `honig-senf-lachs.html` – Rezeptseite für Honig-Senf-Lachs vom Grill
+- `entrecote-steakhouse.html` – Rezeptseite für Entrecôte Steakhouse
+- `schweinenackensteak-senf-kraeuter.html` – Rezeptseite für Schweinenackensteak mit Senf-Kräuter-Sauce
 - `assets/honig-senf-lachs.jpg` – weboptimiertes JPEG-Rezeptbild für den Honig-Senf-Lachs
 - `assets/grillgemuese.jpg` – weboptimiertes JPEG-Rezeptbild für Grillgemüse
 - `assets/gemuesefinish-fresh.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Fresh
 - `assets/gemuesefinish-mild.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Mild
 - `gemuese-salat.html` – Übersichtsseite **Salate & Beilagen**
+- `keto-pudding.html` – Rezeptseite für Keto-Pudding
 - `vegan.html` – vorbereitete Übersichtsseite für vegane Rezepte
 - `grundlagen.html` – eigene Seite für Kerntemperaturen, Garpunkte, Salzlake und Dry Brine
 - `grillgemuese.html` – eigene Rezeptseite für Grillgemüse
@@ -31,18 +34,18 @@ Das Projekt wird schrittweise als mehrseitige Kochbuch-Website aufgebaut.
 
 ## Aktueller Bestand
 
-- 4 ausgearbeitete Rezepte
+- 7 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
-- 3 Arbeitsfassungen
-- 4 geplante Fleischrezepte
+- 6 Arbeitsfassungen
+- 2 geplante Fleischrezepte
 - noch keine veganen Rezepte
 - 1 vollständige Grundlagen-Seite
 - 1 Startseite
 - 3 Kategorie-Übersichtsseiten
-- 4 eigenständige Rezeptseiten
+- 7 eigenständige Rezeptseiten
 - 4 Rezeptseiten mit eingebautem Hero-Bild
 - 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails
-- 1 Einzelrezept-Einkaufsliste für alle 4 Rezepte mit Mengenberechnung und Druckansicht
+- 1 Einzelrezept-Einkaufsliste für alle 7 Rezepte mit Mengenberechnung und Druckansicht
 - 1 gemeinsame Einkaufsliste mit Rezeptauswahl und Zutatenkumulierung
 - 1 Übergangsseite für die frühere Gesamtansicht
 
@@ -138,16 +141,16 @@ Unterkategorien:
 - Schwein
 - Fisch
 
-Vorhandenes Fischrezept:
+Vorhandene Fleischrezepte:
 
+- Entrecôte Steakhouse – Arbeitsfassung, Version 0.1.0, Seite `entrecote-steakhouse.html`
+- Schweinenackensteak mit Senf-Kräuter-Sauce – Arbeitsfassung, Version 0.1.0, Seite `schweinenackensteak-senf-kraeuter.html`
 - Honig-Senf-Lachs vom Grill – Arbeitsfassung, Version 0.1.9, Seite `honig-senf-lachs.html`
 
 Geplante Rezepte:
 
-- Entrecôte Steakhouse
 - Beer Can Chicken
 - Chicken Asado
-- Schweinenackensteak mariniert
 
 ### Salate & Beilagen
 
@@ -165,6 +168,7 @@ Vorhandene Rezepte:
 - Grillgemüse – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.9.6, Seite `grillgemuese.html`
 - Gemüsefinish-Fresh – Rubrik Soßen & Finishes, bestätigt, Version 1.0.6, Seite `finishing-sauce.html`
 - Gemüsefinish-Mild – Rubrik Soßen & Finishes, Arbeitsfassung, Version 0.1.5, Seite `gemuesefinish-mild.html`
+- Keto-Pudding – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.1.0, Seite `keto-pudding.html`
 
 Spätere Nudel-, Kartoffel- und weitere Beilagensalate werden unter **Salate & Gemüse** eingeordnet.
 
@@ -266,7 +270,46 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.
 - Noch zu prüfen: Mengen, Schnittgrößen, Brennereinstellung und genaue Zeitabstände
 
+### Entrecôte Steakhouse
+
+- ID: `entrecote-steakhouse`
+- Seite: `entrecote-steakhouse.html`
+- Version: 0.1.0
+- Status: Arbeitsfassung
+- Rubrik: Fleisch → Rind
+- Grundmenge: 200 g Entrecôte pro Person, mindestens 3 cm dick
+- Methode: Dry Brine und rückwärts grillen
+- Vor dem Sizzler: etwa 4 °C unter der gewünschten Ziel-Kerntemperatur
+
+### Schweinenackensteak mit Senf-Kräuter-Sauce
+
+- ID: `schweinenackensteak-senf-kraeuter`
+- Seite: `schweinenackensteak-senf-kraeuter.html`
+- Version: 0.1.0
+- Status: Arbeitsfassung
+- Rubrik: Fleisch → Schwein
+- Menge: 3 Personen / 500 g Schweinenacken
+- Vorbereitung: Salzlake nach Grundlagen
+- Finish: Senf-Kräuter-Sauce erst nach dem Grillen
+
+### Keto-Pudding
+
+- ID: `keto-pudding`
+- Seite: `keto-pudding.html`
+- Version: 0.1.0
+- Status: Arbeitsfassung
+- Rubrik: Salate & Beilagen → Salate & Gemüse
+- Menge: 2 Personen
+- Basis: Magerquark, Milch, Nüsse, Sojaflocken, Chiasamen und Apfel
+
 ## Erledigt
+
+- Entrecôte Steakhouse als neue Rezeptseite unter Fleisch → Rind ergänzt
+- Schweinenackensteak mit Senf-Kräuter-Sauce als neue Rezeptseite unter Fleisch → Schwein ergänzt
+- Keto-Pudding als neue Rezeptseite unter Salate & Beilagen ergänzt
+- beide Einkaufslisten auf insgesamt sieben Rezepte erweitert
+- gemeinsame Mengenberechnung auf unterschiedliche Grundportionen pro Rezept umgestellt
+- Buchversion auf 2.13.0 erhöht
 
 - GitHub-Repository `henkhar/Kim` als dauerhafte Ablage eingerichtet
 - GitHub Pages aktiviert
@@ -356,6 +399,14 @@ Die Zubereitung folgt derselben Abfolge wie bei Gemüsefinish-Fresh. Das Finish 
 - Änderungen an Website, Meta und Status müssen synchron gehalten werden.
 
 ## Änderungshistorie
+### Version 2.13.0 – 03.08.2026
+
+- Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding als neue Einzelrezepte ergänzt
+- Rind-, Schwein- und Salate-&-Beilagen-Übersichten verlinkt
+- Einzelrezept-Einkaufsliste und gemeinsame Einkaufsliste auf sieben Rezepte erweitert
+- unterschiedliche Grundportionen von 1, 2, 3 und 4 Personen werden korrekt skaliert
+- interne Rezeptversionen der drei neuen Rezepte auf 0.1.0 gesetzt
+
 ### Version 2.12.2 – 03.08.2026
 
 - sichtbare Versionshinweise und interne redaktionelle Statusangaben aus allen veröffentlichten Seiten entfernt

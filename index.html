@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.12.2">
+<meta name="book-version" content="2.13.0">
 <meta name="description" content="Haralds Grillkochbuch – persönliche Grillrezepte, Grundlagen und Erfahrungen">
 <title>Haralds Grillkochbuch</title>
 <style>
@@ -65,7 +65,7 @@
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.12.2",
+  "bookVersion": "2.13.0",
   "lastUpdated": "2026-08-03",
   "architecture": "Website im schrittweisen Aufbau",
   "pages": [
@@ -122,18 +122,33 @@
     {
       "path": "einkaufsliste.html",
       "role": "Dynamische Einkaufsliste mit Mengenberechnung, Abhaken und Druckansicht",
-      "status": "aktiv für alle vier Einzelrezepte"
+      "status": "aktiv für alle sieben Einzelrezepte"
     },
     {
       "path": "einkaufsliste-gesamt.html",
       "role": "Gemeinsame Einkaufsliste mit Rezeptauswahl, Mengenberechnung und Zutatenkumulierung",
-      "status": "aktiv"
+      "status": "aktiv für sieben auswählbare Rezepte"
+    },
+    {
+      "path": "entrecote-steakhouse.html",
+      "role": "Eigene Rezeptseite für Entrecôte Steakhouse unter Fleisch und Rind",
+      "status": "Arbeitsfassung mit Einkaufsliste; ohne Rezeptbild"
+    },
+    {
+      "path": "schweinenackensteak-senf-kraeuter.html",
+      "role": "Eigene Rezeptseite für Schweinenackensteak mit Senf-Kräuter-Sauce unter Fleisch und Schwein",
+      "status": "Arbeitsfassung mit Einkaufsliste; ohne Rezeptbild"
+    },
+    {
+      "path": "keto-pudding.html",
+      "role": "Eigene Rezeptseite für Keto-Pudding unter Salate & Beilagen",
+      "status": "Arbeitsfassung mit Einkaufsliste; ohne Rezeptbild"
     }
   ],
-  "recipeCount": 4,
+  "recipeCount": 7,
   "confirmedRecipeCount": 1,
-  "draftRecipeCount": 3,
-  "plannedRecipeCount": 4,
+  "draftRecipeCount": 6,
+  "plannedRecipeCount": 2,
   "recipes": [
     {
       "id": "finishing-sauce-grillgemuese-haehnchen",
@@ -162,13 +177,32 @@
       "page": "honig-senf-lachs.html",
       "version": "0.1.9",
       "status": "Arbeitsfassung"
+    },
+    {
+      "id": "entrecote-steakhouse",
+      "title": "Entrecôte Steakhouse",
+      "page": "entrecote-steakhouse.html",
+      "version": "0.1.0",
+      "status": "Arbeitsfassung"
+    },
+    {
+      "id": "schweinenackensteak-senf-kraeuter",
+      "title": "Schweinenackensteak mit Senf-Kräuter-Sauce",
+      "page": "schweinenackensteak-senf-kraeuter.html",
+      "version": "0.1.0",
+      "status": "Arbeitsfassung"
+    },
+    {
+      "id": "keto-pudding",
+      "title": "Keto-Pudding",
+      "page": "keto-pudding.html",
+      "version": "0.1.0",
+      "status": "Arbeitsfassung"
     }
   ],
   "plannedRecipes": [
-    "Entrecôte Steakhouse",
     "Beer Can Chicken",
-    "Chicken Asado",
-    "Schweinenackensteak mariniert"
+    "Chicken Asado"
   ],
   "openTasks": [
     "Fleischrezepte schrittweise ausarbeiten und aus den Unterkategorien verlinken.",
@@ -302,6 +336,11 @@
       "date": "2026-08-03",
       "version": "2.12.2",
       "change": "Sichtbare Versionsnummern, Rezeptstände sowie die Hinweise Arbeitsfassung und Bestätigte Fassung aus der veröffentlichten Oberfläche entfernt; Versionsführung in Meta-Daten und Projektdateien beibehalten."
+    },
+    {
+      "date": "2026-08-03",
+      "version": "2.13.0",
+      "change": "Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding ergänzt; Kategorieübersichten und beide Einkaufslisten auf sieben Rezepte erweitert."
     }
   ]
 }
