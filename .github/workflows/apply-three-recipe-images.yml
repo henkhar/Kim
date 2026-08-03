@@ -1,0 +1,151 @@
+name: Apply three recipe images
+
+on:
+  push:
+    paths:
+      - '.github/apply-three-recipe-images.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Integrate images
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          ROOT = Path('.')
+          BOOK_OLD = '2.13.0'
+          BOOK_NEW = '2.13.1'
+
+          def load(path):
+              return (ROOT / path).read_text(encoding='utf-8')
+
+          def save(path, text):
+              (ROOT / path).write_text(text, encoding='utf-8')
+
+          def require_replace(text, old, new, label, count=1):
+              found = text.count(old)
+              if found < count:
+                  raise RuntimeError(f'{label}: expected at least {count}, found {found}')
+              return text.replace(old, new, count)
+
+          # Keep the hidden book-version metadata synchronized on every HTML page.
+          for page in ROOT.glob('*.html'):
+              text = page.read_text(encoding='utf-8')
+              text = text.replace(f'<meta name="book-version" content="{BOOK_OLD}">', f'<meta name="book-version" content="{BOOK_NEW}">')
+              page.write_text(text, encoding='utf-8')
+
+          hero_css_old = '.hero p{max-width:820px;margin:24px 0 0;color:var(--muted);font-size:1.12rem;line-height:1.55}.panel{'
+          hero_css_new = '.hero p{max-width:820px;margin:24px 0 0;color:var(--muted);font-size:1.12rem;line-height:1.55}.hero-image{margin:0 0 24px;background:var(--surface);border-radius:34px;overflow:hidden;box-shadow:0 8px 30px #0000000d}.hero-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.hero-image figcaption{padding:14px 18px;color:var(--muted);font-size:.92rem;line-height:1.45;border-top:1px solid #ececef;background:var(--surface)}.panel{'
+
+          recipes = [
+              {
+                  'path': 'entrecote-steakhouse.html',
+                  'image': 'assets/entrecote_steakhouse.jpg?v=2131',
+                  'alt': 'Gegrilltes Entrecôte mit kräftiger Kruste, grobem Salz und Rosmarin',
+                  'caption': 'Serviervorschlag: rückwärts gegrilltes Entrecôte mit kräftiger Kruste, Butterfinish und grobem Salz.'
+              },
+              {
+                  'path': 'schweinenackensteak-senf-kraeuter.html',
+                  'image': 'assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg?v=2131',
+                  'alt': 'Gegrillte Schweinenackensteaks mit Senf-Kräuter-Sauce',
+                  'caption': 'Serviervorschlag: saftige Schweinenackensteaks mit einer würzigen Senf-Kräuter-Sauce als Finish.'
+              },
+              {
+                  'path': 'keto-pudding.html',
+                  'image': 'assets/keto-pudding.jpg?v=2131',
+                  'alt': 'Cremiger Keto-Pudding mit Apfelstücken, Nüssen, Sojaflocken und Chiasamen',
+                  'caption': 'Serviervorschlag: cremiger Keto-Pudding mit Apfelstücken, Nüssen, Sojaflocken und Chiasamen.'
+              }
+          ]
+
+          for recipe in recipes:
+              text = load(recipe['path'])
+              text = require_replace(text, '<meta name="recipe-version" content="0.1.0">', '<meta name="recipe-version" content="0.1.1">', recipe['path'] + ' recipe version')
+              if '.hero-image{' not in text:
+                  text = require_replace(text, hero_css_old, hero_css_new, recipe['path'] + ' hero css')
+              if '@media(max-width:430px){.hero-image{' not in text:
+                  text = require_replace(text, '@media(max-width:430px){.topbar', '@media(max-width:430px){.hero-image{border-radius:24px}.topbar', recipe['path'] + ' mobile hero')
+              if recipe['image'].split('?')[0] not in text:
+                  figure = f'<figure class="hero-image"><img src="{recipe["image"]}" alt="{recipe["alt"]}" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async"><figcaption>{recipe["caption"]}</figcaption></figure>'
+                  text = require_replace(text, '</section>\n<section class="panel">', '</section>\n' + figure + '\n<section class="panel">', recipe['path'] + ' figure')
+              save(recipe['path'], text)
+
+          # Fleisch overview: add clickable lazy-loaded thumbnails.
+          text = load('fleisch.html')
+          rind_old = '<article class="category" id="rind"><div><h2>Rind</h2><p>Steaks, Entrecôte, Rumpsteak und Filet – mit Grillmethode, Garstufe und passender Kerntemperatur.</p></div><div class="recipe-preview"><a class="recipe-card-link" href="entrecote-steakhouse.html">Entrecôte Steakhouse</a></div></article>'
+          rind_new = '<article class="category" id="rind"><div><h2>Rind</h2><p>Steaks, Entrecôte, Rumpsteak und Filet – mit Grillmethode, Garstufe und passender Kerntemperatur.</p><a class="recipe-thumb" href="entrecote-steakhouse.html" aria-label="Entrecôte Steakhouse öffnen"><img src="assets/entrecote_steakhouse.jpg?v=2131" alt="Gegrilltes Entrecôte mit kräftiger Kruste, grobem Salz und Rosmarin" width="1672" height="941" loading="lazy" decoding="async"></a></div><div class="recipe-preview"><a class="recipe-card-link" href="entrecote-steakhouse.html">Entrecôte Steakhouse</a></div></article>'
+          schwein_old = '<article class="category" id="schwein"><div><h2>Schwein</h2><p>Nackensteaks und weitere Zuschnitte mit Marinaden, kräftigen Röstaromen und kontrollierter Kerntemperatur.</p></div><div class="recipe-preview"><a class="recipe-card-link" href="schweinenackensteak-senf-kraeuter.html">Schweinenackensteak mit Senf-Kräuter-Sauce</a></div></article>'
+          schwein_new = '<article class="category" id="schwein"><div><h2>Schwein</h2><p>Nackensteaks und weitere Zuschnitte mit Marinaden, kräftigen Röstaromen und kontrollierter Kerntemperatur.</p><a class="recipe-thumb" href="schweinenackensteak-senf-kraeuter.html" aria-label="Schweinenackensteak mit Senf-Kräuter-Sauce öffnen"><img src="assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg?v=2131" alt="Gegrillte Schweinenackensteaks mit Senf-Kräuter-Sauce" width="1672" height="941" loading="lazy" decoding="async"></a></div><div class="recipe-preview"><a class="recipe-card-link" href="schweinenackensteak-senf-kraeuter.html">Schweinenackensteak mit Senf-Kräuter-Sauce</a></div></article>'
+          if 'assets/entrecote_steakhouse.jpg' not in text:
+              text = require_replace(text, rind_old, rind_new, 'fleisch rind thumbnail')
+          if 'assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg' not in text:
+              text = require_replace(text, schwein_old, schwein_new, 'fleisch pork thumbnail')
+          save('fleisch.html', text)
+
+          # Salate & Beilagen overview: add Keto-Pudding thumbnail.
+          text = load('gemuese-salat.html')
+          keto_old = '<article class="recipe-card"><div><h3>Keto-Pudding</h3><p>Eine kalte Quarkspeise mit Nüssen, Sojaflocken, Chiasamen und kleinen Apfelstücken.</p></div><a class="recipe-link" href="keto-pudding.html">Rezept öffnen →</a></article>'
+          keto_new = '<article class="recipe-card"><div><h3>Keto-Pudding</h3><p>Eine kalte Quarkspeise mit Nüssen, Sojaflocken, Chiasamen und kleinen Apfelstücken.</p><a class="card-thumb" href="keto-pudding.html" aria-label="Keto-Pudding öffnen"><img src="assets/keto-pudding.jpg?v=2131" alt="Cremiger Keto-Pudding mit Apfelstücken, Nüssen, Sojaflocken und Chiasamen" width="1672" height="941" loading="lazy" decoding="async"></a></div><a class="recipe-link" href="keto-pudding.html">Rezept öffnen →</a></article>'
+          if 'assets/keto-pudding.jpg' not in text:
+              text = require_replace(text, keto_old, keto_new, 'keto thumbnail')
+          save('gemuese-salat.html', text)
+
+          # Embedded state on index.html.
+          text = load('index.html')
+          text = text.replace('"bookVersion": "2.13.0"', '"bookVersion": "2.13.1"', 1)
+          text = text.replace('"status": "Arbeitsfassung mit Einkaufsliste; ohne Rezeptbild"', '"status": "Arbeitsfassung mit Rezeptbild, Thumbnail und Einkaufsliste"', 3)
+          for page in ('entrecote-steakhouse.html', 'schweinenackensteak-senf-kraeuter.html', 'keto-pudding.html'):
+              old = f'"page": "{page}",\n      "version": "0.1.0"'
+              new = f'"page": "{page}",\n      "version": "0.1.1"'
+              text = require_replace(text, old, new, 'index recipe version ' + page)
+          history_old = '    {\n      "date": "2026-08-03",\n      "version": "2.13.0",\n      "change": "Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding ergänzt; Kategorieübersichten und beide Einkaufslisten auf sieben Rezepte erweitert."\n    }\n  ]'
+          history_new = '    {\n      "date": "2026-08-03",\n      "version": "2.13.0",\n      "change": "Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding ergänzt; Kategorieübersichten und beide Einkaufslisten auf sieben Rezepte erweitert."\n    },\n    {\n      "date": "2026-08-03",\n      "version": "2.13.1",\n      "change": "Die drei neuen Rezepte mit weboptimierten JPEG-Hero-Bildern und anklickbaren Thumbnails auf den passenden Übersichtsseiten ergänzt."\n    }\n  ]'
+          text = require_replace(text, history_old, history_new, 'index history')
+          save('index.html', text)
+
+          # Dynamic project status.
+          text = load('00_Projektstatus.md')
+          text = require_replace(text, '**Buchversion:** 2.13.0', '**Buchversion:** 2.13.1', 'status book version')
+          asset_anchor = '- `assets/gemuesefinish-mild.jpg` – weboptimiertes JPEG-Rezeptbild für Gemüsefinish-Mild\n'
+          asset_block = asset_anchor + '- `assets/entrecote_steakhouse.jpg` – weboptimiertes JPEG-Rezeptbild für Entrecôte Steakhouse\n- `assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg` – weboptimiertes JPEG-Rezeptbild für Schweinenackensteak mit Senf-Kräuter-Sauce\n- `assets/keto-pudding.jpg` – weboptimiertes JPEG-Rezeptbild für Keto-Pudding\n'
+          if 'assets/entrecote_steakhouse.jpg' not in text:
+              text = require_replace(text, asset_anchor, asset_block, 'status asset list')
+          text = text.replace('- 4 Rezeptseiten mit eingebautem Hero-Bild', '- 7 Rezeptseiten mit eingebautem Hero-Bild', 1)
+          text = text.replace('- 2 Übersichtsseiten mit insgesamt 4 anklickbaren Rezept-Thumbnails', '- 2 Übersichtsseiten mit insgesamt 7 anklickbaren Rezept-Thumbnails', 1)
+          text = text.replace('Entrecôte Steakhouse – Arbeitsfassung, Version 0.1.0', 'Entrecôte Steakhouse – Arbeitsfassung, Version 0.1.1')
+          text = text.replace('Schweinenackensteak mit Senf-Kräuter-Sauce – Arbeitsfassung, Version 0.1.0', 'Schweinenackensteak mit Senf-Kräuter-Sauce – Arbeitsfassung, Version 0.1.1')
+          text = text.replace('Keto-Pudding – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.1.0', 'Keto-Pudding – Rubrik Salate & Gemüse, Arbeitsfassung, Version 0.1.1')
+          text = text.replace('- Version: 0.1.0\n- Status: Arbeitsfassung\n- Rubrik: Fleisch → Rind', '- Version: 0.1.1\n- Status: Arbeitsfassung\n- Bild: `assets/entrecote_steakhouse.jpg`\n- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Fleisch → Rind eingebunden.\n- Rubrik: Fleisch → Rind', 1)
+          text = text.replace('- Version: 0.1.0\n- Status: Arbeitsfassung\n- Rubrik: Fleisch → Schwein', '- Version: 0.1.1\n- Status: Arbeitsfassung\n- Bild: `assets/schweinenackensteak_mit_senf_kraeuter_sauce.jpg`\n- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Fleisch → Schwein eingebunden.\n- Rubrik: Fleisch → Schwein', 1)
+          text = text.replace('- Version: 0.1.0\n- Status: Arbeitsfassung\n- Rubrik: Salate & Beilagen → Salate & Gemüse', '- Version: 0.1.1\n- Status: Arbeitsfassung\n- Bild: `assets/keto-pudding.jpg`\n- Das Bild ist als Hero-Bild auf der Rezeptseite und als anklickbares Thumbnail unter Salate & Beilagen eingebunden.\n- Rubrik: Salate & Beilagen → Salate & Gemüse', 1)
+          done_anchor = '- Buchversion auf 2.13.0 erhöht\n'
+          done_new = done_anchor + '- Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding mit Hero-Bildern ergänzt\n- alle drei Bilder als anklickbare, lazy-geladene Thumbnails in den passenden Übersichten eingebaut\n- Rezeptversionen der drei neuen Rezepte auf 0.1.1 erhöht\n- Buchversion auf 2.13.1 erhöht\n'
+          text = require_replace(text, done_anchor, done_new, 'status completed bullets')
+          history_anchor = '## Änderungshistorie\n'
+          history_block = '## Änderungshistorie\n### Version 2.13.1 – 03.08.2026\n\n- weboptimierte JPEG-Hero-Bilder für Entrecôte Steakhouse, Schweinenackensteak mit Senf-Kräuter-Sauce und Keto-Pudding eingebunden\n- Bilder mit 16:9-Zuschnitt, Alt-Texten und zurückhaltenden Bildunterschriften ergänzt\n- alle drei Bilder als anklickbare, lazy-geladene Thumbnails auf den passenden Übersichtsseiten eingebaut\n- interne Rezeptversionen der drei neuen Rezepte auf 0.1.1 erhöht\n- Buchversion auf 2.13.1 erhöht\n\n'
+          text = require_replace(text, history_anchor, history_block, 'status history')
+          save('00_Projektstatus.md', text)
+
+          # Remove temporary automation files in the same commit.
+          for temp in (Path('.github/workflows/apply-three-recipe-images.yml'), Path('.github/apply-three-recipe-images.trigger')):
+              if temp.exists():
+                  temp.unlink()
+          PY
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "Chefkoch Kim"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Drei neue Rezeptbilder einbauen"
+          git push
