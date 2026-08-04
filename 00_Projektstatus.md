@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.15.1  
+**Buchversion:** 2.15.2  
 **Letzte Aktualisierung:** 04.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -22,7 +22,16 @@ Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 
 ## Startseite
 
-Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und Einkaufsliste. Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan.
+Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und Einkaufsliste. Unterhalb bleiben die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan.
+
+Darunter befindet sich der bildstarke Bereich **Neu hinzugefügt** mit vier direkt anklickbaren Rezeptkarten:
+
+1. Beer Can Chicken – Geflügel
+2. Chicken Asado – Geflügel
+3. Entrecôte Steakhouse – Rind
+4. Keto-Pudding – Salate & Beilagen
+
+Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und einen dezenten Öffnen-Link. Auf großen Bildschirmen stehen vier Karten nebeneinander, auf Tablets zwei pro Reihe und auf Smartphones untereinander.
 
 ## Aktueller Bestand
 
@@ -99,6 +108,14 @@ Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und E
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.15.2 – 04.08.2026
+
+- Startseite um den Bereich **Neu hinzugefügt** erweitert
+- Beer Can Chicken, Chicken Asado, Entrecôte Steakhouse und Keto-Pudding als bildstarke Rezeptkarten ergänzt
+- Karten mit Rubrik, Rezeptname und direkter Verlinkung ausgestattet
+- responsives Raster mit vier, zwei beziehungsweise einer Karte pro Reihe umgesetzt
+- Buchversion auf 2.15.2 erhöht
 
 ### Korrektur zu Version 2.15.1 – 04.08.2026
 
