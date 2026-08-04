@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.15.0  
+**Buchversion:** 2.15.1  
 **Letzte Aktualisierung:** 04.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -19,6 +19,18 @@ Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 - `kochbuch.html` – Übergangsseite der früheren Gesamtansicht
 - `00_Meta-Kim.md` – stabile Regeln
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
+
+## Startseite
+
+Die Startseite zeigt in der oberen Hauptnavigation jetzt direkt:
+
+1. Fleisch
+2. Salate & Beilagen
+3. Vegan
+4. Grundlagen
+5. Einkaufsliste
+
+Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan. Die früheren Schnellzugriffe Grundlagen, Gemeinsame Einkaufsliste und Gesamtes Kochbuch wurden aus diesem Bereich entfernt. `kochbuch.html` bleibt technisch weiterhin erreichbar.
 
 ## Aktueller Bestand
 
@@ -82,7 +94,7 @@ Die bisherige Kategorie `Hähnchen` wurde auf den aktuellen Übersichts- und Rez
 
 ### Gemeinsame Einkaufsliste
 
-`einkaufsliste-gesamt.html` enthält Beer Can Chicken als zusätzliche Rezeptauswahl. Gleiche Zutaten werden über bestehende dauerhafte Zutaten-IDs zusammengeführt.
+`einkaufsliste-gesamt.html` enthält Beer Can Chicken als zusätzliche Rezeptauswahl. Gleiche Zutaten werden über bestehende dauerhafte Zutaten-IDs zusammengeführt. Diese gemeinsame Einkaufsliste ist jetzt zusätzlich direkt über die obere Navigation der Startseite erreichbar.
 
 ## Offene Aufgaben
 
@@ -105,6 +117,13 @@ Die bisherige Kategorie `Hähnchen` wurde auf den aktuellen Übersichts- und Rez
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.15.1 – 04.08.2026
+
+- Einkaufsliste als fünften Link in die obere Hauptnavigation der Startseite aufgenommen
+- die drei unteren Schnellzugriffe Grundlagen, Gemeinsame Einkaufsliste und Gesamtes Kochbuch entfernt
+- mobile Hauptnavigation für fünf Links angepasst
+- Buchversion auf 2.15.1 erhöht
 
 ### Version 2.15.0 – 04.08.2026
 
