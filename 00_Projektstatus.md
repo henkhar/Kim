@@ -22,15 +22,7 @@ Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 
 ## Startseite
 
-Die Startseite zeigt in der oberen Hauptnavigation jetzt direkt:
-
-1. Fleisch
-2. Salate & Beilagen
-3. Vegan
-4. Grundlagen
-5. Einkaufsliste
-
-Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan. Die früheren Schnellzugriffe Grundlagen, Gemeinsame Einkaufsliste und Gesamtes Kochbuch wurden aus diesem Bereich entfernt. `kochbuch.html` bleibt technisch weiterhin erreichbar.
+Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und Einkaufsliste. Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan.
 
 ## Aktueller Bestand
 
@@ -38,7 +30,7 @@ Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Sal
 - 1 bestätigtes Rezept
 - 8 Arbeitsfassungen
 - 9 eigenständige Rezeptseiten
-- 7 Rezeptseiten mit Hero-Bild
+- 9 Rezeptseiten mit Hero-Bild
 - beide Einkaufslisten unterstützen alle 9 Rezepte
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
@@ -70,86 +62,72 @@ Unterhalb bleiben ausschließlich die drei großen Kategorie-Karten Fleisch, Sal
 - Gemüsefinish-Mild – Version 0.1.5 – `gemuesefinish-mild.html`
 - Keto-Pudding – Version 0.1.1 – `keto-pudding.html`
 
-## Beer Can Chicken
+## Rezeptbilder Geflügel
 
-- ID: `beer-can-chicken`
-- Rubrik: Fleisch → Geflügel
-- Grundmenge: 2 Personen / 1 (Mais-)Hähnchen
-- Methode: aufrecht auf einer geöffneten 0,5-l-Bierdose oder einem Hähnchenhalter im Backofen garen
-- Garphase: etwa 60 Minuten bei 170 °C Umluft
-- Finish: mit Olivenöl und Hähnchengewürz einpinseln und etwa 4 Minuten bei 220 °C knusprig backen
-- Beilage: gelbe und rote Zwiebeln mit Bratensud, Salz und Butter
-- Kerntemperatur wird zusätzlich über die Grundlagen geprüft
-- Noch ohne Rezeptbild
-
-## Rubrik Geflügel
-
-Die bisherige Kategorie `Hähnchen` wurde auf den aktuellen Übersichts- und Rezeptseiten in `Geflügel` umbenannt. Der Seitenanker lautet jetzt `#gefluegel`.
+- Chicken Asado: `assets/Chicken_asado.jpg`
+- Beer Can Chicken: `assets/beer_can_chicken.jpg`
+- Beide JPEGs sind als 16:9-Hero-Bilder auf den Rezeptseiten eingebunden.
+- In der Geflügel-Kategorie der Fleischübersicht werden beide Bilder als anklickbare, lazy-geladene Thumbnails angezeigt.
+- Die unveränderten Rezeptinhalte liegen zusätzlich in `chicken-asado-basis.html` und `beer-can-chicken-basis.html`; `fleisch-basis.html` bewahrt die unveränderte Fleischübersicht. Die sichtbaren Seiten ergänzen daraus ausschließlich die Bilder.
 
 ## Einkaufslisten
 
 ### Einzelrezept
 
-`einkaufsliste.html` unterstützt jetzt neun Rezepte. Für Beer Can Chicken werden Hähnchen, Bier, beide Zwiebelsorten, Hähnchengewürz, Olivenöl, Salz und Butter ausgehend von zwei Personen skaliert.
+`einkaufsliste.html` unterstützt neun Rezepte einschließlich Chicken Asado und Beer Can Chicken.
 
 ### Gemeinsame Einkaufsliste
 
-`einkaufsliste-gesamt.html` enthält Beer Can Chicken als zusätzliche Rezeptauswahl. Gleiche Zutaten werden über bestehende dauerhafte Zutaten-IDs zusammengeführt. Diese gemeinsame Einkaufsliste ist jetzt zusätzlich direkt über die obere Navigation der Startseite erreichbar.
+`einkaufsliste-gesamt.html` enthält beide Geflügelrezepte als auswählbare Rezepte. Gleiche Zutaten werden über dauerhafte Zutaten-IDs zusammengeführt.
 
 ## Offene Aufgaben
 
 1. Beer Can Chicken gemeinsam testen und Garzeit sowie Gewürzmenge präzisieren.
-2. Ein Rezeptbild für Beer Can Chicken ergänzen.
-3. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
-4. Ein Rezeptbild für Chicken Asado ergänzen.
-5. Grillgemüse gemeinsam testen und später auf Version 1.0.0 setzen.
-6. Honig-Senf-Lachs und Gemüsefinish-Mild gemeinsam prüfen.
-7. Weitere Salate, Beilagen und vegane Rezepte ergänzen.
-8. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
+2. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
+3. Grillgemüse gemeinsam testen und später auf Version 1.0.0 setzen.
+4. Honig-Senf-Lachs und Gemüsefinish-Mild gemeinsam prüfen.
+5. Weitere Salate, Beilagen und vegane Rezepte ergänzen.
+6. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
 
 ## Verbindliche Hinweise
 
 - Neue Rezeptseiten zeigen keine sichtbaren Versions- oder Arbeitsstatusangaben.
 - Interne Rezeptversionen bleiben als HTML-Meta-Daten erhalten.
 - Der Einkaufslistenblock steht am Ende des Rezeptinhalts.
-- Die Fleisch-Unterkategorie heißt `Geflügel`, nicht mehr `Hähnchen`.
+- Die Fleisch-Unterkategorie heißt `Geflügel`.
 - Food-Fotos werden als weboptimierte JPEG-Dateien eingebunden.
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
 
+### Korrektur zu Version 2.15.1 – 04.08.2026
+
+- die bereits hochgeladenen Dateien `assets/Chicken_asado.jpg` und `assets/beer_can_chicken.jpg` tatsächlich eingebunden
+- Chicken Asado und Beer Can Chicken mit 16:9-Hero-Bild, Alt-Text und Bildunterschrift ergänzt
+- Geflügel-Übersicht mit zwei anklickbaren Thumbnails erweitert
+- der zuvor fehlgeschlagene automatische Einbau wurde durch eine verifizierte lokale Einbindung ersetzt
+- Buch- und Rezeptversionen bleiben unverändert, da dies die Nachholung einer bereits angekündigten Änderung ist
+
 ### Version 2.15.1 – 04.08.2026
 
-- Einkaufsliste als fünften Link in die obere Hauptnavigation der Startseite aufgenommen
-- die drei unteren Schnellzugriffe Grundlagen, Gemeinsame Einkaufsliste und Gesamtes Kochbuch entfernt
-- mobile Hauptnavigation für fünf Links angepasst
-- Buchversion auf 2.15.1 erhöht
+- Startseite vereinfacht
+- Einkaufsliste in die Hauptnavigation verschoben
+- drei untere Schnellzugriffe entfernt
 
 ### Version 2.15.0 – 04.08.2026
 
 - Fleisch-Unterkategorie Hähnchen in Geflügel umbenannt
-- Chicken Asado der Rubrik Geflügel zugeordnet und Rezeptversion auf 0.1.1 erhöht
+- Chicken Asado der Rubrik Geflügel zugeordnet
 - Beer Can Chicken als zweites Geflügelrezept ergänzt
-- Beer Can Chicken mit Zutaten, acht Zubereitungsschritten und Kerntemperaturkontrolle ausgearbeitet
-- Fleischübersicht mit beiden Geflügelrezepten verlinkt
 - Einzel- und gemeinsame Einkaufsliste auf neun Rezepte erweitert
-- Buchversion auf 2.15.0 erhöht
 
 ### Version 2.14.0 – 03.08.2026
 
-- Chicken Asado als neues Rezept unter Fleisch → Geflügel ergänzt
-- Zutaten und Marinade für zwei Personen erfasst
-- Spatchcock-Vorbereitung, Marinierzeit und direktes Grillen mit Fünf-Minuten-Wenderhythmus dokumentiert
-- saubere Marinadenportion für das Nachstreichen verbindlich getrennt
-- Fleischübersicht mit Chicken Asado verlinkt
-- Einzel- und gemeinsame Einkaufsliste auf acht Rezepte erweitert
+- Chicken Asado als neues Geflügelrezept ergänzt
 
 ### Version 2.13.2 – 03.08.2026
 
-- Grillgemüse mit Süßkartoffeln, Kichererbsen, Erdnüssen und Cherrytomaten erweitert
-- Aubergine und Frühlingszwiebeln entfernt
-- optionale Zutaten Spargel, Parmesan, Feta, Hokkaido-Kürbis und Kartoffelecken ergänzt
-- Ablauf auf zwei Planchas und indirektes Fertiggaren bei 120 °C angepasst
+- Grillgemüse mit neuen Zutaten und neuem Plancha-Ablauf überarbeitet
 
 ### Version 2.13.1 – 03.08.2026
 
