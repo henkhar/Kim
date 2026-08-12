@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.15.2  
-**Letzte Aktualisierung:** 04.08.2026  
+**Buchversion:** 2.15.3  
+**Letzte Aktualisierung:** 12.08.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -85,9 +85,15 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 `einkaufsliste.html` unterstützt neun Rezepte einschließlich Chicken Asado und Beer Can Chicken.
 
+Die Fehlerursache vom 12.08.2026 lag nicht in den Rezeptformularen: Die korrekte `recipe`-ID wurde über den Query-Parameter übergeben. Der bisherige Wrapper lud jedoch `einkaufsliste-basis.html` in ein iframe und schrieb den gepatchten Inhalt anschließend mit `document.write()` erneut hinein. Dabei wurde das JavaScript der Basisdatei im betroffenen Browser nicht ausgeführt. Dadurch blieben statischer Lachs-Titel, leere Zutatenliste und funktionslose Bedienelemente sichtbar.
+
+Die Basisdatei wird jetzt als vollständiges `srcdoc`-Dokument geladen. Der Query-String der äußeren Seite wird ausdrücklich an die Basislogik übergeben. `Neu berechnen` lädt die äußere Einkaufsliste mit den neuen GET-Parametern; Häkchen, Reset und Senden arbeiten wieder innerhalb des ausgeführten Dokuments.
+
 ### Gemeinsame Einkaufsliste
 
-`einkaufsliste-gesamt.html` enthält beide Geflügelrezepte als auswählbare Rezepte. Gleiche Zutaten werden über dauerhafte Zutaten-IDs zusammengeführt.
+`einkaufsliste-gesamt.html` enthält alle neun Rezepte als auswählbare Rezepte. Gleiche Zutaten werden über dauerhafte Zutaten-IDs zusammengeführt.
+
+Da die gemeinsame Liste dieselbe problematische `document.write()`-Technik nutzte, wurde sie im gleichen Zug ebenfalls auf die zuverlässige `srcdoc`-Ausführung umgestellt.
 
 ## Offene Aufgaben
 
@@ -109,21 +115,27 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 ## Änderungshistorie
 
+### Version 2.15.3 – 12.08.2026
+
+- Fehleranalyse der Einzel-Einkaufsliste durchgeführt: Rezeptparameter war korrekt, Basis-JavaScript wurde nach `document.write()` jedoch nicht ausgeführt
+- `einkaufsliste.html` auf zuverlässige `srcdoc`-Ausführung umgestellt
+- Rezept-ID und Personenzahl werden wieder korrekt aus der URL übernommen
+- `Neu berechnen`, `Senden`, gespeicherte Häkchen und `Häkchen zurücksetzen` wieder mit ausgeführter Basislogik verbunden
+- gemeinsame Einkaufsliste wegen identischer Fehlerquelle ebenfalls umgestellt
+- Buchversion auf 2.15.3 erhöht
+
 ### Version 2.15.2 – 04.08.2026
 
 - Startseite um den Bereich **Neu hinzugefügt** erweitert
 - Beer Can Chicken, Chicken Asado, Entrecôte Steakhouse und Keto-Pudding als bildstarke Rezeptkarten ergänzt
 - Karten mit Rubrik, Rezeptname und direkter Verlinkung ausgestattet
 - responsives Raster mit vier, zwei beziehungsweise einer Karte pro Reihe umgesetzt
-- Buchversion auf 2.15.2 erhöht
 
 ### Korrektur zu Version 2.15.1 – 04.08.2026
 
 - die bereits hochgeladenen Dateien `assets/Chicken_asado.jpg` und `assets/beer_can_chicken.jpg` tatsächlich eingebunden
 - Chicken Asado und Beer Can Chicken mit 16:9-Hero-Bild, Alt-Text und Bildunterschrift ergänzt
 - Geflügel-Übersicht mit zwei anklickbaren Thumbnails erweitert
-- der zuvor fehlgeschlagene automatische Einbau wurde durch eine verifizierte lokale Einbindung ersetzt
-- Buch- und Rezeptversionen bleiben unverändert, da dies die Nachholung einer bereits angekündigten Änderung ist
 
 ### Version 2.15.1 – 04.08.2026
 
