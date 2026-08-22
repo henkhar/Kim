@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.15.3">
+<meta name="book-version" content="2.16.0">
 <title>Gemeinsame Einkaufsliste · Haralds Grillkochbuch</title>
 <style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript,.error{display:block;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#1d1d1f}</style>
 </head>
@@ -15,13 +15,14 @@ const frame=document.getElementById('app');
 const grillData=`gemuese:{title:'Grillgemüse',items:[['zucchini','Zucchini','frisch','g',400],['paprika-rot','Rote Paprika','frisch','count',2,'Stück',1],['paprika-gelb','Gelbe Paprika','frisch','count',1,'Stück',1],['champignons','Champignons','frisch','g',400],['zwiebel-rot','Rote Zwiebeln','frisch','count',4,'Stück',1],['brauner-zucker','Brauner Zucker','vorrat','ml',5],['suesskartoffeln','Süßkartoffeln','frisch','g',200],['erdnuesse-ungesalzen','Erdnüsse, ungesalzen','vorrat','g',20],['kichererbsen-dose','Kichererbsen aus der Dose','vorrat','g',200],['cherrytomaten','Cherrytomaten','frisch','count',8,'Stück',1],['rapsoel','Rapsöl','vorrat','ml',45],['salz','Salz','vorrat','note',0,'zusätzlich nach Bedarf'],['pfeffer','Schwarzer Pfeffer','vorrat','note',0,'nach Geschmack'],['spargel','Spargel','frisch','g',400,'',0,1],['parmesan','Parmesan','milch','ml',15,'',0,1],['feta','Feta','milch','g',200,'',0,1],['hokkaido-kuerbis','Hokkaido-Kürbis','frisch','g',400,'',0,1],['kartoffelecken','Kartoffelecken','frisch','g',400,'',0,1]]}`;
 const chickenData=`chicken:{title:'Chicken Asado',base:2,items:[['maishaehnchen','Maishähnchen','fleisch','count',1,'Stück',1],['orange','Orange','frisch','count',1,'Stück',1],['limette','Limette','frisch','count',1,'Stück',1],['knoblauch','Knoblauch','frisch','count',4,'Zehen',1],['kreuzkuemmel','Kreuzkümmel','vorrat','ml',5],['oregano','Oregano','vorrat','ml',5],['salz','Salz','vorrat','ml',5],['paprika-geraeuchert','Geräuchertes Paprikapulver','vorrat','ml',22.5],['essig','Essig','vorrat','ml',15],['olivenoel','Olivenöl','vorrat','ml',37.5],['pfeffer','Schwarzer Pfeffer','vorrat','note',0,'nach Geschmack']]}`;
 const beerChickenData=`beerchicken:{title:'Beer Can Chicken',base:2,items:[['bier-05-dose','Bier, 0,5-l-Dose','vorrat','count',1,'Dose',1],['maishaehnchen','(Mais-)Hähnchen','fleisch','count',1,'Stück',1],['zwiebeln','Zwiebeln','frisch','count',2,'Stück',1],['zwiebel-rot','Rote Zwiebeln','frisch','count',2,'Stück',1],['haehnchengewuerz','Hähnchengewürz','vorrat','note',0,'1 Prise'],['olivenoel','Olivenöl','vorrat','ml',45],['salz','Salz','vorrat','note',0,'1 Prise'],['butter','Butter','milch','ml',15]]}`;
+const lambData=`lamm:{title:'Toskanisches Lammkarree',base:4,items:[['lammkarree','Lammkarree','fleisch','count',4,'Stück',1],['weisswein-trocken','Trockener Weißwein','vorrat','ml',200],['wermut','Wermut','vorrat','ml',60],['honig','Honig','vorrat','ml',30],['kartoffeln-festkochend','Kartoffeln, festkochend','frisch','count',12,'Stück',1],['fruehlingszwiebeln','Frühlingszwiebeln','frisch','count',8,'Stück',1],['oel-kartoffeln','Öl für die Kartoffeln','vorrat','note',0,'Menge und Sorte nicht angegeben'],['rosmarin-getrocknet','Rosmarin, getrocknet','vorrat','ml',120],['thymian-getrocknet','Thymian, getrocknet','vorrat','ml',120],['salbei-getrocknet','Salbei, getrocknet','vorrat','ml',30],['knoblauch-granuliert','Knoblauch, granuliert','vorrat','ml',60],['zwiebel-granuliert','Zwiebel, granuliert','vorrat','ml',60],['chilipulver','Chilipulver','vorrat','ml',30],['salz','Salz','vorrat','ml',60]]}`;
 
 async function init(){
   try{
     let html=await fetch('einkaufsliste-gesamt-basis.html',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
     const grillPattern=/gemuese:\{[\s\S]*?\},\nfresh:/;
     if(!grillPattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
-    html=html.replace(grillPattern,grillData+',\n'+chickenData+',\n'+beerChickenData+',\nfresh:');
+    html=html.replace(grillPattern,grillData+',\n'+chickenData+',\n'+beerChickenData+',\n'+lambData+',\nfresh:');
     html=html.replace('<span>Gemüse, Rapsöl sowie Salz und Pfeffer.</span>','<span>Zucchini, Paprika, Süßkartoffeln, Kichererbsen, Erdnüsse, Tomaten und optionale Extras.</span>');
     if(!html.includes('value="chicken"')){
       const choice=`<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="chicken"><span class="choice-copy"><b>Chicken Asado</b><span>Maishähnchen mit Orange-Limetten-Marinade.</span></span></label></article>\n`;
@@ -31,7 +32,11 @@ async function init(){
       const beerChoice=`<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="beerchicken"><span class="choice-copy"><b>Beer Can Chicken</b><span>Aufrecht gegartes Hähnchen mit Bier, Zwiebeln und Gewürzöl.</span></span></label></article>\n`;
       html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">',beerChoice+'<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
     }
-    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.15.3">');
+    if(!html.includes('value="lamm"')){
+      const lambChoice=`<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="lamm"><span class="choice-copy"><b>Toskanisches Lammkarree</b><span>Lammkarree mit Kräuter-Rub, Weißwein-Wermut-Honig-Mop, Kartoffeln und Frühlingszwiebeln.</span></span></label></article>\n`;
+      html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">',lambChoice+'<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
+    }
+    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.16.0">');
     html=html.replace('</head>','<base href="./" target="_top" data-kim-wrapper="true"></head>');
     frame.addEventListener('load',installShare,{once:true});
     frame.srcdoc=html;
