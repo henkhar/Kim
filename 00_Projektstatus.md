@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.16.1  
+**Buchversion:** 2.16.2  
 **Letzte Aktualisierung:** 22.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -26,14 +26,12 @@ Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und E
 
 Darunter befindet sich der bildstarke Bereich **Neu hinzugefügt** mit vier direkt anklickbaren Rezeptkarten:
 
-1. Beer Can Chicken – Geflügel
-2. Chicken Asado – Geflügel
-3. Entrecôte Steakhouse – Rind
-4. Keto-Pudding – Salate & Beilagen
+1. Toskanisches Lammkarree – Lamm
+2. Beer Can Chicken – Geflügel
+3. Chicken Asado – Geflügel
+4. Entrecôte Steakhouse – Rind
 
 Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und einen dezenten Öffnen-Link. Auf großen Bildschirmen stehen vier Karten nebeneinander, auf Tablets zwei pro Reihe und auf Smartphones untereinander.
-
-Das Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthalten, da dafür noch kein eigenes Rezeptbild im Repository vorhanden ist.
 
 ## Aktueller Bestand
 
@@ -41,7 +39,7 @@ Das Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthal
 - 1 bestätigtes Rezept
 - 9 Arbeitsfassungen
 - 10 eigenständige Rezeptseiten
-- 9 Rezeptseiten mit Hero-Bild
+- 10 Rezeptseiten mit Hero-Bild
 - beide Einkaufslisten unterstützen alle 10 Rezepte
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
@@ -64,7 +62,7 @@ Das Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthal
 
 #### Lamm
 
-- Toskanisches Lammkarree – Version 0.1.1 – `toskanisches-lammkarree.html`
+- Toskanisches Lammkarree – Version 0.1.2 – `toskanisches-lammkarree.html`
   - Grundmenge 4 Portionen
   - direkter und indirekter Grillbereich
   - Kräuter-Rub aus Rosmarin, Thymian, Salbei, granuliertem Knoblauch und Zwiebel, Chili und Salz
@@ -73,7 +71,8 @@ Das Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthal
   - Kartoffeln und Frühlingszwiebeln als Beilage
   - für die Kartoffeln wurden 2 EL Rapsöl als gemeinsame Rezeptfestlegung ergänzt
   - Quellenhinweis bleibt nur intern dokumentiert und wird nicht sichtbar auf der Rezeptseite gezeigt
-  - noch ohne eigenes Rezeptbild
+  - Bild: `assets/toskanisches_lammkarree.jpg`
+  - Bild als 16:9-Hero auf der Rezeptseite, als Thumbnail in der Lamm-Übersicht und als neueste Karte auf der Startseite eingebunden
 
 #### Fisch
 
@@ -113,13 +112,12 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 ## Offene Aufgaben
 
 1. Toskanisches Lammkarree gemeinsam testen und anschließend Garzeit sowie Rub-Menge präzisieren.
-2. Eigenes 16:9-Rezeptbild für das Toskanische Lammkarree ergänzen und danach den Bereich **Neu hinzugefügt** aktualisieren.
-3. Beer Can Chicken gemeinsam testen und Garzeit sowie Gewürzmenge präzisieren.
-4. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
-5. Grillgemüse gemeinsam testen und später auf Version 1.0.0 setzen.
-6. Honig-Senf-Lachs und Gemüsefinish-Mild gemeinsam prüfen.
-7. Weitere Salate, Beilagen und vegane Rezepte ergänzen.
-8. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
+2. Beer Can Chicken gemeinsam testen und Garzeit sowie Gewürzmenge präzisieren.
+3. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
+4. Grillgemüse gemeinsam testen und später auf Version 1.0.0 setzen.
+5. Honig-Senf-Lachs und Gemüsefinish-Mild gemeinsam prüfen.
+6. Weitere Salate, Beilagen und vegane Rezepte ergänzen.
+7. Übergangsseite `kochbuch.html` später reduzieren oder auflösen.
 
 ## Verbindliche Hinweise
 
@@ -133,6 +131,17 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.16.2 – 22.08.2026
+
+- JPEG `assets/toskanisches_lammkarree.jpg` geprüft und eingebunden
+- Toskanisches Lammkarree auf Rezeptversion 0.1.2 erhöht
+- 16:9-Hero-Bild mit Alternativtext und Bildunterschrift ergänzt
+- Lamm-Kategorie in der Fleischübersicht um ein anklickbares Thumbnail erweitert
+- Toskanisches Lammkarree als neueste Karte im Bereich **Neu hinzugefügt** aufgenommen
+- Keto-Pudding dort aus dem Vierer-Raster verdrängt; Rezept und Kategorie bleiben unverändert erhalten
+- Anzahl der Rezeptseiten mit Hero-Bild auf 10 erhöht
+- Buchversion auf 2.16.2 erhöht
 
 ### Version 2.16.1 – 22.08.2026
 
