@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.16.0  
+**Buchversion:** 2.16.1  
 **Letzte Aktualisierung:** 22.08.2026  
 **Einstiegsseite:** `index.html`
 
@@ -33,7 +33,7 @@ Darunter befindet sich der bildstarke Bereich **Neu hinzugefügt** mit vier dire
 
 Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und einen dezenten Öffnen-Link. Auf großen Bildschirmen stehen vier Karten nebeneinander, auf Tablets zwei pro Reihe und auf Smartphones untereinander.
 
-Das neue Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthalten, da dafür noch kein eigenes Rezeptbild im Repository vorhanden ist.
+Das Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich enthalten, da dafür noch kein eigenes Rezeptbild im Repository vorhanden ist.
 
 ## Aktueller Bestand
 
@@ -64,15 +64,15 @@ Das neue Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich e
 
 #### Lamm
 
-- Toskanisches Lammkarree – Version 0.1.0 – `toskanisches-lammkarree.html`
+- Toskanisches Lammkarree – Version 0.1.1 – `toskanisches-lammkarree.html`
   - Grundmenge 4 Portionen
   - direkter und indirekter Grillbereich
   - Kräuter-Rub aus Rosmarin, Thymian, Salbei, granuliertem Knoblauch und Zwiebel, Chili und Salz
   - Mop aus trockenem Weißwein, Wermut und Honig
-  - laut bereitgestellter Vorlage 53 °C Kerntemperatur vor der Ruhephase und etwa 55 °C nach 10 Minuten Ruhezeit
+  - 53 °C Kerntemperatur vor der Ruhephase und etwa 55 °C nach 10 Minuten Ruhezeit
   - Kartoffeln und Frühlingszwiebeln als Beilage
-  - Öl für die Kartoffeln wird im Ablauf genannt, Menge und Sorte sind in der Vorlage nicht angegeben
-  - Quelle der Arbeitsfassung: bereitgestellte BURNHARD-PDF „Toskanisches Lammkarree“
+  - für die Kartoffeln wurden 2 EL Rapsöl als gemeinsame Rezeptfestlegung ergänzt
+  - Quellenhinweis bleibt nur intern dokumentiert und wird nicht sichtbar auf der Rezeptseite gezeigt
   - noch ohne eigenes Rezeptbild
 
 #### Fisch
@@ -100,19 +100,19 @@ Das neue Toskanische Lammkarree ist noch nicht in diesem bildbasierten Bereich e
 
 `einkaufsliste.html` unterstützt zehn Rezepte einschließlich Chicken Asado, Beer Can Chicken und Toskanischem Lammkarree.
 
-Für das Toskanische Lammkarree werden Lammkarree, Weißwein, Wermut, Honig, Kartoffeln, Frühlingszwiebeln und sämtliche Rub-Zutaten auf die Personenzahl skaliert. Das im Ablauf erwähnte Öl bleibt als Hinweis ohne Mengenberechnung erhalten, weil die Quelle keine Menge nennt.
+Für das Toskanische Lammkarree werden Lammkarree, Weißwein, Wermut, Honig, Kartoffeln, Frühlingszwiebeln, 2 EL Rapsöl und sämtliche Rub-Zutaten auf die Personenzahl skaliert.
 
 Die Fehlerursache vom 12.08.2026 lag nicht in den Rezeptformularen: Die korrekte `recipe`-ID wurde über den Query-Parameter übergeben. Der frühere Wrapper schrieb den gepatchten Inhalt nach dem Laden erneut mit `document.write()` in ein iframe, wodurch das JavaScript der Basisdatei im betroffenen Browser nicht ausgeführt wurde. Die Einzel-Einkaufsliste nutzt deshalb seit Version 2.15.3 die zuverlässige `srcdoc`-Ausführung und übergibt den Query-String ausdrücklich an die Basislogik.
 
 ### Gemeinsame Einkaufsliste
 
-`einkaufsliste-gesamt.html` enthält alle zehn Rezepte als auswählbare Rezepte. Gleiche Zutaten werden über dauerhafte Zutaten-IDs zusammengeführt. Das Toskanische Lammkarree ist als eigene Auswahl mit Grundmenge für 4 Personen ergänzt.
+`einkaufsliste-gesamt.html` enthält alle zehn Rezepte als auswählbare Rezepte. Gleiche Zutaten werden über dauerhafte Zutaten-IDs zusammengeführt. Das Toskanische Lammkarree ist als eigene Auswahl mit Grundmenge für 4 Personen ergänzt; sein Rapsöl verwendet die bestehende gemeinsame Zutaten-ID `rapsoel` und wird dadurch mit Rapsöl aus anderen Rezepten korrekt zusammengeführt.
 
 Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `srcdoc`-Ausführung.
 
 ## Offene Aufgaben
 
-1. Toskanisches Lammkarree gemeinsam testen und anschließend Garzeit, Rub-Menge sowie die fehlende Ölmenge präzisieren.
+1. Toskanisches Lammkarree gemeinsam testen und anschließend Garzeit sowie Rub-Menge präzisieren.
 2. Eigenes 16:9-Rezeptbild für das Toskanische Lammkarree ergänzen und danach den Bereich **Neu hinzugefügt** aktualisieren.
 3. Beer Can Chicken gemeinsam testen und Garzeit sowie Gewürzmenge präzisieren.
 4. Chicken Asado gemeinsam testen und anschließend Mengen, Grillhitze und Gesamtgrillzeit präzisieren.
@@ -128,10 +128,23 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Der Einkaufslistenblock steht am Ende des Rezeptinhalts.
 - Fleisch-Unterkategorien sind derzeit Rind, Geflügel, Schwein, Lamm und Fisch.
 - Food-Fotos werden als weboptimierte JPEG-Dateien eingebunden.
-- Quellenbasierte Rezepte dürfen fehlende oder unklare Angaben nicht stillschweigend ergänzen; offene Punkte bleiben bis zum eigenen Test ausdrücklich dokumentiert.
+- Quellenbasierte Rezepte dürfen fehlende oder unklare Angaben nicht stillschweigend ergänzen; gemeinsame Festlegungen werden dokumentiert und anschließend als normaler Rezeptbestandteil geführt.
+- Quellenhinweise bleiben intern und erscheinen nicht auf der sichtbaren Rezeptseite, sofern sie nicht ausdrücklich Teil des Kochbuchinhalts sein sollen.
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.16.1 – 22.08.2026
+
+- Toskanisches Lammkarree auf Rezeptversion 0.1.1 erhöht
+- 2 EL Rapsöl für die Kartoffeln festgelegt
+- Kartoffelschritt entsprechend auf Rapsöl angepasst
+- Kim-Tipp zur dünnen Benetzung und hohen direkten Hitze ergänzt
+- sichtbaren Quellenblock und sonstige redaktionelle Quellenformulierungen von der Rezeptseite entfernt
+- Garpunkt als normaler Rezeptbestandteil formuliert
+- Einzel- und gemeinsame Einkaufsliste auf 2 EL Rapsöl aktualisiert
+- Rapsöl in der gemeinsamen Einkaufsliste über die bestehende Zutaten-ID zusammengeführt
+- Buchversion auf 2.16.1 erhöht
 
 ### Version 2.16.0 – 22.08.2026
 
@@ -139,7 +152,7 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - neue Fleisch-Unterkategorie **Lamm** ergänzt
 - Rezept aus der bereitgestellten BURNHARD-PDF in den bestehenden Rezeptstil übertragen
 - Mengen, Zeiten und Temperaturangaben der Vorlage beibehalten
-- fehlende Ölmenge für die Kartoffeln ausdrücklich als offenen Punkt dokumentiert
+- fehlende Ölmenge für die Kartoffeln zunächst als offenen Punkt dokumentiert
 - Einzel-Einkaufsliste um das Lammkarree erweitert
 - gemeinsame Einkaufsliste um das Lammkarree erweitert
 - Rezeptzahl auf 10 und Arbeitsfassungen auf 9 erhöht
