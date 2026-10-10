@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.19.0  
+**Buchversion:** 2.19.1  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -138,6 +138,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.19.1 – 10.10.2026
+
+- Einzel- und gemeinsame Einkaufsliste nach Supermarkt-Abteilungen gegliedert.
+- PDF-Versand und eigenständige Link-HTML-Ansicht bewahren die Überschriften je Warengruppe.
+- Häkchen, Mengenberechnung und dauerhafte Links bleiben erhalten.
+
+
 
 ### Version 2.19.0 – 10.10.2026
 
