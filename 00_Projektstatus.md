@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.0  
+**Buchversion:** 2.18.1  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -58,7 +58,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 #### Schwein
 
-- Ibérico Bellota Carré – Version 0.1.2 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
+- Ibérico Bellota Carré – Version 0.1.3 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
 
 - Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
 
@@ -135,6 +135,12 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.1 – 10.10.2026
+
+- Ibérico-Rezeptseite an die vorhandene Beer-Can-Chicken-Formatvorlage angeglichen: Hero-Bild, Faktenkarten, zweispaltige Zutaten/Zubereitung, nummerierte Schritte, Kim-Tipp und Detailkarten.
+- Inhalte des Rezeptes beibehalten; Dry Brining bleibt optional und Salsa Verde separat verlinkt.
+
 
 ### Version 2.18.0 – 10.10.2026
 
