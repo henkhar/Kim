@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.1  
+**Buchversion:** 2.18.2  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -39,8 +39,8 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 - 1 bestätigtes Rezept
 - 11 Arbeitsfassungen
 - 12 eigenständige Rezeptseiten
-- 11 Rezeptseiten mit Hero-Bild
-- beide Einkaufslisten unterstützen bislang die bisherigen 10 Rezepte; Ibérico-Erweiterung offen
+- 12 Rezeptseiten mit Hero-Bild
+- beide Einkaufslisten unterstützen nun 12 Rezepte inklusive Ibérico und Salsa Verde
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
 ## Rezeptübersicht
@@ -58,7 +58,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 #### Schwein
 
-- Ibérico Bellota Carré – Version 0.1.3 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
+- Ibérico Bellota Carré – Version 0.1.4 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufslistenintegration vorhanden
 
 - Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
 
@@ -82,7 +82,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 ### Salate & Beilagen
 
-- Salsa Verde – Version 0.1.0 – `salsa-verde.html` – Arbeitsfassung; Einkaufslistenintegration und eigenes Foto offen
+- Salsa Verde – Version 0.1.1 – `salsa-verde.html` – Arbeitsfassung; mit Einkaufslistenintegration und eigenem Foto
 
 - Grillgemüse – Version 0.9.7 – `grillgemuese.html`
 - Gemüsefinish-Fresh – Version 1.0.6 – bestätigt – `finishing-sauce.html`
@@ -135,6 +135,13 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.2 – 10.10.2026
+
+- Ibérico Bellota Carré und Salsa Verde in Einzel- und gemeinsame Einkaufsliste integriert.
+- Mengen für vier Personen als Grundlage, Rosmarin optional, Salz und Pfeffer nach Geschmack.
+- Salsa-Verde-JPEG als Rezept-Hero und Thumbnail in der Soßenübersicht eingebunden.
+
 
 ### Version 2.18.1 – 10.10.2026
 
