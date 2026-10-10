@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.19.0">
+<meta name="book-version" content="2.19.1">
 <title>Gemeinsame Einkaufsliste · Haralds Grillkochbuch</title>
 <style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript,.error{display:block;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#1d1d1f}</style>
 </head>
@@ -41,7 +41,7 @@ async function init(){
     }
     if(!html.includes('value="iberico"'))html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">',"<article class=\"recipe-choice\"><label class=\"choice-main\"><input class=\"recipe-checkbox\" type=\"checkbox\" value=\"iberico\"><span class=\"choice-copy\"><b>Ibérico Bellota Carré</b><span>Karree, Salz, Pfeffer und optional Rosmarin.</span></span></label></article><article class=\"recipe-choice\"><label class=\"choice-main\"><input class=\"recipe-checkbox\" type=\"checkbox\" value=\"salsaverde\"><span class=\"choice-copy\"><b>Salsa Verde</b><span>Petersilie, Olivenöl, Zitrone und Knoblauch.</span></span></label></article>"+'<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
     if(!html.includes('value="lammlachse"'))html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">','<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="lammlachse"><span class="choice-copy"><b>Lammlachse mit Rosmarin</b><span>Klassisch mit Thymian, Knoblauch und Butter.</span></span></label></article><article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
-    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.19.0">');
+    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.19.1">');
     html=html.replace('</head>','<base href="./" target="_top" data-kim-wrapper="true"></head>');
     frame.addEventListener('load',installShare,{once:true});
     frame.srcdoc=html;
@@ -81,7 +81,9 @@ function setupPdfSharing(button, getData, printButton, win){
     }
     y+=5;pdf.setDrawColor(205);pdf.line(margin,y,right,y);y+=9;
     pdf.setFontSize(11);
+    let previousCategory='';
     for(const row of data.rows){
+      if(row.category&&row.category!==previousCategory){if(y+12>277){pdf.addPage();y=24}y+=3;pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.text(row.category,margin,y);y+=9;pdf.setFont('helvetica','normal');pdf.setFontSize(11);previousCategory=row.category}
       const label=(row.checked?'[x] ':'[ ] ')+row.name+(row.amount?'  -  '+row.amount:'');
       const parts=pdf.splitTextToSize(label,174);
       if(y+Math.max(7,parts.length*5)>277){pdf.addPage();y=24}
@@ -106,7 +108,7 @@ function setupPdfSharing(button, getData, printButton, win){
 
 
 async function createSnapshotUrl(data){
-  const payload={v:1,t:String(data.title||'Einkaufsliste'),m:(data.meta||[]).map(String),r:data.rows.map(r=>[String(r.name||''),String(r.amount||''),!!r.checked])};
+  const payload={v:1,t:String(data.title||'Einkaufsliste'),m:(data.meta||[]).map(String),r:data.rows.map(r=>[String(r.name||''),String(r.amount||''),!!r.checked,String(r.category||'Öle, Gewürze & Vorrat')])};
   let bytes=new TextEncoder().encode(JSON.stringify(payload)),mode='b';
   if('CompressionStream' in window){
     try{
@@ -147,9 +149,9 @@ function installShare(){
  const button=printButton.cloneNode(true);
  button.id='pdf-send-button';button.setAttribute('aria-label','Einkaufsliste als PDF senden');
  printButton.replaceWith(button);
- setupPdfSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.item-name')?.textContent.trim()||'',amount:row.querySelector('.item-amount')?.textContent.trim()||''}));
+ setupPdfSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.item-name')?.textContent.trim()||'',category:row.closest('.shopping-group')?.querySelector('h3')?.textContent.trim()||'Öle, Gewürze & Vorrat',amount:row.querySelector('.item-amount')?.textContent.trim()||''}));
     return {title:'Gemeinsame Einkaufsliste',meta:[doc.getElementById('result-meta')?.textContent.trim()||'',doc.getElementById('selection-summary')?.textContent.trim()||''],rows};},printButton,win);
- setupLinkSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.item-name')?.textContent.trim()||'',amount:row.querySelector('.item-amount')?.textContent.trim()||''}));return {title:'Gemeinsame Einkaufsliste',meta:[doc.getElementById('result-meta')?.textContent.trim()||'',doc.getElementById('selection-summary')?.textContent.trim()||''],rows};},win);
+ setupLinkSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.item-name')?.textContent.trim()||'',category:row.closest('.shopping-group')?.querySelector('h3')?.textContent.trim()||'Öle, Gewürze & Vorrat',amount:row.querySelector('.item-amount')?.textContent.trim()||''}));return {title:'Gemeinsame Einkaufsliste',meta:[doc.getElementById('result-meta')?.textContent.trim()||'',doc.getElementById('selection-summary')?.textContent.trim()||''],rows};},win);
  frame.classList.add('ready');
 }
 
