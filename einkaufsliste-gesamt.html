@@ -25,7 +25,7 @@ async function init(){
     let html=await fetch('einkaufsliste-gesamt-basis.html',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
     const grillPattern=/gemuese:\{[\s\S]*?\},\nfresh:/;
     if(!grillPattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
-    html=html.replace(grillPattern,grillData+',\n'+chickenData+',\n'+beerChickenData+',\n'+lambData+',\n'+ibericoData+',\n'+salsaData+',\n'+lammlachsData+',\nfresh:);
+    html=html.replace(grillPattern,grillData+',\n'+chickenData+',\n'+beerChickenData+',\n'+lambData+',\n'+ibericoData+',\n'+salsaData+',\n'+lammlachsData+',\nfresh:');
     html=html.replace('<span>Gemüse, Rapsöl sowie Salz und Pfeffer.</span>','<span>Zucchini, Paprika, Süßkartoffeln, Kichererbsen, Erdnüsse, Tomaten und optionale Extras.</span>');
     if(!html.includes('value="chicken"')){
       const choice=`<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="chicken"><span class="choice-copy"><b>Chicken Asado</b><span>Maishähnchen mit Orange-Limetten-Marinade.</span></span></label></article>\n`;
