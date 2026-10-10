@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.2  
+**Buchversion:** 2.18.3  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -35,12 +35,12 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 ## Aktueller Bestand
 
-- 12 ausgearbeitete Rezepte
+- 13 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
-- 11 Arbeitsfassungen
-- 12 eigenständige Rezeptseiten
-- 12 Rezeptseiten mit Hero-Bild
-- beide Einkaufslisten unterstützen nun 12 Rezepte inklusive Ibérico und Salsa Verde
+- 12 Arbeitsfassungen
+- 13 eigenständige Rezeptseiten
+- 12 Rezeptseiten mit Hero-Bild (Lammlachse zunächst ohne eigenes Rezeptfoto)
+- beide Einkaufslisten unterstützen nun 13 Rezepte inklusive Ibérico und Salsa Verde
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
 ## Rezeptübersicht
@@ -63,6 +63,9 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 - Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
 
 #### Lamm
+
+- Lammlachse mit Rosmarin – Version 0.1.0 – `lammlachse-klassisch.html` – Arbeitsfassung, ohne eigenes Rezeptfoto; direkt/indirekt gegrillt, beide Einkaufslisten integriert
+
 
 - Toskanisches Lammkarree – Version 0.1.2 – `toskanisches-lammkarree.html`
   - Grundmenge 4 Portionen
@@ -136,7 +139,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 
 ## Änderungshistorie
 
-### Version 2.18.2 – 10.10.2026
+### Version 2.18.3 – 10.10.2026
+
+- Klassische Lammlachse mit Rosmarin, Thymian, Knoblauch und Butter als dreizehntes Rezept angelegt.
+- Fleischübersicht (Lamm), Startseiten-Metadaten und beide Einkaufslisten ergänzt.
+- Eigenes Rezeptfoto noch offen; deshalb bewusst kein fremdes Lammfoto verwendet.
+
+
+### Version 2.18.3 – 10.10.2026
 
 - Ibérico Bellota Carré und Salsa Verde in Einzel- und gemeinsame Einkaufsliste integriert.
 - Mengen für vier Personen als Grundlage, Rosmarin optional, Salz und Pfeffer nach Geschmack.
