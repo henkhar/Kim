@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.18.6">
+<meta name="book-version" content="2.19.0">
 <title>Einkaufsliste · Haralds Grillkochbuch</title>
 <style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript,.error{display:block;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#1d1d1f}</style>
 </head>
@@ -32,7 +32,7 @@ async function init(){
       if(!html.includes('href="toskanisches-lammkarree.html"'))html=html.replace('<a href="beer-can-chicken.html">Beer Can Chicken</a>','<a href="beer-can-chicken.html">Beer Can Chicken</a><a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a>');
     }
     if(!html.includes('href="lammlachse-klassisch.html"'))html=html.replace('<a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a>','<a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a><a href="lammlachse-klassisch.html">Lammlachse mit Rosmarin</a>');
-    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.18.6">');
+    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.19.0">');
     if(!html.includes('href="iberico-bellota-carre.html"'))html=html.replace('<a href="entrecote-steakhouse.html">Entrecôte Steakhouse</a>','<a href="iberico-bellota-carre.html">Ibérico Bellota Carré</a><a href="salsa-verde.html">Salsa Verde</a><a href="entrecote-steakhouse.html">Entrecôte Steakhouse</a>');
     html=html.replace('<form class="recalculate" id="recalculate-form" method="get">','<form class="recalculate" id="recalculate-form" method="get" action="einkaufsliste.html" target="_top">');
     html=html.replace('const params=new URLSearchParams(location.search);',`const params=new URLSearchParams(${JSON.stringify(location.search)});`);
@@ -98,6 +98,40 @@ function setupPdfSharing(button, getData, printButton, win){
   });
 }
 
+
+async function createSnapshotUrl(data){
+  const payload={v:1,t:String(data.title||'Einkaufsliste'),m:(data.meta||[]).map(String),r:data.rows.map(r=>[String(r.name||''),String(r.amount||''),!!r.checked])};
+  let bytes=new TextEncoder().encode(JSON.stringify(payload)),mode='b';
+  if('CompressionStream' in window){
+    try{
+      const zipped=await new Response(new Blob([bytes]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
+      if(zipped.byteLength<bytes.byteLength){bytes=new Uint8Array(zipped);mode='z'}
+    }catch(error){console.warn('Komprimierung nicht verfügbar',error)}
+  }
+  let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
+  return new URL('einkaufsliste-ansicht.html',location.href).href+'#'+mode+btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function setupLinkSharing(pdfButton,getData,win){
+ const button=pdfButton.cloneNode(true);
+ button.id='link-send-button';button.disabled=false;button.textContent='Link senden';button.setAttribute('aria-label','Fertige Einkaufsliste als Link senden');
+ const print=document.getElementById('print-list-copy'); 
+ pdfButton.after(button);
+ button.addEventListener('click',async()=>{
+   const data=getData();
+   if(!data.rows.length){win.alert('Bitte zuerst eine Einkaufsliste erstellen.');return}
+   try{
+     const url=await createSnapshotUrl(data);
+     // Der Link ist vollständig selbstenthaltend; keine Server-Speicherung.
+     if(navigator.share){
+       try{await navigator.share({title:'Einkaufsliste – '+data.title,url});return}
+       catch(error){if(error?.name==='AbortError')return}
+     }
+     if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);win.alert('Link zur fertigen Einkaufsliste kopiert. Jetzt kannst du ihn verschicken.');return}
+     win.prompt('Diesen Link zur fertigen Einkaufsliste kopieren:',url);
+   }catch(error){win.alert('Der Link konnte nicht erstellt werden: '+error.message)}
+ });
+}
+
 function installShare(){
  const doc=frame.contentDocument,win=frame.contentWindow;
  if(!doc||!win){frame.classList.add('ready');return}
@@ -109,6 +143,7 @@ function installShare(){
  printButton.replaceWith(button);
  setupPdfSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.name')?.textContent.trim()||'',amount:row.querySelector('.amount')?.textContent.trim()||''}));
     return {title:doc.getElementById('recipe-title')?.textContent.trim()||'Rezept',meta:[doc.getElementById('list-meta')?.textContent.trim()||''],rows};},printButton,win);
+ setupLinkSharing(button,()=>{const rows=[...doc.querySelectorAll('.shopping-item')].map(row=>({checked:!!row.querySelector('input[type="checkbox"]')?.checked,name:row.querySelector('.name')?.textContent.trim()||'',amount:row.querySelector('.amount')?.textContent.trim()||''}));return {title:doc.getElementById('recipe-title')?.textContent.trim()||'Rezept',meta:[doc.getElementById('list-meta')?.textContent.trim()||''],rows};},win);
  frame.classList.add('ready');
 }
 
