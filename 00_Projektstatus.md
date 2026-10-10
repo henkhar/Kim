@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.17.1  
+**Buchversion:** 2.18.0  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -35,11 +35,11 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 ## Aktueller Bestand
 
-- 11 ausgearbeitete Rezepte
+- 12 ausgearbeitete Rezepte
 - 1 bestätigtes Rezept
-- 10 Arbeitsfassungen
-- 11 eigenständige Rezeptseiten
-- 10 Rezeptseiten mit Hero-Bild
+- 11 Arbeitsfassungen
+- 12 eigenständige Rezeptseiten
+- 11 Rezeptseiten mit Hero-Bild
 - beide Einkaufslisten unterstützen bislang die bisherigen 10 Rezepte; Ibérico-Erweiterung offen
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
@@ -58,7 +58,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 #### Schwein
 
-- Ibérico Bellota Carré – Version 0.1.1 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
+- Ibérico Bellota Carré – Version 0.1.2 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
 
 - Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
 
@@ -81,6 +81,8 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 - Honig-Senf-Lachs vom Grill – Version 0.1.9 – `honig-senf-lachs.html`
 
 ### Salate & Beilagen
+
+- Salsa Verde – Version 0.1.0 – `salsa-verde.html` – Arbeitsfassung; Einkaufslistenintegration und eigenes Foto offen
 
 - Grillgemüse – Version 0.9.7 – `grillgemuese.html`
 - Gemüsefinish-Fresh – Version 1.0.6 – bestätigt – `finishing-sauce.html`
@@ -133,6 +135,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.0 – 10.10.2026
+
+- Ibérico: Zubereitungsschritte 1 und 6 entfernt, Salzmenge aus Hauptrezept genommen, Dry Brining als optionalen Anhang angefügt
+- Salsa Verde als eigenständiges Rezept unter Soßen & Finishes angelegt und in Kim-Tipp verlinkt
+- JPEG auf der Rezeptseite mit aktualisiertem Cache-Parameter eingebunden; Dateiname bleibt unverändert
+- Rezeptbild und automatische Einkaufslistenintegration der Salsa Verde noch offen
+
 
 ### Version 2.17.1 – 10.10.2026
 
