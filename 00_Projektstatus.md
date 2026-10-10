@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.6  
+**Buchversion:** 2.19.0  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -138,6 +138,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.19.0 – 10.10.2026
+
+- Neue eigenständige Ansicht `einkaufsliste-ansicht.html` für den Linkversand.
+- Beide Einkaufslisten haben zusätzlich zum PDF-Versand die Option „Link senden“.
+- Geteilte Listen behalten Zutaten, Mengen und Häkchen-Ausgangszustand bei. Abhaken erfolgt unabhängig je Gerät.
+
+
 
 ### Version 2.18.6 – 10.10.2026
 
