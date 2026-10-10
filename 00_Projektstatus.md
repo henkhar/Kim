@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.5  
+**Buchversion:** 2.18.6  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -138,6 +138,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.6 – 10.10.2026
+
+- „Senden“ in beiden Einkaufslisten erzeugt jetzt eine formatierte PDF-Datei statt eines Links.
+- Unterstützt Dateifreigabe über das Betriebssystem (wenn verfügbar); andernfalls PDF-Download zum manuellen Anhängen.
+- Separaten Druckknopf für die Druckansicht wiederhergestellt.
+- Benötigt zum Erzeugen der PDF-Datei die jsPDF-Bibliothek vom CDN; bei Ladefehler öffnet sich der Druckdialog.
+
 
 ### Version 2.18.5 – 10.10.2026
 
