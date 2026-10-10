@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="book-version" content="2.19.0"><title>Einkaufsliste · Haralds Grillkochbuch</title>
+<style>:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#1d1d1f;background:#f5f5f7}*{box-sizing:border-box}body{margin:0}.top{background:#fff;border-bottom:1px solid #e5e5e7;padding:18px max(20px,calc((100vw - 880px)/2));font-weight:700}.top a{color:#bc4b2d;text-decoration:none}main{width:min(880px,calc(100% - 28px));margin:40px auto 60px}.panel{background:white;border-radius:26px;padding:clamp(22px,5vw,44px);box-shadow:0 6px 26px #00000008}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.04;letter-spacing:-.055em;margin:0 0 16px}.sub{color:#6e6e73;line-height:1.6;margin-bottom:20px}.items{list-style:none;padding:0;margin:24px 0}.items li{border-bottom:1px solid #ececef;padding:12px 0}.items label{display:flex;align-items:center;gap:15px;cursor:pointer}.items input{width:22px;height:22px;flex:none;accent-color:#bc4b2d}.items .name{flex:1}.items .amount{color:#6e6e73;text-align:right;white-space:nowrap}.items input:checked~.name{text-decoration:line-through;color:#999}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}button{background:#1d1d1f;color:white;border:0;padding:13px 18px;border-radius:12px;font:inherit;cursor:pointer}button.secondary{background:#f1f1f3;color:#1d1d1f}.error{color:#a12626}.note{font-size:.85rem;color:#737379;margin-top:24px;line-height:1.5}@media print{.top,.buttons,.note{display:none}body{background:white}main{margin:0;width:100%}.panel{padding:0;box-shadow:none}.items li{break-inside:avoid}}</style></head>
+<body><header class="top"><a href="index.html">← Haralds Grillkochbuch</a></header><main><div class="panel"><h1>Einkaufsliste</h1><div id="meta" class="sub">Lade Einkaufsliste …</div><ul id="items" class="items"></ul><div class="buttons" id="buttons" hidden><button type="button" id="print">Drucken / PDF</button><button type="button" class="secondary" id="reset">Häkchen zurücksetzen</button></div><p class="note">Diese Einkaufsliste ist ein unveränderlicher Schnappschuss. Die Häkchen werden nur auf diesem Gerät gespeichert und nicht mit anderen Personen synchronisiert.</p></div></main>
+<script>
+(async()=>{
+ const el=document.getElementById('items'),info=document.getElementById('meta');
+ const token=location.hash.slice(1);
+ if(!token||token.length>60000){info.textContent='Kein gültiger Einkaufslisten-Link vorhanden.';info.classList.add('error');return}
+ try{
+  const mode=token[0],b64=token.slice(1).replace(/-/g,'+').replace(/_/g,'/');
+  const chars=atob(b64+'='.repeat((4-b64.length%4)%4));
+  let bytes=Uint8Array.from(chars,c=>c.charCodeAt(0));
+  if(mode==='z'){
+    if(!('DecompressionStream' in window))throw Error('Komprimierte Listen werden von diesem Browser nicht unterstützt.');
+    const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    bytes=new Uint8Array(await new Response(stream).arrayBuffer());
+  }else if(mode!=='b')throw Error('Ungültiges Listenformat');
+  const data=JSON.parse(new TextDecoder().decode(bytes));
+  if(data.v!==1||!Array.isArray(data.r)||data.r.length>500||typeof data.t!=='string'||!Array.isArray(data.m))throw Error('Ungültige Einkaufsliste');
+  const savedKey='chefkoch-kim-snapshot:'+token;
+  let saved={};
+  try{saved=JSON.parse(localStorage.getItem(savedKey)||'{}')}catch{}
+  const clean=s=>String(s??'').slice(0,500);
+  document.title=clean(data.t)+' · Haralds Grillkochbuch';
+  info.textContent=[clean(data.t),...data.m.map(clean)].filter(Boolean).join(' · ');
+  for(let i=0;i<data.r.length;i++){
+   const item=data.r[i];if(!Array.isArray(item)||item.length<2)continue;
+   const li=document.createElement('li'),label=document.createElement('label'),box=document.createElement('input'),name=document.createElement('span'),amount=document.createElement('span');
+   box.type='checkbox';box.checked=Object.prototype.hasOwnProperty.call(saved,i)?!!saved[i]:!!item[2];
+   box.addEventListener('change',()=>{saved[i]=box.checked;try{localStorage.setItem(savedKey,JSON.stringify(saved))}catch{}});
+   name.className='name';name.textContent=clean(item[0]);amount.className='amount';amount.textContent=clean(item[1]);
+   label.append(box,name,amount);li.append(label);el.append(li);
+  }
+  document.getElementById('buttons').hidden=false;
+  document.getElementById('print').addEventListener('click',()=>window.print());
+  document.getElementById('reset').addEventListener('click',()=>{saved={};try{localStorage.removeItem(savedKey)}catch{}el.querySelectorAll('input').forEach((box,i)=>box.checked=!!data.r[i]?.[2])});
+ }catch(error){info.textContent='Dieser Einkaufslisten-Link kann nicht gelesen werden. '+error.message;info.classList.add('error')}
+})();
+</script></body></html>
