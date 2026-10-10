@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.4  
+**Buchversion:** 2.18.5  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -138,6 +138,13 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.5 – 10.10.2026
+
+- Grundlagen-Tabelle um Lamm (Karree/Lammlachse) und Schweine-Carré einschließlich Ibérico ergänzt.
+- Sicherheitshinweis unter der Tabelle umfasst alle Fleischarten einschließlich Rind sowie Fisch und unterscheidet Genuss-Gargrad von hygienischen Mindesttemperaturen.
+- Hinweis aufgenommen, dass einzelne ältere Mindestwerte der Tabelle kulinarische Richtwerte und keine allgemeinen Sicherheitsgrenzen sind.
+
 
 ### Version 2.18.4 – 10.10.2026
 
