@@ -25,7 +25,7 @@ async function init(){
     let html=await fetch('einkaufsliste-basis.html',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
     const grillPattern=/'grillgemuese-gasgrill':\{[\s\S]*?\},\n'finishing-sauce-grillgemuese-haehnchen'/;
     if(!grillPattern.test(html))throw new Error('Grillgemüse-Daten nicht gefunden');
-    html=html.replace(grillPattern,grillData+",\n"+chickenData+",\n"+beerChickenData+",\n"+lambData+",\n"+ibericoData+",\n"+salsaData+",\n'finishing-sauce-grillgemuese-haehnchen'");
+    html=html.replace(grillPattern,grillData+",\n"+chickenData+",\n"+beerChickenData+",\n"+lambData+",\n"+ibericoData+",\n"+salsaData+",\n"+lammlachsData+",\n'finishing-sauce-grillgemuese-haehnchen'");
     if(!html.includes('href="chicken-asado.html"'))html=html.replace('<a href="entrecote-steakhouse.html">Entrecôte Steakhouse</a>','<a href="chicken-asado.html">Chicken Asado</a><a href="beer-can-chicken.html">Beer Can Chicken</a><a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a><a href="entrecote-steakhouse.html">Entrecôte Steakhouse</a>');
     else{
       if(!html.includes('href="beer-can-chicken.html"'))html=html.replace('<a href="chicken-asado.html">Chicken Asado</a>','<a href="chicken-asado.html">Chicken Asado</a><a href="beer-can-chicken.html">Beer Can Chicken</a>');
