@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.17.0  
+**Buchversion:** 2.17.1  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -58,7 +58,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 #### Schwein
 
-- Ibérico Bellota Carré – Version 0.1.0 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste und Rezeptbild noch offen
+- Ibérico Bellota Carré – Version 0.1.1 – `iberico-bellota-carre.html` – Arbeitsfassung; Einkaufsliste noch offen
 
 - Schweinenackensteak mit Senf-Kräuter-Sauce – Version 0.1.1 – `schweinenackensteak-senf-kraeuter.html`
 
@@ -134,14 +134,20 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 
 ## Änderungshistorie
 
-### Version 2.17.0 – 10.10.2026
+### Version 2.17.1 – 10.10.2026
+
+- Bereits hochgeladenes Ibérico-JPEG im 16:9-Hero der Rezeptseite sowie in Fleischübersicht und Startseite eingebunden
+- Rezeptversion auf 0.1.1 erhöht
+
+
+### Version 2.17.1 – 10.10.2026
 
 - Ibérico Bellota Carré als elftes Rezept ergänzt, unter Schwein verlinkt und auf der Startseite aufgenommen
 - Dry Brining, Grillmethode und optionale Salsa Verde dokumentiert
-- Rezeptbild und automatische Einkaufslistenintegration noch offen
+- Automatische Einkaufslistenintegration noch offen
 
 
-### Version 2.17.0 – 22.08.2026
+### Version 2.17.1 – 22.08.2026
 
 - JPEG `assets/toskanisches_lammkarree.jpg` geprüft und eingebunden
 - Toskanisches Lammkarree auf Rezeptversion 0.1.2 erhöht
@@ -150,7 +156,7 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Toskanisches Lammkarree als neueste Karte im Bereich **Neu hinzugefügt** aufgenommen
 - Keto-Pudding dort aus dem Vierer-Raster verdrängt; Rezept und Kategorie bleiben unverändert erhalten
 - Anzahl der Rezeptseiten mit Hero-Bild auf 10 erhöht
-- Buchversion auf 2.17.0 erhöht
+- Buchversion auf 2.17.1 erhöht
 
 ### Version 2.16.1 – 22.08.2026
 
