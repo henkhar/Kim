@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.18.3  
+**Buchversion:** 2.18.4  
 **Letzte Aktualisierung:** 10.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -39,7 +39,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 - 1 bestätigtes Rezept
 - 12 Arbeitsfassungen
 - 13 eigenständige Rezeptseiten
-- 12 Rezeptseiten mit Hero-Bild (Lammlachse zunächst ohne eigenes Rezeptfoto)
+- 13 Rezeptseiten mit Hero-Bild
 - beide Einkaufslisten unterstützen nun 13 Rezepte inklusive Ibérico und Salsa Verde
 - sichtbare Versions- und Statushinweise bleiben ausgeblendet
 
@@ -64,7 +64,7 @@ Die Karten zeigen jeweils ein 16:9-Rezeptbild, die Rubrik, den Rezeptnamen und e
 
 #### Lamm
 
-- Lammlachse mit Rosmarin – Version 0.1.0 – `lammlachse-klassisch.html` – Arbeitsfassung, ohne eigenes Rezeptfoto; direkt/indirekt gegrillt, beide Einkaufslisten integriert
+- Lammlachse mit Rosmarin – Version 0.1.0 – `lammlachse-klassisch.html` – Arbeitsfassung, mit eigenem Rezeptfoto `assets/Lammlachse.jpeg`; direkt/indirekt gegrillt, beide Einkaufslisten integriert
 
 
 - Toskanisches Lammkarree – Version 0.1.2 – `toskanisches-lammkarree.html`
@@ -138,6 +138,13 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
 ## Änderungshistorie
+
+### Version 2.18.4 – 10.10.2026
+
+- Hochgeladenes Bild `assets/Lammlachse.jpeg` als Hero-Bild im Rezept und als Thumbnail in der Fleischübersicht (Lamm) eingebunden.
+- Lammlachse mit Bild unter „Neu hinzugefügt“ auf der Startseite aufgenommen.
+- Lammlachs-Rezeptversion auf 0.1.1 erhöht.
+
 
 ### Version 2.18.3 – 10.10.2026
 
