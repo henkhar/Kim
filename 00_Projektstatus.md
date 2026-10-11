@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.20.1  
+**Buchversion:** 2.20.2  
 **Letzte Aktualisierung:** 11.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -151,6 +151,13 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Responsive horizontale Tabellenansicht, fokussierbarer Scrollbereich und Druckstil; bestehende Grundlagen bleiben erhalten.
 
 ## Änderungshistorie
+
+### Version 2.20.2 – 11.10.2026
+
+- Mindest-Kerntemperatur als eigene Spalte aus der Garpunkttabelle entfernt.
+- Empfehlung in „Kulinarischer Zielbereich“ umbenannt; vorhandene Genuss-Garpunkte beibehalten.
+- Einheitliche USDA-Sicherheitsrichtwerte ausschließlich im Text darunter erläutert, mit Quellenlink und ausdrücklichem Hinweis auf höhere Temperaturen als bei Rare und anderen rosa Garstufen.
+- Buchversion und eingebetteten Projektstatus synchron aktualisiert.
 
 ### Version 2.20.1 – 11.10.2026
 
