@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.20.3  
+**Buchversion:** 2.21.0  
 **Letzte Aktualisierung:** 11.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -150,7 +150,23 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Preisbeispiele: https://www.limousinhof-klemm.de/fileadmin/user_upload/hofladen/angebotslisten/2026/Fleischprodukte_vom_Rind.pdf ; https://yourbeef.de/rind/special-cuts.html ; https://www.metzgerei-haefele.com/shop/Picanha-Steak-p189473386 ; https://hof-keil.de/products/teres-major ; https://www.metzgerei-roessner.de/produkt/teres-major/ ; https://genusswerkbyhamm.de/short-ribs-frisch-5241 ; https://lieblingsmetzger-shop.de/de/Brisket-Rinderbrust-ohne-Knochen.html
 - Responsive horizontale Tabellenansicht, fokussierbarer Scrollbereich und Druckstil; bestehende Grundlagen bleiben erhalten.
 
+## Rechtliche Informationen
+
+- Eigenständige Seiten `impressum.html` und `datenschutz.html`, Links in allen sichtbaren Fußzeilen einschließlich Rezepten und Einkaufslisten.
+- Impressum mit den ausdrücklich zur Veröffentlichung mitgeteilten Anbieterangaben und Hinweis auf private, nicht gewerbsmäßige Nutzung.
+- Datenschutz an tatsächliche Funktionen angepasst: GitHub Pages, Local Storage, selbstenthaltende Links, PDF, E-Mail-Kontakt und Betroffenenrechte.
+- jsPDF 2.5.1 unverändert aus bisheriger Quelle lokal unter `assets/vendor/` gespeichert, Original-Lizenzhinweise erhalten; externer CDN-Aufruf entfernt.
+- Quellen: GitHub Pages-Dokumentation und GitHub Privacy Statement (Stand 27.04.2026), DSGVO, § 25 TDDDG und LDI NRW.
+- Keine rechtliche Vollprüfung der Hosting-Vertragslage oder der Rechte an übernommenen Rezepten/Bildern; diese bleiben gesondert zu prüfen.
+
 ## Änderungshistorie
+
+### Version 2.21.0 – 11.10.2026
+
+- Impressum und Datenschutz angelegt und in allen sichtbaren Seitenfußzeilen verlinkt, auch in dynamisch geladenen Ansichten.
+- Privat und nicht gewerbsmäßig gestaltetes Kochbuch ausdrücklich erläutert.
+- PDF-Bibliothek mit Original-Lizenzhinweisen lokal eingebunden; PDF- und Einkaufslistenfunktionen erhalten.
+- Buchversion und eingebetteten Projektstatus synchron aktualisiert.
 
 ### Version 2.20.3 – 11.10.2026
 

@@ -42,6 +42,7 @@ Diese Datei enthält die stabilen Regeln für das Projekt **Chefkoch Kim – Har
 - Die Navigation muss jederzeit einen klaren Weg zurück zur Startseite bieten.
 - Alle Seiten müssen auf Desktop, Tablet und Smartphone gut lesbar und bedienbar sein.
 - Die Gestaltung bleibt reduziert, großzügig und Apple-inspiriert.
+- Alle sichtbaren Seiten enthalten gut erreichbare Fußzeilenlinks zu `impressum.html` und `datenschutz.html`. Die Datenschutzseite muss bei Änderungen an Hosting, Speicherung oder externen Diensten aktualisiert werden.
 - Rezeptkarten und Rezeptseiten zeigen keine internen Status- oder Versionshinweise. Arbeitsstand, Rezeptstatus und Versionsnummern bleiben ausschließlich in technischen Meta-Daten und den internen Projektdateien dokumentiert.
 - Rezeptbilder werden als große Bilder im Seitenverhältnis 16:9 direkt unter der Rezepteinleitung eingebunden. Sie erhalten großzügig abgerundete Ecken, eine dezente Schattenwirkung, einen aussagekräftigen Alternativtext und eine zurückhaltende Bildunterschrift.
 - Das erste verbindliche Bildmuster ist die Rezeptseite `honig-senf-lachs.html`. Weitere Rezeptbilder sollen sich an diesem ruhigen, hellen und hochwertigen Food-Fotografie-Stil orientieren.

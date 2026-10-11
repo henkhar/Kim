@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.19.1">
+<meta name="book-version" content="2.21.0">
 <title>Gemeinsame Einkaufsliste · Haralds Grillkochbuch</title>
 <style>html,body{width:100%;height:100%;margin:0;background:#f5f5f7;overflow:hidden}iframe{display:block;width:100%;height:100%;border:0;opacity:0;transition:opacity .12s ease}iframe.ready{opacity:1}noscript,.error{display:block;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#1d1d1f}</style>
 </head>
@@ -41,7 +41,7 @@ async function init(){
     }
     if(!html.includes('value="iberico"'))html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">',"<article class=\"recipe-choice\"><label class=\"choice-main\"><input class=\"recipe-checkbox\" type=\"checkbox\" value=\"iberico\"><span class=\"choice-copy\"><b>Ibérico Bellota Carré</b><span>Karree, Salz, Pfeffer und optional Rosmarin.</span></span></label></article><article class=\"recipe-choice\"><label class=\"choice-main\"><input class=\"recipe-checkbox\" type=\"checkbox\" value=\"salsaverde\"><span class=\"choice-copy\"><b>Salsa Verde</b><span>Petersilie, Olivenöl, Zitrone und Knoblauch.</span></span></label></article>"+'<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
     if(!html.includes('value="lammlachse"'))html=html.replace('<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">','<article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="lammlachse"><span class="choice-copy"><b>Lammlachse mit Rosmarin</b><span>Klassisch mit Thymian, Knoblauch und Butter.</span></span></label></article><article class="recipe-choice"><label class="choice-main"><input class="recipe-checkbox" type="checkbox" value="entrecote">');
-    html=html.replace(/<meta name="book-version" content="[^"]+">/,'<meta name="book-version" content="2.19.1">');
+    html=html.replace(/<meta name="book-version" content="2.21.0"]+">/,'<meta name="book-version" content="2.21.0">');
     html=html.replace('</head>','<base href="./" target="_top" data-kim-wrapper="true"></head>');
     frame.addEventListener('load',installShare,{once:true});
     frame.srcdoc=html;
@@ -56,7 +56,7 @@ function setupPdfSharing(button, getData, printButton, win){
   button.disabled=true;
   button.textContent='PDF wird vorbereitet …';
   const script=document.createElement('script');
-  script.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+  script.src='assets/vendor/jspdf-2.5.1.umd.min.js';
   script.onload=()=>{button.disabled=false;button.textContent='PDF senden'};
   script.onerror=()=>{button.disabled=false;button.textContent='Drucken / PDF';button.title='PDF-Bibliothek nicht erreichbar; Druckdialog verwenden'};
   document.head.appendChild(script);

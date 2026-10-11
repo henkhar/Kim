@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.20.3">
+<meta name="book-version" content="2.21.0">
 <meta name="description" content="Vegane Grillrezepte in Haralds Grillkochbuch">
 <title>Vegan · Haralds Grillkochbuch</title>
 <style>
@@ -12,6 +12,8 @@
 
 /* Gemeinsame linke Kante auf Desktop; mobile Regeln bleiben erhalten. */
 @media(min-width:1024px){.hero{width:min(1220px,calc(100% - 40px));margin:0 auto;padding-left:0;padding-right:0}}
+
+.legal-footer-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 14px;margin:10px auto 0;padding:0 16px;font-size:.9rem;line-height:1.5}.legal-footer-links a{display:inline-flex;align-items:center;min-height:44px;color:#6e6e73;text-decoration:underline;text-underline-offset:3px}.legal-footer-links a:hover{color:#bc4b2d}.legal-footer-links a:focus-visible{outline:2px solid #bc4b2d;outline-offset:3px;border-radius:3px}@media print{.legal-footer-links{display:none!important}}
 </style>
 </head>
 <body>
@@ -19,7 +21,7 @@
 <header class="topbar"><button class="menu-button" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-icon"></span></button><a class="home-button" href="index.html" aria-label="Zur Startseite" title="Startseite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 3.8l8.5 6.7"/><path d="M5.5 9.2V20h13V9.2"/><path d="M9.5 20v-6h5v6"/></svg></a><div class="brand">Haralds Grillkochbuch</div><div></div></header>
 <section class="hero"><h1>Vegan</h1><nav class="hero-nav" aria-label="Vegane Bereiche"><a href="#rezepte">Rezepte</a><a class="muted" href="#rezepte">In Vorbereitung</a></nav></section>
 <main class="content"><p class="eyebrow" id="rezepte">Rezepte entdecken</p><section class="placeholder"><div><h2>Noch keine Rezepte</h2><p>Der vegane Bereich ist bereits vorbereitet. Die ersten pflanzlichen Grillrezepte ergänzen wir später Schritt für Schritt.</p></div><span class="status">Bereich vorbereitet</span></section><a class="home-link" href="index.html">← Zur Startseite</a></main>
-<footer>2026 · Chefkoch Kim</footer>
+<footer>2026 · Chefkoch Kim<nav class="legal-footer-links" aria-label="Rechtliche Informationen"><a href="impressum.html" target="_top">Impressum</a><span aria-hidden="true">·</span><a href="datenschutz.html" target="_top">Datenschutz</a></nav></footer>
 </div>
 <aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button" aria-label="Menü schließen">×</button></div><nav><a href="index.html">Startseite</a><a href="fleisch.html">Fleisch</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="grundlagen.html">Grundlagen</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button');const closeButton=document.querySelector('.close-button');const drawer=document.querySelector('.drawer');const backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open));}menuButton.addEventListener('click',()=>setMenu(!drawer.classList.contains('open')));closeButton.addEventListener('click',()=>setMenu(false));backdrop.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false);});</script>

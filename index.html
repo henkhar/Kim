@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="book-version" content="2.20.3">
+<meta name="book-version" content="2.21.0">
 <meta name="description" content="Haralds Grillkochbuch – persönliche Grillrezepte, Grundlagen und Erfahrungen">
 <title>Haralds Grillkochbuch</title>
 <style>
@@ -12,6 +12,8 @@
 
 /* Gemeinsame linke Kante auf Desktop; mobile Regeln bleiben erhalten. */
 @media(min-width:1024px){.hero{width:min(1220px,calc(100% - 40px));margin:0 auto;padding-left:0;padding-right:0}}
+
+.legal-footer-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 14px;margin:10px auto 0;padding:0 16px;font-size:.9rem;line-height:1.5}.legal-footer-links a{display:inline-flex;align-items:center;min-height:44px;color:#6e6e73;text-decoration:underline;text-underline-offset:3px}.legal-footer-links a:hover{color:#bc4b2d}.legal-footer-links a:focus-visible{outline:2px solid #bc4b2d;outline-offset:3px;border-radius:3px}@media print{.legal-footer-links{display:none!important}}
 </style>
 <script id="chefkoch-kim-meta" type="application/json">
 {
@@ -41,7 +43,7 @@
 {
   "schema": 5,
   "status": "active",
-  "bookVersion": "2.20.3",
+  "bookVersion": "2.21.0",
   "lastUpdated": "2026-10-11",
   "recipeCount": 13,
   "confirmedRecipeCount": 1,
@@ -141,6 +143,11 @@
     }
   ],
   "history": [
+    {
+      "date": "2026-10-11",
+      "version": "2.21.0",
+      "change": "Impressum und Datenschutz mit Footer-Links ergänzt; private nicht gewerbsmäßige Nutzung erläutert; PDF-Bibliothek lokal ausgeliefert."
+    },
     {
       "date": "2026-10-11",
       "version": "2.20.3",
@@ -247,6 +254,16 @@
       "page": "grundlagen.html#rindfleisch-cuts",
       "cutCount": 42
     }
+  ],
+  "legalPages": [
+    {
+      "title": "Impressum",
+      "page": "impressum.html"
+    },
+    {
+      "title": "Datenschutz",
+      "page": "datenschutz.html"
+    }
   ]
 }
 </script>
@@ -267,7 +284,7 @@
 <a class="latest-card" href="chicken-asado.html"><span class="latest-image"><img src="assets/Chicken_asado.jpg?v=2152" alt="Gegrilltes Chicken Asado mit Orange und Limette" width="1672" height="941" loading="lazy" decoding="async"></span><span class="latest-copy"><span class="latest-kicker">Geflügel</span><h3>Chicken Asado</h3><span class="latest-arrow">Rezept öffnen →</span></span></a>
 <a class="latest-card" href="entrecote-steakhouse.html" style="display:none"><span class="latest-image"><img src="assets/entrecote_steakhouse.jpg?v=2152" alt="Gegrilltes Entrecôte mit kräftiger Kruste" width="1672" height="941" loading="lazy" decoding="async"></span><span class="latest-copy"><span class="latest-kicker">Rind</span><h3>Entrecôte Steakhouse</h3><span class="latest-arrow">Rezept öffnen →</span></span></a>
 </div></section>
-</main><footer>2026 · Chefkoch Kim</footer></div>
+</main><footer>2026 · Chefkoch Kim<nav class="legal-footer-links" aria-label="Rechtliche Informationen"><a href="impressum.html" target="_top">Impressum</a><span aria-hidden="true">·</span><a href="datenschutz.html" target="_top">Datenschutz</a></nav></footer></div>
 <aside class="drawer" aria-hidden="true"><div class="drawer-head"><h2>Menü</h2><button class="close-button" type="button">×</button></div><nav><a href="index.html">Startseite</a><a href="fleisch.html">Fleisch</a><a href="iberico-bellota-carre.html">Ibérico Bellota Carré</a><a href="lammlachse-klassisch.html">Lammlachse mit Rosmarin</a><a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a><a href="chicken-asado.html">Chicken Asado</a><a href="beer-can-chicken.html">Beer Can Chicken</a><a href="gemuese-salat.html">Salate &amp; Beilagen</a><a href="vegan.html">Vegan</a><a href="grundlagen.html">Grundlagen</a><a href="einkaufsliste-gesamt.html">Einkaufsliste</a><a href="kochbuch.html">Gesamtes Kochbuch</a></nav></aside><div class="backdrop"></div>
 <script>const menuButton=document.querySelector('.menu-button'),closeButton=document.querySelector('.close-button'),drawer=document.querySelector('.drawer'),backdrop=document.querySelector('.backdrop');function setMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('show',open);drawer.setAttribute('aria-hidden',String(!open));menuButton.setAttribute('aria-expanded',String(open))}menuButton.onclick=()=>setMenu(!drawer.classList.contains('open'));closeButton.onclick=()=>setMenu(false);backdrop.onclick=()=>setMenu(false);document.onkeydown=e=>{if(e.key==='Escape')setMenu(false)};</script>
 </body></html>
