@@ -1,8 +1,8 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.19.1  
-**Letzte Aktualisierung:** 10.10.2026  
+**Buchversion:** 2.20.0  
+**Letzte Aktualisierung:** 11.10.2026  
 **Einstiegsseite:** `index.html`
 
 ## Aktuelle Architektur
@@ -13,7 +13,7 @@ Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 - `fleisch.html` – Übersicht für Rind, Geflügel, Schwein, Lamm und Fisch
 - `gemuese-salat.html` – Übersicht Salate & Beilagen
 - `vegan.html` – vorbereiteter Bereich für vegane Rezepte
-- `grundlagen.html` – Kerntemperaturen, Garpunkte, Salzlake und Dry Brine
+- `grundlagen.html` – Kerntemperaturen, Garpunkte, Salzlake, Dry Brine und Rindfleisch-Cuts
 - `einkaufsliste.html` – Einkaufsliste für ein Rezept
 - `einkaufsliste-gesamt.html` – gemeinsame Einkaufsliste für mehrere Rezepte
 - `kochbuch.html` – Übergangsseite der früheren Gesamtansicht
@@ -137,7 +137,25 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Quellenhinweise bleiben intern und erscheinen nicht auf der sichtbaren Rezeptseite, sofern sie nicht ausdrücklich Teil des Kochbuchinhalts sein sollen.
 - Frühere Detailstände bleiben über die Git-Commit-Historie nachvollziehbar.
 
+## Grundlagen: Rindfleisch-Cuts
+
+- Letzter Navigationspunkt und letzter Inhaltsabschnitt in `grundlagen.html`: `#rindfleisch-cuts`.
+- 42 Einträge mit Teilstück, Cut, Bemerkung/Zubereitung, Grilleignung, qualitativer Beliebtheit und Richtpreis pro kg.
+- Ursprungsbezeichnung: „Hochrippe / Entrecôte am Stück“; Entrecôte kann auch das geschnittene Steak bezeichnen.
+- Preise sind Orientierungswerte, keine statistischen Mittelwerte; unsicherere Ableitungen mit Sternchen. Bei Knochenstücken wird Knochengewicht mitbezahlt.
+- Preisbasis aus der gemeinsamen Tabelle vom 09.10.2026, Stand Oktober 2026; keine neue Preisermittlung beim Einbau.
+- Fach- und Preisquellen intern: MeinMetzger „Deutsches Entrecote am Stück (Hochrippe)“, NCBA Cut Library, Australian Beef sowie deutsche Händlerangebote.
+- Preisbeispiele: https://www.limousinhof-klemm.de/fileadmin/user_upload/hofladen/angebotslisten/2026/Fleischprodukte_vom_Rind.pdf ; https://yourbeef.de/rind/special-cuts.html ; https://www.metzgerei-haefele.com/shop/Picanha-Steak-p189473386 ; https://hof-keil.de/products/teres-major ; https://www.metzgerei-roessner.de/produkt/teres-major/ ; https://genusswerkbyhamm.de/short-ribs-frisch-5241 ; https://lieblingsmetzger-shop.de/de/Brisket-Rinderbrust-ohne-Knochen.html
+- Responsive horizontale Tabellenansicht, fokussierbarer Scrollbereich und Druckstil; bestehende Grundlagen bleiben erhalten.
+
 ## Änderungshistorie
+
+### Version 2.20.0 – 11.10.2026
+
+- Vollständige Rindfleisch-Cuts-Tabelle als letzten Punkt unter Grundlagen eingebaut.
+- Grundlagen-Navigation und Verweis in der bisherigen Gesamtansicht ergänzt.
+- Buchversion und eingebetteten Projektstatus synchron aktualisiert.
+
 
 ### Version 2.19.1 – 10.10.2026
 
@@ -314,3 +332,4 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 ### Version 2.12.0 – 03.08.2026
 
 - Grundlagen auf Kerntemperaturen und Salzlake & Dry Brine konzentriert
+
