@@ -11,7 +11,7 @@
 (async()=>{
   try{
     let html=await fetch('fleisch-basis.html?v=2162',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Basisdatei nicht erreichbar');return r.text()});
-    html=html.replace('<meta name="book-version" content="2.15.0">','<meta name="book-version" content="2.18.4">');
+    html=html.replace('<meta name="book-version" content="2.15.0">','<meta name="book-version" content="2.20.3">');
     html=html.replace('Fleischrezepte in Haralds Grillkochbuch – Rind, Geflügel, Schwein und Fisch','Fleischrezepte in Haralds Grillkochbuch – Rind, Geflügel, Schwein, Lamm und Fisch');
     html=html.replace('<a href="#rind">Rind</a><a href="#gefluegel">Geflügel</a><a href="#schwein">Schwein</a><a href="#fisch">Fisch</a>','<a href="#rind">Rind</a><a href="#gefluegel">Geflügel</a><a href="#schwein">Schwein</a><a href="#lamm">Lamm</a><a href="#fisch">Fisch</a>');
     html=html.replace('.recipe-thumb:hover img{transform:scale(1.02)}.recipe-preview{','.recipe-thumb:hover img{transform:scale(1.02)}.recipe-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}.recipe-gallery .recipe-thumb{margin:0}.recipe-preview{');
@@ -27,6 +27,7 @@
     html=html.replace('<a href="honig-senf-lachs.html">Honig-Senf-Lachs</a><a href="gemuese-salat.html">','<a href="honig-senf-lachs.html">Honig-Senf-Lachs</a><a href="toskanisches-lammkarree.html">Toskanisches Lammkarree</a><a href="gemuese-salat.html">');
     html=html.replace('<article class="category" id="schwein"><div>','<article class="category" id="schwein"><div>');
     html=html.replace(/(<article class="category" id="schwein">[\s\S]*?<\/p>)/, '$1<a class="recipe-thumb" href="iberico-bellota-carre.html" aria-label="Ibérico Bellota Carré öffnen"><img src="assets/Gro%C3%9F%20(Gegrilltes%20Iberico-Kotelett%20mit%20Kra%CC%88utersauce).jpeg" alt="Gegrilltes Ibérico Bellota Carré" loading="lazy" decoding="async"></a>');
+    html=html.replace('</style>',"\n/* Gemeinsame linke Kante auf Desktop; mobile Regeln bleiben erhalten. */\n@media(min-width:1024px){.hero{width:min(1220px,calc(100% - 40px));margin:0 auto;padding-left:0;padding-right:0}}\n</style>");
     document.open();document.write(html);document.close();
   }catch(error){document.body.innerHTML='<p class="loading">Die Fleischübersicht konnte nicht geladen werden.</p>';console.error(error)}
 })();

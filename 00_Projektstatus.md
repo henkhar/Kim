@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.20.2  
+**Buchversion:** 2.20.3  
 **Letzte Aktualisierung:** 11.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -151,6 +151,14 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Responsive horizontale Tabellenansicht, fokussierbarer Scrollbereich und Druckstil; bestehende Grundlagen bleiben erhalten.
 
 ## Änderungshistorie
+
+### Version 2.20.3 – 11.10.2026
+
+- Desktop-Ausrichtung der Startseite auf Fleisch (Rind, Geflügel, Schwein, Lamm, Fisch), Salate & Beilagen, Vegan und Grundlagen übertragen.
+- Überschrift und Rubrikennavigation ab 1024 px an der linken Kante des vorhandenen Inhaltsbereichs ausgerichtet; mobile Regeln unverändert.
+- Fleisch-Ergänzung im bestehenden Wrapper eingebunden; Basisdatei und Rezeptinhalte erhalten.
+- Einkaufsliste geprüft: Überschrift und Inhalt liegen bereits gemeinsam im zentrierten Bereich.
+- Buchversion und eingebetteten Projektstatus synchron aktualisiert.
 
 ### Version 2.20.2 – 11.10.2026
 
