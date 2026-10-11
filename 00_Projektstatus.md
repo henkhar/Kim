@@ -1,7 +1,7 @@
 # Projektstatus – Chefkoch Kim
 
 **Status:** aktiv  
-**Buchversion:** 2.20.0  
+**Buchversion:** 2.20.1  
 **Letzte Aktualisierung:** 11.10.2026  
 **Einstiegsseite:** `index.html`
 
@@ -21,6 +21,8 @@ Das Projekt ist eine mehrseitige, statische Kochbuch-Website auf GitHub Pages.
 - `00_Projektstatus.md` – dynamischer Zustand und Änderungshistorie
 
 ## Startseite
+
+Ab 1024 px Bildschirmbreite stehen Überschrift, Hauptnavigation und Karten in einem gemeinsamen, mittig platzierten Bereich mit maximal 1220 px Breite und gleicher linker Kante. Die bisherigen Layoutregeln unterhalb von 1024 px bleiben unverändert.
 
 Die Hauptnavigation enthält Fleisch, Salate & Beilagen, Vegan, Grundlagen und Einkaufsliste. Unterhalb bleiben die drei großen Kategorie-Karten Fleisch, Salate & Beilagen und Vegan.
 
@@ -149,6 +151,12 @@ Die gemeinsame Liste verwendet ebenfalls die seit Version 2.15.3 eingeführte `s
 - Responsive horizontale Tabellenansicht, fokussierbarer Scrollbereich und Druckstil; bestehende Grundlagen bleiben erhalten.
 
 ## Änderungshistorie
+
+### Version 2.20.1 – 11.10.2026
+
+- Desktop-Überschrift und Hauptnavigation an der linken Kante des vorhandenen Kartenbereichs ausgerichtet.
+- Begrenzte Inhaltsbreite und Außenabstände beibehalten; Änderung gilt ausschließlich ab 1024 px.
+- Bestehende mobile CSS-Regeln, Inhalte und Links unverändert; Buchversion und eingebetteten Projektstatus aktualisiert.
 
 ### Version 2.20.0 – 11.10.2026
 
